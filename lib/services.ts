@@ -1,0 +1,112 @@
+// ============================================================
+// Data Layer — Services SSOT
+// Fuente única de verdad para los servicios de Detailing Marin
+// ============================================================
+
+import type { Service, NavLink, ContactInfo } from '@/types'
+
+export const services: Service[] = [
+  {
+    id: '1',
+    slug: 'lavado-ecologico',
+    title: 'Lavado Ecológico',
+    shortDescription: 'Limpieza profunda sin desperdicio de agua.',
+    fullDescription:
+      'Limpieza profunda utilizando tecnología de bajo consumo de agua y productos biodegradables que protegen la pintura y el medio ambiente. Hasta un 90% de ahorro de agua vs. lavado tradicional.',
+    icon: 'droplets',
+    features: [
+      'Productos 100% biodegradables',
+      'Ahorro hasta 90% de agua',
+      'Protección de pintura incluida',
+      'Limpieza de interior y exterior',
+    ],
+    duration: '60–90 min',
+    highlight: true,
+  },
+  {
+    id: '2',
+    slug: 'pulido-abrillantador',
+    title: 'Pulido Abrillantador',
+    shortDescription: 'Restauración del brillo espejo original.',
+    fullDescription:
+      'Restauramos el brillo original de tu vehículo eliminando micro-rayas y realzando la profundidad del color mediante técnicas de corrección de pintura de nivel profesional.',
+    icon: 'sparkles',
+    features: [
+      'Eliminación de micro-rayas',
+      'Realce de profundidad de color',
+      'Sellado de pintura UV',
+      'Resultado de showroom',
+    ],
+    duration: '90–120 min',
+  },
+  {
+    id: '3',
+    slug: 'pulido-focos',
+    title: 'Pulido de Focos',
+    shortDescription: 'Recupera la transparencia y seguridad.',
+    fullDescription:
+      'Recupera la transparencia y seguridad de tus focos. Eliminamos lo amarillento y opaco con sellado UV que prolonga el resultado hasta 12 meses.',
+    icon: 'zap',
+    features: [
+      'Eliminación de amarillamiento',
+      'Sellado UV de larga duración',
+      'Mejora visibilidad nocturna',
+      'Garantía de 12 meses',
+    ],
+    duration: '45–60 min',
+  },
+  {
+    id: '4',
+    slug: 'limpieza-motor',
+    title: 'Limpieza de Motor',
+    shortDescription: 'Limpieza técnica en seco impecable.',
+    fullDescription:
+      'Limpieza técnica detallada que elimina grasa y suciedad acumulada, protegiendo mangueras y componentes plásticos sin usar agua. Mantén el corazón de tu auto en óptimas condiciones.',
+    icon: 'settings',
+    features: [
+      'Limpieza en seco sin daños',
+      'Tratamiento anti-corrosión',
+      'Protección de mangueras y plásticos',
+      'Aplicación de dressing protector',
+    ],
+    duration: '60–90 min',
+  },
+]
+
+export const navLinks: NavLink[] = [
+  { label: 'Inicio', href: '/' },
+  { label: 'Servicios', href: '/servicios' },
+  { label: 'Contacto', href: '/contacto' },
+]
+
+export const contactInfo: ContactInfo = {
+  phone: '+56 9 1234 5678',
+  whatsapp: '+56912345678',
+  email: 'hola@detailingmarin.cl',
+  zone: 'Maipú y alrededores',
+  hours: 'Lunes a Sábado, 9:00 – 19:00',
+}
+
+export const features = [
+  {
+    id: 'eco',
+    icon: 'leaf',
+    title: '100% Ecológico',
+    description:
+      'Utilizamos productos premium biodegradables que no dañan el medio ambiente ni la pintura de tu vehículo.',
+  },
+  {
+    id: 'domicilio',
+    icon: 'map-pin',
+    title: 'A Domicilio',
+    description:
+      'Llevamos todo el equipamiento necesario hasta la puerta de tu casa u oficina para tu total comodidad.',
+  },
+  {
+    id: 'premium',
+    icon: 'award',
+    title: 'Calidad Premium',
+    description:
+      'Atención al detalle minuciosa y resultados de showroom que protegen tu inversión a largo plazo.',
+  },
+]

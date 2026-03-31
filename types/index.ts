@@ -1,0 +1,38 @@
+// ============================================================
+// Types — Detailing Marin
+// Single source of truth para entidades del dominio
+// ============================================================
+
+export interface Service {
+  id: string
+  slug: string
+  title: string
+  shortDescription: string
+  fullDescription: string
+  icon: string
+  features: string[]
+  duration: string
+  highlight?: boolean
+}
+
+export interface NavLink {
+  label: string
+  href: string
+}
+
+export interface SocialLink {
+  label: string
+  href: string
+  icon: string
+}
+
+export interface ContactInfo {
+  phone: string
+  whatsapp: string
+  email: string
+  zone: string
+  hours: string
+}
+
+export type ButtonVariant = 'primary' | 'secondary' | 'ghost'
+export type ButtonSize = 'sm' | 'md' | 'lg'

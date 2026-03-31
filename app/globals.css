@@ -1,49 +1,235 @@
+@import "tailwindcss";
+
+/* ============================================================
+   DESIGN SYSTEM — "The Editorial Automotive Standard"
+   Extraído del Stitch MCP Project: Home - Detailing Marin
+   ============================================================ */
+
+@theme {
+  /* --- Tipografía --- */
+  --font-display: 'Manrope', sans-serif;
+  --font-body: 'Inter', sans-serif;
+  --font-sans: 'Inter', sans-serif;
+
+  /* --- Colores Light Mode (Material Design Tonal) --- */
+  --color-primary:            #154212;
+  --color-primary-container:  #2D5A27;
+  --color-primary-fixed:      #bcf0ae;
+  --color-primary-fixed-dim:  #a1d494;
+  --color-on-primary:         #ffffff;
+  --color-on-primary-container: #9dd090;
+
+  --color-secondary:          #00629e;
+  --color-secondary-container: #61b4fe;
+  --color-on-secondary:       #ffffff;
+  --color-on-secondary-container: #004470;
+
+  --color-tertiary:           #00440e;
+  --color-tertiary-container: #005e17;
+  --color-on-tertiary:        #ffffff;
+  --color-on-tertiary-container: #75d974;
+
+  --color-surface:            #e2fffe;
+  --color-surface-bright:     #e2fffe;
+  --color-surface-dim:        #bee1e0;
+  --color-surface-container:      #d2f5f4;
+  --color-surface-container-high: #ccefee;
+  --color-surface-container-highest: #c6e9e9;
+  --color-surface-container-low:  #d7fafa;
+  --color-surface-container-lowest: #ffffff;
+
+  --color-on-surface:         #002020;
+  --color-on-surface-variant: #42493e;
+
+  --color-background:         #e2fffe;
+  --color-on-background:      #002020;
+
+  --color-outline:            #72796e;
+  --color-outline-variant:    #c2c9bb;
+
+  --color-error:              #ba1a1a;
+  --color-error-container:    #ffdad6;
+  --color-on-error:           #ffffff;
+
+  /* --- Colores Dark Mode --- */
+  --color-dark-surface:           #0e1a1a;
+  --color-dark-surface-container: #1a2626;
+  --color-dark-surface-container-high: #202d2d;
+  --color-dark-surface-container-highest: #263535;
+  --color-dark-on-surface:        #c6e9e9;
+  --color-dark-on-surface-variant: #a0b0b0;
+  --color-dark-primary:           #a1d494;
+  --color-dark-on-primary:        #002201;
+
+  /* --- Border Radius --- */
+  --radius-sm:   0.375rem;
+  --radius-md:   0.75rem;
+  --radius-lg:   1rem;
+  --radius-xl:   1.5rem;
+  --radius-full: 9999px;
+
+  /* --- Spacing scale (base 4px → 1rem=16px) --- */
+  --spacing-18: 4.5rem;
+  --spacing-22: 5.5rem;
+  --spacing-26: 6.5rem;
+  --spacing-30: 7.5rem;
+
+  /* --- Shadows ambientales eco-themed --- */
+  --shadow-ambient: 0 20px 40px rgba(0, 32, 32, 0.06);
+  --shadow-float:   0 8px 24px rgba(0, 32, 32, 0.1);
+}
+
+/* ============================================================
+   CSS CUSTOM PROPERTIES (para uso en componentes)
+   ============================================================ */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --gradient-primary: linear-gradient(135deg, #154212 0%, #2D5A27 100%);
+  --gradient-primary-soft: linear-gradient(135deg, #2D5A27 0%, #3b6934 100%);
+  --glass-bg: rgba(226, 255, 254, 0.8);
+  --glass-blur: blur(16px);
+  --glass-border: rgba(194, 201, 187, 0.15);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+/* ============================================================
+   DARK MODE — Redefine custom properties al activarse .dark
+   TailwindCSS 4: los @theme tokens son variables CSS, se pueden
+   sobreescribir aquí para cambiar toda la paleta de colores.
+   ============================================================ */
+.dark {
+  /* Glass */
+  --glass-bg: rgba(14, 26, 26, 0.88);
+  --glass-border: rgba(100, 160, 160, 0.15);
+
+  /* Gradients */
+  --gradient-primary: linear-gradient(135deg, #1e5c1a 0%, #2d7a25 100%);
+  --gradient-primary-soft: linear-gradient(135deg, #2d7a25 0%, #3a8f30 100%);
+
+  /* Surfaces — reemplaza tokens de @theme */
+  --color-surface:                    #0e1a1a;
+  --color-surface-bright:             #162020;
+  --color-surface-dim:                #081212;
+  --color-surface-container:          #1a2626;
+  --color-surface-container-high:     #202d2d;
+  --color-surface-container-highest:  #263535;
+  --color-surface-container-low:      #152222;
+  --color-surface-container-lowest:   #0a1414;
+
+  /* On-surface */
+  --color-on-surface:         #c6e9e9;
+  --color-on-surface-variant: #8eabab;
+
+  /* Background */
+  --color-background:    #0e1a1a;
+  --color-on-background: #c6e9e9;
+
+  /* Primary */
+  --color-primary:           #a1d494;
+  --color-primary-container: #1e5c1a;
+  --color-on-primary:        #002201;
+  --color-on-primary-container: #bcf0ae;
+
+  /* Secondary */
+  --color-secondary:           #90cafe;
+  --color-secondary-container: #004470;
+  --color-on-secondary:        #003258;
+
+  /* Outline */
+  --color-outline:         #5a7070;
+  --color-outline-variant: #2e4040;
+
+  /* Shadow */
+  --shadow-ambient: 0 20px 40px rgba(0, 0, 0, 0.3);
+  --shadow-float:   0 8px 24px rgba(0, 0, 0, 0.4);
 }
 
+/* Aplicar background y color al html/body en dark mode */
+html.dark {
+  background-color: var(--color-surface);
+  color: var(--color-on-surface);
+}
+
+
+/* ============================================================
+   TIPOGRAFÍA BASE
+   ============================================================ */
 html {
-  height: 100%;
-}
-
-html,
-body {
-  max-width: 100vw;
-  overflow-x: hidden;
-}
-
-body {
-  min-height: 100%;
-  display: flex;
-  flex-direction: column;
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-body);
+  color: var(--color-on-surface);
+  background-color: var(--color-surface);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-* {
-  box-sizing: border-box;
-  padding: 0;
-  margin: 0;
+/* ============================================================
+   UTILIDADES BASE (complementan TailwindCSS 4)
+   ============================================================ */
+
+/* Glassmorphism */
+.glass {
+  background: var(--glass-bg);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  border: 1px solid var(--glass-border);
 }
 
-a {
-  color: inherit;
-  text-decoration: none;
+/* Gradient CTA primario */
+.gradient-primary {
+  background: var(--gradient-primary);
+}
+.gradient-primary:hover {
+  background: var(--gradient-primary-soft);
 }
 
-@media (prefers-color-scheme: dark) {
-  html {
-    color-scheme: dark;
-  }
+/* Tipografía de display */
+.text-display-lg {
+  font-family: var(--font-display);
+  font-size: 3.5rem;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  font-weight: 800;
+}
+.text-display-md {
+  font-family: var(--font-display);
+  font-size: 2.5rem;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  font-weight: 700;
+}
+.text-headline-md {
+  font-family: var(--font-display);
+  font-size: 1.75rem;
+  line-height: 1.25;
+  font-weight: 600;
+}
+.text-label-md {
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+.text-body-lg {
+  font-family: var(--font-body);
+  font-size: 1rem;
+  line-height: 1.6;
+  font-weight: 400;
+}
+
+/* Sombra ambiental eco */
+.shadow-ambient {
+  box-shadow: var(--shadow-ambient);
+}
+.shadow-float {
+  box-shadow: var(--shadow-float);
+}
+
+/* Scroll suave global */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Selección de texto con colores del design system */
+::selection {
+  background-color: var(--color-primary-fixed);
+  color: var(--color-primary);
 }
