@@ -21,8 +21,8 @@ export function ServiceCard({
   return (
     <article
       className={[
-        'rounded-[var(--radius-lg)]',
-        'bg-[var(--color-surface-container-lowest)]',
+        'rounded-(--radius-lg)',
+        'bg-(--color-surface-container-lowest)',
         'p-8 flex flex-col gap-4',
         'transition-all duration-300 ease-out',
         'hover:shadow-float hover:-translate-y-1',
@@ -33,16 +33,16 @@ export function ServiceCard({
         .join(' ')}
     >
       {/* Icono con contenedor eco */}
-      <div className="w-12 h-12 rounded-[var(--radius-md)] bg-[var(--color-primary-fixed)] flex items-center justify-center flex-shrink-0">
+      <div className="w-12 h-12 rounded-md bg-primary-fixed flex items-center justify-center shrink-0">
         <Icon name={service.icon} size={24} color="var(--color-primary)" />
       </div>
 
       {/* Contenido */}
       <div className="flex flex-col gap-2 flex-1">
-        <h3 className="text-headline-md text-[var(--color-on-surface)] font-display">
+        <h3 className="text-headline-md text-(--color-on-surface) font-display">
           {service.title}
         </h3>
-        <p className="text-body-lg text-[var(--color-on-surface-variant)]">
+        <p className="text-body-lg text-on-surface-variant">
           {variant === 'full' ? service.fullDescription : service.shortDescription}
         </p>
       </div>
@@ -53,10 +53,10 @@ export function ServiceCard({
           {service.features.map((feature) => (
             <li
               key={feature}
-              className="flex items-center gap-2 text-sm text-[var(--color-on-surface-variant)]"
+              className="flex items-center gap-2 text-sm text-on-surface-variant"
             >
               <span
-                className="w-1.5 h-1.5 rounded-full bg-[var(--color-primary)] flex-shrink-0"
+                className="w-1.5 h-1.5 rounded-full bg-primary shrink-0"
                 aria-hidden="true"
               />
               {feature}
@@ -66,14 +66,14 @@ export function ServiceCard({
       )}
 
       {/* Duración + CTA */}
-      <div className="flex items-center justify-between mt-auto pt-4 border-t border-[var(--color-outline-variant)]/20">
-        <span className="text-label-md text-[var(--color-on-surface-variant)]">
+      <div className="flex items-center justify-between mt-auto pt-4 border-t border-outline-variant/20">
+        <span className="text-label-md text-on-surface-variant">
           ⏱ {service.duration}
         </span>
         {showCTA && (
           <Link
             href={`/servicios#${service.slug}`}
-            className="text-[var(--color-primary)] text-sm font-medium hover:underline underline-offset-4 transition-colors"
+            className="text-primary text-sm font-medium hover:underline underline-offset-4 transition-colors"
             aria-label={`Ver más detalles sobre ${service.title}`}
           >
             Saber más →

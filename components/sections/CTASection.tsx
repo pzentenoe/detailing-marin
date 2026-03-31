@@ -36,7 +36,7 @@ export function CTASection() {
             <Button
               variant="ghost"
               size="lg"
-              className="!text-white !font-semibold border-2 border-white/30 hover:border-white/60 hover:bg-white/10 !no-underline rounded-[var(--radius-full)] px-8 py-4"
+              className="text-white! font-semibold! border-2 border-white/30 hover:border-white/60 hover:bg-white/10 no-underline! rounded-full px-8 py-4"
               onClick={() =>
                 window.open(
                   'https://wa.me/56912345678?text=Hola%2C%20quiero%20agendar%20un%20servicio',
@@ -51,8 +51,8 @@ export function CTASection() {
               href="mailto:hola@detailingmarin.cl"
               className={[
                 'inline-flex items-center justify-center gap-2',
-                'px-8 py-4 rounded-[var(--radius-full)]',
-                'bg-white text-[var(--color-primary)]',
+                'px-8 py-4 rounded-full',
+                'bg-white text-primary',
                 'font-semibold text-lg',
                 'hover:bg-white/90 transition-all duration-200',
                 'shadow-float',

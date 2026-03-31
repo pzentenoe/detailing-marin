@@ -36,7 +36,7 @@ export function Navbar() {
         'fixed top-0 left-0 right-0 z-50',
         'transition-all duration-300 ease-out',
         isScrolled
-          ? 'glass shadow-ambient border-b border-[var(--color-outline-variant)]/20'
+          ? 'glass shadow-ambient border-b border-outline-variant/20'
           : 'bg-transparent',
       ]
         .filter(Boolean)
@@ -53,12 +53,12 @@ export function Navbar() {
             aria-label="Detailing Marin — Ir al inicio"
           >
             <span
-              className="w-8 h-8 rounded-[var(--radius-md)] gradient-primary flex items-center justify-center text-white font-bold text-sm"
+              className="w-8 h-8 rounded-md gradient-primary flex items-center justify-center text-white font-bold text-sm"
               aria-hidden="true"
             >
               DM
             </span>
-            <span className="font-display font-bold text-lg text-[var(--color-on-surface)] tracking-tight group-hover:text-[var(--color-primary)] transition-colors">
+            <span className="font-display font-bold text-lg text-(--color-on-surface) tracking-tight group-hover:text-primary transition-colors">
               Detailing Marin
             </span>
           </Link>
@@ -73,11 +73,11 @@ export function Navbar() {
                   href={link.href}
                   className={[
                     'text-sm font-medium transition-colors duration-200',
-                    'hover:text-[var(--color-primary)]',
+                    'hover:text-primary',
                     'relative after:absolute after:bottom-[-4px] after:left-0 after:h-[2px] after:w-full after:rounded-full after:transition-opacity after:duration-200',
                     isActive
-                      ? 'text-[var(--color-primary)] after:bg-[var(--color-primary)] after:opacity-100'
-                      : 'text-[var(--color-on-surface-variant)] after:bg-[var(--color-primary)] after:opacity-0 hover:after:opacity-100',
+                      ? 'text-primary after:bg-primary after:opacity-100'
+                      : 'text-on-surface-variant after:bg-primary after:opacity-0 hover:after:opacity-100',
                   ]
                     .filter(Boolean)
                     .join(' ')}
@@ -94,12 +94,12 @@ export function Navbar() {
             {/* Dark mode toggle */}
             <button
               onClick={toggle}
-              className="p-2 rounded-[var(--radius-md)] text-[var(--color-on-surface)] hover:bg-[var(--color-surface-container)] transition-all duration-200 hover:scale-110 active:scale-95"
+              className="p-2 rounded-md text-(--color-on-surface) hover:bg-surface-container transition-all duration-200 hover:scale-110 active:scale-95"
               aria-label={theme === 'dark' ? 'Cambiar a modo claro' : 'Cambiar a modo oscuro'}
               title={theme === 'dark' ? 'Modo claro' : 'Modo oscuro'}
             >
               {theme === 'dark'
-                ? <Sun size={20} aria-hidden="true" className="text-[var(--color-primary-fixed)]" />
+                ? <Sun size={20} aria-hidden="true" className="text-primary-fixed" />
                 : <Moon size={20} aria-hidden="true" />}
             </button>
 
@@ -122,15 +122,15 @@ export function Navbar() {
           <div className="md:hidden flex items-center gap-1">
             <button
               onClick={toggle}
-              className="p-2 rounded-[var(--radius-md)] text-[var(--color-on-surface)] hover:bg-[var(--color-surface-container)] transition-all duration-200 hover:scale-110 active:scale-95"
+              className="p-2 rounded-md text-(--color-on-surface) hover:bg-surface-container transition-all duration-200 hover:scale-110 active:scale-95"
               aria-label={theme === 'dark' ? 'Cambiar a modo claro' : 'Cambiar a modo oscuro'}
             >
               {theme === 'dark'
-                ? <Sun size={20} aria-hidden="true" className="text-[var(--color-primary-fixed)]" />
+                ? <Sun size={20} aria-hidden="true" className="text-primary-fixed" />
                 : <Moon size={20} aria-hidden="true" />}
             </button>
             <button
-              className="p-2 rounded-[var(--radius-md)] text-[var(--color-on-surface)] hover:bg-[var(--color-surface-container-high)] transition-colors"
+              className="p-2 rounded-md text-(--color-on-surface) hover:bg-surface-container-high transition-colors"
               onClick={() => setIsOpen(!isOpen)}
               aria-expanded={isOpen}
               aria-label={isOpen ? 'Cerrar menú' : 'Abrir menú'}
@@ -146,7 +146,7 @@ export function Navbar() {
       <div
         id="mobile-menu"
         className={[
-          'md:hidden glass border-t border-[var(--color-outline-variant)]/20',
+          'md:hidden glass border-t border-outline-variant/20',
           'transition-all duration-300 ease-out overflow-hidden',
           isOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0',
         ]
@@ -167,8 +167,8 @@ export function Navbar() {
                 className={[
                   'text-base font-medium py-2 transition-colors',
                   isActive
-                    ? 'text-[var(--color-primary)]'
-                    : 'text-[var(--color-on-surface-variant)] hover:text-[var(--color-primary)]',
+                    ? 'text-primary'
+                    : 'text-on-surface-variant hover:text-primary',
                 ]
                   .filter(Boolean)
                   .join(' ')}

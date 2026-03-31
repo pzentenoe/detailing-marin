@@ -8,11 +8,11 @@ import type { ReactNode } from 'react'
 type SurfaceLevel = 'base' | 'low' | 'container' | 'high' | 'highest'
 
 const surfaceStyles: Record<SurfaceLevel, string> = {
-  base:      'bg-[var(--color-surface)]',
-  low:       'bg-[var(--color-surface-container-low)]',
-  container: 'bg-[var(--color-surface-container)]',
-  high:      'bg-[var(--color-surface-container-high)]',
-  highest:   'bg-[var(--color-surface-container-highest)]',
+  base:      'bg-(--color-surface)',
+  low:       'bg-surface-container-low',
+  container: 'bg-surface-container',
+  high:      'bg-surface-container-high',
+  highest:   'bg-(--color-surface-container-highest)',
 }
 
 interface SectionWrapperProps {

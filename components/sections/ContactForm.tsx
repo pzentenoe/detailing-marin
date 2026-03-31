@@ -45,12 +45,12 @@ export function ContactForm() {
   }
 
   const inputBaseClass = [
-    'w-full px-4 py-3 rounded-[var(--radius-md)]',
-    'bg-[var(--color-surface-container-lowest)]',
-    'border border-[var(--color-outline-variant)]/30',
-    'text-[var(--color-on-surface)] text-sm',
-    'placeholder:text-[var(--color-on-surface-variant)]/50',
-    'focus:outline-none focus:border-[var(--color-primary)] focus:ring-2 focus:ring-[var(--color-primary-fixed)]',
+    'w-full px-4 py-3 rounded-md',
+    'bg-(--color-surface-container-lowest)',
+    'border border-outline-variant/30',
+    'text-(--color-on-surface) text-sm',
+    'placeholder:text-on-surface-variant/50',
+    'focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary-fixed',
     'transition-all duration-200',
   ].join(' ')
 
@@ -58,20 +58,20 @@ export function ContactForm() {
     <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16">
       {/* Formulario */}
       <div>
-        <p className="text-label-md text-[var(--color-primary)] mb-3">
+        <p className="text-label-md text-primary mb-3">
           Agendar servicio
         </p>
-        <h1 className="text-display-md text-[var(--color-on-surface)] mb-8">
+        <h1 className="text-display-md text-(--color-on-surface) mb-8">
           Contáctanos
         </h1>
 
         {submitted ? (
-          <div className="rounded-[var(--radius-xl)] bg-[var(--color-primary-fixed)]/30 p-8 text-center flex flex-col items-center gap-4">
+          <div className="rounded-(--radius-xl) bg-primary-fixed/30 p-8 text-center flex flex-col items-center gap-4">
             <span className="text-4xl" aria-hidden="true">✅</span>
-            <h2 className="text-headline-md text-[var(--color-primary)]">
+            <h2 className="text-headline-md text-primary">
               ¡Listo! Te redirectamos a WhatsApp
             </h2>
-            <p className="text-[var(--color-on-surface-variant)] text-sm">
+            <p className="text-on-surface-variant text-sm">
               Te respondemos en menos de 24 horas. También podés escribirnos directamente.
             </p>
             <Button
@@ -92,7 +92,7 @@ export function ContactForm() {
               <div className="flex flex-col gap-2">
                 <label
                   htmlFor="contact-nombre"
-                  className="text-sm font-medium text-[var(--color-on-surface)]"
+                  className="text-sm font-medium text-(--color-on-surface)"
                 >
                   Nombre
                 </label>
@@ -111,7 +111,7 @@ export function ContactForm() {
               <div className="flex flex-col gap-2">
                 <label
                   htmlFor="contact-telefono"
-                  className="text-sm font-medium text-[var(--color-on-surface)]"
+                  className="text-sm font-medium text-(--color-on-surface)"
                 >
                   Teléfono
                 </label>
@@ -132,7 +132,7 @@ export function ContactForm() {
             <div className="flex flex-col gap-2">
               <label
                 htmlFor="contact-servicio"
-                className="text-sm font-medium text-[var(--color-on-surface)]"
+                className="text-sm font-medium text-(--color-on-surface)"
               >
                 Servicio de interés
               </label>
@@ -160,7 +160,7 @@ export function ContactForm() {
             <div className="flex flex-col gap-2">
               <label
                 htmlFor="contact-mensaje"
-                className="text-sm font-medium text-[var(--color-on-surface)]"
+                className="text-sm font-medium text-(--color-on-surface)"
               >
                 Mensaje (opcional)
               </label>
@@ -178,7 +178,7 @@ export function ContactForm() {
             <Button variant="primary" size="lg" type="submit" fullWidth>
               💬 Enviar por WhatsApp
             </Button>
-            <p className="text-xs text-center text-[var(--color-on-surface-variant)]">
+            <p className="text-xs text-center text-on-surface-variant">
               Al enviar, serás redirigido a WhatsApp para confirmar tu solicitud.
             </p>
           </form>
@@ -187,8 +187,8 @@ export function ContactForm() {
 
       {/* Info de contacto */}
       <div className="flex flex-col gap-8">
-        <div className="rounded-[var(--radius-xl)] bg-[var(--color-surface-container-low)] p-8 flex flex-col gap-6 shadow-ambient">
-          <h2 className="text-headline-md text-[var(--color-on-surface)]">
+        <div className="rounded-(--radius-xl) bg-surface-container-low p-8 flex flex-col gap-6 shadow-ambient">
+          <h2 className="text-headline-md text-(--color-on-surface)">
             Información de contacto
           </h2>
 
@@ -199,20 +199,20 @@ export function ContactForm() {
             { icon: '🕐', label: 'Horario de atención', value: contactInfo.hours },
           ].map((item) => (
             <div key={item.label} className="flex items-start gap-4">
-              <span className="text-2xl flex-shrink-0" aria-hidden="true">{item.icon}</span>
+              <span className="text-2xl shrink-0" aria-hidden="true">{item.icon}</span>
               <div>
-                <p className="text-label-md text-[var(--color-on-surface-variant)] mb-1">
+                <p className="text-label-md text-on-surface-variant mb-1">
                   {item.label}
                 </p>
                 {item.href ? (
                   <a
                     href={item.href}
-                    className="text-[var(--color-on-surface)] font-medium hover:text-[var(--color-primary)] transition-colors"
+                    className="text-(--color-on-surface) font-medium hover:text-primary transition-colors"
                   >
                     {item.value}
                   </a>
                 ) : (
-                  <p className="text-[var(--color-on-surface)] font-medium">{item.value}</p>
+                  <p className="text-(--color-on-surface) font-medium">{item.value}</p>
                 )}
               </div>
             </div>
@@ -226,7 +226,7 @@ export function ContactForm() {
           rel="noopener noreferrer"
           className={[
             'flex items-center gap-4 p-6',
-            'rounded-[var(--radius-xl)]',
+            'rounded-(--radius-xl)',
             'bg-[#25D366] text-white',
             'hover:bg-[#1ebe5d] transition-colors',
             'shadow-ambient hover:shadow-float',

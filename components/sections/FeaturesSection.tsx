@@ -12,11 +12,11 @@ export function FeaturesSection() {
     <SectionWrapper surface="container" id="pilares">
       {/* Encabezado de sección */}
       <div className="text-center mb-14">
-        <p className="text-label-md text-[var(--color-primary)] mb-3">Por qué elegirnos</p>
-        <h2 className="text-display-md text-[var(--color-on-surface)]">
+        <p className="text-label-md text-primary mb-3">Por qué elegirnos</p>
+        <h2 className="text-display-md text-(--color-on-surface)">
           Elevamos el estándar
         </h2>
-        <p className="text-body-lg text-[var(--color-on-surface-variant)] max-w-xl mx-auto mt-4">
+        <p className="text-body-lg text-on-surface-variant max-w-xl mx-auto mt-4">
           Técnicas avanzadas y resultados impecables, con el menor impacto 
           posible en el medio ambiente.
         </p>
@@ -28,14 +28,14 @@ export function FeaturesSection() {
           <article
             key={feature.id}
             className={[
-              'rounded-[var(--radius-xl)] p-8 flex flex-col gap-5',
-              'bg-[var(--color-surface-container-lowest)]',
+              'rounded-(--radius-xl) p-8 flex flex-col gap-5',
+              'bg-(--color-surface-container-lowest)',
               'shadow-ambient hover:shadow-float hover:-translate-y-1',
               'transition-all duration-300 ease-out',
               // El primero es el destacado (primary variant)
               idx === 0
-                ? 'border-2 border-[var(--color-primary-fixed)]'
-                : 'border border-[var(--color-outline-variant)]/20',
+                ? 'border-2 border-primary-fixed'
+                : 'border border-outline-variant/20',
             ]
               .filter(Boolean)
               .join(' ')}
@@ -43,10 +43,10 @@ export function FeaturesSection() {
             {/* Icono ecológico */}
             <div
               className={[
-                'w-14 h-14 rounded-[var(--radius-lg)] flex items-center justify-center flex-shrink-0',
+                'w-14 h-14 rounded-(--radius-lg) flex items-center justify-center shrink-0',
                 idx === 0
                   ? 'gradient-primary'
-                  : 'bg-[var(--color-primary-fixed)]',
+                  : 'bg-primary-fixed',
               ]
                 .filter(Boolean)
                 .join(' ')}
@@ -60,17 +60,17 @@ export function FeaturesSection() {
             </div>
 
             <div className="flex flex-col gap-2">
-              <h3 className="text-headline-md text-[var(--color-on-surface)]">
+              <h3 className="text-headline-md text-(--color-on-surface)">
                 {feature.title}
               </h3>
-              <p className="text-body-lg text-[var(--color-on-surface-variant)] text-sm">
+              <p className="text-body-lg text-on-surface-variant text-sm">
                 {feature.description}
               </p>
             </div>
 
             {/* Número de índice decorativo */}
             <span
-              className="mt-auto self-end font-display font-bold text-5xl text-[var(--color-primary-fixed)] select-none"
+              className="mt-auto self-end font-display font-bold text-5xl text-primary-fixed select-none"
               aria-hidden="true"
             >
               0{idx + 1}

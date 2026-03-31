@@ -13,7 +13,7 @@ import { EcoChip } from '@/components/ui/EcoChip'
 export function HeroSection() {
   return (
     <section
-      className="relative w-full overflow-hidden bg-[var(--color-surface)] pt-20"
+      className="relative w-full overflow-hidden bg-(--color-surface) pt-20"
       aria-label="Sección principal"
     >
       {/* Fondo decorativo: gradiente radial eco */}
@@ -21,8 +21,8 @@ export function HeroSection() {
         className="absolute inset-0 pointer-events-none"
         aria-hidden="true"
       >
-        <div className="absolute top-0 right-0 w-[600px] h-[600px] rounded-full bg-[var(--color-primary-fixed)] opacity-20 blur-[100px] translate-x-1/3 -translate-y-1/3" />
-        <div className="absolute bottom-0 left-0 w-[400px] h-[400px] rounded-full bg-[var(--color-secondary-container)] opacity-15 blur-[80px] -translate-x-1/4 translate-y-1/4" />
+        <div className="absolute top-0 right-0 w-[600px] h-[600px] rounded-full bg-primary-fixed opacity-20 blur-[100px] translate-x-1/3 -translate-y-1/3" />
+        <div className="absolute bottom-0 left-0 w-[400px] h-[400px] rounded-full bg-secondary-container opacity-15 blur-[80px] -translate-x-1/4 translate-y-1/4" />
       </div>
 
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -37,7 +37,7 @@ export function HeroSection() {
             </div>
 
             {/* Headline */}
-            <h1 className="text-display-lg text-[var(--color-on-surface)]">
+            <h1 className="text-display-lg text-(--color-on-surface)">
               Tu vehículo,{' '}
               <span className="text-transparent bg-clip-text"
                 style={{ backgroundImage: 'var(--gradient-primary)' }}>
@@ -46,7 +46,7 @@ export function HeroSection() {
             </h1>
 
             {/* Subheadline */}
-            <p className="text-body-lg text-[var(--color-on-surface-variant)] max-w-lg text-lg leading-relaxed">
+            <p className="text-body-lg text-on-surface-variant max-w-lg text-lg leading-relaxed">
               El mejor lavado detallado y pulido para tu auto, sin moverte de tu casa. 
               Cuidamos tu vehículo y el medio ambiente con tecnología hidrofóbica y 
               productos biodegradables.
@@ -82,10 +82,10 @@ export function HeroSection() {
                 { value: '0km', label: 'Sin moverte de casa' },
               ].map((stat) => (
                 <div key={stat.label} className="flex flex-col gap-1">
-                  <span className="font-display font-bold text-2xl text-[var(--color-primary)]">
+                  <span className="font-display font-bold text-2xl text-primary">
                     {stat.value}
                   </span>
-                  <span className="text-label-md text-[var(--color-on-surface-variant)]">
+                  <span className="text-label-md text-on-surface-variant">
                     {stat.label}
                   </span>
                 </div>
@@ -96,7 +96,7 @@ export function HeroSection() {
           {/* Columna derecha: Imagen asimétrica editorial */}
           <div className="flex-1 relative z-10 w-full max-w-xl lg:max-w-none">
             <div
-              className="relative rounded-[var(--radius-xl)] overflow-hidden shadow-float"
+              className="relative rounded-(--radius-xl) overflow-hidden shadow-float"
               style={{ aspectRatio: '4/5' }}
             >
               <Image
@@ -108,13 +108,13 @@ export function HeroSection() {
                 sizes="(max-width: 768px) 100vw, (max-width: 1280px) 50vw, 45vw"
               />
               {/* Overlay glassmorphic en la esquina */}
-              <div className="absolute bottom-4 left-4 right-4 glass rounded-[var(--radius-md)] p-4 flex items-center gap-3">
+              <div className="absolute bottom-4 left-4 right-4 glass rounded-md p-4 flex items-center gap-3">
                 <span className="text-2xl" aria-hidden="true">✨</span>
                 <div>
-                  <p className="font-display font-semibold text-sm text-[var(--color-on-surface)]">
+                  <p className="font-display font-semibold text-sm text-(--color-on-surface)">
                     Resultado showroom
                   </p>
-                  <p className="text-xs text-[var(--color-on-surface-variant)]">
+                  <p className="text-xs text-on-surface-variant">
                     Protección de larga duración
                   </p>
                 </div>

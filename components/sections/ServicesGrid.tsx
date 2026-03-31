@@ -12,13 +12,13 @@ export function ServicesGrid() {
     <SectionWrapper surface="base" id="todos-los-servicios">
       {/* Header */}
       <div className="text-center mb-14">
-        <p className="text-label-md text-[var(--color-primary)] mb-3">
+        <p className="text-label-md text-primary mb-3">
           Servicio a domicilio · Maipú y alrededores
         </p>
-        <h1 className="text-display-md text-[var(--color-on-surface)]">
+        <h1 className="text-display-md text-(--color-on-surface)">
           Nuestros Servicios a Domicilio
         </h1>
-        <p className="text-body-lg text-[var(--color-on-surface-variant)] max-w-2xl mx-auto mt-4">
+        <p className="text-body-lg text-on-surface-variant max-w-2xl mx-auto mt-4">
           Llevamos el mejor spa automotriz directamente a la puerta de tu casa. 
           Todos los servicios incluyen desplazamiento sin costo extra.
         </p>
@@ -42,7 +42,7 @@ export function ServicesGrid() {
 
       {/* Nota de cobertura */}
       <div className="mt-12 text-center">
-        <div className="inline-flex items-center gap-3 px-6 py-4 rounded-[var(--radius-xl)] bg-[var(--color-primary-fixed)]/30 text-[var(--color-primary)]">
+        <div className="inline-flex items-center gap-3 px-6 py-4 rounded-(--radius-xl) bg-primary-fixed/30 text-primary">
           <span className="text-xl" aria-hidden="true">📍</span>
           <p className="text-sm font-medium">
             <strong>Todos nuestros servicios</strong> incluyen desplazamiento a tu domicilio en{' '}

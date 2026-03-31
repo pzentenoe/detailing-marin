@@ -17,10 +17,10 @@ export function ServicesPreview() {
       {/* Encabezado */}
       <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
         <div>
-          <p className="text-label-md text-[var(--color-primary)] mb-3">
+          <p className="text-label-md text-primary mb-3">
             Lo que hacemos
           </p>
-          <h2 className="text-display-md text-[var(--color-on-surface)]">
+          <h2 className="text-display-md text-(--color-on-surface)">
             Nuestros servicios
           </h2>
         </div>

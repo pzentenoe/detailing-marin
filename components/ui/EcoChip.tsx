@@ -14,11 +14,11 @@ export function EcoChip({ stat, label, icon = '🌿' }: EcoChipProps) {
     <div
       className={[
         'inline-flex items-center gap-2 px-4 py-2',
-        'rounded-[var(--radius-full)]',
-        'bg-[var(--color-tertiary-container)]',
+        'rounded-full',
+        'bg-tertiary-container',
         'backdrop-filter backdrop-blur-[10px]',
-        'border border-[var(--color-on-tertiary-container)]/10',
-        'text-[var(--color-on-tertiary-container)]',
+        'border border-on-tertiary-container/10',
+        'text-on-tertiary-container',
         'text-sm font-medium',
       ].join(' ')}
       role="status"
