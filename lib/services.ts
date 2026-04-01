@@ -91,6 +91,9 @@ export const contactInfo: ContactInfo = {
   hours: 'Lunes a Sábado, 9:00 – 19:00',
 }
 
+export const WA_MESSAGE =
+  'Hola! Te escribo desde la web detailingmarin.cl. Quisiera mas informacion sobre sus servicios y agendar un servicio'
+
 export const features = [
   {
     id: 'eco',

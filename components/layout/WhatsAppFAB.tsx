@@ -6,11 +6,13 @@
 // Número configurable via NEXT_PUBLIC_WHATSAPP_NUMBER
 // ============================================================
 
+import { WA_MESSAGE } from '@/lib/services'
+
 const WHATSAPP_NUMBER =
   process.env.NEXT_PUBLIC_WHATSAPP_NUMBER ?? '56954451422'
 
 export function WhatsAppFAB() {
-  const url = `https://wa.me/${WHATSAPP_NUMBER}`
+  const url = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(WA_MESSAGE)}`
 
   return (
     <a

@@ -10,12 +10,12 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { Menu, Moon, Sun, X } from 'lucide-react'
-import { navLinks } from '@/lib/services'
+import { navLinks, WA_MESSAGE } from '@/lib/services'
 import { Button } from '@/components/ui/Button'
 import { useTheme } from '@/components/layout/ThemeProvider'
 
 const WA_NUMBER = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER ?? '56954451422'
-const WA_URL = `https://wa.me/${WA_NUMBER}?text=${encodeURIComponent('Hola, quiero agendar un servicio con Detailing Marin')}`
+const WA_URL = `https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(WA_MESSAGE)}`
 
 export function Navbar() {
   const [isOpen, setIsOpen] = useState(false)

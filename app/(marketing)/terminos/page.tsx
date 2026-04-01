@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import { SectionWrapper } from '@/components/ui/SectionWrapper'
+import { contactInfo, WA_MESSAGE } from '@/lib/services'
 
 export const metadata: Metadata = {
   title: 'Términos y Condiciones',
@@ -94,7 +95,7 @@ export default function TerminosPage() {
                   marin.mac.len@gmail.com
                 </a>{' '}
                 o por WhatsApp al{' '}
-                <a href="https://wa.me/56954451422" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">
+                <a href={`https://wa.me/${contactInfo.whatsapp}?text=${encodeURIComponent(WA_MESSAGE)}`} target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">
                   +56 9 5445 1422
                 </a>.
               </p>

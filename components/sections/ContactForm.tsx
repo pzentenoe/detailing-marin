@@ -9,7 +9,7 @@
 import { useState } from 'react'
 import { Button } from '@/components/ui/Button'
 import { Icon } from '@/components/ui/Icon'
-import { contactInfo } from '@/lib/services'
+import { contactInfo, WA_MESSAGE } from '@/lib/services'
 
 interface FormState {
   nombre: string
@@ -169,7 +169,7 @@ export function ContactForm() {
         {/* Contacto shortcuts */}
         <div className="flex flex-col gap-3">
           <a
-            href={`https://wa.me/${contactInfo.whatsapp}`}
+            href={`https://wa.me/${contactInfo.whatsapp}?text=${encodeURIComponent(WA_MESSAGE)}`}
             target="_blank"
             rel="noopener noreferrer"
             className={[

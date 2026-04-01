@@ -6,7 +6,7 @@
 // ============================================================
 
 import { EcoChip } from '@/components/ui/EcoChip'
-import { contactInfo } from '@/lib/services'
+import { contactInfo, WA_MESSAGE } from '@/lib/services'
 
 const WHATSAPP_NUMBER =
   process.env.NEXT_PUBLIC_WHATSAPP_NUMBER ?? contactInfo.whatsapp.replace(/\D/g, '')
@@ -53,7 +53,7 @@ export function CTASection() {
           <div className="flex flex-wrap gap-4 justify-center">
             {/* WhatsApp — borde blanco translúcido, texto blanco */}
             <a
-              href={`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent('Hola, quiero agendar un servicio')}`}
+              href={`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(WA_MESSAGE)}`}
               target="_blank"
               rel="noopener noreferrer"
               className={[
