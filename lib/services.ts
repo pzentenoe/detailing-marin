@@ -84,9 +84,9 @@ export const navLinks: NavLink[] = [
 ]
 
 export const contactInfo: ContactInfo = {
-  phone: '+56 9 1234 5678',
-  whatsapp: '+56912345678',
-  email: 'hola@detailingmarin.cl',
+  phone: '+56 9 5445 1422',
+  whatsapp: '+56954451422',
+  email: 'marin.mac.len@gmail.com',
   zone: 'Maipú y alrededores',
   hours: 'Lunes a Sábado, 9:00 – 19:00',
 }

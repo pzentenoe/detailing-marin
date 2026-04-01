@@ -6,12 +6,16 @@
 // ============================================================
 
 import { useState, useEffect } from 'react'
+import Image from 'next/image'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { Menu, Moon, Sun, X } from 'lucide-react'
 import { navLinks } from '@/lib/services'
 import { Button } from '@/components/ui/Button'
 import { useTheme } from '@/components/layout/ThemeProvider'
+
+const WA_NUMBER = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER ?? '56954451422'
+const WA_URL = `https://wa.me/${WA_NUMBER}?text=${encodeURIComponent('Hola, quiero agendar un servicio con Detailing Marin')}`
 
 export function Navbar() {
   const [isOpen, setIsOpen] = useState(false)
@@ -45,21 +49,23 @@ export function Navbar() {
       role="banner"
     >
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16 lg:h-20">
+        <div className="flex items-center justify-between h-18 lg:h-22">
 
           {/* Logo */}
           <Link
             href="/"
-            className="flex items-center gap-2 group"
+            className="flex items-center gap-3 group"
             aria-label="Detailing Marin — Ir al inicio"
           >
-            <span
-              className="w-8 h-8 rounded-md gradient-primary flex items-center justify-center text-white font-bold text-sm"
-              aria-hidden="true"
-            >
-              DM
-            </span>
-            <span className="font-display font-bold text-lg text-(--color-on-surface) tracking-tight group-hover:text-primary transition-colors">
+            <Image
+              src="/icon/logo-removebg.png"
+              alt="Nadia Marin Detailing"
+              width={72}
+              height={72}
+              className="object-contain drop-shadow-md group-hover:scale-105 transition-transform duration-200"
+              priority
+            />
+            <span className="font-display font-bold text-xl text-(--color-on-surface) tracking-tight group-hover:text-primary transition-colors">
               Detailing Marin
             </span>
           </Link>
@@ -109,7 +115,7 @@ export function Navbar() {
               size="sm"
               onClick={() => {
                 window.open(
-                  'https://wa.me/56912345678?text=Hola%2C%20quiero%20agendar%20un%20servicio',
+                  WA_URL,
                   '_blank',
                 )
               }}
@@ -185,7 +191,7 @@ export function Navbar() {
             fullWidth
             onClick={() =>
               window.open(
-                'https://wa.me/56912345678?text=Hola%2C%20quiero%20agendar%20un%20servicio',
+                WA_URL,
                 '_blank',
               )
             }

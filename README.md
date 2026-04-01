@@ -1,36 +1,84 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Detailing Marin
 
-## Getting Started
+Sitio web público de **Nadia Marin Detailing** — Next.js 16 + Tailwind CSS 4.
 
-First, run the development server:
+## Requisitos
+
+- Node.js 20+
+- pnpm
+- ImageMagick (`brew install imagemagick`) — solo para generación de iconos y favicon
+
+## Inicio rápido
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
+pnpm install
 pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+O con Make:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```bash
+make install
+make dev
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Comandos disponibles
 
-## Learn More
+### Desarrollo
 
-To learn more about Next.js, take a look at the following resources:
+| Comando | Make | Descripción |
+|---|---|---|
+| `pnpm dev` | `make dev` | Servidor de desarrollo con Turbopack |
+| `pnpm build` | `make build` | Build de producción |
+| `pnpm start` | `make start` | Servidor de producción |
+| `pnpm lint` | `make lint` | Linter (ESLint) |
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### Assets
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+| Comando | Make | Descripción |
+|---|---|---|
+| `pnpm favicon:generate` | `make favicon` | Genera `app/favicon.ico` multi-resolución (16, 32, 48px) |
+| `pnpm icons:generate` | `make icons` | Genera todos los iconos PWA en `public/icons/` |
+| `pnpm icons:clean` | `make icons-clean` | Elimina los iconos generados |
+| `pnpm icons:rebuild` | `make icons-rebuild` | Limpia y regenera todos los iconos PWA |
+| — | `make assets` | Genera favicon + todos los iconos PWA en un solo paso |
 
-## Deploy on Vercel
+## Favicon
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Generado desde `public/nadia-marin-logo.png` con ImageMagick. Produce un `.ico` multi-resolución con capas de 16×16, 32×32 y 48×48px — el browser elige la capa según el contexto (tab, bookmark, taskbar).
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+```bash
+make favicon
+# → app/favicon.ico
+```
+
+## Iconos PWA
+
+Generados desde `public/nadia-marin-logo.png` con ImageMagick.
+
+**Iconos generados en `public/icons/`:**
+- Favicons PNG: 16×16, 32×32
+- Android Chrome: 72, 96, 128, 144, 152, 192, 384, 512px
+- Apple Touch Icon: 120, 152, 180px
+- Windows tiles: 144, 150, 310px
+- Maskable (safe zone 80%): 192, 384, 512px
+- `manifest-icons.json` — configuración lista para usar en `manifest.json`
+
+```bash
+make assets        # favicon + todos los iconos en un paso
+make icons-rebuild # solo regenerar iconos PWA
+```
+
+## Variables de entorno
+
+Crear `.env.local` en la raíz:
+
+```env
+NEXT_PUBLIC_WHATSAPP_NUMBER=56912345678
+
+SMTP_HOST=smtp.gmail.com
+SMTP_PORT=587
+SMTP_USER=tu@gmail.com
+SMTP_PASS=tu_app_password
+CONTACT_EMAIL=destino@gmail.com
+```

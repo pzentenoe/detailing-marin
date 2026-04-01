@@ -10,6 +10,9 @@ import Image from 'next/image'
 import { Button } from '@/components/ui/Button'
 import { EcoChip } from '@/components/ui/EcoChip'
 
+const WA_NUMBER = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER ?? '56954451422'
+const WA_URL = `https://wa.me/${WA_NUMBER}?text=${encodeURIComponent('Hola, quiero agendar un servicio con Detailing Marin')}`
+
 export function HeroSection() {
   return (
     <section
@@ -70,7 +73,7 @@ export function HeroSection() {
                 size="lg"
                 onClick={() =>
                   window.open(
-                    'https://wa.me/56912345678?text=Hola%2C%20quiero%20agendar%20un%20servicio',
+                    WA_URL,
                     '_blank',
                   )
                 }
