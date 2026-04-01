@@ -19,30 +19,30 @@
   --color-on-primary:         #ffffff;
   --color-on-primary-container: #9dd090;
 
-  --color-secondary:          #00629e;
-  --color-secondary-container: #61b4fe;
+  --color-secondary:          #446464;
+  --color-secondary-container: #c6e9e8;
   --color-on-secondary:       #ffffff;
-  --color-on-secondary-container: #004470;
+  --color-on-secondary-container: #4a6a6a;
 
-  --color-tertiary:           #00440e;
-  --color-tertiary-container: #005e17;
+  --color-tertiary:           #1e4029;
+  --color-tertiary-container: #35573f;
   --color-on-tertiary:        #ffffff;
-  --color-on-tertiary-container: #75d974;
+  --color-on-tertiary-container: #a5cbad;
 
-  --color-surface:            #e2fffe;
-  --color-surface-bright:     #e2fffe;
-  --color-surface-dim:        #bee1e0;
-  --color-surface-container:      #d2f5f4;
-  --color-surface-container-high: #ccefee;
-  --color-surface-container-highest: #c6e9e9;
-  --color-surface-container-low:  #d7fafa;
+  --color-surface:            #f8fafb;
+  --color-surface-bright:     #f8fafb;
+  --color-surface-dim:        #d8dadb;
+  --color-surface-container:      #eceeef;
+  --color-surface-container-high: #e6e8e9;
+  --color-surface-container-highest: #e1e3e4;
+  --color-surface-container-low:  #f2f4f5;
   --color-surface-container-lowest: #ffffff;
 
-  --color-on-surface:         #002020;
+  --color-on-surface:         #191c1d;
   --color-on-surface-variant: #42493e;
 
-  --color-background:         #e2fffe;
-  --color-on-background:      #002020;
+  --color-background:         #f8fafb;
+  --color-on-background:      #191c1d;
 
   --color-outline:            #72796e;
   --color-outline-variant:    #c2c9bb;
@@ -51,13 +51,13 @@
   --color-error-container:    #ffdad6;
   --color-on-error:           #ffffff;
 
-  /* --- Colores Dark Mode --- */
-  --color-dark-surface:           #0e1a1a;
-  --color-dark-surface-container: #1a2626;
-  --color-dark-surface-container-high: #202d2d;
-  --color-dark-surface-container-highest: #263535;
-  --color-dark-on-surface:        #c6e9e9;
-  --color-dark-on-surface-variant: #a0b0b0;
+  /* --- Colores Dark Mode (referencia — los overrides reales están en .dark) --- */
+  --color-dark-surface:           #111411;
+  --color-dark-surface-container: #1d201d;
+  --color-dark-surface-container-high: #282b27;
+  --color-dark-surface-container-highest: #323531;
+  --color-dark-on-surface:        #e1e3e4;
+  --color-dark-on-surface-variant: #c2c9bb;
   --color-dark-primary:           #a1d494;
   --color-dark-on-primary:        #002201;
 
@@ -85,7 +85,7 @@
 :root {
   --gradient-primary: linear-gradient(135deg, #154212 0%, #2D5A27 100%);
   --gradient-primary-soft: linear-gradient(135deg, #2D5A27 0%, #3b6934 100%);
-  --glass-bg: rgba(226, 255, 254, 0.8);
+  --glass-bg: rgba(248, 250, 251, 0.8);
   --glass-blur: blur(16px);
   --glass-border: rgba(194, 201, 187, 0.15);
 }
@@ -97,45 +97,46 @@
    ============================================================ */
 .dark {
   /* Glass */
-  --glass-bg: rgba(14, 26, 26, 0.88);
-  --glass-border: rgba(100, 160, 160, 0.15);
+  --glass-bg: rgba(17, 20, 17, 0.88);
+  --glass-border: rgba(66, 73, 62, 0.15);
 
   /* Gradients */
   --gradient-primary: linear-gradient(135deg, #1e5c1a 0%, #2d7a25 100%);
   --gradient-primary-soft: linear-gradient(135deg, #2d7a25 0%, #3a8f30 100%);
 
   /* Surfaces — reemplaza tokens de @theme */
-  --color-surface:                    #0e1a1a;
-  --color-surface-bright:             #162020;
-  --color-surface-dim:                #081212;
-  --color-surface-container:          #1a2626;
-  --color-surface-container-high:     #202d2d;
-  --color-surface-container-highest:  #263535;
-  --color-surface-container-low:      #152222;
-  --color-surface-container-lowest:   #0a1414;
+  --color-surface:                    #111411;
+  --color-surface-bright:             #373a36;
+  --color-surface-dim:                #111411;
+  --color-surface-container:          #1d201d;
+  --color-surface-container-high:     #282b27;
+  --color-surface-container-highest:  #323531;
+  --color-surface-container-low:      #191c19;
+  --color-surface-container-lowest:   #0c0f0c;
 
   /* On-surface */
-  --color-on-surface:         #c6e9e9;
-  --color-on-surface-variant: #8eabab;
+  --color-on-surface:         #e1e3e4;
+  --color-on-surface-variant: #c2c9bb;
 
   /* Background */
-  --color-background:    #0e1a1a;
-  --color-on-background: #c6e9e9;
+  --color-background:    #111411;
+  --color-on-background: #e1e3e4;
 
   /* Primary */
   --color-primary:           #a1d494;
-  --color-primary-container: #1e5c1a;
+  --color-primary-container: #23501e;
   --color-on-primary:        #002201;
   --color-on-primary-container: #bcf0ae;
 
   /* Secondary */
-  --color-secondary:           #90cafe;
-  --color-secondary-container: #004470;
-  --color-on-secondary:        #003258;
+  --color-secondary:           #abcdcc;
+  --color-secondary-container: #2d4c4c;
+  --color-on-secondary:        #103535;
+  --color-on-secondary-container: #c6e9e8;
 
   /* Outline */
-  --color-outline:         #5a7070;
-  --color-outline-variant: #2e4040;
+  --color-outline:         #8c9387;
+  --color-outline-variant: #42493e;
 
   /* Shadow */
   --shadow-ambient: 0 20px 40px rgba(0, 0, 0, 0.3);
@@ -164,12 +165,11 @@ html {
    UTILIDADES BASE (complementan TailwindCSS 4)
    ============================================================ */
 
-/* Glassmorphism */
+/* Glassmorphism — sin border propio, cada componente define el borde que necesita */
 .glass {
   background: var(--glass-bg);
   backdrop-filter: var(--glass-blur);
   -webkit-backdrop-filter: var(--glass-blur);
-  border: 1px solid var(--glass-border);
 }
 
 /* Gradient CTA primario */
@@ -221,6 +221,16 @@ html {
 }
 .shadow-float {
   box-shadow: var(--shadow-float);
+}
+
+/* Hydro-Card — glassmorphic con tinte mint para servicios destacados */
+.hydro-card {
+  background: linear-gradient(135deg, rgba(198, 233, 232, 0.4) 0%, rgba(248, 250, 251, 0.1) 100%);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+}
+.dark .hydro-card {
+  background: linear-gradient(135deg, rgba(45, 76, 76, 0.2) 0%, rgba(12, 15, 12, 0.6) 100%);
 }
 
 /* Scroll suave global */

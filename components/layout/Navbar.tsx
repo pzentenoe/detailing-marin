@@ -34,10 +34,11 @@ export function Navbar() {
     <header
       className={[
         'fixed top-0 left-0 right-0 z-50',
-        'transition-all duration-300 ease-out',
+        'transition-[background-color,box-shadow,border-color] duration-300 ease-out',
+        'border-b',
         isScrolled
-          ? 'glass shadow-ambient border-b border-outline-variant/20'
-          : 'bg-transparent',
+          ? 'glass shadow-ambient border-outline-variant/20'
+          : 'bg-transparent border-transparent',
       ]
         .filter(Boolean)
         .join(' ')}

@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+
+<html class="light" lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "on-secondary-container": "#4a6a6a",
+              "on-error": "#ffffff",
+              "on-secondary-fixed": "#002020",
+              "surface-variant": "#e1e3e4",
+              "primary-fixed-dim": "#a1d494",
+              "tertiary-fixed": "#c5eccc",
+              "surface": "#f8fafb",
+              "on-tertiary-fixed": "#00210e",
+              "on-primary": "#ffffff",
+              "error": "#ba1a1a",
+              "on-primary-fixed-variant": "#23501e",
+              "on-primary-container": "#9dd090",
+              "on-primary-fixed": "#002201",
+              "surface-container-high": "#e6e8e9",
+              "secondary": "#446464",
+              "surface-container-lowest": "#ffffff",
+              "on-tertiary": "#ffffff",
+              "primary": "#154212",
+              "on-error-container": "#93000a",
+              "error-container": "#ffdad6",
+              "tertiary-container": "#35573f",
+              "surface-tint": "#3b6934",
+              "inverse-on-surface": "#eff1f2",
+              "on-surface-variant": "#42493e",
+              "inverse-primary": "#a1d494",
+              "on-surface": "#191c1d",
+              "surface-container-low": "#f2f4f5",
+              "secondary-fixed-dim": "#abcdcc",
+              "on-background": "#191c1d",
+              "on-secondary": "#ffffff",
+              "inverse-surface": "#2e3132",
+              "on-tertiary-container": "#a5cbad",
+              "surface-container": "#eceeef",
+              "primary-fixed": "#bcf0ae",
+              "tertiary-fixed-dim": "#aad0b1",
+              "primary-container": "#2d5a27",
+              "surface-dim": "#d8dadb",
+              "tertiary": "#1e4029",
+              "surface-bright": "#f8fafb",
+              "secondary-fixed": "#c6e9e8",
+              "on-tertiary-fixed-variant": "#2c4e36",
+              "outline-variant": "#c2c9bb",
+              "outline": "#72796e",
+              "on-secondary-fixed-variant": "#2c4c4c",
+              "secondary-container": "#c6e9e8",
+              "background": "#f8fafb",
+              "surface-container-highest": "#e1e3e4"
+            },
+            fontFamily: {
+              "headline": ["Manrope", "sans-serif"],
+              "body": ["Manrope", "sans-serif"],
+              "label": ["Manrope", "sans-serif"]
+            },
+            borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+      .material-symbols-outlined {
+        font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      }
+      .glass-card {
+        background: rgba(255, 255, 255, 0.7);
+        backdrop-filter: blur(16px);
+        -webkit-backdrop-filter: blur(16px);
+      }
+    </style>
+</head>
+<body class="bg-surface font-body text-on-surface">
+<!-- TopNavBar -->
+<nav class="fixed top-0 w-full z-50 bg-surface/80 dark:bg-slate-900/80 backdrop-blur-md">
+<div class="max-w-7xl mx-auto px-6 h-20 flex justify-between items-center">
+<div class="text-2xl font-bold tracking-tighter text-emerald-900 dark:text-emerald-50 font-headline">Detailing Marin</div>
+<div class="hidden md:flex gap-8 items-center">
+<a class="text-emerald-900/70 dark:text-emerald-100/70 hover:text-emerald-900 dark:hover:text-emerald-50 transition-colors font-manrope tracking-tight" href="#">Inicio</a>
+<a class="text-emerald-900/70 dark:text-emerald-100/70 hover:text-emerald-900 dark:hover:text-emerald-50 transition-colors font-manrope tracking-tight" href="#">Servicios</a>
+<a class="text-emerald-700 dark:text-emerald-400 font-bold border-b-2 border-emerald-700 dark:border-emerald-400 pb-1 font-manrope tracking-tight" href="#">Contacto</a>
+<button class="material-symbols-outlined text-emerald-900 dark:text-emerald-100 hover:opacity-80 transition-all duration-300 scale-95 active:transition-transform">dark_mode</button>
+</div>
+<button class="md:hidden material-symbols-outlined text-emerald-900">menu</button>
+</div>
+</nav>
+<main class="pt-32 pb-24 px-6 max-w-7xl mx-auto">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-16 items-start">
+<!-- Left Column: Information & Branding -->
+<div class="lg:col-span-5 space-y-12">
+<header class="space-y-6">
+<span class="inline-block py-1 px-3 rounded-full bg-secondary-container text-primary font-bold text-xs tracking-widest uppercase">Premium Mobile Detailing</span>
+<h1 class="text-5xl font-extrabold tracking-tight text-primary font-headline leading-tight">Reserva tu lavado a domicilio</h1>
+<p class="text-lg text-on-surface-variant leading-relaxed font-light">Llevamos el cuidado de lujo directamente a tu puerta. Equipamiento profesional y productos biodegradables para un acabado impecable sin moverte de casa.</p>
+</header>
+<!-- Cómo funciona Section -->
+<section class="space-y-8">
+<h2 class="text-xl font-bold text-primary flex items-center gap-2">
+<span class="w-8 h-px bg-primary/20"></span>
+                        Cómo funciona
+                    </h2>
+<div class="space-y-6">
+<div class="flex gap-5 group">
+<div class="flex-shrink-0 w-12 h-12 rounded-xl bg-surface-container-high flex items-center justify-center text-primary transition-colors group-hover:bg-primary-container group-hover:text-on-primary">
+<span class="material-symbols-outlined">event_available</span>
+</div>
+<div>
+<h3 class="font-bold text-on-surface">1. Elige tu fecha</h3>
+<p class="text-on-surface-variant text-sm mt-1">Selecciona el día y la hora que mejor te convenga para el servicio.</p>
+</div>
+</div>
+<div class="flex gap-5 group">
+<div class="flex-shrink-0 w-12 h-12 rounded-xl bg-surface-container-high flex items-center justify-center text-primary transition-colors group-hover:bg-primary-container group-hover:text-on-primary">
+<span class="material-symbols-outlined">directions_car</span>
+</div>
+<div>
+<h3 class="font-bold text-on-surface">2. Confirmamos el vehículo</h3>
+<p class="text-on-surface-variant text-sm mt-1">Indícanos el tipo de coche y los servicios específicos que necesitas.</p>
+</div>
+</div>
+<div class="flex gap-5 group">
+<div class="flex-shrink-0 w-12 h-12 rounded-xl bg-surface-container-high flex items-center justify-center text-primary transition-colors group-hover:bg-primary-container group-hover:text-on-primary">
+<span class="material-symbols-outlined">water_drop</span>
+</div>
+<div>
+<h3 class="font-bold text-on-surface">3. Lavado Eco-Luxe</h3>
+<p class="text-on-surface-variant text-sm mt-1">Llegamos a tu ubicación y realizamos el tratamiento completo.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Contact Shortcuts -->
+<div class="pt-8 space-y-4">
+<a class="flex items-center gap-4 p-4 rounded-xl bg-surface-container-low border border-outline-variant/10 hover:bg-surface-container transition-all" href="https://wa.me/#">
+<div class="w-10 h-10 rounded-full bg-emerald-500/10 flex items-center justify-center text-emerald-600">
+<span class="material-symbols-outlined">chat</span>
+</div>
+<div>
+<p class="text-xs font-bold text-on-surface-variant uppercase tracking-wider">WhatsApp Directo</p>
+<p class="text-on-surface font-medium">+34 600 000 000</p>
+</div>
+</a>
+<div class="flex items-center gap-4 p-4 rounded-xl bg-surface-container-low border border-outline-variant/10">
+<div class="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined">mail</span>
+</div>
+<div>
+<p class="text-xs font-bold text-on-surface-variant uppercase tracking-wider">Email de Contacto</p>
+<p class="text-on-surface font-medium">hola@detailingmarin.com</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Right Column: Booking Form -->
+<div class="lg:col-span-7">
+<div class="relative">
+<!-- Decorative Background Element -->
+<div class="absolute -top-10 -right-10 w-64 h-64 bg-secondary-fixed/30 blur-[80px] rounded-full z-0"></div>
+<form class="relative z-10 glass-card p-10 rounded-3xl shadow-2xl shadow-primary/5 space-y-8">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<div class="space-y-2">
+<label class="text-xs font-bold text-primary tracking-widest uppercase pl-1">Nombre Completo</label>
+<input class="w-full h-14 bg-surface-container-high border-none rounded-xl px-4 focus:ring-2 focus:ring-primary/20 focus:bg-surface-container-lowest transition-all placeholder:text-on-surface-variant/40" placeholder="Ej: Juan Pérez" type="text"/>
+</div>
+<div class="space-y-2">
+<label class="text-xs font-bold text-primary tracking-widest uppercase pl-1">Teléfono</label>
+<input class="w-full h-14 bg-surface-container-high border-none rounded-xl px-4 focus:ring-2 focus:ring-primary/20 focus:bg-surface-container-lowest transition-all placeholder:text-on-surface-variant/40" placeholder="+34 000 000 000" type="tel"/>
+</div>
+</div>
+<div class="space-y-2">
+<label class="text-xs font-bold text-primary tracking-widest uppercase pl-1">Dirección de Servicio</label>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-on-surface-variant/60">location_on</span>
+<input class="w-full h-14 bg-surface-container-high border-none rounded-xl pl-12 pr-4 focus:ring-2 focus:ring-primary/20 focus:bg-surface-container-lowest transition-all placeholder:text-on-surface-variant/40" placeholder="Calle, número, ciudad" type="text"/>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<div class="space-y-2">
+<label class="text-xs font-bold text-primary tracking-widest uppercase pl-1">Tipo de Vehículo</label>
+<select class="w-full h-14 bg-surface-container-high border-none rounded-xl px-4 focus:ring-2 focus:ring-primary/20 focus:bg-surface-container-lowest transition-all text-on-surface-variant appearance-none">
+<option>Turismo / Compacto</option>
+<option>SUV / Berlina</option>
+<option>4x4 / Furgoneta</option>
+<option>Motocicleta</option>
+</select>
+</div>
+<div class="space-y-2">
+<label class="text-xs font-bold text-primary tracking-widest uppercase pl-1">Fecha Preferida</label>
+<input class="w-full h-14 bg-surface-container-high border-none rounded-xl px-4 focus:ring-2 focus:ring-primary/20 focus:bg-surface-container-lowest transition-all text-on-surface-variant" type="date"/>
+</div>
+</div>
+<div class="space-y-4">
+<label class="text-xs font-bold text-primary tracking-widest uppercase pl-1">Servicios Necesarios</label>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+<label class="flex items-center gap-3 p-4 rounded-xl bg-surface-container-low hover:bg-secondary-container/30 cursor-pointer transition-colors border border-transparent has-[:checked]:border-primary/20 has-[:checked]:bg-secondary-container">
+<input checked="" class="w-5 h-5 rounded text-primary border-outline-variant focus:ring-primary/20" type="checkbox"/>
+<span class="text-sm font-medium text-on-surface">Lavado Exterior Eco</span>
+</label>
+<label class="flex items-center gap-3 p-4 rounded-xl bg-surface-container-low hover:bg-secondary-container/30 cursor-pointer transition-colors border border-transparent has-[:checked]:border-primary/20 has-[:checked]:bg-secondary-container">
+<input class="w-5 h-5 rounded text-primary border-outline-variant focus:ring-primary/20" type="checkbox"/>
+<span class="text-sm font-medium text-on-surface">Limpieza Interior Profunda</span>
+</label>
+<label class="flex items-center gap-3 p-4 rounded-xl bg-surface-container-low hover:bg-secondary-container/30 cursor-pointer transition-colors border border-transparent has-[:checked]:border-primary/20 has-[:checked]:bg-secondary-container">
+<input class="w-5 h-5 rounded text-primary border-outline-variant focus:ring-primary/20" type="checkbox"/>
+<span class="text-sm font-medium text-on-surface">Encerado Premium</span>
+</label>
+<label class="flex items-center gap-3 p-4 rounded-xl bg-surface-container-low hover:bg-secondary-container/30 cursor-pointer transition-colors border border-transparent has-[:checked]:border-primary/20 has-[:checked]:bg-secondary-container">
+<input class="w-5 h-5 rounded text-primary border-outline-variant focus:ring-primary/20" type="checkbox"/>
+<span class="text-sm font-medium text-on-surface">Tratamiento de Ozono</span>
+</label>
+</div>
+</div>
+<button class="w-full py-5 bg-primary-container text-on-primary-container font-bold text-lg rounded-2xl shadow-lg shadow-primary/20 hover:scale-[1.02] active:scale-95 transition-all flex items-center justify-center gap-3 group" type="submit">
+                            Confirmar Reserva
+                            <span class="material-symbols-outlined transition-transform group-hover:translate-x-1">calendar_add_on</span>
+</button>
+<p class="text-center text-xs text-on-surface-variant/60">Al confirmar, nos pondremos en contacto contigo para verificar la disponibilidad final.</p>
+</form>
+</div>
+</div>
+</div>
+<!-- Image Feature Section -->
+<div class="mt-24 rounded-[2rem] overflow-hidden relative aspect-[21/9] flex items-center px-12">
+<img alt="Close-up of a perfectly clean luxury car wheel and bodywork with water droplets and reflection" class="absolute inset-0 w-full h-full object-cover" data-alt="ultra detailed macro shot of water beads on a metallic dark green car surface with soft morning light reflection" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDawfoO34XM_SBEQ3zLDuDccAa3ELqVf0faVfS_b5xcRb0sJmbpMhaPx6P4RLM0qntBoJ6bYGW0pGph6c0rUtadshYxtt-ygQlv8C3ST8RxWMB_Z5VqBHDbidGXNqnMPnYj3AgiSyovXFNhDdsD3yOq8sm33jBj4Prx0V0oEkv1ZXM_aAi9zPn1JvvM7gKqbqMZVBwWB8dwjZCsfmRc1UlDYZPFoYr49d1_kzRvjk-9re0vGcnshd6EV5dCODBQjHWM9LBw8qHYO24L"/>
+<div class="absolute inset-0 bg-gradient-to-r from-primary/80 to-transparent"></div>
+<div class="relative z-10 max-w-lg space-y-4">
+<h3 class="text-4xl font-extrabold text-on-primary font-headline tracking-tight">Cuidamos los detalles que otros ignoran.</h3>
+<p class="text-on-primary/80 font-light text-lg">Nuestra técnica de lavado sin aclarado excesivo ahorra hasta 200 litros de agua por vehículo.</p>
+</div>
+</div>
+</main>
+<!-- Footer -->
+<footer class="bg-emerald-900 dark:bg-emerald-950 w-full py-12">
+<div class="flex flex-col md:flex-row justify-between items-center px-8 max-w-7xl mx-auto gap-4">
+<div class="text-lg font-bold text-emerald-50">Detailing Marin</div>
+<p class="text-emerald-50 text-sm font-manrope font-light tracking-wide text-center">© 2024 Detailing Marin. Eco-Luxe Automotive Care.</p>
+<div class="flex gap-6">
+<a class="text-emerald-200/60 hover:text-emerald-100 transition-colors text-sm font-manrope font-light tracking-wide" href="#">Privacidad</a>
+<a class="text-emerald-200/60 hover:text-emerald-100 transition-colors text-sm font-manrope font-light tracking-wide" href="#">Términos</a>
+<a class="text-emerald-200/60 hover:text-emerald-100 transition-colors text-sm font-manrope font-light tracking-wide" href="#">Soporte</a>
+</div>
+</div>
+</footer>
+
+```</body></html>

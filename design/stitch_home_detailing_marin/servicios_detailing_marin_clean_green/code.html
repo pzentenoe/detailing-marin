@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+
+<html class="light" lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Servicios | Detailing Marin</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "on-secondary-container": "#4a6a6a",
+              "on-error": "#ffffff",
+              "on-secondary-fixed": "#002020",
+              "surface-variant": "#e1e3e4",
+              "primary-fixed-dim": "#a1d494",
+              "tertiary-fixed": "#c5eccc",
+              "surface": "#f8fafb",
+              "on-tertiary-fixed": "#00210e",
+              "on-primary": "#ffffff",
+              "error": "#ba1a1a",
+              "on-primary-fixed-variant": "#23501e",
+              "on-primary-container": "#9dd090",
+              "on-primary-fixed": "#002201",
+              "surface-container-high": "#e6e8e9",
+              "secondary": "#446464",
+              "surface-container-lowest": "#ffffff",
+              "on-tertiary": "#ffffff",
+              "primary": "#154212",
+              "on-error-container": "#93000a",
+              "error-container": "#ffdad6",
+              "tertiary-container": "#35573f",
+              "surface-tint": "#3b6934",
+              "inverse-on-surface": "#eff1f2",
+              "on-surface-variant": "#42493e",
+              "inverse-primary": "#a1d494",
+              "on-surface": "#191c1d",
+              "surface-container-low": "#f2f4f5",
+              "secondary-fixed-dim": "#abcdcc",
+              "on-background": "#191c1d",
+              "on-secondary": "#ffffff",
+              "inverse-surface": "#2e3132",
+              "on-tertiary-container": "#a5cbad",
+              "surface-container": "#eceeef",
+              "primary-fixed": "#bcf0ae",
+              "tertiary-fixed-dim": "#aad0b1",
+              "primary-container": "#2d5a27",
+              "surface-dim": "#d8dadb",
+              "tertiary": "#1e4029",
+              "surface-bright": "#f8fafb",
+              "secondary-fixed": "#c6e9e8",
+              "on-tertiary-fixed-variant": "#2c4e36",
+              "outline-variant": "#c2c9bb",
+              "outline": "#72796e",
+              "on-secondary-fixed-variant": "#2c4c4c",
+              "secondary-container": "#c6e9e8",
+              "background": "#f8fafb",
+              "surface-container-highest": "#e1e3e4"
+            },
+            fontFamily: {
+              "headline": ["Manrope"],
+              "body": ["Manrope"],
+              "label": ["Manrope"]
+            },
+            borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .glass-card {
+            background: rgba(198, 233, 232, 0.15);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+        }
+        .hydro-card {
+            background: linear-gradient(135deg, rgba(198, 233, 232, 0.4) 0%, rgba(248, 250, 251, 0.1) 100%);
+            backdrop-filter: blur(20px);
+        }
+    </style>
+</head>
+<body class="bg-surface text-on-surface font-body selection:bg-primary-container selection:text-on-primary">
+<!-- TopNavBar -->
+<nav class="fixed top-0 w-full z-50 bg-surface/80 dark:bg-slate-900/80 backdrop-blur-md">
+<div class="max-w-7xl mx-auto px-6 h-20 flex justify-between items-center">
+<div class="text-2xl font-bold tracking-tighter text-emerald-900 dark:text-emerald-50 font-headline">
+                Detailing Marin
+            </div>
+<div class="hidden md:flex items-center gap-8">
+<a class="text-emerald-900/70 dark:text-emerald-100/70 hover:text-emerald-900 dark:hover:text-emerald-50 transition-colors font-manrope tracking-tight" href="#">Inicio</a>
+<a class="text-emerald-700 dark:text-emerald-400 font-bold border-b-2 border-emerald-700 dark:border-emerald-400 pb-1 font-manrope tracking-tight" href="#">Servicios</a>
+<a class="text-emerald-900/70 dark:text-emerald-100/70 hover:text-emerald-900 dark:hover:text-emerald-50 transition-colors font-manrope tracking-tight" href="#">Contacto</a>
+</div>
+<div class="flex items-center gap-4">
+<button class="hover:opacity-80 transition-all duration-300 scale-95 active:transition-transform">
+<span class="material-symbols-outlined text-emerald-900 dark:text-emerald-100">dark_mode</span>
+</button>
+</div>
+</div>
+</nav>
+<main class="pt-32 pb-16">
+<!-- Hero Section -->
+<header class="max-w-7xl mx-auto px-6 mb-20 text-center">
+<span class="inline-block px-4 py-1.5 rounded-full bg-secondary-container text-on-secondary-container text-xs font-bold tracking-widest uppercase mb-6">Premium Care</span>
+<h1 class="text-5xl md:text-7xl font-extrabold tracking-tighter text-primary mb-6 leading-tight">
+                Nuestros Servicios a Domicilio
+            </h1>
+<p class="text-xl md:text-2xl text-on-surface-variant max-w-2xl mx-auto font-light leading-relaxed">
+                Llevamos el mejor spa automotriz directamente a la puerta de tu casa.
+            </p>
+</header>
+<!-- Services Bento Grid -->
+<section class="max-w-7xl mx-auto px-6 mb-24">
+<div class="grid grid-cols-1 md:grid-cols-12 gap-6">
+<!-- Service Card 1: Lavado Ecológico -->
+<div class="md:col-span-7 group relative overflow-hidden rounded-xl bg-surface-container-low p-1">
+<div class="relative h-full w-full bg-surface-container-lowest rounded-[calc(0.75rem-1px)] p-8 md:p-12 flex flex-col justify-between overflow-hidden">
+<div class="relative z-10">
+<div class="w-14 h-14 rounded-xl bg-secondary-container flex items-center justify-center mb-8">
+<span class="material-symbols-outlined text-primary text-3xl">eco</span>
+</div>
+<h3 class="text-3xl font-bold text-primary mb-4 tracking-tight">Lavado Ecológico</h3>
+<p class="text-on-surface-variant text-lg leading-relaxed max-w-md mb-8">
+                                Limpieza profunda utilizando tecnología de bajo consumo de agua y productos biodegradables que protegen la pintura y el medio ambiente.
+                            </p>
+</div>
+<div class="relative z-10">
+<button class="px-8 py-3.5 bg-primary-container text-on-primary-container font-bold rounded-lg hover:opacity-90 transition-all active:scale-95 flex items-center gap-2 w-fit">
+                                Solicitar <span class="material-symbols-outlined text-lg">calendar_today</span>
+</button>
+</div>
+<!-- Background Decorative Image -->
+<div class="absolute right-0 bottom-0 w-1/2 h-full opacity-10 group-hover:opacity-20 transition-opacity duration-500">
+<img alt="Eco friendly car wash detail" class="w-full h-full object-cover" data-alt="Close-up of water droplets on a pristine green car hood with soft reflections of leaves and sunlight" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCSNYyyUB6ueAHrQvtJ7KK4fhLBkPhm24ZtreQR2KFkHXHbTyb9kC5UVAkgrm4diebHAqevLik9f0IqM9Bkr-SLSXkpwcuYshdywAb_EES55FNIWKXafULIH4sfQstTFOFRyiw1Psl6pbrE6DmX9ljHYD-T8tnKqaqtFtIQg-DadKq1dGh6h_w3pUw-OsuXxXxMmDM40YByICmSWYUVbOkag_26nwQPHNQz_hMA_W5YVVYgF5NR21-FPtDKJrP7uGGwD7VyUudKLo0U"/>
+</div>
+</div>
+</div>
+<!-- Service Card 2: Pulido Abrillantador -->
+<div class="md:col-span-5 group relative overflow-hidden rounded-xl bg-surface-container-low p-1">
+<div class="relative h-full w-full bg-primary-container rounded-[calc(0.75rem-1px)] p-8 flex flex-col justify-between">
+<div class="relative z-10">
+<div class="w-12 h-12 rounded-xl bg-surface-container-lowest/20 flex items-center justify-center mb-6 backdrop-blur-md">
+<span class="material-symbols-outlined text-surface-container-lowest text-2xl">auto_fix_high</span>
+</div>
+<h3 class="text-2xl font-bold text-white mb-3 tracking-tight">Pulido Abrillantador</h3>
+<p class="text-emerald-100/80 leading-relaxed mb-6">
+                                Restauramos el brillo original de tu vehículo eliminando micro-rayas y realzando la profundidad del color.
+                            </p>
+</div>
+<div class="relative z-10">
+<button class="px-6 py-3 bg-surface-container-lowest text-primary font-bold rounded-lg hover:bg-white transition-all active:scale-95 w-full">
+                                Solicitar
+                            </button>
+</div>
+</div>
+</div>
+<!-- Service Card 3: Pulido de Focos -->
+<div class="md:col-span-5 group relative overflow-hidden rounded-xl bg-surface-container-low p-1">
+<div class="relative h-full w-full hydro-card rounded-[calc(0.75rem-1px)] p-8 flex flex-col justify-between">
+<div class="relative z-10">
+<div class="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-6">
+<span class="material-symbols-outlined text-primary text-2xl">highlight</span>
+</div>
+<h3 class="text-2xl font-bold text-primary mb-3 tracking-tight">Pulido de Focos</h3>
+<p class="text-on-surface-variant leading-relaxed mb-6">
+                                Recupera la transparencia y seguridad de tus focos. Eliminamos lo amarillento y opaco con sellado UV.
+                            </p>
+</div>
+<div class="relative z-10">
+<button class="px-6 py-3 bg-primary text-white font-bold rounded-lg hover:opacity-90 transition-all active:scale-95 w-full">
+                                Solicitar
+                            </button>
+</div>
+</div>
+</div>
+<!-- Service Card 4: Limpieza de Motor -->
+<div class="md:col-span-7 group relative overflow-hidden rounded-xl bg-surface-container-low p-1">
+<div class="relative h-full w-full bg-surface-container-high rounded-[calc(0.75rem-1px)] p-8 md:p-12 flex flex-col md:flex-row gap-8 items-center">
+<div class="flex-1">
+<div class="w-12 h-12 rounded-xl bg-emerald-800 flex items-center justify-center mb-6">
+<span class="material-symbols-outlined text-white text-2xl">engineering</span>
+</div>
+<h3 class="text-3xl font-bold text-primary mb-4 tracking-tight">Limpieza de Motor</h3>
+<p class="text-on-surface-variant text-lg leading-relaxed mb-8">
+                                Limpieza técnica detallada que elimina grasa y suciedad acumulada, protegiendo mangueras y componentes plásticos.
+                            </p>
+<button class="px-8 py-3.5 bg-primary text-white font-bold rounded-lg hover:opacity-90 transition-all active:scale-95">
+                                Solicitar Servicio
+                            </button>
+</div>
+<div class="flex-1 w-full h-48 md:h-full overflow-hidden rounded-lg shadow-2xl">
+<img alt="Clean car engine" class="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700" data-alt="Ultra clean car engine bay with gleaming parts and dark matte surfaces, professionally detailed" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCVMPhViIW-KQpC955zlbXyqqcDPeXVtozvX2IXl93pwkYVhFXA-0aP0aQOYkA-LrYRmj6K0EDFm1ptF2tvSrgObHkE3Gwmb6ChGQi4t7bXbDJGlfgep8ezQ_3KHnJ7l1cHIPB-VhD-y4ODh9UZmJme8z8UY4_7dcGiHV9JKctAk_83rQy9YPuvvVmrgbkYUTHzdQ5bYkWsHP_PSVlcfdHQcpoMLpBkILoAYiyd6Kz3tmeZY_jpFwr4Po4NJOwsoFudtNDGCf7dfuyR"/>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- CTA Banner -->
+<section class="max-w-7xl mx-auto px-6">
+<div class="relative overflow-hidden rounded-2xl bg-emerald-900 p-8 md:p-16 text-center shadow-2xl">
+<div class="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(45,90,39,0.4),transparent)]"></div>
+<div class="relative z-10">
+<span class="material-symbols-outlined text-secondary-fixed text-5xl mb-6">local_shipping</span>
+<h2 class="text-3xl md:text-4xl font-bold text-emerald-50 mb-6 tracking-tight max-w-3xl mx-auto">
+                        Todos nuestros servicios incluyen desplazamiento a tu domicilio en Maipú y alrededores sin costo extra.
+                    </h2>
+<p class="text-emerald-200/80 text-lg mb-10 font-light">Comodidad absoluta para ti, máxima excelencia para tu auto.</p>
+<div class="flex flex-col sm:flex-row gap-4 justify-center">
+<button class="px-10 py-4 bg-secondary-container text-on-secondary-container font-extrabold rounded-lg hover:scale-105 transition-transform active:scale-95 shadow-lg">
+                            Agendar Ahora
+                        </button>
+<button class="px-10 py-4 bg-emerald-800 text-emerald-50 font-bold rounded-lg hover:bg-emerald-700 transition-colors border border-emerald-700/50">
+                            Ver Cobertura
+                        </button>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="bg-emerald-900 dark:bg-emerald-950 w-full py-12">
+<div class="flex flex-col md:flex-row justify-between items-center px-8 max-w-7xl mx-auto gap-4">
+<div class="text-lg font-bold text-emerald-50 font-headline">Detailing Marin</div>
+<div class="text-sm font-manrope font-light tracking-wide text-emerald-50 text-center md:text-left">
+                © 2024 Detailing Marin. Eco-Luxe Automotive Care.
+            </div>
+<div class="flex gap-6">
+<a class="text-emerald-200/60 hover:text-emerald-100 transition-colors text-sm font-manrope font-light tracking-wide" href="#">Privacidad</a>
+<a class="text-emerald-200/60 hover:text-emerald-100 transition-colors text-sm font-manrope font-light tracking-wide" href="#">Términos</a>
+<a class="text-emerald-200/60 hover:text-emerald-100 transition-colors text-sm font-manrope font-light tracking-wide" href="#">Soporte</a>
+</div>
+</div>
+</footer>
+</body></html>

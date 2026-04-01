@@ -12,6 +12,7 @@ export interface Service {
   icon: string
   features: string[]
   duration: string
+  price?: string
   highlight?: boolean
 }
 

@@ -16,16 +16,27 @@ export function HeroSection() {
       className="relative w-full overflow-hidden bg-(--color-surface) pt-20"
       aria-label="Sección principal"
     >
-      {/* Fondo decorativo: gradiente radial eco */}
-      <div
-        className="absolute inset-0 pointer-events-none"
-        aria-hidden="true"
-      >
-        <div className="absolute top-0 right-0 w-[600px] h-[600px] rounded-full bg-primary-fixed opacity-20 blur-[100px] translate-x-1/3 -translate-y-1/3" />
-        <div className="absolute bottom-0 left-0 w-[400px] h-[400px] rounded-full bg-secondary-container opacity-15 blur-[80px] -translate-x-1/4 translate-y-1/4" />
+      {/* Imagen de fondo a baja opacidad */}
+      <div className="absolute inset-0 z-0" aria-hidden="true">
+        <Image
+          src="/images/hero-detailing.webp"
+          alt=""
+          fill
+          className="object-cover opacity-[0.12]"
+          priority
+          sizes="100vw"
+        />
+        {/* Gradiente encima de la imagen para mantener legibilidad */}
+        <div className="absolute inset-0 bg-gradient-to-tr from-(--color-surface) via-(--color-surface)/60 to-transparent" />
       </div>
 
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      {/* Destellos decorativos encima */}
+      <div className="absolute inset-0 z-[1] pointer-events-none" aria-hidden="true">
+        <div className="absolute top-0 right-0 w-[600px] h-[600px] rounded-full bg-primary-fixed opacity-15 blur-[100px] translate-x-1/3 -translate-y-1/3" />
+        <div className="absolute bottom-0 left-0 w-[400px] h-[400px] rounded-full bg-secondary-container opacity-10 blur-[80px] -translate-x-1/4 translate-y-1/4" />
+      </div>
+
+      <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="min-h-[90vh] flex flex-col lg:flex-row items-center gap-12 lg:gap-16 py-16 lg:py-24">
 
           {/* Columna izquierda: Copy */}
@@ -108,7 +119,7 @@ export function HeroSection() {
                 sizes="(max-width: 768px) 100vw, (max-width: 1280px) 50vw, 45vw"
               />
               {/* Overlay glassmorphic en la esquina */}
-              <div className="absolute bottom-4 left-4 right-4 glass rounded-md p-4 flex items-center gap-3">
+              <div className="absolute bottom-4 left-4 right-4 glass border border-outline-variant/20 rounded-md p-4 flex items-center gap-3">
                 <span className="text-2xl" aria-hidden="true">✨</span>
                 <div>
                   <p className="font-display font-semibold text-sm text-(--color-on-surface)">

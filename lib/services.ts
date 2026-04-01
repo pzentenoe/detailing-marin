@@ -21,6 +21,7 @@ export const services: Service[] = [
       'Limpieza de interior y exterior',
     ],
     duration: '60–90 min',
+    price: 'Desde $45.000',
     highlight: true,
   },
   {
@@ -38,6 +39,7 @@ export const services: Service[] = [
       'Resultado de showroom',
     ],
     duration: '90–120 min',
+    price: 'Desde $65.000',
   },
   {
     id: '3',
@@ -54,6 +56,7 @@ export const services: Service[] = [
       'Garantía de 12 meses',
     ],
     duration: '45–60 min',
+    price: 'Desde $35.000',
   },
   {
     id: '4',
@@ -70,6 +73,7 @@ export const services: Service[] = [
       'Aplicación de dressing protector',
     ],
     duration: '60–90 min',
+    price: 'Desde $55.000',
   },
 ]
 
