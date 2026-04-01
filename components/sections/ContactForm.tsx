@@ -7,8 +7,10 @@
 // ============================================================
 
 import { useState } from 'react'
+import { useMutation } from '@tanstack/react-query'
 import { Button } from '@/components/ui/Button'
 import { Icon } from '@/components/ui/Icon'
+import { DatePicker } from '@/components/ui/DatePicker'
 import { contactInfo, WA_MESSAGE } from '@/lib/services'
 
 interface FormState {
@@ -54,16 +56,25 @@ const comoFunciona = [
   },
 ]
 
-type SubmitStatus = 'idle' | 'loading' | 'success' | 'error'
-
 export function ContactForm() {
   const [form, setForm] = useState<FormState>(initialState)
-  const [status, setStatus] = useState<SubmitStatus>('idle')
-  const [errorMsg, setErrorMsg] = useState('')
 
-  const handleTextChange = (
-    e: { target: { name: string; value: string } },
-  ) => {
+  const { mutate, isPending, isSuccess, isError, error, reset } = useMutation({
+    mutationFn: async (payload: FormState) => {
+      const res = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload),
+      })
+      if (!res.ok) {
+        const data = await res.json().catch(() => ({}))
+        throw new Error(data.error ?? 'Error al enviar el formulario')
+      }
+    },
+    onSuccess: () => setForm(initialState),
+  })
+
+  const handleTextChange = (e: { target: { name: string; value: string } }) => {
     setForm((prev) => ({ ...prev, [e.target.name]: e.target.value }))
   }
 
@@ -76,29 +87,17 @@ export function ContactForm() {
     }))
   }
 
-  const handleSubmit = async (e: { preventDefault(): void }) => {
+  const handleSubmit = (e: { preventDefault(): void }) => {
     e.preventDefault()
-    setStatus('loading')
-    setErrorMsg('')
-
-    try {
-      const res = await fetch('/api/contact', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(form),
-      })
-
-      if (!res.ok) {
-        const data = await res.json().catch(() => ({}))
-        throw new Error(data.error ?? 'Error al enviar el formulario')
-      }
-
-      setStatus('success')
-    } catch (err) {
-      setErrorMsg(err instanceof Error ? err.message : 'Error desconocido')
-      setStatus('error')
-    }
+    mutate(form)
   }
+
+  const isFormValid =
+    form.nombre.trim() !== '' &&
+    form.telefono.trim() !== '' &&
+    form.direccion.trim() !== '' &&
+    form.tipoVehiculo !== '' &&
+    form.fechaPreferida !== ''
 
   const inputClass = [
     'w-full h-14 px-4 rounded-(--radius-lg)',
@@ -229,7 +228,7 @@ export function ContactForm() {
             aria-hidden="true"
           />
 
-          {status === 'success' ? (
+          {isSuccess ? (
             <div className="glass rounded-(--radius-xl) p-10 text-center flex flex-col items-center gap-5 shadow-ambient">
               <span className="text-5xl" aria-hidden="true">✅</span>
               <h2 className="text-headline-md text-primary">
@@ -238,7 +237,7 @@ export function ContactForm() {
               <p className="text-on-surface-variant text-sm">
                 Recibiste un correo con los detalles. Te respondemos en menos de 24 horas.
               </p>
-              <Button variant="ghost" size="sm" onClick={() => setStatus('idle')}>
+              <Button variant="ghost" size="sm" onClick={reset}>
                 Enviar otra consulta
               </Button>
             </div>
@@ -336,15 +335,12 @@ export function ContactForm() {
                   <label htmlFor="cf-fecha" className={labelClass}>
                     Fecha Preferida
                   </label>
-                  <input
+                  <DatePicker
                     id="cf-fecha"
-                    name="fechaPreferida"
-                    type="date"
                     value={form.fechaPreferida}
-                    onChange={handleTextChange}
+                    onChange={(val) => setForm((prev) => ({ ...prev, fechaPreferida: val }))}
                     required
-                    className={[inputClass, 'text-on-surface-variant cursor-pointer'].join(' ')}
-                    aria-required="true"
+                    className={[inputClass, 'text-on-surface-variant pr-12'].join(' ')}
                   />
                 </div>
               </div>
@@ -385,16 +381,16 @@ export function ContactForm() {
               </fieldset>
 
               {/* Error message */}
-              {status === 'error' && (
+              {isError && (
                 <p className="text-center text-sm text-error bg-error-container rounded-(--radius-md) px-4 py-3">
-                  {errorMsg || 'Hubo un error al enviar. Intentá de nuevo.'}
+                  {error instanceof Error ? error.message : 'Hubo un error al enviar. Intentá de nuevo.'}
                 </p>
               )}
 
               {/* Submit */}
               <button
                 type="submit"
-                disabled={status === 'loading'}
+                disabled={!isFormValid || isPending}
                 className={[
                   'w-full py-5 rounded-(--radius-xl)',
                   'gradient-primary text-white font-bold text-lg',
@@ -404,8 +400,8 @@ export function ContactForm() {
                   'disabled:opacity-60 disabled:cursor-not-allowed disabled:scale-100',
                 ].join(' ')}
               >
-                {status === 'loading' ? 'Enviando...' : 'Confirmar Reserva'}
-                {status !== 'loading' && (
+                {isPending ? 'Enviando...' : 'Confirmar Reserva'}
+                {!isPending && (
                   <Icon
                     name="calendar"
                     size={20}

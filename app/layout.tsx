@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import { Manrope, Inter } from 'next/font/google'
 import { ThemeProvider } from '@/components/layout/ThemeProvider'
+import { QueryProvider } from '@/components/layout/QueryProvider'
 import './globals.css'
 
 const manrope = Manrope({
@@ -67,7 +68,9 @@ export default function RootLayout({
   return (
     <html lang="es" className={`${manrope.variable} ${inter.variable}`}>
       <body className="font-body antialiased">
-        <ThemeProvider>{children}</ThemeProvider>
+        <QueryProvider>
+          <ThemeProvider>{children}</ThemeProvider>
+        </QueryProvider>
       </body>
     </html>
   )
