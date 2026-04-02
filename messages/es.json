@@ -1,0 +1,273 @@
+{
+  "nav": {
+    "home": "Inicio",
+    "services": "Servicios",
+    "contact": "Contacto",
+    "cta": "Agendar Servicio",
+    "ctaAria": "Agendar servicio por WhatsApp",
+    "openMenu": "Abrir menú",
+    "closeMenu": "Cerrar menú",
+    "lightMode": "Cambiar a modo claro",
+    "darkMode": "Cambiar a modo oscuro",
+    "logoAria": "Detailing Marin — Ir al inicio",
+    "selectLanguage": "Seleccionar idioma"
+  },
+  "hero": {
+    "badge1Stat": "90%",
+    "badge1Label": "Ahorro de agua",
+    "badge2Stat": "100%",
+    "badge2Label": "Biodegradable",
+    "headline1": "Tu vehículo,",
+    "headline2": "como el primer día.",
+    "description": "El mejor lavado detallado y pulido para tu auto, sin moverte de tu casa. Cuidamos tu vehículo y el medio ambiente con tecnología hidrofóbica y productos biodegradables.",
+    "cta1": "Agendar Servicio",
+    "cta1Aria": "Agendar servicio por WhatsApp",
+    "cta2": "Ver todos los servicios →",
+    "stat1Value": "+500",
+    "stat1Label": "Autos atendidos",
+    "stat2Value": "5⭐",
+    "stat2Label": "Calificación promedio",
+    "stat3Value": "0km",
+    "stat3Label": "Sin moverte de casa",
+    "overlayTitle": "Resultado showroom",
+    "overlaySubtitle": "Protección de larga duración",
+    "sectionAria": "Sección principal",
+    "imageAlt": "Agua hidrofóbica sobre pintura recién detallada — resultado Detailing Marin"
+  },
+  "features": {
+    "label": "Por qué elegirnos",
+    "heading": "Elevamos el estándar",
+    "description": "Técnicas avanzadas y resultados impecables, con el menor impacto posible en el medio ambiente.",
+    "items": {
+      "eco": {
+        "title": "100% Ecológico",
+        "description": "Utilizamos productos premium biodegradables que no dañan el medio ambiente ni la pintura de tu vehículo."
+      },
+      "domicilio": {
+        "title": "A Domicilio",
+        "description": "Llevamos todo el equipamiento necesario hasta la puerta de tu casa u oficina para tu total comodidad."
+      },
+      "premium": {
+        "title": "Calidad Premium",
+        "description": "Atención al detalle minuciosa y resultados de showroom que protegen tu inversión a largo plazo."
+      }
+    }
+  },
+  "servicesPreview": {
+    "label": "Lo que hacemos",
+    "heading": "Servicios Especializados",
+    "description": "Técnicas avanzadas y resultados impecables, con el menor impacto posible en el medio ambiente.",
+    "viewAll": "Ver todos los servicios →",
+    "viewAllAria": "Ver todos los servicios de Detailing Marin"
+  },
+  "servicesGrid": {
+    "badge": "Premium Care",
+    "heading": "Nuestros Servicios a Domicilio",
+    "subheading": "Llevamos el mejor spa automotriz directamente a la puerta de tu casa.",
+    "requestBtn": "Solicitar",
+    "requestServiceBtn": "Solicitar Servicio",
+    "ctaBannerTitle": "Todos nuestros servicios incluyen desplazamiento a tu domicilio en Maipú y alrededores sin costo extra.",
+    "ctaBannerDesc": "Comodidad absoluta para ti, máxima excelencia para tu auto.",
+    "bookNow": "Agendar Ahora",
+    "viewCoverage": "Ver Cobertura"
+  },
+  "services": {
+    "lavado-ecologico": {
+      "title": "Lavado Ecológico",
+      "shortDescription": "Limpieza profunda sin desperdicio de agua.",
+      "fullDescription": "Limpieza profunda utilizando tecnología de bajo consumo de agua y productos biodegradables que protegen la pintura y el medio ambiente. Hasta un 90% de ahorro de agua vs. lavado tradicional.",
+      "features": [
+        "Productos 100% biodegradables",
+        "Ahorro hasta 90% de agua",
+        "Protección de pintura incluida",
+        "Limpieza de interior y exterior"
+      ]
+    },
+    "pulido-abrillantador": {
+      "title": "Pulido Abrillantador",
+      "shortDescription": "Restauración del brillo espejo original.",
+      "fullDescription": "Restauramos el brillo original de tu vehículo eliminando micro-rayas y realzando la profundidad del color mediante técnicas de corrección de pintura de nivel profesional.",
+      "features": [
+        "Eliminación de micro-rayas",
+        "Realce de profundidad de color",
+        "Sellado de pintura UV",
+        "Resultado de showroom"
+      ]
+    },
+    "pulido-focos": {
+      "title": "Pulido de Focos",
+      "shortDescription": "Recupera la transparencia y seguridad.",
+      "fullDescription": "Recupera la transparencia y seguridad de tus focos. Eliminamos lo amarillento y opaco con sellado UV que prolonga el resultado hasta 12 meses.",
+      "features": [
+        "Eliminación de amarillamiento",
+        "Sellado UV de larga duración",
+        "Mejora visibilidad nocturna",
+        "Garantía de 12 meses"
+      ]
+    },
+    "limpieza-motor": {
+      "title": "Limpieza de Motor",
+      "shortDescription": "Limpieza técnica en seco impecable.",
+      "fullDescription": "Limpieza técnica detallada que elimina grasa y suciedad acumulada, protegiendo mangueras y componentes plásticos sin usar agua. Mantén el corazón de tu auto en óptimas condiciones.",
+      "features": [
+        "Limpieza en seco sin daños",
+        "Tratamiento anti-corrosión",
+        "Protección de mangueras y plásticos",
+        "Aplicación de dressing protector"
+      ]
+    }
+  },
+  "cta": {
+    "badgeStat": "Domicilio",
+    "badgeLabel": "sin costo extra",
+    "heading": "Agenda hoy mismo tu servicio a domicilio",
+    "description": "Ofrecemos un servicio de estética automotriz de alta gama, respetando el medio ambiente y valorando tu tiempo. Maipú y alrededores.",
+    "whatsapp": "WhatsApp",
+    "email": "Enviar Email",
+    "whatsappAria": "Contactar por WhatsApp para agendar",
+    "emailAria": "Enviar email a Detailing Marin",
+    "sectionAria": "Llamado a la acción"
+  },
+  "contact": {
+    "badge": "Premium Mobile Detailing",
+    "heading": "Reserva tu lavado a domicilio",
+    "description": "Llevamos el cuidado de lujo directamente a tu puerta. Equipamiento profesional y productos biodegradables para un acabado impecable sin moverte de casa.",
+    "howItWorks": {
+      "title": "Cómo funciona",
+      "step1Title": "1. Elige tu fecha",
+      "step1Desc": "Selecciona el día y la hora que mejor te convenga para el servicio.",
+      "step2Title": "2. Confirmamos el vehículo",
+      "step2Desc": "Indícanos el tipo de coche y los servicios específicos que necesitas.",
+      "step3Title": "3. Lavado Eco-Luxe",
+      "step3Desc": "Llegamos a tu ubicación y realizamos el tratamiento completo."
+    },
+    "whatsappLabel": "WhatsApp Directo",
+    "emailLabel": "Email de Contacto",
+    "whatsappAria": "Contactar por WhatsApp directo",
+    "form": {
+      "ariaLabel": "Formulario de reserva",
+      "fullName": "Nombre Completo",
+      "fullNamePlaceholder": "Ej: Juan Pérez",
+      "phone": "Teléfono",
+      "phonePlaceholder": "+56 9 ...",
+      "address": "Dirección de Servicio",
+      "addressPlaceholder": "Calle, número, ciudad",
+      "vehicleType": "Tipo de Vehículo",
+      "vehiclePlaceholder": "Seleccionar...",
+      "vehicleCompact": "Turismo / Compacto",
+      "vehicleSuv": "SUV / Berlina",
+      "vehicle4x4": "4x4 / Furgoneta",
+      "vehicleMoto": "Motocicleta",
+      "preferredDate": "Fecha Preferida",
+      "servicesLabel": "Servicios Necesarios",
+      "service1": "Lavado Exterior Eco",
+      "service2": "Limpieza Interior Profunda",
+      "service3": "Encerado Premium",
+      "service4": "Tratamiento de Ozono",
+      "submit": "Confirmar Reserva",
+      "submitting": "Enviando...",
+      "confirmNote": "Te enviaremos la confirmación por correo electrónico.",
+      "genericError": "Hubo un error al enviar. Intentá de nuevo."
+    },
+    "success": {
+      "title": "¡Reserva enviada!",
+      "description": "Recibiste un correo con los detalles. Te respondemos en menos de 24 horas.",
+      "another": "Enviar otra consulta"
+    },
+    "banner": {
+      "title": "Cuidamos los detalles que otros ignoran.",
+      "description": "Nuestra técnica de lavado sin aclarado excesivo ahorra hasta 200 litros de agua por vehículo.",
+      "imageAlt": "Detalle de pintura hidrofóbica con gotas de agua — Detailing Marin"
+    }
+  },
+  "footer": {
+    "tagline": "Servicio de detallado automotriz premium a domicilio. Cuidamos tu vehículo y el planeta.",
+    "exploreTitle": "Explora",
+    "contactTitle": "Contacto",
+    "followTitle": "Síguenos",
+    "copyright": "© {year} Detailing Marin. Eco-Luxe Automotive Care.",
+    "privacy": "Privacidad",
+    "terms": "Términos",
+    "footerAria": "Pie de página",
+    "footerNavAria": "Links del footer",
+    "legalNavAria": "Links legales"
+  },
+  "privacidad": {
+    "badge": "Legal",
+    "heading": "Política de Privacidad",
+    "lastUpdated": "Última actualización: abril 2026",
+    "s1Title": "1. Información que recopilamos",
+    "s1Body": "Cuando completás el formulario de contacto o reserva en nuestro sitio, recopilamos la siguiente información: nombre completo, número de teléfono, dirección de servicio, tipo de vehículo, fecha preferida y servicios seleccionados. Esta información es proporcionada de forma voluntaria por el usuario.",
+    "s2Title": "2. Uso de la información",
+    "s2Intro": "La información recopilada se utiliza exclusivamente para:",
+    "s2Li1": "Coordinar y confirmar el servicio solicitado.",
+    "s2Li2": "Contactarte para verificar disponibilidad y detalles del servicio.",
+    "s2Li3": "Enviarte comunicaciones relacionadas con tu reserva.",
+    "s2Footer": "No vendemos, alquilamos ni compartimos tu información personal con terceros con fines comerciales.",
+    "s3Title": "3. Almacenamiento y seguridad",
+    "s3Body": "Los datos del formulario se transmiten de forma segura a través de correo electrónico cifrado (SMTP con TLS). No almacenamos información personal en bases de datos propias más allá del correo de confirmación recibido.",
+    "s4Title": "4. WhatsApp",
+    "s4Body": "Nuestro sitio incluye un enlace directo a WhatsApp. Al hacer clic en él, serás redirigido a la aplicación de WhatsApp, cuyo uso está sujeto a la Política de Privacidad de WhatsApp.",
+    "s4LinkText": "Política de Privacidad de WhatsApp",
+    "s5Title": "5. Tus derechos",
+    "s5Body": "Tenés derecho a solicitar el acceso, rectificación o eliminación de tus datos personales en cualquier momento. Para hacerlo, contactanos directamente a",
+    "s6Title": "6. Cambios en esta política",
+    "s6Body": "Nos reservamos el derecho de actualizar esta política de privacidad en cualquier momento. Los cambios entrarán en vigor inmediatamente después de su publicación en esta página."
+  },
+  "terminos": {
+    "badge": "Legal",
+    "heading": "Términos y Condiciones",
+    "lastUpdated": "Última actualización: abril 2026",
+    "s1Title": "1. Aceptación de los términos",
+    "s1Body": "Al utilizar el sitio web de Detailing Marin y solicitar cualquiera de nuestros servicios, aceptás los presentes términos y condiciones en su totalidad. Si no estás de acuerdo con alguna parte, te pedimos que no utilices nuestros servicios.",
+    "s2Title": "2. Descripción del servicio",
+    "s2Body": "Detailing Marin ofrece servicios de detallado y limpieza automotriz a domicilio en la zona de Maipú y alrededores. Los servicios incluyen lavado ecológico, pulido, tratamiento de focos y limpieza de motor, entre otros descritos en nuestro sitio.",
+    "s3Title": "3. Reservas y confirmaciones",
+    "s3Body": "Las reservas realizadas a través del formulario web o WhatsApp son solicitudes de servicio sujetas a disponibilidad. Una reserva se considera confirmada únicamente cuando un representante de Detailing Marin la valida de forma expresa por escrito (WhatsApp o correo electrónico).",
+    "s4Title": "4. Cancelaciones y cambios",
+    "s4Body": "Si necesitás cancelar o reprogramar un servicio, te pedimos notificarnos con al menos 24 horas de anticipación. Las cancelaciones tardías pueden estar sujetas a un cargo del 20% del valor del servicio para cubrir los costos de desplazamiento.",
+    "s5Title": "5. Responsabilidades del cliente",
+    "s5Intro": "El cliente es responsable de:",
+    "s5Li1": "Proporcionar acceso al vehículo en la fecha y lugar acordados.",
+    "s5Li2": "Informar previamente sobre daños preexistentes en la pintura u otras superficies.",
+    "s5Li3": "Retirar objetos de valor del interior del vehículo antes del servicio.",
+    "s6Title": "6. Limitación de responsabilidad",
+    "s6Body": "Detailing Marin no se hace responsable por daños preexistentes no declarados ni por condiciones climáticas que impidan la correcta ejecución del servicio. En caso de daño causado directamente por nuestra operación, nos comprometemos a evaluar y resolver el incidente de forma directa con el cliente.",
+    "s7Title": "7. Precios y pagos",
+    "s7Body": "Los precios publicados en el sitio son referenciales en pesos chilenos (CLP) y pueden variar según el estado del vehículo, el tamaño y los servicios adicionales solicitados. El precio final se confirma antes del inicio del servicio. El pago se realiza al finalizar el trabajo.",
+    "s8Title": "8. Modificaciones",
+    "s8Body": "Detailing Marin se reserva el derecho de modificar estos términos en cualquier momento. Las modificaciones serán publicadas en esta página y entrarán en vigor de forma inmediata.",
+    "s9Title": "9. Contacto",
+    "s9Prefix": "Para consultas sobre estos términos, podés contactarnos en",
+    "s9Mid": "o por WhatsApp al",
+    "s9Phone": "+56 9 5445 1422"
+  },
+  "metadata": {
+    "home": {
+      "title": "Detailing automotriz a domicilio en Maipú",
+      "description": "Detailing Marin ofrece lavado ecológico, pulido y detailing automotriz a domicilio en Maipú. Cuidamos tu auto con productos premium y atención al detalle.",
+      "ogTitle": "Detailing automotriz a domicilio en Maipú",
+      "ogDescription": "Lavado ecológico, pulido y detailing premium a domicilio en Maipú y alrededores."
+    },
+    "services": {
+      "title": "Servicios de detailing automotriz en Maipú",
+      "description": "Conocé los servicios de Detailing Marin en Maipú: lavado ecológico, pulido abrillantador, pulido de focos y limpieza de motor, todos a domicilio.",
+      "ogTitle": "Servicios de detailing automotriz en Maipú",
+      "ogDescription": "Lavado ecológico, pulido abrillantador, pulido de focos y limpieza de motor a domicilio en Maipú."
+    },
+    "contact": {
+      "title": "Contacto para agendar detailing en Maipú",
+      "description": "Contactá a Detailing Marin para cotizar o agendar tu detailing automotriz a domicilio en Maipú y alrededores. Respondemos en menos de 24 horas.",
+      "ogTitle": "Contacto para agendar detailing en Maipú",
+      "ogDescription": "Cotizá y agenda servicios de detailing automotriz a domicilio con Detailing Marin."
+    },
+    "privacy": {
+      "title": "Política de Privacidad",
+      "description": "Política de privacidad de Detailing Marin. Cómo recopilamos, usamos y protegemos tu información personal."
+    },
+    "terms": {
+      "title": "Términos y Condiciones",
+      "description": "Términos y condiciones del servicio de Detailing Marin. Conocé las condiciones bajo las que prestamos nuestros servicios."
+    }
+  }
+}

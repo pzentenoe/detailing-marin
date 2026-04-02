@@ -3,13 +3,13 @@
 // Cada tarjeta tiene estilo editorial único según posición
 // ============================================================
 
-import Link from 'next/link'
 import Image from 'next/image'
+import { getTranslations } from 'next-intl/server'
+import { Link } from '@/i18n/navigation'
 import { SectionWrapper } from '@/components/ui/SectionWrapper'
 import { Icon } from '@/components/ui/Icon'
-import { services } from '@/lib/services'
+import { servicesConfig } from '@/lib/services'
 
-// Estilo editorial por posición de tarjeta
 const cardLayouts = [
   {
     colSpan: 'md:col-span-7',
@@ -19,7 +19,6 @@ const cardLayouts = [
     titleClass: 'text-(--color-on-surface)',
     descClass: 'text-on-surface-variant',
     btnVariant: 'primary' as const,
-    btnLabel: 'Solicitar',
     showDecorativeBg: true,
     isHorizontal: false,
   },
@@ -31,7 +30,6 @@ const cardLayouts = [
     titleClass: 'text-white',
     descClass: 'text-white/80',
     btnVariant: 'light' as const,
-    btnLabel: 'Solicitar',
     showDecorativeBg: false,
     isHorizontal: false,
   },
@@ -43,7 +41,6 @@ const cardLayouts = [
     titleClass: 'text-(--color-on-surface)',
     descClass: 'text-on-surface-variant',
     btnVariant: 'primary' as const,
-    btnLabel: 'Solicitar',
     showDecorativeBg: false,
     isHorizontal: false,
   },
@@ -55,33 +52,39 @@ const cardLayouts = [
     titleClass: 'text-(--color-on-surface)',
     descClass: 'text-on-surface-variant',
     btnVariant: 'primary' as const,
-    btnLabel: 'Solicitar Servicio',
     showDecorativeBg: false,
     isHorizontal: true,
   },
 ]
 
-export function ServicesGrid() {
+export async function ServicesGrid() {
+  const t = await getTranslations('servicesGrid')
+  const ts = await getTranslations('services')
+
+  const services = servicesConfig.map((s) => ({
+    ...s,
+    title: ts(`${s.slug}.title`),
+    shortDescription: ts(`${s.slug}.shortDescription`),
+    fullDescription: ts(`${s.slug}.fullDescription`),
+    features: ts.raw(`${s.slug}.features`) as string[],
+  }))
+
   return (
     <SectionWrapper surface="base" id="todos-los-servicios">
-      {/* Header centrado */}
       <header className="text-center mb-14">
         <span className="inline-block px-4 py-1.5 rounded-full bg-secondary-container text-on-secondary-container text-xs font-bold tracking-widest uppercase mb-6">
-          Premium Care
+          {t('badge')}
         </span>
-        <h1 className="text-display-md text-(--color-on-surface)">
-          Nuestros Servicios a Domicilio
-        </h1>
-        <p className="text-body-lg text-on-surface-variant max-w-2xl mx-auto mt-4">
-          Llevamos el mejor spa automotriz directamente a la puerta de tu casa.
-        </p>
+        <h1 className="text-display-md text-(--color-on-surface)">{t('heading')}</h1>
+        <p className="text-body-lg text-on-surface-variant max-w-2xl mx-auto mt-4">{t('subheading')}</p>
       </header>
 
-      {/* Bento Grid 12 columnas */}
       <div className="grid grid-cols-1 md:grid-cols-12 gap-6">
         {services.map((service, idx) => {
           const layout = cardLayouts[idx]
           if (!layout) return null
+
+          const btnLabel = layout.isHorizontal ? t('requestServiceBtn') : t('requestBtn')
 
           return (
             <div
@@ -102,20 +105,14 @@ export function ServicesGrid() {
                     : 'p-8 md:p-10 flex flex-col justify-between overflow-hidden',
                 ].join(' ')}
               >
-                {/* Columna de contenido */}
                 <div className={[layout.isHorizontal ? 'flex-1' : '', 'relative z-10'].join(' ')}>
-                  {/* Icono */}
                   <div
-                    className={[
-                      'w-12 h-12 rounded-(--radius-lg) flex items-center justify-center mb-6',
-                      layout.iconBg,
-                    ].join(' ')}
+                    className={['w-12 h-12 rounded-(--radius-lg) flex items-center justify-center mb-6', layout.iconBg].join(' ')}
                     aria-hidden="true"
                   >
                     <Icon name={service.icon} size={24} color={layout.iconColor} />
                   </div>
 
-                  {/* Título */}
                   <h2
                     className={[
                       'font-display font-bold tracking-tight mb-3',
@@ -126,12 +123,10 @@ export function ServicesGrid() {
                     {service.title}
                   </h2>
 
-                  {/* Descripción */}
                   <p className={['leading-relaxed mb-6', layout.descClass].join(' ')}>
                     {service.fullDescription}
                   </p>
 
-                  {/* Features list — tarjetas grandes */}
                   {(idx === 0 || layout.isHorizontal) && (
                     <ul
                       className="flex flex-col gap-2 mb-8"
@@ -140,10 +135,7 @@ export function ServicesGrid() {
                       {service.features.map((f) => (
                         <li key={f} className={['flex items-center gap-2 text-sm', layout.descClass].join(' ')}>
                           <span
-                            className={[
-                              'w-1.5 h-1.5 rounded-full shrink-0',
-                              idx === 0 ? 'bg-primary' : 'bg-white/60',
-                            ].join(' ')}
+                            className={['w-1.5 h-1.5 rounded-full shrink-0', idx === 0 ? 'bg-primary' : 'bg-white/60'].join(' ')}
                             aria-hidden="true"
                           />
                           {f}
@@ -152,7 +144,6 @@ export function ServicesGrid() {
                     </ul>
                   )}
 
-                  {/* CTA */}
                   <Link
                     href={`/contacto?servicio=${encodeURIComponent(service.title)}`}
                     className={[
@@ -164,11 +155,10 @@ export function ServicesGrid() {
                         : 'gradient-primary text-white shadow-ambient hover:shadow-float',
                     ].join(' ')}
                   >
-                    {layout.btnLabel}
+                    {btnLabel}
                   </Link>
                 </div>
 
-                {/* Imagen decorativa horizontal — Card 4 (Limpieza de Motor) */}
                 {layout.isHorizontal && (
                   <div className="flex-1 w-full h-48 md:h-56 overflow-hidden rounded-(--radius-lg) shadow-float shrink-0">
                     <Image
@@ -181,18 +171,12 @@ export function ServicesGrid() {
                   </div>
                 )}
 
-                {/* Imagen de fondo decorativa — Card 1 (Lavado Ecológico) */}
                 {layout.showDecorativeBg && (
                   <div
                     className="absolute right-0 bottom-0 w-1/2 h-full opacity-5 group-hover:opacity-10 transition-opacity duration-500 pointer-events-none"
                     aria-hidden="true"
                   >
-                    <Image
-                      src="/images/hero-detailing.webp"
-                      alt=""
-                      fill
-                      className="object-cover"
-                    />
+                    <Image src="/images/hero-detailing.webp" alt="" fill className="object-cover" />
                   </div>
                 )}
               </div>
@@ -210,25 +194,20 @@ export function ServicesGrid() {
         />
         <div className="relative z-10">
           <span className="text-4xl mb-6 block" aria-hidden="true">🚐</span>
-          <h2 className="text-headline-md text-white mb-4 max-w-3xl mx-auto">
-            Todos nuestros servicios incluyen desplazamiento a tu domicilio en{' '}
-            <strong>Maipú y alrededores</strong> sin costo extra.
-          </h2>
-          <p className="text-white/80 text-lg mb-8 font-light">
-            Comodidad absoluta para ti, máxima excelencia para tu auto.
-          </p>
+          <h2 className="text-headline-md text-white mb-4 max-w-3xl mx-auto">{t('ctaBannerTitle')}</h2>
+          <p className="text-white/80 text-lg mb-8 font-light">{t('ctaBannerDesc')}</p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
               href="/contacto"
               className="inline-flex items-center justify-center px-10 py-4 bg-secondary-container text-on-secondary-container font-bold rounded-(--radius-md) hover:scale-105 transition-transform active:scale-95 shadow-float"
             >
-              Agendar Ahora
+              {t('bookNow')}
             </Link>
             <Link
               href="/contacto"
               className="inline-flex items-center justify-center px-10 py-4 bg-white/10 text-white font-semibold rounded-(--radius-md) hover:bg-white/20 transition-colors border border-white/20"
             >
-              Ver Cobertura
+              {t('viewCoverage')}
             </Link>
           </div>
         </div>

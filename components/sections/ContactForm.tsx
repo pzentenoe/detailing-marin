@@ -3,11 +3,11 @@
 // ============================================================
 // ContactForm — /contacto
 // Layout 12 col: izquierda (info + cómo funciona) + derecha (form)
-// Formulario completo con todos los campos del diseño
 // ============================================================
 
 import { useState } from 'react'
 import { useMutation } from '@tanstack/react-query'
+import { useTranslations } from 'next-intl'
 import { Button } from '@/components/ui/Button'
 import { Icon } from '@/components/ui/Icon'
 import { DatePicker } from '@/components/ui/DatePicker'
@@ -31,33 +31,24 @@ const initialState: FormState = {
   serviciosSeleccionados: [],
 }
 
-const serviciosOpciones = [
-  'Lavado Exterior Eco',
-  'Limpieza Interior Profunda',
-  'Encerado Premium',
-  'Tratamiento de Ozono',
-]
-
-const comoFunciona = [
-  {
-    icon: 'calendar' as const,
-    title: '1. Elige tu fecha',
-    desc: 'Selecciona el día y la hora que mejor te convenga para el servicio.',
-  },
-  {
-    icon: 'car' as const,
-    title: '2. Confirmamos el vehículo',
-    desc: 'Indícanos el tipo de coche y los servicios específicos que necesitas.',
-  },
-  {
-    icon: 'droplets' as const,
-    title: '3. Lavado Eco-Luxe',
-    desc: 'Llegamos a tu ubicación y realizamos el tratamiento completo.',
-  },
-]
-
 export function ContactForm() {
+  const t = useTranslations('contact')
+  const tf = useTranslations('contact.form')
+
   const [form, setForm] = useState<FormState>(initialState)
+
+  const serviciosOpciones = [
+    tf('service1'),
+    tf('service2'),
+    tf('service3'),
+    tf('service4'),
+  ]
+
+  const comoFunciona = [
+    { icon: 'calendar' as const, title: t('howItWorks.step1Title'), desc: t('howItWorks.step1Desc') },
+    { icon: 'car' as const,      title: t('howItWorks.step2Title'), desc: t('howItWorks.step2Desc') },
+    { icon: 'droplets' as const, title: t('howItWorks.step3Title'), desc: t('howItWorks.step3Desc') },
+  ]
 
   const { mutate, isPending, isSuccess, isError, error, reset } = useMutation({
     mutationFn: async (payload: FormState) => {
@@ -68,7 +59,7 @@ export function ContactForm() {
       })
       if (!res.ok) {
         const data = await res.json().catch(() => ({}))
-        throw new Error(data.error ?? 'Error al enviar el formulario')
+        throw new Error(data.error ?? tf('genericError'))
       }
     },
     onSuccess: () => setForm(initialState),
@@ -116,32 +107,22 @@ export function ContactForm() {
 
       {/* ── Columna izquierda (5 cols) ── */}
       <div className="lg:col-span-5 flex flex-col gap-12">
-
-        {/* Header */}
         <header className="flex flex-col gap-5">
           <span className="inline-block self-start px-3 py-1 rounded-full bg-secondary-container text-primary font-bold text-xs tracking-widest uppercase">
-            Premium Mobile Detailing
+            {t('badge')}
           </span>
-          <h1 className="text-display-md text-(--color-on-surface) leading-tight">
-            Reserva tu lavado a domicilio
-          </h1>
-          <p className="text-body-lg text-on-surface-variant font-light">
-            Llevamos el cuidado de lujo directamente a tu puerta. Equipamiento
-            profesional y productos biodegradables para un acabado impecable
-            sin moverte de casa.
-          </p>
+          <h1 className="text-display-md text-(--color-on-surface) leading-tight">{t('heading')}</h1>
+          <p className="text-body-lg text-on-surface-variant font-light">{t('description')}</p>
         </header>
 
-        {/* Cómo funciona */}
         <section aria-labelledby="como-funciona-title">
           <h2
             id="como-funciona-title"
             className="text-lg font-bold text-primary flex items-center gap-3 mb-6"
           >
             <span className="block w-8 h-px bg-primary/20" aria-hidden="true" />
-            Cómo funciona
+            {t('howItWorks.title')}
           </h2>
-
           <div className="flex flex-col gap-6">
             {comoFunciona.map((step) => (
               <div key={step.title} className="flex gap-5 group">
@@ -165,7 +146,6 @@ export function ContactForm() {
           </div>
         </section>
 
-        {/* Contacto shortcuts */}
         <div className="flex flex-col gap-3">
           <a
             href={`https://wa.me/${contactInfo.whatsapp}?text=${encodeURIComponent(WA_MESSAGE)}`}
@@ -176,42 +156,24 @@ export function ContactForm() {
               'bg-surface-container-low border border-outline-variant/10',
               'hover:bg-surface-container transition-all duration-200',
             ].join(' ')}
-            aria-label="Contactar por WhatsApp directo"
+            aria-label={t('whatsappAria')}
           >
-            <div
-              className="w-10 h-10 rounded-full bg-[#25D366]/10 flex items-center justify-center shrink-0"
-              aria-hidden="true"
-            >
+            <div className="w-10 h-10 rounded-full bg-[#25D366]/10 flex items-center justify-center shrink-0" aria-hidden="true">
               <Icon name="message-circle" size={20} color="#25D366" />
             </div>
             <div>
-              <p className="text-xs font-bold text-on-surface-variant uppercase tracking-wider">
-                WhatsApp Directo
-              </p>
+              <p className="text-xs font-bold text-on-surface-variant uppercase tracking-wider">{t('whatsappLabel')}</p>
               <p className="text-(--color-on-surface) font-medium">{contactInfo.phone}</p>
             </div>
           </a>
 
-          <div
-            className={[
-              'flex items-center gap-4 p-4 rounded-(--radius-lg)',
-              'bg-surface-container-low border border-outline-variant/10',
-            ].join(' ')}
-          >
-            <div
-              className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center shrink-0"
-              aria-hidden="true"
-            >
+          <div className={['flex items-center gap-4 p-4 rounded-(--radius-lg)', 'bg-surface-container-low border border-outline-variant/10'].join(' ')}>
+            <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center shrink-0" aria-hidden="true">
               <Icon name="mail" size={20} color="var(--color-primary)" />
             </div>
             <div>
-              <p className="text-xs font-bold text-on-surface-variant uppercase tracking-wider">
-                Email de Contacto
-              </p>
-              <a
-                href={`mailto:${contactInfo.email}`}
-                className="text-(--color-on-surface) font-medium hover:text-primary transition-colors"
-              >
+              <p className="text-xs font-bold text-on-surface-variant uppercase tracking-wider">{t('emailLabel')}</p>
+              <a href={`mailto:${contactInfo.email}`} className="text-(--color-on-surface) font-medium hover:text-primary transition-colors">
                 {contactInfo.email}
               </a>
             </div>
@@ -222,119 +184,74 @@ export function ContactForm() {
       {/* ── Columna derecha (7 cols): formulario glass ── */}
       <div className="lg:col-span-7">
         <div className="relative">
-          {/* Decoración de fondo */}
-          <div
-            className="absolute -top-10 -right-10 w-64 h-64 bg-secondary-container/30 blur-[80px] rounded-full -z-10 pointer-events-none"
-            aria-hidden="true"
-          />
+          <div className="absolute -top-10 -right-10 w-64 h-64 bg-secondary-container/30 blur-[80px] rounded-full -z-10 pointer-events-none" aria-hidden="true" />
 
           {isSuccess ? (
             <div className="glass rounded-(--radius-xl) p-10 text-center flex flex-col items-center gap-5 shadow-ambient">
               <span className="text-5xl" aria-hidden="true">✅</span>
-              <h2 className="text-headline-md text-primary">
-                ¡Reserva enviada!
-              </h2>
-              <p className="text-on-surface-variant text-sm">
-                Recibiste un correo con los detalles. Te respondemos en menos de 24 horas.
-              </p>
-              <Button variant="ghost" size="sm" onClick={reset}>
-                Enviar otra consulta
-              </Button>
+              <h2 className="text-headline-md text-primary">{t('success.title')}</h2>
+              <p className="text-on-surface-variant text-sm">{t('success.description')}</p>
+              <Button variant="ghost" size="sm" onClick={reset}>{t('success.another')}</Button>
             </div>
           ) : (
             <form
               onSubmit={handleSubmit}
               className="glass border border-outline-variant/20 rounded-(--radius-xl) p-10 flex flex-col gap-7 shadow-ambient"
-              aria-label="Formulario de reserva"
+              aria-label={tf('ariaLabel')}
             >
-              {/* Nombre + Teléfono */}
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div className="flex flex-col gap-2">
-                  <label htmlFor="cf-nombre" className={labelClass}>
-                    Nombre Completo
-                  </label>
+                  <label htmlFor="cf-nombre" className={labelClass}>{tf('fullName')}</label>
                   <input
-                    id="cf-nombre"
-                    name="nombre"
-                    type="text"
-                    value={form.nombre}
-                    onChange={handleTextChange}
-                    placeholder="Ej: Juan Pérez"
-                    required
-                    className={inputClass}
-                    aria-required="true"
+                    id="cf-nombre" name="nombre" type="text"
+                    value={form.nombre} onChange={handleTextChange}
+                    placeholder={tf('fullNamePlaceholder')} required
+                    className={inputClass} aria-required="true"
                   />
                 </div>
                 <div className="flex flex-col gap-2">
-                  <label htmlFor="cf-telefono" className={labelClass}>
-                    Teléfono
-                  </label>
+                  <label htmlFor="cf-telefono" className={labelClass}>{tf('phone')}</label>
                   <input
-                    id="cf-telefono"
-                    name="telefono"
-                    type="tel"
-                    value={form.telefono}
-                    onChange={handleTextChange}
-                    placeholder="+56 9 ..."
-                    required
-                    className={inputClass}
-                    aria-required="true"
+                    id="cf-telefono" name="telefono" type="tel"
+                    value={form.telefono} onChange={handleTextChange}
+                    placeholder={tf('phonePlaceholder')} required
+                    className={inputClass} aria-required="true"
                   />
                 </div>
               </div>
 
-              {/* Dirección */}
               <div className="flex flex-col gap-2">
-                <label htmlFor="cf-direccion" className={labelClass}>
-                  Dirección de Servicio
-                </label>
+                <label htmlFor="cf-direccion" className={labelClass}>{tf('address')}</label>
                 <div className="relative">
-                  <span
-                    className="absolute left-4 top-1/2 -translate-y-1/2 text-on-surface-variant/60 pointer-events-none"
-                    aria-hidden="true"
-                  >
+                  <span className="absolute left-4 top-1/2 -translate-y-1/2 text-on-surface-variant/60 pointer-events-none" aria-hidden="true">
                     <Icon name="map-pin" size={18} />
                   </span>
                   <input
-                    id="cf-direccion"
-                    name="direccion"
-                    type="text"
-                    value={form.direccion}
-                    onChange={handleTextChange}
-                    placeholder="Calle, número, ciudad"
-                    required
-                    className={inputClass.replace('px-4', 'pl-12 pr-4')}
-                    aria-required="true"
+                    id="cf-direccion" name="direccion" type="text"
+                    value={form.direccion} onChange={handleTextChange}
+                    placeholder={tf('addressPlaceholder')} required
+                    className={inputClass.replace('px-4', 'pl-12 pr-4')} aria-required="true"
                   />
                 </div>
               </div>
 
-              {/* Tipo de Vehículo + Fecha */}
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div className="flex flex-col gap-2">
-                  <label htmlFor="cf-vehiculo" className={labelClass}>
-                    Tipo de Vehículo
-                  </label>
+                  <label htmlFor="cf-vehiculo" className={labelClass}>{tf('vehicleType')}</label>
                   <select
-                    id="cf-vehiculo"
-                    name="tipoVehiculo"
-                    value={form.tipoVehiculo}
-                    onChange={handleTextChange}
-                    required
-                    className={[inputClass, 'appearance-none cursor-pointer'].join(' ')}
-                    aria-required="true"
+                    id="cf-vehiculo" name="tipoVehiculo"
+                    value={form.tipoVehiculo} onChange={handleTextChange}
+                    required className={[inputClass, 'appearance-none cursor-pointer'].join(' ')} aria-required="true"
                   >
-                    <option value="" disabled>Seleccionar...</option>
-                    <option>Turismo / Compacto</option>
-                    <option>SUV / Berlina</option>
-                    <option>4x4 / Furgoneta</option>
-                    <option>Motocicleta</option>
+                    <option value="" disabled>{tf('vehiclePlaceholder')}</option>
+                    <option>{tf('vehicleCompact')}</option>
+                    <option>{tf('vehicleSuv')}</option>
+                    <option>{tf('vehicle4x4')}</option>
+                    <option>{tf('vehicleMoto')}</option>
                   </select>
                 </div>
                 <div className="flex flex-col gap-2">
-                  <label htmlFor="cf-fecha" className={labelClass}>
-                    Fecha Preferida
-                  </label>
+                  <label htmlFor="cf-fecha" className={labelClass}>{tf('preferredDate')}</label>
                   <DatePicker
                     id="cf-fecha"
                     value={form.fechaPreferida}
@@ -345,11 +262,8 @@ export function ContactForm() {
                 </div>
               </div>
 
-              {/* Servicios — checkboxes */}
               <fieldset>
-                <legend className={[labelClass, 'block mb-3'].join(' ')}>
-                  Servicios Necesarios
-                </legend>
+                <legend className={[labelClass, 'block mb-3'].join(' ')}>{tf('servicesLabel')}</legend>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
                   {serviciosOpciones.map((servicio) => {
                     const checked = form.serviciosSeleccionados.includes(servicio)
@@ -365,29 +279,24 @@ export function ContactForm() {
                         ].join(' ')}
                       >
                         <input
-                          type="checkbox"
-                          checked={checked}
+                          type="checkbox" checked={checked}
                           onChange={() => handleCheckbox(servicio)}
                           className="w-5 h-5 rounded accent-primary cursor-pointer"
                           aria-label={servicio}
                         />
-                        <span className="text-sm font-medium text-(--color-on-surface)">
-                          {servicio}
-                        </span>
+                        <span className="text-sm font-medium text-(--color-on-surface)">{servicio}</span>
                       </label>
                     )
                   })}
                 </div>
               </fieldset>
 
-              {/* Error message */}
               {isError && (
                 <p className="text-center text-sm text-error bg-error-container rounded-(--radius-md) px-4 py-3">
-                  {error instanceof Error ? error.message : 'Hubo un error al enviar. Intentá de nuevo.'}
+                  {error instanceof Error ? error.message : tf('genericError')}
                 </p>
               )}
 
-              {/* Submit */}
               <button
                 type="submit"
                 disabled={!isFormValid || isPending}
@@ -400,19 +309,13 @@ export function ContactForm() {
                   'disabled:opacity-60 disabled:cursor-not-allowed disabled:scale-100',
                 ].join(' ')}
               >
-                {isPending ? 'Enviando...' : 'Confirmar Reserva'}
+                {isPending ? tf('submitting') : tf('submit')}
                 {!isPending && (
-                  <Icon
-                    name="calendar"
-                    size={20}
-                    className="transition-transform group-hover/btn:translate-x-1"
-                  />
+                  <Icon name="calendar" size={20} className="transition-transform group-hover/btn:translate-x-1" />
                 )}
               </button>
 
-              <p className="text-center text-xs text-on-surface-variant/60">
-                Te enviaremos la confirmación por correo electrónico.
-              </p>
+              <p className="text-center text-xs text-on-surface-variant/60">{tf('confirmNote')}</p>
             </form>
           )}
         </div>

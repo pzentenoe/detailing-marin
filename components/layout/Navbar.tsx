@@ -1,18 +1,19 @@
 'use client'
 
 // ============================================================
-// Navbar — Glassmorphic con dark mode toggle
+// Navbar — Glassmorphic con dark mode toggle + language selector
 // Sticky con efecto al scroll, mobile hamburger menu
 // ============================================================
 
 import { useState, useEffect } from 'react'
 import Image from 'next/image'
-import Link from 'next/link'
-import { usePathname } from 'next/navigation'
 import { Menu, Moon, Sun, X } from 'lucide-react'
-import { navLinks, WA_MESSAGE } from '@/lib/services'
+import { useTranslations } from 'next-intl'
+import { Link, usePathname } from '@/i18n/navigation'
+import { navHrefs, WA_MESSAGE } from '@/lib/services'
 import { Button } from '@/components/ui/Button'
 import { useTheme } from '@/components/layout/ThemeProvider'
+import { LanguageSelector } from '@/components/layout/LanguageSelector'
 
 const WA_NUMBER = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER ?? '56954451422'
 const WA_URL = `https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(WA_MESSAGE)}`
@@ -22,6 +23,7 @@ export function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false)
   const pathname = usePathname()
   const { theme, toggle } = useTheme()
+  const t = useTranslations('nav')
 
   useEffect(() => {
     const handleScroll = () => setIsScrolled(window.scrollY > 20)
@@ -29,10 +31,7 @@ export function Navbar() {
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
-  // Cerrar menu al cambiar de ruta
-  useEffect(() => {
-    setIsOpen(false)
-  }, [pathname])
+  // Close menu on navigation — handled via Link onClick instead of effect
 
   return (
     <header
@@ -42,7 +41,7 @@ export function Navbar() {
         'border-b',
         isScrolled
           ? 'glass shadow-ambient border-outline-variant/20'
-          : 'bg-transparent border-transparent',
+          : 'bg-surface/80 backdrop-blur-md border-outline-variant/10',
       ]
         .filter(Boolean)
         .join(' ')}
@@ -55,13 +54,14 @@ export function Navbar() {
           <Link
             href="/"
             className="flex items-center gap-3 group"
-            aria-label="Detailing Marin — Ir al inicio"
+            aria-label={t('logoAria')}
           >
             <Image
               src="/icon/logo-removebg.png"
               alt="Nadia Marin Detailing"
               width={72}
               height={72}
+              style={{ height: 'auto' }}
               className="object-contain drop-shadow-md group-hover:scale-105 transition-transform duration-200"
               priority
             />
@@ -72,7 +72,7 @@ export function Navbar() {
 
           {/* Nav Desktop */}
           <nav className="hidden md:flex items-center gap-8" aria-label="Navegación principal">
-            {navLinks.map((link) => {
+            {navHrefs.map((link) => {
               const isActive = pathname === link.href
               return (
                 <Link
@@ -90,20 +90,23 @@ export function Navbar() {
                     .join(' ')}
                   aria-current={isActive ? 'page' : undefined}
                 >
-                  {link.label}
+                  {t(link.labelKey)}
                 </Link>
               )
             })}
           </nav>
 
           {/* CTA Desktop */}
-          <div className="hidden md:flex items-center gap-3">
+          <div className="hidden md:flex items-center gap-2">
+            {/* Language selector */}
+            <LanguageSelector />
+
             {/* Dark mode toggle */}
             <button
               onClick={toggle}
               className="p-2 rounded-md text-(--color-on-surface) hover:bg-surface-container transition-all duration-200 hover:scale-110 active:scale-95"
-              aria-label={theme === 'dark' ? 'Cambiar a modo claro' : 'Cambiar a modo oscuro'}
-              title={theme === 'dark' ? 'Modo claro' : 'Modo oscuro'}
+              aria-label={theme === 'dark' ? t('lightMode') : t('darkMode')}
+              title={theme === 'dark' ? t('lightMode') : t('darkMode')}
             >
               {theme === 'dark'
                 ? <Sun size={20} aria-hidden="true" className="text-primary-fixed" />
@@ -113,24 +116,20 @@ export function Navbar() {
             <Button
               variant="primary"
               size="sm"
-              onClick={() => {
-                window.open(
-                  WA_URL,
-                  '_blank',
-                )
-              }}
-              aria-label="Agendar servicio por WhatsApp"
+              onClick={() => window.open(WA_URL, '_blank')}
+              aria-label={t('ctaAria')}
             >
-              Agendar Servicio
+              {t('cta')}
             </Button>
           </div>
 
-          {/* Dark mode toggle (mobile) + Hamburger */}
+          {/* Mobile: language + dark mode + hamburger */}
           <div className="md:hidden flex items-center gap-1">
+            <LanguageSelector />
             <button
               onClick={toggle}
               className="p-2 rounded-md text-(--color-on-surface) hover:bg-surface-container transition-all duration-200 hover:scale-110 active:scale-95"
-              aria-label={theme === 'dark' ? 'Cambiar a modo claro' : 'Cambiar a modo oscuro'}
+              aria-label={theme === 'dark' ? t('lightMode') : t('darkMode')}
             >
               {theme === 'dark'
                 ? <Sun size={20} aria-hidden="true" className="text-primary-fixed" />
@@ -140,7 +139,7 @@ export function Navbar() {
               className="p-2 rounded-md text-(--color-on-surface) hover:bg-surface-container-high transition-colors"
               onClick={() => setIsOpen(!isOpen)}
               aria-expanded={isOpen}
-              aria-label={isOpen ? 'Cerrar menú' : 'Abrir menú'}
+              aria-label={isOpen ? t('closeMenu') : t('openMenu')}
               aria-controls="mobile-menu"
             >
               {isOpen ? <X size={24} aria-hidden="true" /> : <Menu size={24} aria-hidden="true" />}
@@ -165,12 +164,13 @@ export function Navbar() {
           className="px-4 py-4 flex flex-col gap-4"
           aria-label="Navegación móvil"
         >
-          {navLinks.map((link) => {
+          {navHrefs.map((link) => {
             const isActive = pathname === link.href
             return (
               <Link
                 key={link.href}
                 href={link.href}
+                onClick={() => setIsOpen(false)}
                 className={[
                   'text-base font-medium py-2 transition-colors',
                   isActive
@@ -181,7 +181,7 @@ export function Navbar() {
                   .join(' ')}
                 aria-current={isActive ? 'page' : undefined}
               >
-                {link.label}
+                {t(link.labelKey)}
               </Link>
             )
           })}
@@ -189,15 +189,10 @@ export function Navbar() {
             variant="primary"
             size="md"
             fullWidth
-            onClick={() =>
-              window.open(
-                WA_URL,
-                '_blank',
-              )
-            }
-            aria-label="Agendar servicio por WhatsApp"
+            onClick={() => window.open(WA_URL, '_blank')}
+            aria-label={t('ctaAria')}
           >
-            Agendar Servicio
+            {t('cta')}
           </Button>
         </nav>
       </div>

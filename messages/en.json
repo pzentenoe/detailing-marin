@@ -1,0 +1,273 @@
+{
+  "nav": {
+    "home": "Home",
+    "services": "Services",
+    "contact": "Contact",
+    "cta": "Book Service",
+    "ctaAria": "Book service via WhatsApp",
+    "openMenu": "Open menu",
+    "closeMenu": "Close menu",
+    "lightMode": "Switch to light mode",
+    "darkMode": "Switch to dark mode",
+    "logoAria": "Detailing Marin — Go to home",
+    "selectLanguage": "Select language"
+  },
+  "hero": {
+    "badge1Stat": "90%",
+    "badge1Label": "Water savings",
+    "badge2Stat": "100%",
+    "badge2Label": "Biodegradable",
+    "headline1": "Your vehicle,",
+    "headline2": "like the first day.",
+    "description": "Professional detailing and polishing for your car, right at your doorstep. We care for your vehicle and the environment using hydrophobic technology and biodegradable products.",
+    "cta1": "Book Service",
+    "cta1Aria": "Book service via WhatsApp",
+    "cta2": "See all services →",
+    "stat1Value": "+500",
+    "stat1Label": "Cars served",
+    "stat2Value": "5⭐",
+    "stat2Label": "Average rating",
+    "stat3Value": "0km",
+    "stat3Label": "We come to you",
+    "overlayTitle": "Showroom result",
+    "overlaySubtitle": "Long-lasting protection",
+    "sectionAria": "Hero section",
+    "imageAlt": "Hydrophobic water beading on freshly detailed paint — Detailing Marin result"
+  },
+  "features": {
+    "label": "Why choose us",
+    "heading": "We raise the standard",
+    "description": "Advanced techniques and impeccable results, with the lowest possible environmental impact.",
+    "items": {
+      "eco": {
+        "title": "100% Eco-Friendly",
+        "description": "We use premium biodegradable products that protect both the environment and your vehicle's paint."
+      },
+      "domicilio": {
+        "title": "Mobile Service",
+        "description": "We bring all the equipment right to your home or office door for your complete convenience."
+      },
+      "premium": {
+        "title": "Premium Quality",
+        "description": "Meticulous attention to detail and showroom results that protect your investment long-term."
+      }
+    }
+  },
+  "servicesPreview": {
+    "label": "What we do",
+    "heading": "Specialized Services",
+    "description": "Advanced techniques and impeccable results, with the lowest possible environmental impact.",
+    "viewAll": "See all services →",
+    "viewAllAria": "See all Detailing Marin services"
+  },
+  "servicesGrid": {
+    "badge": "Premium Care",
+    "heading": "Our Mobile Services",
+    "subheading": "We bring the best automotive spa directly to your door.",
+    "requestBtn": "Request",
+    "requestServiceBtn": "Request Service",
+    "ctaBannerTitle": "All our services include travel to your location in Maipú and surrounding areas at no extra cost.",
+    "ctaBannerDesc": "Absolute convenience for you, maximum excellence for your car.",
+    "bookNow": "Book Now",
+    "viewCoverage": "View Coverage"
+  },
+  "services": {
+    "lavado-ecologico": {
+      "title": "Eco Wash",
+      "shortDescription": "Deep cleaning with minimal water waste.",
+      "fullDescription": "Deep cleaning using low-water-consumption technology and biodegradable products that protect both the paint and the environment. Up to 90% water savings vs. traditional washing.",
+      "features": [
+        "100% biodegradable products",
+        "Up to 90% water savings",
+        "Paint protection included",
+        "Interior and exterior cleaning"
+      ]
+    },
+    "pulido-abrillantador": {
+      "title": "Paint Polish & Shine",
+      "shortDescription": "Original mirror shine restoration.",
+      "fullDescription": "We restore your vehicle's original shine by eliminating micro-scratches and enhancing color depth using professional-grade paint correction techniques.",
+      "features": [
+        "Micro-scratch removal",
+        "Color depth enhancement",
+        "UV paint sealing",
+        "Showroom finish"
+      ]
+    },
+    "pulido-focos": {
+      "title": "Headlight Restoration",
+      "shortDescription": "Restore clarity and driving safety.",
+      "fullDescription": "Restore the clarity and safety of your headlights. We eliminate yellowing and haziness with UV sealing that extends the result for up to 12 months.",
+      "features": [
+        "Yellowing removal",
+        "Long-lasting UV seal",
+        "Improved night visibility",
+        "12-month guarantee"
+      ]
+    },
+    "limpieza-motor": {
+      "title": "Engine Clean",
+      "shortDescription": "Spotless dry technical cleaning.",
+      "fullDescription": "Detailed technical cleaning that eliminates accumulated grease and grime, protecting hoses and plastic components without using water. Keep your car's heart in optimal condition.",
+      "features": [
+        "Waterless dry cleaning",
+        "Anti-corrosion treatment",
+        "Hose and plastic protection",
+        "Protective dressing applied"
+      ]
+    }
+  },
+  "cta": {
+    "badgeStat": "Mobile",
+    "badgeLabel": "no travel surcharge",
+    "heading": "Book your mobile service today",
+    "description": "We offer a premium automotive care service, respecting the environment and valuing your time. Maipú and surrounding areas.",
+    "whatsapp": "WhatsApp",
+    "email": "Send Email",
+    "whatsappAria": "Contact via WhatsApp to book",
+    "emailAria": "Send email to Detailing Marin",
+    "sectionAria": "Call to action"
+  },
+  "contact": {
+    "badge": "Premium Mobile Detailing",
+    "heading": "Book your mobile wash",
+    "description": "We bring luxury car care right to your door. Professional equipment and biodegradable products for an impeccable finish without leaving home.",
+    "howItWorks": {
+      "title": "How it works",
+      "step1Title": "1. Choose your date",
+      "step1Desc": "Select the day and time that works best for you.",
+      "step2Title": "2. We confirm your vehicle",
+      "step2Desc": "Tell us your car type and the specific services you need.",
+      "step3Title": "3. Eco-Luxe Wash",
+      "step3Desc": "We arrive at your location and perform the full treatment."
+    },
+    "whatsappLabel": "Direct WhatsApp",
+    "emailLabel": "Contact Email",
+    "whatsappAria": "Contact via WhatsApp directly",
+    "form": {
+      "ariaLabel": "Booking form",
+      "fullName": "Full Name",
+      "fullNamePlaceholder": "E.g.: John Smith",
+      "phone": "Phone",
+      "phonePlaceholder": "+1 ...",
+      "address": "Service Address",
+      "addressPlaceholder": "Street, number, city",
+      "vehicleType": "Vehicle Type",
+      "vehiclePlaceholder": "Select...",
+      "vehicleCompact": "Sedan / Compact",
+      "vehicleSuv": "SUV / Saloon",
+      "vehicle4x4": "4x4 / Van",
+      "vehicleMoto": "Motorcycle",
+      "preferredDate": "Preferred Date",
+      "servicesLabel": "Services Needed",
+      "service1": "Eco Exterior Wash",
+      "service2": "Deep Interior Clean",
+      "service3": "Premium Wax",
+      "service4": "Ozone Treatment",
+      "submit": "Confirm Booking",
+      "submitting": "Sending...",
+      "confirmNote": "We will send you a confirmation email.",
+      "genericError": "There was an error sending. Please try again."
+    },
+    "success": {
+      "title": "Booking sent!",
+      "description": "You'll receive an email with the details. We'll reply within 24 hours.",
+      "another": "Send another inquiry"
+    },
+    "banner": {
+      "title": "We care for the details others ignore.",
+      "description": "Our rinseless wash technique saves up to 200 litres of water per vehicle.",
+      "imageAlt": "Hydrophobic paint detail with water beads — Detailing Marin"
+    }
+  },
+  "footer": {
+    "tagline": "Premium mobile automotive detailing. We care for your vehicle and the planet.",
+    "exploreTitle": "Explore",
+    "contactTitle": "Contact",
+    "followTitle": "Follow us",
+    "copyright": "© {year} Detailing Marin. Eco-Luxe Automotive Care.",
+    "privacy": "Privacy",
+    "terms": "Terms",
+    "footerAria": "Footer",
+    "footerNavAria": "Footer links",
+    "legalNavAria": "Legal links"
+  },
+  "privacidad": {
+    "badge": "Legal",
+    "heading": "Privacy Policy",
+    "lastUpdated": "Last updated: April 2026",
+    "s1Title": "1. Information we collect",
+    "s1Body": "When you fill out the contact or booking form on our site, we collect the following information: full name, phone number, service address, vehicle type, preferred date, and selected services. This information is provided voluntarily by the user.",
+    "s2Title": "2. Use of information",
+    "s2Intro": "The information collected is used exclusively to:",
+    "s2Li1": "Coordinate and confirm the requested service.",
+    "s2Li2": "Contact you to verify availability and service details.",
+    "s2Li3": "Send you communications related to your booking.",
+    "s2Footer": "We do not sell, rent, or share your personal information with third parties for commercial purposes.",
+    "s3Title": "3. Storage and security",
+    "s3Body": "Form data is transmitted securely via encrypted email (SMTP with TLS). We do not store personal information in our own databases beyond the confirmation email received.",
+    "s4Title": "4. WhatsApp",
+    "s4Body": "Our site includes a direct link to WhatsApp. By clicking it, you will be redirected to the WhatsApp application, whose use is subject to WhatsApp's Privacy Policy.",
+    "s4LinkText": "WhatsApp Privacy Policy",
+    "s5Title": "5. Your rights",
+    "s5Body": "You have the right to request access, rectification, or deletion of your personal data at any time. To do so, contact us directly at",
+    "s6Title": "6. Changes to this policy",
+    "s6Body": "We reserve the right to update this privacy policy at any time. Changes will take effect immediately upon publication on this page."
+  },
+  "terminos": {
+    "badge": "Legal",
+    "heading": "Terms and Conditions",
+    "lastUpdated": "Last updated: April 2026",
+    "s1Title": "1. Acceptance of terms",
+    "s1Body": "By using the Detailing Marin website and requesting any of our services, you accept these terms and conditions in their entirety. If you disagree with any part, please do not use our services.",
+    "s2Title": "2. Service description",
+    "s2Body": "Detailing Marin offers mobile automotive detailing and cleaning services in the Maipú area and surroundings. Services include eco wash, polishing, headlight treatment, and engine cleaning, among others described on our site.",
+    "s3Title": "3. Bookings and confirmations",
+    "s3Body": "Bookings made through the web form or WhatsApp are service requests subject to availability. A booking is considered confirmed only when a Detailing Marin representative explicitly validates it in writing (via WhatsApp or email).",
+    "s4Title": "4. Cancellations and changes",
+    "s4Body": "If you need to cancel or reschedule a service, please notify us at least 24 hours in advance. Late cancellations may be subject to a 20% charge of the service value to cover travel costs.",
+    "s5Title": "5. Client responsibilities",
+    "s5Intro": "The client is responsible for:",
+    "s5Li1": "Providing access to the vehicle at the agreed date and location.",
+    "s5Li2": "Informing us in advance about pre-existing damage to the paint or other surfaces.",
+    "s5Li3": "Removing valuables from the vehicle interior before the service.",
+    "s6Title": "6. Limitation of liability",
+    "s6Body": "Detailing Marin is not liable for undisclosed pre-existing damage or weather conditions that prevent proper service execution. In the event of damage caused directly by our operation, we commit to evaluating and resolving the incident directly with the client.",
+    "s7Title": "7. Prices and payments",
+    "s7Body": "Prices published on the site are indicative in Chilean pesos (CLP) and may vary depending on the vehicle's condition, size, and additional services requested. The final price is confirmed before the service begins. Payment is made upon completion of the work.",
+    "s8Title": "8. Modifications",
+    "s8Body": "Detailing Marin reserves the right to modify these terms at any time. Modifications will be published on this page and will take effect immediately.",
+    "s9Title": "9. Contact",
+    "s9Prefix": "For questions about these terms, you can contact us at",
+    "s9Mid": "or via WhatsApp at",
+    "s9Phone": "+56 9 5445 1422"
+  },
+  "metadata": {
+    "home": {
+      "title": "Mobile car detailing in Maipú",
+      "description": "Detailing Marin offers eco wash, polishing, and mobile automotive detailing in Maipú. We care for your car with premium products and attention to detail.",
+      "ogTitle": "Mobile car detailing in Maipú",
+      "ogDescription": "Eco wash, polishing, and premium mobile detailing in Maipú and surrounding areas."
+    },
+    "services": {
+      "title": "Car detailing services in Maipú",
+      "description": "Discover Detailing Marin's services in Maipú: eco wash, paint polishing, headlight restoration, and engine cleaning — all mobile.",
+      "ogTitle": "Car detailing services in Maipú",
+      "ogDescription": "Eco wash, paint polish, headlight restoration, and engine cleaning — mobile service in Maipú."
+    },
+    "contact": {
+      "title": "Contact to book detailing in Maipú",
+      "description": "Contact Detailing Marin to quote or book mobile car detailing in Maipú and surroundings. We reply within 24 hours.",
+      "ogTitle": "Contact to book detailing in Maipú",
+      "ogDescription": "Quote and book mobile car detailing services with Detailing Marin."
+    },
+    "privacy": {
+      "title": "Privacy Policy",
+      "description": "Detailing Marin's privacy policy. How we collect, use, and protect your personal information."
+    },
+    "terms": {
+      "title": "Terms and Conditions",
+      "description": "Detailing Marin's terms and conditions. Learn the conditions under which we provide our services."
+    }
+  }
+}

@@ -5,6 +5,28 @@
 
 import type { Service, NavLink, ContactInfo } from '@/types'
 
+// Non-translatable service metadata — used by i18n-aware components
+export const servicesConfig = [
+  { id: '1', slug: 'lavado-ecologico',    icon: 'droplets'  as const, duration: '60–90 min',  price: 'Desde $45.000', highlight: true  },
+  { id: '2', slug: 'pulido-abrillantador', icon: 'sparkles'  as const, duration: '90–120 min', price: 'Desde $65.000'                   },
+  { id: '3', slug: 'pulido-focos',         icon: 'zap'       as const, duration: '45–60 min',  price: 'Desde $35.000'                   },
+  { id: '4', slug: 'limpieza-motor',       icon: 'settings'  as const, duration: '60–90 min',  price: 'Desde $55.000'                   },
+] as const
+
+// Non-translatable feature (pillar) metadata — used by i18n-aware components
+export const featuresConfig = [
+  { id: 'eco',       icon: 'leaf'    as const },
+  { id: 'domicilio', icon: 'map-pin' as const },
+  { id: 'premium',   icon: 'award'   as const },
+] as const
+
+// Nav hrefs — labels come from i18n messages
+export const navHrefs = [
+  { href: '/', labelKey: 'home'     as const },
+  { href: '/servicios', labelKey: 'services' as const },
+  { href: '/contacto',  labelKey: 'contact'  as const },
+] as const
+
 export const services: Service[] = [
   {
     id: '1',
