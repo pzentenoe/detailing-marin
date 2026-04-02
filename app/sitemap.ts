@@ -1,7 +1,7 @@
 import type { MetadataRoute } from 'next'
 import { absoluteUrl } from '@/lib/seo'
 
-const lastModified = new Date()
+const lastModified = new Date('2026-04-02')
 
 const routes = [
   { path: '/',           enPath: '/en',            changeFrequency: 'weekly'  as const, priority: 1,   images: true },

@@ -17,6 +17,7 @@ export async function ServicesPreview() {
     ...s,
     title: ts(`${s.slug}.title`),
     shortDescription: ts(`${s.slug}.shortDescription`),
+    image: ('image' in s ? s.image : undefined) as string | undefined,
   }))
 
   const [featured, ...rest] = services
@@ -41,67 +42,93 @@ export async function ServicesPreview() {
       {/* Grid principal: 2 columnas desktop */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
 
-        {/* Tarjeta grande — hydro-card con imagen de fondo */}
+        {/* Tarjeta grande — h-full para igualar altura de la columna derecha */}
         <Link
           href={`/servicios#${featured.slug}`}
-          className="group relative rounded-(--radius-xl) overflow-hidden cursor-pointer block"
+          className="group rounded-(--radius-xl) overflow-hidden cursor-pointer block h-full"
           aria-label={`Ver servicio: ${featured.title}`}
         >
-          <div className="relative w-full h-[420px]">
+          <div className="relative w-full h-full min-h-[480px]">
             <Image
-              src="/images/hero-detailing.webp"
-              alt={featured.title}
+              src={featured.image!}
+              alt={`${featured.title} — resultado Detailing Marin`}
               fill
-              className="object-cover brightness-75 group-hover:brightness-90 transition-all duration-500"
+              className="object-cover brightness-95 dark:brightness-75 group-hover:scale-105 group-hover:brightness-100 dark:group-hover:brightness-90 transition-all duration-700"
               sizes="(max-width: 1024px) 100vw, 50vw"
+              priority
             />
+
+            {/* Badge glassmorphic — esquina superior */}
+            <div className="absolute top-5 left-5 z-10">
+              <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/15 backdrop-blur-sm border border-white/25 text-white text-xs font-semibold tracking-wide">
+                ✦ {t('featuredBadge')}
+              </span>
+            </div>
+
+            {/* Gradiente cinematic — fade solo en zona inferior */}
             <div
               className="absolute inset-0"
-              style={{
-                background: 'linear-gradient(135deg, rgba(198,233,232,0.25) 0%, rgba(255,255,255,0.05) 100%)',
-                backdropFilter: 'blur(1px)',
-              }}
+              style={{ background: 'linear-gradient(to top, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.3) 35%, transparent 60%)' }}
               aria-hidden="true"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" aria-hidden="true" />
-          </div>
-          <div className="absolute bottom-0 left-0 right-0 p-8 text-white">
-            <h3 className="font-display text-3xl font-bold mb-2">{featured.title}</h3>
-            <p className="text-white/80 max-w-sm mb-6 text-sm leading-relaxed">{featured.shortDescription}</p>
-            <span className={[
-              'inline-flex items-center gap-2 px-6 py-3 rounded-full',
-              'bg-white text-primary font-bold text-sm',
-              'group-hover:bg-primary group-hover:text-white transition-colors duration-300',
-            ].join(' ')}>
-              {featured.price} ›
-            </span>
+
+            {/* Texto overlaid */}
+            <div className="absolute bottom-0 left-0 right-0 p-8">
+              <h3
+                className="font-display text-3xl font-bold mb-2 text-white"
+                style={{ textShadow: '0 2px 12px rgba(0,0,0,0.4)' }}
+              >
+                {featured.title}
+              </h3>
+              <p className="text-white/75 max-w-sm mb-6 text-sm leading-relaxed">{featured.shortDescription}</p>
+              <span className={[
+                'inline-flex items-center gap-2 px-6 py-3 rounded-full',
+                'bg-white text-primary dark:text-on-primary font-bold text-sm',
+                'group-hover:bg-primary group-hover:text-white transition-colors duration-300',
+              ].join(' ')}>
+                {featured.price} ›
+              </span>
+            </div>
           </div>
         </Link>
 
-        {/* Grid 3 tarjetas + CTA */}
+        {/* Grid tarjetas pequeñas + CTA */}
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 content-start">
           {rest.map((service) => (
             <Link
               key={service.id}
               href={`/servicios#${service.slug}`}
-              className="group relative rounded-(--radius-xl) overflow-hidden cursor-pointer block"
+              className="group rounded-(--radius-xl) overflow-hidden cursor-pointer block"
               aria-label={`Ver servicio: ${service.title}`}
             >
               <div className="relative w-full h-52">
-                <Image
-                  src="/images/hero-detailing.webp"
-                  alt={service.title}
-                  fill
-                  className="object-cover grayscale brightness-75 group-hover:grayscale-0 group-hover:brightness-90 transition-all duration-500"
-                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" aria-hidden="true" />
-              </div>
-              <div className="absolute bottom-0 left-0 right-0 p-5 text-white">
-                <h3 className="font-display font-bold text-lg mb-1">{service.title}</h3>
-                {service.price && (
-                  <span className="text-white/80 text-xs font-medium">{service.price}</span>
+                {service.image ? (
+                  <>
+                    <Image
+                      src={service.image}
+                      alt={`${service.title} — resultado Detailing Marin`}
+                      fill
+                      className="object-cover scale-110 brightness-90 dark:brightness-75 group-hover:scale-100 group-focus-within:scale-100 group-hover:brightness-100 group-focus-within:brightness-100 dark:group-hover:brightness-90 dark:group-focus-within:brightness-90 transition-all duration-700 ease-out"
+                      sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
+                    />
+                    <div
+                      className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent"
+                      aria-hidden="true"
+                    />
+                  </>
+                ) : (
+                  <div
+                    className="absolute inset-0 gradient-primary opacity-90 group-hover:opacity-100 transition-opacity duration-500"
+                    aria-hidden="true"
+                  />
                 )}
+                {/* Texto overlaid */}
+                <div className="absolute bottom-0 left-0 right-0 p-5">
+                  <h3 className="font-display font-bold text-lg mb-1 text-white">{service.title}</h3>
+                  {service.price && (
+                    <span className="text-white/80 text-xs font-medium">{service.price}</span>
+                  )}
+                </div>
               </div>
             </Link>
           ))}
@@ -110,7 +137,7 @@ export async function ServicesPreview() {
           <Link
             href="/servicios"
             className={[
-              'group relative rounded-(--radius-xl) overflow-hidden h-52',
+              'group rounded-(--radius-xl) overflow-hidden h-52',
               'bg-surface-container-low hover:bg-surface-container',
               'flex flex-col items-center justify-center gap-3',
               'border border-outline-variant/20 transition-all duration-300',

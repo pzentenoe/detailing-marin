@@ -58,7 +58,8 @@
     "heading": "Servicios Especializados",
     "description": "Técnicas avanzadas y resultados impecables, con el menor impacto posible en el medio ambiente.",
     "viewAll": "Ver todos los servicios →",
-    "viewAllAria": "Ver todos los servicios de Detailing Marin"
+    "viewAllAria": "Ver todos los servicios de Detailing Marin",
+    "featuredBadge": "Servicio destacado"
   },
   "servicesGrid": {
     "badge": "Premium Care",
@@ -114,6 +115,17 @@
         "Tratamiento anti-corrosión",
         "Protección de mangueras y plásticos",
         "Aplicación de dressing protector"
+      ]
+    },
+    "lavado-tapiz": {
+      "title": "Lavado de Tapiz",
+      "shortDescription": "Restauración profunda del interior y asientos.",
+      "fullDescription": "Limpieza profunda de tapizado, asientos y alfombras con equipamiento especializado. Eliminamos manchas, olores y suciedad incrustada devolviendo el interior a su estado original.",
+      "features": [
+        "Extracción de manchas profundas",
+        "Eliminación de olores",
+        "Tratamiento de alfombras y pisos",
+        "Acondicionador de cuero (si aplica)"
       ]
     }
   },
@@ -190,7 +202,10 @@
     "terms": "Términos",
     "footerAria": "Pie de página",
     "footerNavAria": "Links del footer",
-    "legalNavAria": "Links legales"
+    "legalNavAria": "Links legales",
+    "ecoChipLabel": "Ahorro de agua",
+    "hours": "Lunes a Sábado, 9:00 – 19:00",
+    "zone": "Maipú y alrededores"
   },
   "privacidad": {
     "badge": "Legal",
@@ -241,6 +256,23 @@
     "s9Prefix": "Para consultas sobre estos términos, podés contactarnos en",
     "s9Mid": "o por WhatsApp al",
     "s9Phone": "+56 9 5445 1422"
+  },
+  "results": {
+    "label": "Resultados reales",
+    "heading": "El antes y después habla por sí solo",
+    "description": "Trabajos reales en vehículos reales. Así deja el auto Detailing Marin.",
+    "before": "Antes",
+    "after": "Después",
+    "motorLabel": "Limpieza de motor",
+    "motorBeforeAlt": "Motor sucio con acumulación de grasa antes del servicio Detailing Marin",
+    "motorAfterAlt": "Motor completamente limpio y negro brillante después del servicio Detailing Marin",
+    "tapizLabel": "Lavado de tapiz",
+    "asientosLabel": "Interior y asientos",
+    "asientosBeforeAlt": "Asientos del auto con polvo y suciedad acumulada antes del servicio",
+    "asientosAfterAlt": "Asientos restaurados y limpios después del servicio de limpieza interior Detailing Marin",
+    "focosAfterAlt": "Foco de auto pulido y restaurado — transparencia recuperada por Detailing Marin",
+    "focosLabel": "Pulido de focos",
+    "focosCaption": "Transparencia recuperada al 100%"
   },
   "metadata": {
     "home": {

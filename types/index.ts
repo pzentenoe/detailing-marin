@@ -14,6 +14,8 @@ export interface Service {
   duration: string
   price?: string
   highlight?: boolean
+  image?: string
+  imageBefore?: string
 }
 
 export interface NavLink {
@@ -32,7 +34,7 @@ export interface ContactInfo {
   whatsapp: string
   email: string
   zone: string
-  hours: string
+  hours?: string
 }
 
 export type ButtonVariant = 'primary' | 'secondary' | 'ghost'

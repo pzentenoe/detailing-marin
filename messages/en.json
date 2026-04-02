@@ -58,7 +58,8 @@
     "heading": "Specialized Services",
     "description": "Advanced techniques and impeccable results, with the lowest possible environmental impact.",
     "viewAll": "See all services →",
-    "viewAllAria": "See all Detailing Marin services"
+    "viewAllAria": "See all Detailing Marin services",
+    "featuredBadge": "Featured service"
   },
   "servicesGrid": {
     "badge": "Premium Care",
@@ -114,6 +115,17 @@
         "Anti-corrosion treatment",
         "Hose and plastic protection",
         "Protective dressing applied"
+      ]
+    },
+    "lavado-tapiz": {
+      "title": "Upholstery Cleaning",
+      "shortDescription": "Deep restoration of interior and seats.",
+      "fullDescription": "Deep cleaning of upholstery, seats, and carpets using specialized equipment. We remove stains, odors, and embedded grime, restoring the interior to its original condition.",
+      "features": [
+        "Deep stain extraction",
+        "Odor elimination",
+        "Carpet and floor treatment",
+        "Leather conditioner (if applicable)"
       ]
     }
   },
@@ -190,7 +202,10 @@
     "terms": "Terms",
     "footerAria": "Footer",
     "footerNavAria": "Footer links",
-    "legalNavAria": "Legal links"
+    "legalNavAria": "Legal links",
+    "ecoChipLabel": "Water savings",
+    "hours": "Monday to Saturday, 9:00 – 19:00",
+    "zone": "Maipú and surroundings"
   },
   "privacidad": {
     "badge": "Legal",
@@ -241,6 +256,23 @@
     "s9Prefix": "For questions about these terms, you can contact us at",
     "s9Mid": "or via WhatsApp at",
     "s9Phone": "+56 9 5445 1422"
+  },
+  "results": {
+    "label": "Real results",
+    "heading": "The before and after speaks for itself",
+    "description": "Real jobs on real vehicles. This is how Detailing Marin leaves your car.",
+    "before": "Before",
+    "after": "After",
+    "motorLabel": "Engine cleaning",
+    "motorBeforeAlt": "Dirty engine bay with grease buildup before Detailing Marin service",
+    "motorAfterAlt": "Fully clean engine bay after Detailing Marin engine cleaning service",
+    "tapizLabel": "Upholstery cleaning",
+    "asientosLabel": "Interior & seats",
+    "asientosBeforeAlt": "Car seats with accumulated dust and grime before the service",
+    "asientosAfterAlt": "Restored clean seats after Detailing Marin interior cleaning service",
+    "focosAfterAlt": "Polished and restored car headlight — transparency recovered by Detailing Marin",
+    "focosLabel": "Headlight restoration",
+    "focosCaption": "100% transparency recovered"
   },
   "metadata": {
     "home": {

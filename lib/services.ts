@@ -7,10 +7,11 @@ import type { Service, NavLink, ContactInfo } from '@/types'
 
 // Non-translatable service metadata — used by i18n-aware components
 export const servicesConfig = [
-  { id: '1', slug: 'lavado-ecologico',    icon: 'droplets'  as const, duration: '60–90 min',  price: 'Desde $45.000', highlight: true  },
-  { id: '2', slug: 'pulido-abrillantador', icon: 'sparkles'  as const, duration: '90–120 min', price: 'Desde $65.000'                   },
-  { id: '3', slug: 'pulido-focos',         icon: 'zap'       as const, duration: '45–60 min',  price: 'Desde $35.000'                   },
-  { id: '4', slug: 'limpieza-motor',       icon: 'settings'  as const, duration: '60–90 min',  price: 'Desde $55.000'                   },
+  { id: '1', slug: 'lavado-ecologico',     icon: 'droplets'  as const, duration: '60–90 min',  price: 'Desde $45.000', highlight: true, image: '/images/lavado_ecologico/lavado_ecologico.webp'                                       },
+  { id: '2', slug: 'pulido-abrillantador', icon: 'sparkles'  as const, duration: '90–120 min', price: 'Desde $65.000'                                                                                                                         },
+  { id: '3', slug: 'pulido-focos',         icon: 'zap'       as const, duration: '45–60 min',  price: 'Desde $35.000',                  image: '/images/focos/despues.webp'                                                           },
+  { id: '4', slug: 'limpieza-motor',       icon: 'settings'  as const, duration: '60–90 min',  price: 'Desde $55.000',                  image: '/images/lavado_motor/despues.webp',  imageBefore: '/images/lavado_motor/antes.webp'  },
+  { id: '5', slug: 'lavado-tapiz',         icon: 'armchair'  as const, duration: '60–90 min',  price: 'Desde $50.000',                  image: '/images/asientos/despues.webp',      imageBefore: '/images/asientos/antes.webp'      },
 ] as const
 
 // Non-translatable feature (pillar) metadata — used by i18n-aware components
@@ -45,6 +46,7 @@ export const services: Service[] = [
     duration: '60–90 min',
     price: 'Desde $45.000',
     highlight: true,
+    image: '/images/lavado_ecologico/lavado_ecologico.webp',
   },
   {
     id: '2',
@@ -79,6 +81,7 @@ export const services: Service[] = [
     ],
     duration: '45–60 min',
     price: 'Desde $35.000',
+    image: '/images/focos/despues.webp',
   },
   {
     id: '4',
@@ -96,6 +99,27 @@ export const services: Service[] = [
     ],
     duration: '60–90 min',
     price: 'Desde $55.000',
+    image: '/images/lavado_motor/despues.webp',
+    imageBefore: '/images/lavado_motor/antes.webp',
+  },
+  {
+    id: '5',
+    slug: 'lavado-tapiz',
+    title: 'Lavado de Tapiz',
+    shortDescription: 'Restauración profunda del interior y asientos.',
+    fullDescription:
+      'Limpieza profunda de tapizado, asientos y alfombras con equipamiento especializado. Eliminamos manchas, olores y suciedad incrustada devolviendo el interior a su estado original.',
+    icon: 'armchair',
+    features: [
+      'Extracción de manchas profundas',
+      'Eliminación de olores',
+      'Tratamiento de alfombras y pisos',
+      'Acondicionador de cuero (si aplica)',
+    ],
+    duration: '60–90 min',
+    price: 'Desde $50.000',
+    image: '/images/asientos/despues.webp',
+    imageBefore: '/images/asientos/antes.webp',
   },
 ]
 
@@ -110,7 +134,6 @@ export const contactInfo: ContactInfo = {
   whatsapp: '+56954451422',
   email: 'marin.mac.len@gmail.com',
   zone: 'Maipú y alrededores',
-  hours: 'Lunes a Sábado, 9:00 – 19:00',
 }
 
 export const WA_MESSAGE =

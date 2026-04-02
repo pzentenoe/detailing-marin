@@ -2,7 +2,7 @@ import type { Metadata } from 'next'
 import { getTranslations } from 'next-intl/server'
 import { ServicesGrid } from '@/components/sections/ServicesGrid'
 import { CTASection } from '@/components/sections/CTASection'
-import { buildAlternates, buildServicesJsonLd, ogLocale } from '@/lib/seo'
+import { absoluteUrl, buildAlternates, buildBreadcrumbJsonLd, buildFaqJsonLd, buildServicesJsonLd, ogLocale, SITE_NAME } from '@/lib/seo'
 
 export async function generateMetadata({
   params,
@@ -27,12 +27,25 @@ export async function generateMetadata({
 
 export default function ServiciosPage() {
   const servicesJsonLd = buildServicesJsonLd()
+  const faqJsonLd = buildFaqJsonLd()
+  const breadcrumbJsonLd = buildBreadcrumbJsonLd([
+    { name: SITE_NAME, url: absoluteUrl('/') },
+    { name: 'Servicios', url: absoluteUrl('/servicios') },
+  ])
 
   return (
     <>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(servicesJsonLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
       />
       <div className="pt-20">
         <ServicesGrid />

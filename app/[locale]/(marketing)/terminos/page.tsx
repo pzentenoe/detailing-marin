@@ -16,6 +16,7 @@ export async function generateMetadata({
     title: t('title'),
     description: t('description'),
     alternates: buildAlternates(locale, '/terminos'),
+    robots: { index: false, follow: false },
   }
 }
 

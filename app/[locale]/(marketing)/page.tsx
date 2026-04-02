@@ -3,6 +3,7 @@ import { getTranslations } from 'next-intl/server'
 import { HeroSection } from '@/components/sections/HeroSection'
 import { FeaturesSection } from '@/components/sections/FeaturesSection'
 import { ServicesPreview } from '@/components/sections/ServicesPreview'
+import { ResultsSection } from '@/components/sections/ResultsSection'
 import { CTASection } from '@/components/sections/CTASection'
 import { buildAlternates, ogLocale } from '@/lib/seo'
 
@@ -33,6 +34,7 @@ export default function HomePage() {
       <HeroSection />
       <FeaturesSection />
       <ServicesPreview />
+      <ResultsSection />
       <CTASection />
     </>
   )

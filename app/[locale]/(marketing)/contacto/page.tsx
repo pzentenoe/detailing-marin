@@ -3,7 +3,7 @@ import { getTranslations } from 'next-intl/server'
 import Image from 'next/image'
 import { SectionWrapper } from '@/components/ui/SectionWrapper'
 import { ContactForm } from '@/components/sections/ContactForm'
-import { buildAlternates, ogLocale } from '@/lib/seo'
+import { absoluteUrl, buildAlternates, buildBreadcrumbJsonLd, ogLocale, SITE_NAME } from '@/lib/seo'
 
 export async function generateMetadata({
   params,
@@ -33,9 +33,17 @@ export default async function ContactoPage({
 }) {
   const { locale } = await params
   const t = await getTranslations({ locale, namespace: 'contact' })
+  const breadcrumbJsonLd = buildBreadcrumbJsonLd([
+    { name: SITE_NAME, url: absoluteUrl('/') },
+    { name: 'Contacto', url: absoluteUrl('/contacto') },
+  ])
 
   return (
     <div className="pt-20">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
+      />
       <SectionWrapper surface="base">
         <ContactForm />
       </SectionWrapper>

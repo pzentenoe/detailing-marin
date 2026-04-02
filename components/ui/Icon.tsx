@@ -25,6 +25,7 @@ import {
   Car,
   Wrench,
   MessageCircle,
+  Armchair,
   type LucideProps,
 } from 'lucide-react'
 
@@ -50,6 +51,7 @@ const icons = {
   car: Car,
   wrench: Wrench,
   'message-circle': MessageCircle,
+  armchair: Armchair,
 } as const
 
 export type IconName = keyof typeof icons

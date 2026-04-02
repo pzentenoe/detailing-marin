@@ -26,7 +26,7 @@ const inter = Inter({
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
-    default: 'Detailing Marin | Eco-Luxe Automotive Care',
+    default: 'Detailing Marin | Detailing automotriz a domicilio en Maipú',
     template: '%s | Detailing Marin',
   },
   description:

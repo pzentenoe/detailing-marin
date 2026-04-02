@@ -8,6 +8,7 @@ import { getTranslations } from 'next-intl/server'
 import { Link } from '@/i18n/navigation'
 import { SectionWrapper } from '@/components/ui/SectionWrapper'
 import { Icon } from '@/components/ui/Icon'
+import { BeforeAfterCard } from '@/components/ui/BeforeAfterCard'
 import { servicesConfig } from '@/lib/services'
 
 const cardLayouts = [
@@ -55,11 +56,23 @@ const cardLayouts = [
     showDecorativeBg: false,
     isHorizontal: true,
   },
+  {
+    colSpan: 'md:col-span-12',
+    cardClass: 'bg-(--color-surface-container-lowest)',
+    iconBg: 'bg-secondary-container',
+    iconColor: 'var(--color-primary)',
+    titleClass: 'text-(--color-on-surface)',
+    descClass: 'text-on-surface-variant',
+    btnVariant: 'primary' as const,
+    showDecorativeBg: false,
+    isHorizontal: true,
+  },
 ]
 
 export async function ServicesGrid() {
   const t = await getTranslations('servicesGrid')
   const ts = await getTranslations('services')
+  const tr = await getTranslations('results')
 
   const services = servicesConfig.map((s) => ({
     ...s,
@@ -67,6 +80,8 @@ export async function ServicesGrid() {
     shortDescription: ts(`${s.slug}.shortDescription`),
     fullDescription: ts(`${s.slug}.fullDescription`),
     features: ts.raw(`${s.slug}.features`) as string[],
+    image: ('image' in s ? s.image : undefined) as string | undefined,
+    imageBefore: ('imageBefore' in s ? s.imageBefore : undefined) as string | undefined,
   }))
 
   return (
@@ -159,13 +174,30 @@ export async function ServicesGrid() {
                   </Link>
                 </div>
 
-                {layout.isHorizontal && (
+                {layout.isHorizontal && service.imageBefore && (
+                  <div className="flex-1 w-full shrink-0">
+                    <BeforeAfterCard
+                      label=""
+                      beforeLabel={tr('before')}
+                      afterLabel={tr('after')}
+                      before={{
+                        src: service.imageBefore,
+                        alt: `${service.title} — antes del servicio Detailing Marin`,
+                      }}
+                      after={{
+                        src: service.image!,
+                        alt: `${service.title} — resultado Detailing Marin`,
+                      }}
+                    />
+                  </div>
+                )}
+                {layout.isHorizontal && !service.imageBefore && (
                   <div className="flex-1 w-full h-48 md:h-56 overflow-hidden rounded-(--radius-lg) shadow-float shrink-0">
                     <Image
-                      src="/images/hero-detailing.webp"
-                      alt={`${service.title} — Detailing Marin`}
+                      src={service.image!}
+                      alt={`${service.title} — resultado Detailing Marin`}
                       width={480}
-                      height={320}
+                      height={220}
                       className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700"
                     />
                   </div>
@@ -176,7 +208,7 @@ export async function ServicesGrid() {
                     className="absolute right-0 bottom-0 w-1/2 h-full opacity-5 group-hover:opacity-10 transition-opacity duration-500 pointer-events-none"
                     aria-hidden="true"
                   >
-                    <Image src="/images/hero-detailing.webp" alt="" fill className="object-cover" />
+                    <Image src={service.image!} alt="" fill className="object-cover" />
                   </div>
                 )}
               </div>

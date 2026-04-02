@@ -58,7 +58,7 @@ export async function Footer() {
             </Link>
             <p className="text-body-lg text-on-surface-variant text-sm max-w-xs">{t('tagline')}</p>
             <div>
-              <EcoChip stat="90%" label="Ahorro de agua" />
+              <EcoChip stat="90%" label={t('ecoChipLabel')} />
             </div>
           </div>
 
@@ -88,8 +88,8 @@ export async function Footer() {
               <a href={`mailto:${contactInfo.email}`} className="text-on-surface-variant hover:text-primary transition-colors text-sm">
                 ✉️ {contactInfo.email}
               </a>
-              <p className="text-on-surface-variant text-sm">📍 {contactInfo.zone}</p>
-              <p className="text-on-surface-variant text-sm">🕐 {contactInfo.hours}</p>
+              <p className="text-on-surface-variant text-sm">📍 {t('zone')}</p>
+              <p className="text-on-surface-variant text-sm">🕐 {t('hours')}</p>
             </address>
           </div>
 
