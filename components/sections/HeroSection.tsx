@@ -26,7 +26,7 @@ export function HeroSection() {
       {/* Imagen de fondo a baja opacidad */}
       <div className="absolute inset-0 z-0" aria-hidden="true">
         <Image
-          src="/images/hero-detailing.webp"
+          src="/images/lavado_ecologico/lavado_ecologico.webp"
           alt=""
           fill
           className="object-cover opacity-[0.12]"
@@ -108,7 +108,7 @@ export function HeroSection() {
               style={{ aspectRatio: '4/5' }}
             >
               <Image
-                src="/images/hero-detailing.webp"
+                src="/images/lavado_ecologico/lavado_ecologico.webp"
                 alt={t('imageAlt')}
                 fill
                 className="object-cover"
