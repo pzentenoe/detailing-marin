@@ -35,13 +35,13 @@ export const services: Service[] = [
     title: 'Lavado Ecológico',
     shortDescription: 'Limpieza profunda sin desperdicio de agua.',
     fullDescription:
-      'Limpieza profunda utilizando tecnología de bajo consumo de agua y productos biodegradables que protegen la pintura y el medio ambiente. Hasta un 90% de ahorro de agua vs. lavado tradicional.',
+      'Limpieza profunda con aspirado de interiores, lavado exterior e interior utilizando tecnología de bajo consumo de agua y productos biodegradables. Hasta un 90% de ahorro de agua vs. lavado tradicional.',
     icon: 'droplets',
     features: [
+      'Aspirado de interiores incluido',
       'Productos 100% biodegradables',
       'Ahorro hasta 90% de agua',
       'Protección de pintura incluida',
-      'Limpieza de interior y exterior',
     ],
     duration: '60–90 min',
     price: 'Desde $45.000',
@@ -133,7 +133,7 @@ export const contactInfo: ContactInfo = {
   phone: '+56 9 5445 1422',
   whatsapp: '+56954451422',
   email: 'marin.mac.len@gmail.com',
-  zone: 'Maipú y alrededores',
+  zone: 'Santiago y Región Metropolitana',
 }
 
 export const WA_MESSAGE =

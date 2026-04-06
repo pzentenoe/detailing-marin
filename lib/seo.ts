@@ -8,6 +8,16 @@ export const SITE_URL = 'https://www.detailingmarin.cl'
 export const SITE_NAME = 'Detailing Marin'
 export const DEFAULT_OG_IMAGE = '/images/hero-detailing.webp'
 
+export const SERVED_COMMUNES = [
+  'Maipú', 'Pudahuel', 'Cerrillos', 'Cerro Navia', 'Lo Prado',
+  'Quinta Normal', 'Estación Central', 'Santiago', 'Independencia',
+  'Recoleta', 'Conchalí', 'Quilicura', 'Renca', 'Huechuraba',
+  'Providencia', 'Ñuñoa', 'Macul', 'Peñalolén', 'La Florida',
+  'La Granja', 'La Pintana', 'San Ramón', 'La Cisterna', 'El Bosque',
+  'San Miguel', 'San Joaquín', 'Pedro Aguirre Cerda', 'Lo Espejo',
+  'Las Condes', 'Vitacura', 'Lo Barnechea', 'Padre Hurtado', 'San Bernardo',
+]
+
 export function absoluteUrl(path: string = '/') {
   return new URL(path, SITE_URL).toString()
 }
@@ -37,16 +47,24 @@ export function buildLocalBusinessJsonLd() {
     '@type': 'AutomotiveBusiness',
     '@id': absoluteUrl('/#localbusiness'),
     name: SITE_NAME,
+    alternateName: [
+      'Detailing a domicilio Santiago',
+      'Lavado de autos a domicilio Santiago',
+      'Car detailing Santiago',
+      'Lavado ecológico de autos Santiago',
+      'Aspirado de autos a domicilio',
+      'Detailing automotriz Región Metropolitana',
+    ],
     url: SITE_URL,
     image: absoluteUrl(DEFAULT_OG_IMAGE),
     logo: absoluteUrl('/nadia-marin-logo.png'),
     description:
-      'Servicio de detailing automotriz premium a domicilio en Maipú y alrededores con lavado ecológico, pulido y limpieza especializada.',
-    areaServed: contactInfo.zone,
+      'Servicio de detailing automotriz premium a domicilio en Santiago y Región Metropolitana. Lavado ecológico, aspirado, pulido y limpieza especializada.',
+    areaServed: SERVED_COMMUNES,
     telephone: contactInfo.phone,
     email: contactInfo.email,
-    openingHours: 'Mo-Sa 09:00-19:00',
-    priceRange: '$$$',
+    openingHours: ['Mo-Sa 09:00-19:00'],
+    priceRange: '$$',
     address: {
       '@type': 'PostalAddress',
       addressLocality: 'Maipú',
@@ -58,7 +76,10 @@ export function buildLocalBusinessJsonLd() {
       latitude: -33.5167,
       longitude: -70.7583,
     },
-    sameAs: [],
+    sameAs: [
+      'https://www.instagram.com/detailing_marin',
+      'https://www.facebook.com/profile.php?id=61586193856361',
+    ],
     hasOfferCatalog: {
       '@type': 'OfferCatalog',
       name: 'Servicios de Detailing Marin',
@@ -89,7 +110,7 @@ export function buildFaqJsonLd(locale: LocaleCode = 'es') {
   const faqByLocale: Record<LocaleCode, Array<{ name: string; text: string }>> = {
     es: [
       {
-        name: '¿Cuánto cuesta un detailing a domicilio en Maipú?',
+        name: '¿Cuánto cuesta un detailing a domicilio en Santiago?',
         text: 'Nuestros servicios parten desde $35.000 CLP para el pulido de focos, $45.000 para lavado ecológico, $55.000 para limpieza de motor y $65.000 para pulido abrillantador. El precio final depende del estado y tamaño del vehículo.',
       },
       {
@@ -98,7 +119,7 @@ export function buildFaqJsonLd(locale: LocaleCode = 'es') {
       },
       {
         name: '¿El servicio incluye desplazamiento a domicilio?',
-        text: 'Sí. Todos nuestros servicios incluyen desplazamiento a tu domicilio en Maipú y comunas cercanas sin costo extra. Llevamos todo el equipamiento necesario.',
+        text: 'Sí. Todos nuestros servicios incluyen desplazamiento a tu domicilio en Santiago y toda la Región Metropolitana sin costo extra. Llevamos todo el equipamiento necesario.',
       },
       {
         name: '¿Los productos son ecológicos?',
@@ -106,12 +127,12 @@ export function buildFaqJsonLd(locale: LocaleCode = 'es') {
       },
       {
         name: '¿En qué comunas realizan el servicio?',
-        text: 'Atendemos Maipú y alrededores, incluyendo comunas como Pudahuel, Cerrillos, Padre Hurtado y otras zonas de la Región Metropolitana. Consultanos por tu ubicación específica.',
+        text: 'Atendemos toda la Región Metropolitana de Santiago, incluyendo Maipú, Las Condes, Providencia, La Florida, Ñuñoa, Pudahuel, Quilicura, San Miguel, Vitacura, Peñalolén, La Cisterna, El Bosque y muchas más. Consultanos por tu ubicación específica.',
       },
     ],
     en: [
       {
-        name: 'How much does mobile car detailing cost in Maipú?',
+        name: 'How much does mobile car detailing cost in Santiago?',
         text: 'Our services start at CLP $35,000 for headlight restoration, $45,000 for eco wash, $55,000 for engine cleaning, and $65,000 for paint polish. Final pricing depends on your vehicle size and condition.',
       },
       {
@@ -120,7 +141,7 @@ export function buildFaqJsonLd(locale: LocaleCode = 'es') {
       },
       {
         name: 'Does the service include travel to my location?',
-        text: 'Yes. All services include travel to your location in Maipú and nearby areas at no extra cost. We bring all required equipment.',
+        text: 'Yes. All services include travel to your location across Santiago and the Metropolitan Region at no extra cost. We bring all required equipment.',
       },
       {
         name: 'Do you use eco-friendly products?',
@@ -128,7 +149,7 @@ export function buildFaqJsonLd(locale: LocaleCode = 'es') {
       },
       {
         name: 'What areas do you serve?',
-        text: 'We serve Maipú and nearby districts, including Pudahuel, Cerrillos, Padre Hurtado, and other areas of the Santiago Metropolitan Region. Contact us to confirm your address.',
+        text: 'We serve the entire Santiago Metropolitan Region, including Maipú, Las Condes, Providencia, La Florida, Ñuñoa, Pudahuel, Quilicura, San Miguel, Vitacura, Peñalolén, La Cisterna, El Bosque, and many more. Contact us to confirm your address.',
       },
     ],
   }
@@ -153,11 +174,13 @@ export function buildFaqJsonLd(locale: LocaleCode = 'es') {
 const serviceFaqBySlug: Record<ServiceSlug, Record<LocaleCode, Array<{ name: string; text: string }>>> = {
   'lavado-ecologico': {
     es: [
+      { name: '¿El servicio de lavado ecológico incluye aspirado?', text: 'Sí. El servicio completo incluye aspirado de interiores, limpieza de exterior e interior con productos biodegradables y técnica de bajo consumo de agua.' },
       { name: '¿Cuánta agua ahorra el lavado ecológico?', text: 'Nuestro proceso puede ahorrar hasta un 90% de agua frente a un lavado tradicional, usando productos biodegradables y técnica de limpieza controlada.' },
       { name: '¿El lavado ecológico daña la pintura?', text: 'No. Está diseñado para proteger la pintura con productos premium y técnica segura para exterior e interior.' },
       { name: '¿Cuánto dura el servicio de lavado ecológico?', text: 'Generalmente entre 60 y 90 minutos, según el estado y tamaño del vehículo.' },
     ],
     en: [
+      { name: 'Does the eco wash include interior vacuuming?', text: 'Yes. The full service includes interior vacuuming plus exterior and interior cleaning with biodegradable products and a low-water-consumption technique.' },
       { name: 'How much water does eco wash save?', text: 'Our eco wash process can save up to 90% of water compared with traditional washing using biodegradable products and controlled cleaning techniques.' },
       { name: 'Is eco wash safe for paint?', text: 'Yes. It is designed to protect your paint using premium products and a safe exterior/interior process.' },
       { name: 'How long does an eco wash take?', text: 'Usually between 60 and 90 minutes depending on your vehicle size and condition.' },
@@ -236,6 +259,23 @@ export function buildServiceFaqJsonLd(slug: string, locale: LocaleCode = 'es') {
   }
 }
 
+export function buildContactPageJsonLd(locale: LocaleCode = 'es') {
+  const path = locale === 'en' ? '/en/contacto' : '/contacto'
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'ContactPage',
+    '@id': absoluteUrl(`${path}#contactpage`),
+    name: locale === 'en' ? 'Contact — Detailing Marin' : 'Contacto — Detailing Marin',
+    url: absoluteUrl(path),
+    description:
+      locale === 'en'
+        ? 'Book your mobile car detailing service across Santiago. Quick response via WhatsApp or email.'
+        : 'Agenda tu servicio de detailing automotriz a domicilio en Santiago. Respuesta rápida por WhatsApp o email.',
+    inLanguage: locale === 'en' ? 'en' : 'es-CL',
+    isPartOf: { '@id': absoluteUrl('/#localbusiness') },
+  }
+}
+
 export function buildBreadcrumbJsonLd(items: { name: string; url: string }[]) {
   return {
     '@context': 'https://schema.org',
@@ -275,7 +315,7 @@ export function buildServicesJsonLd({
           name: SITE_NAME,
           url: SITE_URL,
         },
-        areaServed: contactInfo.zone,
+        areaServed: SERVED_COMMUNES,
         offers: {
           '@type': 'Offer',
           priceCurrency: 'CLP',

@@ -7,7 +7,7 @@ import { SectionWrapper } from '@/components/ui/SectionWrapper'
 import { BeforeAfterCard } from '@/components/ui/BeforeAfterCard'
 import { Icon } from '@/components/ui/Icon'
 import { Link } from '@/i18n/navigation'
-import { absoluteUrl, buildAlternates, buildBreadcrumbJsonLd, buildServiceFaqJsonLd, DEFAULT_OG_IMAGE, getServiceFaqEntries, ogLocale, SITE_NAME, SITE_URL } from '@/lib/seo'
+import { absoluteUrl, buildAlternates, buildBreadcrumbJsonLd, buildServiceFaqJsonLd, DEFAULT_OG_IMAGE, getServiceFaqEntries, ogLocale, SERVED_COMMUNES, SITE_NAME, SITE_URL } from '@/lib/seo'
 import { servicesConfig } from '@/lib/services'
 
 type PageParams = Promise<{ locale: string; slug: string }>
@@ -41,8 +41,8 @@ export async function generateMetadata({
   const ogImage = 'image' in service ? service.image : DEFAULT_OG_IMAGE
 
   const localeLead = locale === 'en'
-    ? `${serviceTitle} in Maipú`
-    : `${serviceTitle} en Maipú`
+    ? `${serviceTitle} in Santiago`
+    : `${serviceTitle} en Santiago`
 
   const shortDescription = `${localeLead} — ${serviceDescription}`.slice(0, 158)
 
@@ -110,7 +110,7 @@ export default async function ServiceDetailPage({
       name: SITE_NAME,
       url: SITE_URL,
     },
-    areaServed: 'Maipú y alrededores',
+    areaServed: SERVED_COMMUNES,
     offers: {
       '@type': 'Offer',
       priceCurrency: 'CLP',

@@ -5,7 +5,7 @@ import { FeaturesSection } from '@/components/sections/FeaturesSection'
 import { ServicesPreview } from '@/components/sections/ServicesPreview'
 import { ResultsSection } from '@/components/sections/ResultsSection'
 import { CTASection } from '@/components/sections/CTASection'
-import { buildAlternates, DEFAULT_OG_IMAGE, ogLocale } from '@/lib/seo'
+import { buildAlternates, buildFaqJsonLd, DEFAULT_OG_IMAGE, ogLocale } from '@/lib/seo'
 
 export async function generateMetadata({
   params,
@@ -30,9 +30,20 @@ export async function generateMetadata({
   }
 }
 
-export default function HomePage() {
+export default async function HomePage({
+  params,
+}: {
+  params: Promise<{ locale: string }>
+}) {
+  const { locale } = await params
+  const faqJsonLd = buildFaqJsonLd(locale === 'en' ? 'en' : 'es')
+
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
+      />
       <HeroSection />
       <FeaturesSection />
       <ServicesPreview />

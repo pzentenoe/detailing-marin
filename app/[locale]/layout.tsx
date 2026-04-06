@@ -28,11 +28,11 @@ const inter = Inter({
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
-    default: 'Detailing Marin | Detailing automotriz a domicilio en Maipú',
+    default: 'Detailing Marin | Lavado de autos a domicilio en Santiago',
     template: '%s | Detailing Marin',
   },
   description:
-    'Servicio de detallado automotriz premium a domicilio en Maipú y alrededores. Lavado ecológico, pulido y más — sin moverte de casa.',
+    'Servicio de detallado automotriz premium a domicilio en Santiago y Región Metropolitana. Lavado ecológico, aspirado, pulido y más — sin moverte de casa.',
   authors: [{ name: 'Detailing Marin' }],
   creator: 'Detailing Marin',
   publisher: 'Detailing Marin',

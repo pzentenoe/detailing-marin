@@ -67,7 +67,7 @@
     "subheading": "Llevamos el mejor spa automotriz directamente a la puerta de tu casa.",
     "requestBtn": "Solicitar",
     "requestServiceBtn": "Solicitar Servicio",
-    "ctaBannerTitle": "Todos nuestros servicios incluyen desplazamiento a tu domicilio en Maipú y alrededores sin costo extra.",
+    "ctaBannerTitle": "Todos nuestros servicios incluyen desplazamiento a tu domicilio en Santiago y comunas cercanas sin costo extra.",
     "ctaBannerDesc": "Comodidad absoluta para ti, máxima excelencia para tu auto.",
     "bookNow": "Agendar Ahora",
     "viewCoverage": "Ver Cobertura"
@@ -75,13 +75,13 @@
   "services": {
     "lavado-ecologico": {
       "title": "Lavado Ecológico",
-      "shortDescription": "Limpieza profunda sin desperdicio de agua.",
-      "fullDescription": "Limpieza profunda utilizando tecnología de bajo consumo de agua y productos biodegradables que protegen la pintura y el medio ambiente. Hasta un 90% de ahorro de agua vs. lavado tradicional.",
+      "shortDescription": "Lavado completo con aspirado y sin desperdicio de agua.",
+      "fullDescription": "Limpieza profunda con aspirado de interiores, lavado exterior e interior usando tecnología de bajo consumo de agua y productos biodegradables. Hasta un 90% de ahorro de agua vs. lavado tradicional.",
       "features": [
+        "Aspirado de interiores incluido",
         "Productos 100% biodegradables",
         "Ahorro hasta 90% de agua",
-        "Protección de pintura incluida",
-        "Limpieza de interior y exterior"
+        "Protección de pintura incluida"
       ]
     },
     "pulido-abrillantador": {
@@ -133,7 +133,7 @@
     "badgeStat": "Domicilio",
     "badgeLabel": "sin costo extra",
     "heading": "Agenda hoy mismo tu servicio a domicilio",
-    "description": "Ofrecemos un servicio de estética automotriz de alta gama, respetando el medio ambiente y valorando tu tiempo. Maipú y alrededores.",
+    "description": "Ofrecemos un servicio de estética automotriz de alta gama, respetando el medio ambiente y valorando tu tiempo. Atendemos en Santiago y Región Metropolitana.",
     "whatsapp": "WhatsApp",
     "email": "Enviar Email",
     "whatsappAria": "Contactar por WhatsApp para agendar",
@@ -205,7 +205,7 @@
     "legalNavAria": "Links legales",
     "ecoChipLabel": "Ahorro de agua",
     "hours": "Lunes a Sábado, 9:00 – 19:00",
-    "zone": "Maipú y alrededores"
+    "zone": "Santiago y Región Metropolitana"
   },
   "privacidad": {
     "badge": "Legal",
@@ -236,7 +236,7 @@
     "s1Title": "1. Aceptación de los términos",
     "s1Body": "Al utilizar el sitio web de Detailing Marin y solicitar cualquiera de nuestros servicios, aceptás los presentes términos y condiciones en su totalidad. Si no estás de acuerdo con alguna parte, te pedimos que no utilices nuestros servicios.",
     "s2Title": "2. Descripción del servicio",
-    "s2Body": "Detailing Marin ofrece servicios de detallado y limpieza automotriz a domicilio en la zona de Maipú y alrededores. Los servicios incluyen lavado ecológico, pulido, tratamiento de focos y limpieza de motor, entre otros descritos en nuestro sitio.",
+    "s2Body": "Detailing Marin ofrece servicios de detallado y limpieza automotriz a domicilio en Santiago y Región Metropolitana. Los servicios incluyen lavado ecológico con aspirado, pulido, tratamiento de focos y limpieza de motor, entre otros descritos en nuestro sitio.",
     "s3Title": "3. Reservas y confirmaciones",
     "s3Body": "Las reservas realizadas a través del formulario web o WhatsApp son solicitudes de servicio sujetas a disponibilidad. Una reserva se considera confirmada únicamente cuando un representante de Detailing Marin la valida de forma expresa por escrito (WhatsApp o correo electrónico).",
     "s4Title": "4. Cancelaciones y cambios",
@@ -276,22 +276,22 @@
   },
   "metadata": {
     "home": {
-      "title": "Detailing a domicilio en Maipú y alrededores",
-      "description": "Lavado ecológico, pulido y detailing automotriz premium a domicilio en Maipú y alrededores. Agenda por WhatsApp y te respondemos en menos de 24 horas.",
-      "ogTitle": "Detailing a domicilio en Maipú y alrededores",
-      "ogDescription": "Lavado ecológico y pulido automotriz premium a domicilio. Atención en Maipú y comunas cercanas."
+      "title": "Lavado de autos a domicilio en Santiago — Ecológico y aspirado",
+      "description": "Lavado ecológico, aspirado y detailing automotriz premium a domicilio en Santiago y Región Metropolitana. Agenda por WhatsApp y te respondemos en menos de 24 horas.",
+      "ogTitle": "Lavado de autos a domicilio en Santiago — Ecológico y aspirado",
+      "ogDescription": "Lavado ecológico, aspirado y pulido automotriz a domicilio en toda la Región Metropolitana de Santiago."
     },
     "services": {
-      "title": "Servicios de lavado ecológico y pulido en Maipú",
-      "description": "Conocé nuestros servicios a domicilio: lavado ecológico, pulido abrillantador, pulido de focos y limpieza de motor en Maipú y alrededores.",
-      "ogTitle": "Servicios de lavado ecológico y pulido en Maipú",
-      "ogDescription": "Lavado ecológico, pulido abrillantador, focos y limpieza de motor a domicilio en Maipú."
+      "title": "Lavado, aspirado y pulido de autos a domicilio en Santiago",
+      "description": "Lavado ecológico con aspirado, pulido abrillantador, pulido de focos y limpieza de motor a domicilio en Santiago y toda la Región Metropolitana.",
+      "ogTitle": "Lavado, aspirado y pulido de autos a domicilio en Santiago",
+      "ogDescription": "Lavado ecológico, aspirado, pulido y limpieza de motor a domicilio en toda la RM de Santiago."
     },
     "contact": {
-      "title": "Agenda detailing a domicilio en Maipú",
-      "description": "Cotizá y agenda tu servicio de detailing automotriz a domicilio en Maipú y alrededores. Respuesta rápida por WhatsApp o email.",
-      "ogTitle": "Agenda detailing a domicilio en Maipú",
-      "ogDescription": "Cotizá y agenda lavado ecológico o pulido automotriz a domicilio con Detailing Marin."
+      "title": "Agenda lavado de autos a domicilio en Santiago",
+      "description": "Cotizá y agenda tu servicio de lavado ecológico, aspirado o detailing automotriz a domicilio en Santiago y comunas cercanas. Respuesta rápida por WhatsApp o email.",
+      "ogTitle": "Agenda lavado de autos a domicilio en Santiago",
+      "ogDescription": "Cotizá y agenda lavado ecológico, aspirado o pulido automotriz a domicilio con Detailing Marin en Santiago."
     },
     "privacy": {
       "title": "Política de Privacidad",

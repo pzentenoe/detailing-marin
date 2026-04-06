@@ -67,7 +67,7 @@
     "subheading": "We bring the best automotive spa directly to your door.",
     "requestBtn": "Request",
     "requestServiceBtn": "Request Service",
-    "ctaBannerTitle": "All our services include travel to your location in Maipú and surrounding areas at no extra cost.",
+    "ctaBannerTitle": "All our services include travel to your location across Santiago and the Metropolitan Region at no extra cost.",
     "ctaBannerDesc": "Absolute convenience for you, maximum excellence for your car.",
     "bookNow": "Book Now",
     "viewCoverage": "View Coverage"
@@ -75,13 +75,13 @@
   "services": {
     "lavado-ecologico": {
       "title": "Eco Wash",
-      "shortDescription": "Deep cleaning with minimal water waste.",
-      "fullDescription": "Deep cleaning using low-water-consumption technology and biodegradable products that protect both the paint and the environment. Up to 90% water savings vs. traditional washing.",
+      "shortDescription": "Full wash with interior vacuuming and minimal water waste.",
+      "fullDescription": "Deep cleaning with interior vacuuming, exterior and interior wash using low-water-consumption technology and biodegradable products. Up to 90% water savings vs. traditional washing.",
       "features": [
+        "Interior vacuuming included",
         "100% biodegradable products",
         "Up to 90% water savings",
-        "Paint protection included",
-        "Interior and exterior cleaning"
+        "Paint protection included"
       ]
     },
     "pulido-abrillantador": {
@@ -133,7 +133,7 @@
     "badgeStat": "Mobile",
     "badgeLabel": "no travel surcharge",
     "heading": "Book your mobile service today",
-    "description": "We offer a premium automotive care service, respecting the environment and valuing your time. Maipú and surrounding areas.",
+    "description": "We offer a premium automotive care service, respecting the environment and valuing your time. We serve Santiago and the Metropolitan Region.",
     "whatsapp": "WhatsApp",
     "email": "Send Email",
     "whatsappAria": "Contact via WhatsApp to book",
@@ -205,7 +205,7 @@
     "legalNavAria": "Legal links",
     "ecoChipLabel": "Water savings",
     "hours": "Monday to Saturday, 9:00 – 19:00",
-    "zone": "Maipú and surroundings"
+    "zone": "Santiago, Metropolitan Region"
   },
   "privacidad": {
     "badge": "Legal",
@@ -236,7 +236,7 @@
     "s1Title": "1. Acceptance of terms",
     "s1Body": "By using the Detailing Marin website and requesting any of our services, you accept these terms and conditions in their entirety. If you disagree with any part, please do not use our services.",
     "s2Title": "2. Service description",
-    "s2Body": "Detailing Marin offers mobile automotive detailing and cleaning services in the Maipú area and surroundings. Services include eco wash, polishing, headlight treatment, and engine cleaning, among others described on our site.",
+    "s2Body": "Detailing Marin offers mobile automotive detailing and cleaning services across Santiago and the Metropolitan Region. Services include eco wash with interior vacuuming, polishing, headlight treatment, and engine cleaning, among others described on our site.",
     "s3Title": "3. Bookings and confirmations",
     "s3Body": "Bookings made through the web form or WhatsApp are service requests subject to availability. A booking is considered confirmed only when a Detailing Marin representative explicitly validates it in writing (via WhatsApp or email).",
     "s4Title": "4. Cancellations and changes",
@@ -276,22 +276,22 @@
   },
   "metadata": {
     "home": {
-      "title": "Mobile car detailing in Maipú and nearby areas",
-      "description": "Eco wash, paint polishing, and premium mobile car detailing in Maipú and nearby areas. Book via WhatsApp and get a reply within 24 hours.",
-      "ogTitle": "Mobile car detailing in Maipú and nearby areas",
-      "ogDescription": "Premium eco wash and paint polishing at your location in Maipú and surrounding districts."
+      "title": "Mobile car wash in Santiago — Eco wash & interior vacuuming",
+      "description": "Eco wash, interior vacuuming, and premium mobile car detailing across Santiago and the Metropolitan Region. Book via WhatsApp and get a reply within 24 hours.",
+      "ogTitle": "Mobile car wash in Santiago — Eco wash & interior vacuuming",
+      "ogDescription": "Premium eco wash, interior vacuuming, and polishing at your door across the Santiago Metropolitan Region."
     },
     "services": {
-      "title": "Eco wash and polishing services in Maipú",
-      "description": "Explore our mobile services in Maipú and nearby areas: eco wash, paint polishing, headlight restoration, and engine cleaning.",
-      "ogTitle": "Eco wash and polishing services in Maipú",
-      "ogDescription": "Eco wash, paint polishing, headlight restoration, and engine cleaning at your location in Maipú."
+      "title": "Mobile car wash, vacuuming & polishing services in Santiago",
+      "description": "Mobile eco wash with vacuuming, paint polishing, headlight restoration, and engine cleaning across Santiago and the Metropolitan Region.",
+      "ogTitle": "Mobile car wash, vacuuming & polishing in Santiago",
+      "ogDescription": "Eco wash, interior vacuuming, paint polishing, and engine cleaning at your location across Santiago."
     },
     "contact": {
-      "title": "Book mobile car detailing in Maipú",
-      "description": "Request a quote and book your mobile detailing service in Maipú and nearby areas. Fast response by WhatsApp or email.",
-      "ogTitle": "Book mobile car detailing in Maipú",
-      "ogDescription": "Request your eco wash or paint polishing service with Detailing Marin."
+      "title": "Book mobile car wash in Santiago",
+      "description": "Request a quote and book your mobile eco wash, interior vacuuming, or detailing service across Santiago. Fast response by WhatsApp or email.",
+      "ogTitle": "Book mobile car wash in Santiago",
+      "ogDescription": "Request your eco wash, interior vacuuming, or polishing service with Detailing Marin across Santiago."
     },
     "privacy": {
       "title": "Privacy Policy",

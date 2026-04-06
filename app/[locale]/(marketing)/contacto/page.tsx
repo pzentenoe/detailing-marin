@@ -3,7 +3,7 @@ import { getTranslations } from 'next-intl/server'
 import Image from 'next/image'
 import { SectionWrapper } from '@/components/ui/SectionWrapper'
 import { ContactForm } from '@/components/sections/ContactForm'
-import { absoluteUrl, buildAlternates, buildBreadcrumbJsonLd, DEFAULT_OG_IMAGE, ogLocale } from '@/lib/seo'
+import { absoluteUrl, buildAlternates, buildBreadcrumbJsonLd, buildContactPageJsonLd, DEFAULT_OG_IMAGE, ogLocale } from '@/lib/seo'
 
 export async function generateMetadata({
   params,
@@ -40,6 +40,7 @@ export default async function ContactoPage({
 
   const homePath = localeCode === 'en' ? '/en' : '/'
   const contactPath = localeCode === 'en' ? '/en/contacto' : '/contacto'
+  const contactPageJsonLd = buildContactPageJsonLd(localeCode)
   const breadcrumbJsonLd = buildBreadcrumbJsonLd([
     { name: tNav('home'), url: absoluteUrl(homePath) },
     { name: tNav('contact'), url: absoluteUrl(contactPath) },
@@ -47,6 +48,10 @@ export default async function ContactoPage({
 
   return (
     <div className="pt-20">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(contactPageJsonLd) }}
+      />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
