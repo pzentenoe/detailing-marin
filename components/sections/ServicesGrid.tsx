@@ -208,7 +208,7 @@ export async function ServicesGrid() {
                     className="absolute right-0 bottom-0 w-1/2 h-full opacity-5 group-hover:opacity-10 transition-opacity duration-500 pointer-events-none"
                     aria-hidden="true"
                   >
-                    <Image src={service.image!} alt="" fill className="object-cover" />
+                    <Image src={service.image!} alt="" fill className="object-cover" sizes="(max-width: 1024px) 50vw, 20vw" />
                   </div>
                 )}
               </div>

@@ -53,7 +53,7 @@ export async function Footer() {
           {/* Branding */}
           <div className="flex flex-col gap-5 md:col-span-1">
             <Link href="/" className="flex items-center gap-3 w-fit" aria-label="Detailing Marin">
-              <Image src="/icon/logo-removebg.png" alt="Nadia Marin Detailing" width={56} height={56} style={{ height: 'auto' }} className="object-contain drop-shadow-md" />
+              <Image src="/icon/logo-removebg.png" alt="Nadia Marin Detailing" width={56} height={56} style={{ width: 56, height: 'auto' }} className="object-contain drop-shadow-md" />
               <span className="font-display font-bold text-lg text-(--color-on-surface) tracking-tight">Detailing Marin</span>
             </Link>
             <p className="text-body-lg text-on-surface-variant text-sm max-w-xs">{t('tagline')}</p>
