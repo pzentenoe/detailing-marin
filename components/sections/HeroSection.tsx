@@ -47,7 +47,7 @@ export function HeroSection() {
 
           {/* Columna izquierda: Copy */}
           <div className="flex-1 flex flex-col gap-6 lg:gap-8 z-10">
-            <div className="flex items-center gap-3">
+            <div className="flex flex-wrap items-center gap-3">
               <EcoChip stat={t('badge1Stat')} label={t('badge1Label')} />
               <EcoChip stat={t('badge2Stat')} label={t('badge2Label')} icon="♻️" />
             </div>

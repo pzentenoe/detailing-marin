@@ -13,7 +13,7 @@ export function EcoChip({ stat, label, icon = '🌿' }: EcoChipProps) {
   return (
     <div
       className={[
-        'inline-flex items-center gap-2 px-4 py-2',
+        'inline-flex shrink-0 items-center gap-2 px-4 py-2',
         'rounded-full',
         'bg-tertiary-container',
         'backdrop-filter backdrop-blur-[10px]',
@@ -26,7 +26,7 @@ export function EcoChip({ stat, label, icon = '🌿' }: EcoChipProps) {
     >
       <span aria-hidden="true">{icon}</span>
       <span className="font-bold">{stat}</span>
-      <span className="opacity-80">{label}</span>
+      <span className="opacity-80 whitespace-nowrap">{label}</span>
     </div>
   )
 }

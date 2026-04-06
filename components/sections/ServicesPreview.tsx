@@ -44,7 +44,7 @@ export async function ServicesPreview() {
 
         {/* Tarjeta grande — h-full para igualar altura de la columna derecha */}
         <Link
-          href={`/servicios#${featured.slug}`}
+          href={`/servicios/${featured.slug}`}
           className="group rounded-(--radius-xl) overflow-hidden cursor-pointer block h-full"
           aria-label={`Ver servicio: ${featured.title}`}
         >
@@ -97,7 +97,7 @@ export async function ServicesPreview() {
           {rest.map((service) => (
             <Link
               key={service.id}
-              href={`/servicios#${service.slug}`}
+              href={`/servicios/${service.slug}`}
               className="group rounded-(--radius-xl) overflow-hidden cursor-pointer block"
               aria-label={`Ver servicio: ${service.title}`}
             >

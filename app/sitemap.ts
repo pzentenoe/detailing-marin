@@ -1,5 +1,6 @@
 import type { MetadataRoute } from 'next'
 import { absoluteUrl } from '@/lib/seo'
+import { servicesConfig } from '@/lib/services'
 
 const lastModified = new Date('2026-04-02')
 
@@ -12,7 +13,7 @@ const routes = [
 const heroImage = absoluteUrl('/images/hero-detailing.webp')
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  return routes.flatMap(({ path, enPath, changeFrequency, priority, images }) => {
+  const coreRoutes = routes.flatMap(({ path, enPath, changeFrequency, priority, images }) => {
     const languages = { es: absoluteUrl(path), en: absoluteUrl(enPath) }
     const shared = { lastModified, changeFrequency, priority, alternates: { languages } }
     const imageEntry = images ? { images: [heroImage] } : {}
@@ -22,4 +23,32 @@ export default function sitemap(): MetadataRoute.Sitemap {
       { url: absoluteUrl(enPath), ...shared, ...imageEntry },
     ]
   })
+
+  const serviceRoutes = servicesConfig.flatMap((service) => {
+    const path = `/servicios/${service.slug}`
+    const enPath = `/en/servicios/${service.slug}`
+    const serviceImage = 'image' in service ? service.image : undefined
+    const imageEntry = serviceImage ? { images: [absoluteUrl(serviceImage)] } : { images: [heroImage] }
+
+    return [
+      {
+        url: absoluteUrl(path),
+        lastModified,
+        changeFrequency: 'weekly' as const,
+        priority: 0.85,
+        alternates: { languages: { es: absoluteUrl(path), en: absoluteUrl(enPath) } },
+        ...imageEntry,
+      },
+      {
+        url: absoluteUrl(enPath),
+        lastModified,
+        changeFrequency: 'weekly' as const,
+        priority: 0.85,
+        alternates: { languages: { es: absoluteUrl(path), en: absoluteUrl(enPath) } },
+        ...imageEntry,
+      },
+    ]
+  })
+
+  return [...coreRoutes, ...serviceRoutes]
 }

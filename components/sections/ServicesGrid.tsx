@@ -160,7 +160,7 @@ export async function ServicesGrid() {
                   )}
 
                   <Link
-                    href={`/contacto?servicio=${encodeURIComponent(service.title)}`}
+                    href={`/servicios/${service.slug}`}
                     className={[
                       'inline-flex items-center gap-2 px-6 py-3 rounded-(--radius-md)',
                       'font-semibold text-sm transition-all duration-200 w-fit',

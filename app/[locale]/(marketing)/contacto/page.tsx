@@ -3,7 +3,7 @@ import { getTranslations } from 'next-intl/server'
 import Image from 'next/image'
 import { SectionWrapper } from '@/components/ui/SectionWrapper'
 import { ContactForm } from '@/components/sections/ContactForm'
-import { absoluteUrl, buildAlternates, buildBreadcrumbJsonLd, ogLocale } from '@/lib/seo'
+import { absoluteUrl, buildAlternates, buildBreadcrumbJsonLd, DEFAULT_OG_IMAGE, ogLocale } from '@/lib/seo'
 
 export async function generateMetadata({
   params,
@@ -22,7 +22,9 @@ export async function generateMetadata({
       title: t('ogTitle'),
       description: t('ogDescription'),
       locale: ogLocale(locale),
+      images: [{ url: DEFAULT_OG_IMAGE, width: 1200, height: 630 }],
     },
+    twitter: { card: 'summary_large_image', images: [DEFAULT_OG_IMAGE] },
   }
 }
 

@@ -2,7 +2,7 @@ import type { Metadata } from 'next'
 import { getTranslations } from 'next-intl/server'
 import { ServicesGrid } from '@/components/sections/ServicesGrid'
 import { CTASection } from '@/components/sections/CTASection'
-import { absoluteUrl, buildAlternates, buildBreadcrumbJsonLd, buildFaqJsonLd, buildServicesJsonLd, ogLocale } from '@/lib/seo'
+import { absoluteUrl, buildAlternates, buildBreadcrumbJsonLd, buildFaqJsonLd, buildServicesJsonLd, DEFAULT_OG_IMAGE, ogLocale } from '@/lib/seo'
 import { servicesConfig } from '@/lib/services'
 
 export async function generateMetadata({
@@ -22,7 +22,9 @@ export async function generateMetadata({
       title: t('ogTitle'),
       description: t('ogDescription'),
       locale: ogLocale(locale),
+      images: [{ url: DEFAULT_OG_IMAGE, width: 1200, height: 630 }],
     },
+    twitter: { card: 'summary_large_image', images: [DEFAULT_OG_IMAGE] },
   }
 }
 

@@ -9,6 +9,8 @@ import { buildLocalBusinessJsonLd, DEFAULT_OG_IMAGE, SITE_NAME, SITE_URL } from 
 import { routing } from '@/i18n/routing'
 import '../globals.css'
 
+const GOOGLE_SITE_VERIFICATION = process.env.GOOGLE_SITE_VERIFICATION
+
 const manrope = Manrope({
   subsets: ['latin'],
   variable: '--font-display',
@@ -41,6 +43,9 @@ export const metadata: Metadata = {
     images: [{ url: DEFAULT_OG_IMAGE, width: 1200, height: 630 }],
   },
   twitter: { card: 'summary_large_image', images: [DEFAULT_OG_IMAGE] },
+  verification: GOOGLE_SITE_VERIFICATION
+    ? { google: GOOGLE_SITE_VERIFICATION }
+    : undefined,
   robots: {
     index: true,
     follow: true,

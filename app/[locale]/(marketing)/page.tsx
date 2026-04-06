@@ -5,7 +5,7 @@ import { FeaturesSection } from '@/components/sections/FeaturesSection'
 import { ServicesPreview } from '@/components/sections/ServicesPreview'
 import { ResultsSection } from '@/components/sections/ResultsSection'
 import { CTASection } from '@/components/sections/CTASection'
-import { buildAlternates, ogLocale } from '@/lib/seo'
+import { buildAlternates, DEFAULT_OG_IMAGE, ogLocale } from '@/lib/seo'
 
 export async function generateMetadata({
   params,
@@ -24,7 +24,9 @@ export async function generateMetadata({
       title: t('ogTitle'),
       description: t('ogDescription'),
       locale: ogLocale(locale),
+      images: [{ url: DEFAULT_OG_IMAGE, width: 1200, height: 630 }],
     },
+    twitter: { card: 'summary_large_image', images: [DEFAULT_OG_IMAGE] },
   }
 }
 
