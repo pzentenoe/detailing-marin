@@ -47,10 +47,26 @@ Acciones por URL:
 - [ ] Posición promedio de keywords objetivo
 - [ ] Leads orgánicos (form + WhatsApp)
 
-## Keywords locales sugeridas
+## Keywords locales a monitorear
 
-- detailing automotriz maipú
-- detailing a domicilio maipú
-- lavado ecológico autos maipú
-- pulido automotriz maipú
-- pulido de focos maipú
+**Transaccionales (alta conversión):**
+- lavado de autos a domicilio Santiago
+- aspirado de autos a domicilio Santiago
+- detailing automotriz Santiago
+- lavado ecológico autos Santiago
+- car detailing Santiago
+- pulido de autos a domicilio Santiago
+
+**Long tail por servicio:**
+- lavado ecológico con aspirado Santiago
+- pulido de focos a domicilio Santiago
+- limpieza de motor a domicilio Santiago
+- lavado de tapiz auto Santiago
+
+**Long tail por comuna (ejemplos):**
+- lavado de autos a domicilio Las Condes
+- lavado de autos a domicilio La Florida
+- detailing a domicilio Providencia
+- lavado ecológico Ñuñoa
+
+> Ver referencia completa en `docs/seo/herramientas-seo.md`

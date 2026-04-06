@@ -30,7 +30,6 @@ export function HeroSection() {
           alt=""
           fill
           className="object-cover opacity-[0.12]"
-          priority
           sizes="100vw"
         />
         <div className="absolute inset-0 bg-gradient-to-tr from-(--color-surface) via-(--color-surface)/60 to-transparent" />
