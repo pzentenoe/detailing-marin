@@ -61,6 +61,7 @@ export function Navbar() {
               alt="Nadia Marin Detailing"
               width={72}
               height={72}
+              sizes="72px"
               style={{ height: 'auto' }}
               className="object-contain drop-shadow-md group-hover:scale-105 transition-transform duration-200"
               priority

@@ -26,7 +26,7 @@ export function EcoChip({ stat, label, icon = '🌿' }: EcoChipProps) {
     >
       <span aria-hidden="true">{icon}</span>
       <span className="font-bold">{stat}</span>
-      <span className="opacity-80 whitespace-nowrap">{label}</span>
+      <span className="whitespace-nowrap">{label}</span>
     </div>
   )
 }
