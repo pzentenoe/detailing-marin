@@ -3,7 +3,7 @@ import { getTranslations } from 'next-intl/server'
 import Image from 'next/image'
 import { SectionWrapper } from '@/components/ui/SectionWrapper'
 import { ContactForm } from '@/components/sections/ContactForm'
-import { absoluteUrl, buildAlternates, buildBreadcrumbJsonLd, ogLocale, SITE_NAME } from '@/lib/seo'
+import { absoluteUrl, buildAlternates, buildBreadcrumbJsonLd, ogLocale } from '@/lib/seo'
 
 export async function generateMetadata({
   params,
@@ -32,10 +32,15 @@ export default async function ContactoPage({
   params: Promise<{ locale: string }>
 }) {
   const { locale } = await params
+  const localeCode = locale === 'en' ? 'en' : 'es'
   const t = await getTranslations({ locale, namespace: 'contact' })
+  const tNav = await getTranslations({ locale, namespace: 'nav' })
+
+  const homePath = localeCode === 'en' ? '/en' : '/'
+  const contactPath = localeCode === 'en' ? '/en/contacto' : '/contacto'
   const breadcrumbJsonLd = buildBreadcrumbJsonLd([
-    { name: SITE_NAME, url: absoluteUrl('/') },
-    { name: 'Contacto', url: absoluteUrl('/contacto') },
+    { name: tNav('home'), url: absoluteUrl(homePath) },
+    { name: tNav('contact'), url: absoluteUrl(contactPath) },
   ])
 
   return (
