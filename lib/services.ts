@@ -136,9 +136,6 @@ export const contactInfo: ContactInfo = {
   zone: 'Santiago y Región Metropolitana',
 }
 
-export const WA_MESSAGE =
-  'Hola! Te escribo desde la web detailingmarin.cl. Quisiera mas informacion sobre sus servicios y agendar un servicio'
-
 export const features = [
   {
     id: 'eco',

@@ -70,7 +70,10 @@
     "ctaBannerTitle": "Todos nuestros servicios incluyen desplazamiento a tu domicilio en Santiago y comunas cercanas sin costo extra.",
     "ctaBannerDesc": "Comodidad absoluta para ti, máxima excelencia para tu auto.",
     "bookNow": "Agendar Ahora",
-    "viewCoverage": "Ver Cobertura"
+    "viewCoverage": "Ver Cobertura",
+    "featuresAria": "Características de {name}",
+    "imageBeforeAlt": "{name} — antes del servicio Detailing Marin",
+    "imageAfterAlt": "{name} — resultado Detailing Marin"
   },
   "services": {
     "lavado-ecologico": {
@@ -301,5 +304,9 @@
       "title": "Términos y Condiciones",
       "description": "Términos y condiciones del servicio de Detailing Marin. Conocé las condiciones bajo las que prestamos nuestros servicios."
     }
+  },
+  "shared": {
+    "whatsappMessage": "Hola! Te escribo desde la web detailingmarin.cl. Quisiera mas informacion sobre sus servicios y agendar un servicio",
+    "contactViaWhatsApp": "Contactar por WhatsApp"
   }
 }

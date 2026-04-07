@@ -145,7 +145,7 @@ export async function ServicesGrid() {
                   {(idx === 0 || layout.isHorizontal) && (
                     <ul
                       className="flex flex-col gap-2 mb-8"
-                      aria-label={`Características de ${service.title}`}
+                      aria-label={t('featuresAria', { name: service.title })}
                     >
                       {service.features.map((f) => (
                         <li key={f} className={['flex items-center gap-2 text-sm', layout.descClass].join(' ')}>
@@ -182,11 +182,11 @@ export async function ServicesGrid() {
                       afterLabel={tr('after')}
                       before={{
                         src: service.imageBefore,
-                        alt: `${service.title} — antes del servicio Detailing Marin`,
+                        alt: t('imageBeforeAlt', { name: service.title }),
                       }}
                       after={{
                         src: service.image!,
-                        alt: `${service.title} — resultado Detailing Marin`,
+                        alt: t('imageAfterAlt', { name: service.title }),
                       }}
                     />
                   </div>
@@ -195,7 +195,7 @@ export async function ServicesGrid() {
                   <div className="flex-1 w-full h-48 md:h-56 overflow-hidden rounded-(--radius-lg) shadow-float shrink-0">
                     <Image
                       src={service.image!}
-                      alt={`${service.title} — resultado Detailing Marin`}
+                      alt={t('imageAfterAlt', { name: service.title })}
                       width={480}
                       height={220}
                       className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700"

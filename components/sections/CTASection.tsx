@@ -7,7 +7,7 @@
 
 import { useTranslations } from 'next-intl'
 import { EcoChip } from '@/components/ui/EcoChip'
-import { contactInfo, WA_MESSAGE } from '@/lib/services'
+import { contactInfo } from '@/lib/services'
 
 const WHATSAPP_NUMBER =
   process.env.NEXT_PUBLIC_WHATSAPP_NUMBER ?? contactInfo.whatsapp.replace(/\D/g, '')
@@ -22,6 +22,7 @@ function WhatsAppIcon() {
 
 export function CTASection() {
   const t = useTranslations('cta')
+  const tShared = useTranslations('shared')
 
   return (
     <section className="w-full relative overflow-hidden" aria-label={t('sectionAria')}>
@@ -38,7 +39,7 @@ export function CTASection() {
 
           <div className="flex flex-wrap gap-4 justify-center">
             <a
-              href={`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(WA_MESSAGE)}`}
+              href={`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(tShared('whatsappMessage'))}`}
               target="_blank"
               rel="noopener noreferrer"
               className={[

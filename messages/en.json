@@ -70,7 +70,10 @@
     "ctaBannerTitle": "All our services include travel to your location across Santiago and the Metropolitan Region at no extra cost.",
     "ctaBannerDesc": "Absolute convenience for you, maximum excellence for your car.",
     "bookNow": "Book Now",
-    "viewCoverage": "View Coverage"
+    "viewCoverage": "View Coverage",
+    "featuresAria": "Features of {name}",
+    "imageBeforeAlt": "{name} — before Detailing Marin service",
+    "imageAfterAlt": "{name} — Detailing Marin result"
   },
   "services": {
     "lavado-ecologico": {
@@ -301,5 +304,9 @@
       "title": "Terms and Conditions",
       "description": "Detailing Marin's terms and conditions. Learn the conditions under which we provide our services."
     }
+  },
+  "shared": {
+    "whatsappMessage": "Hi! I'm writing from detailingmarin.cl. I'd like more information about your detailing services and schedule an appointment.",
+    "contactViaWhatsApp": "Contact via WhatsApp"
   }
 }

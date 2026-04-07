@@ -6,13 +6,14 @@
 // Número configurable via NEXT_PUBLIC_WHATSAPP_NUMBER
 // ============================================================
 
-import { WA_MESSAGE } from '@/lib/services'
+import { useTranslations } from 'next-intl'
 
 const WHATSAPP_NUMBER =
   process.env.NEXT_PUBLIC_WHATSAPP_NUMBER ?? '56954451422'
 
 export function WhatsAppFAB() {
-  const url = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(WA_MESSAGE)}`
+  const t = useTranslations('shared')
+  const url = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(t('whatsappMessage'))}`
 
   return (
     <a
@@ -28,7 +29,7 @@ export function WhatsAppFAB() {
         'transition-[transform,box-shadow] duration-200',
         'hover:scale-110 active:scale-95',
       ].join(' ')}
-      aria-label="Contactar por WhatsApp"
+      aria-label={t('contactViaWhatsApp')}
     >
       {/* WhatsApp SVG oficial */}
       <svg

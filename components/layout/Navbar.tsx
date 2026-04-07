@@ -10,13 +10,12 @@ import Image from 'next/image'
 import { Menu, Moon, Sun, X } from 'lucide-react'
 import { useTranslations } from 'next-intl'
 import { Link, usePathname } from '@/i18n/navigation'
-import { navHrefs, WA_MESSAGE } from '@/lib/services'
+import { navHrefs } from '@/lib/services'
 import { Button } from '@/components/ui/Button'
 import { useTheme } from '@/components/layout/ThemeProvider'
 import { LanguageSelector } from '@/components/layout/LanguageSelector'
 
 const WA_NUMBER = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER ?? '56954451422'
-const WA_URL = `https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(WA_MESSAGE)}`
 
 export function Navbar() {
   const [isOpen, setIsOpen] = useState(false)
@@ -24,6 +23,8 @@ export function Navbar() {
   const pathname = usePathname()
   const { theme, toggle } = useTheme()
   const t = useTranslations('nav')
+  const tShared = useTranslations('shared')
+  const WA_URL = `https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(tShared('whatsappMessage'))}`
 
   useEffect(() => {
     const handleScroll = () => setIsScrolled(window.scrollY > 20)

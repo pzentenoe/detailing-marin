@@ -1,7 +1,7 @@
 import type { Metadata } from 'next'
 import { getTranslations } from 'next-intl/server'
 import { SectionWrapper } from '@/components/ui/SectionWrapper'
-import { contactInfo, WA_MESSAGE } from '@/lib/services'
+import { contactInfo } from '@/lib/services'
 import { buildAlternates } from '@/lib/seo'
 
 export async function generateMetadata({
@@ -27,6 +27,7 @@ export default async function TerminosPage({
 }) {
   const { locale } = await params
   const t = await getTranslations({ locale, namespace: 'terminos' })
+  const tShared = await getTranslations({ locale, namespace: 'shared' })
 
   return (
     <div className="pt-20">
@@ -97,7 +98,7 @@ export default async function TerminosPage({
                 </a>{' '}
                 {t('s9Mid')}{' '}
                 <a
-                  href={`https://wa.me/${contactInfo.whatsapp}?text=${encodeURIComponent(WA_MESSAGE)}`}
+                  href={`https://wa.me/${contactInfo.whatsapp}?text=${encodeURIComponent(tShared('whatsappMessage'))}`}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-primary hover:underline"

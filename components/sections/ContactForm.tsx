@@ -11,7 +11,7 @@ import { useTranslations } from 'next-intl'
 import { Button } from '@/components/ui/Button'
 import { Icon } from '@/components/ui/Icon'
 import { DatePicker } from '@/components/ui/DatePicker'
-import { contactInfo, WA_MESSAGE } from '@/lib/services'
+import { contactInfo } from '@/lib/services'
 
 interface FormState {
   nombre: string
@@ -34,6 +34,7 @@ const initialState: FormState = {
 export function ContactForm() {
   const t = useTranslations('contact')
   const tf = useTranslations('contact.form')
+  const tShared = useTranslations('shared')
 
   const [form, setForm] = useState<FormState>(initialState)
 
@@ -148,7 +149,7 @@ export function ContactForm() {
 
         <div className="flex flex-col gap-3">
           <a
-            href={`https://wa.me/${contactInfo.whatsapp}?text=${encodeURIComponent(WA_MESSAGE)}`}
+            href={`https://wa.me/${contactInfo.whatsapp}?text=${encodeURIComponent(tShared('whatsappMessage'))}`}
             target="_blank"
             rel="noopener noreferrer"
             className={[
