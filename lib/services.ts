@@ -36,7 +36,7 @@ export const services: Service[] = [
     title: 'Lavado Ecológico',
     shortDescription: 'Limpieza profunda sin desperdicio de agua.',
     fullDescription:
-      'Limpieza profunda con aspirado de interiores, lavado exterior e interior utilizando tecnología de bajo consumo de agua y productos biodegradables. Hasta un 90% de ahorro de agua vs. lavado tradicional.',
+      'Lavado ecológico de autos a domicilio en Santiago y Región Metropolitana. Incluye aspirado completo de interiores, lavado exterior e interior con productos biodegradables y tecnología hidrofóbica de bajo consumo de agua. Ahorro de hasta 90% de agua vs. lavado tradicional. Sin moverte de tu casa u oficina.',
     icon: 'droplets',
     features: [
       'Aspirado de interiores incluido',
@@ -55,7 +55,7 @@ export const services: Service[] = [
     title: 'Pulido Abrillantador',
     shortDescription: 'Restauración del brillo espejo original.',
     fullDescription:
-      'Restauramos el brillo original de tu vehículo eliminando micro-rayas y realzando la profundidad del color mediante técnicas de corrección de pintura de nivel profesional.',
+      'Pulido abrillantador a domicilio en Santiago y Región Metropolitana. Eliminamos micro-rayas, realzamos la profundidad del color y devolvemos el brillo espejo original con técnicas de corrección de pintura profesional. Incluye sellado UV. Resultado showroom garantizado.',
     icon: 'sparkles',
     features: [
       'Eliminación de micro-rayas',
@@ -72,7 +72,7 @@ export const services: Service[] = [
     title: 'Pulido de Focos',
     shortDescription: 'Recupera la transparencia y seguridad.',
     fullDescription:
-      'Recupera la transparencia y seguridad de tus focos. Eliminamos lo amarillento y opaco con sellado UV que prolonga el resultado hasta 12 meses.',
+      'Pulido y restauración de focos a domicilio en Santiago. Eliminamos amarillamiento y opacidad, recuperando la transparencia original con sellado UV de 12 meses. Mejora visibilidad nocturna y seguridad. Servicio en toda la Región Metropolitana.',
     icon: 'zap',
     features: [
       'Eliminación de amarillamiento',
@@ -90,7 +90,7 @@ export const services: Service[] = [
     title: 'Limpieza de Motor',
     shortDescription: 'Limpieza técnica en seco impecable.',
     fullDescription:
-      'Limpieza técnica detallada que elimina grasa y suciedad acumulada, protegiendo mangueras y componentes plásticos sin usar agua. Mantén el corazón de tu auto en óptimas condiciones.',
+      'Limpieza técnica de motor a domicilio en Santiago y Región Metropolitana. Proceso en seco que elimina grasa acumulada protegiendo mangueras y plásticos. Incluye dressing protector anti-corrosión. Sin moverte de tu domicilio.',
     icon: 'settings',
     features: [
       'Limpieza en seco sin daños',
@@ -109,7 +109,7 @@ export const services: Service[] = [
     title: 'Lavado de Tapiz',
     shortDescription: 'Restauración profunda del interior y asientos.',
     fullDescription:
-      'Limpieza profunda de tapizado, asientos y alfombras con equipamiento especializado. Eliminamos manchas, olores y suciedad incrustada devolviendo el interior a su estado original.',
+      'Lavado de tapiz e interior a domicilio en Santiago y Región Metropolitana. Limpieza profunda de asientos, tapizado y alfombras con equipamiento de extracción especializado. Eliminamos manchas, olores y suciedad incrustada. Incluye acondicionador de cuero si aplica.',
     icon: 'armchair',
     features: [
       'Extracción de manchas profundas',

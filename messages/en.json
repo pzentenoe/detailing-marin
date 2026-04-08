@@ -80,7 +80,7 @@
     "lavado-ecologico": {
       "title": "Eco Wash",
       "shortDescription": "Full wash with interior vacuuming and minimal water waste.",
-      "fullDescription": "Deep cleaning with interior vacuuming, exterior and interior wash using low-water-consumption technology and biodegradable products. Up to 90% water savings vs. traditional washing.",
+      "fullDescription": "Mobile eco wash service in Santiago and the Metropolitan Region. Includes full interior vacuuming, exterior and interior cleaning with 100% biodegradable products and hydrophobic low-water technology. Save up to 90% water compared to a traditional car wash without compromising results. We bring all equipment to your home or office — no need to move your car or find parking. Perfect for daily-use vehicles that need regular maintenance with minimal environmental impact.",
       "features": [
         "Interior vacuuming included",
         "100% biodegradable products",
@@ -91,7 +91,7 @@
     "pulido-abrillantador": {
       "title": "Paint Polish & Shine",
       "shortDescription": "Original mirror shine restoration.",
-      "fullDescription": "We restore your vehicle's original shine by eliminating micro-scratches and enhancing color depth using professional-grade paint correction techniques.",
+      "fullDescription": "Mobile paint polish and shine service in Santiago and the Metropolitan Region. We eliminate micro-scratches and wash marks, enhance color depth, and restore your vehicle's original mirror finish using professional-grade paint correction techniques. UV sealing is applied to protect the paint against sun damage and environmental contaminants. The entire process is performed at your location — no need to visit a shop. The result is a showroom-quality finish that protects your investment long-term.",
       "features": [
         "Micro-scratch removal",
         "Color depth enhancement",
@@ -102,7 +102,7 @@
     "pulido-focos": {
       "title": "Headlight Restoration",
       "shortDescription": "Restore clarity and driving safety.",
-      "fullDescription": "Restore the clarity and safety of your headlights. We eliminate yellowing and haziness with UV sealing that extends the result for up to 12 months.",
+      "fullDescription": "Restore the clarity and transparency of your headlights with our mobile restoration service in Santiago and the Metropolitan Region. The process removes yellowing, haze, and surface scratches to significantly improve night visibility and driving safety. UV sealing extends the result for up to 12 months. The service takes 45 to 60 minutes and is performed directly at your home or office — no travel or waiting required.",
       "features": [
         "Yellowing removal",
         "Long-lasting UV seal",
@@ -113,7 +113,7 @@
     "limpieza-motor": {
       "title": "Engine Clean",
       "shortDescription": "Spotless dry technical cleaning.",
-      "fullDescription": "Detailed technical cleaning that eliminates accumulated grease and grime, protecting hoses and plastic components without using water. Keep your car's heart in optimal condition.",
+      "fullDescription": "Mobile engine cleaning service in Santiago and the Metropolitan Region. We use a controlled waterless process to remove accumulated grease and grime from the engine bay, protecting hoses, cables, and plastic components. A protective dressing is applied to prevent corrosion and maintain optimal condition. A clean engine makes it easier to spot early leaks and improves heat dissipation. Service available across the entire Metro Region in approximately 60 to 90 minutes.",
       "features": [
         "Waterless dry cleaning",
         "Anti-corrosion treatment",
@@ -124,7 +124,7 @@
     "lavado-tapiz": {
       "title": "Upholstery Cleaning",
       "shortDescription": "Deep restoration of interior and seats.",
-      "fullDescription": "Deep cleaning of upholstery, seats, and carpets using specialized equipment. We remove stains, odors, and embedded grime, restoring the interior to its original condition.",
+      "fullDescription": "Mobile upholstery and interior cleaning service in Santiago and the Metropolitan Region. We work on seats, upholstery, carpets, and floor mats with specialized extraction equipment to remove stains, odors, and embedded grime. Leather seats receive premium conditioner to restore and protect the material. Perfect for heavily used vehicles, families with children, or pet owners. The service is performed at your door in an estimated 60 to 90 minutes.",
       "features": [
         "Deep stain extraction",
         "Odor elimination",
@@ -341,5 +341,11 @@
     "ctaContact": "View all services",
     "seoTitle": "We serve the entire Metropolitan Region",
     "seoText": "Detailing Marin provides mobile automotive detailing in the following communes of Santiago: {communes}. Our team travels to your location at no extra travel charge."
+  },
+  "coverageTeaser": {
+    "label": "Coverage",
+    "title": "We serve 33 communes in Santiago",
+    "description": "Maipú, Las Condes, Providencia, La Florida, Ñuñoa, Vitacura and 27 more. No travel fee.",
+    "cta": "View coverage map →"
   }
 }

@@ -1,6 +1,7 @@
 import type { MetadataRoute } from 'next'
 import { absoluteUrl } from '@/lib/seo'
 import { servicesConfig } from '@/lib/services'
+import { PRIORITY_COMMUNES } from '@/lib/comunas'
 
 const lastModified = new Date()
 
@@ -51,5 +52,16 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ]
   })
 
-  return [...coreRoutes, ...serviceRoutes]
+  const communeRoutes = PRIORITY_COMMUNES.map((commune) => {
+    const path = `/comunas/${commune.slug}`
+    return {
+      url: absoluteUrl(path),
+      lastModified,
+      changeFrequency: 'monthly' as const,
+      priority: 0.8,
+      alternates: { languages: { es: absoluteUrl(path), 'x-default': absoluteUrl(path) } },
+    }
+  })
+
+  return [...coreRoutes, ...serviceRoutes, ...communeRoutes]
 }

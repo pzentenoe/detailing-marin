@@ -80,7 +80,7 @@
     "lavado-ecologico": {
       "title": "Lavado Ecológico",
       "shortDescription": "Lavado completo con aspirado y sin desperdicio de agua.",
-      "fullDescription": "Limpieza profunda con aspirado de interiores, lavado exterior e interior usando tecnología de bajo consumo de agua y productos biodegradables. Hasta un 90% de ahorro de agua vs. lavado tradicional.",
+      "fullDescription": "Servicio de lavado ecológico de autos a domicilio en Santiago y toda la Región Metropolitana. Incluye aspirado completo de interiores, lavado exterior e interior con productos 100% biodegradables y tecnología hidrofóbica de bajo consumo de agua. Ahorrás hasta un 90% de agua comparado con un lavado tradicional, sin sacrificar resultados. Llevamos todo el equipamiento hasta tu casa u oficina: no necesitás moverte ni buscar estacionamiento. Ideal para mantener tu vehículo impecable con el menor impacto ambiental posible.",
       "features": [
         "Aspirado de interiores incluido",
         "Productos 100% biodegradables",
@@ -91,7 +91,7 @@
     "pulido-abrillantador": {
       "title": "Pulido Abrillantador",
       "shortDescription": "Restauración del brillo espejo original.",
-      "fullDescription": "Restauramos el brillo original de tu vehículo eliminando micro-rayas y realzando la profundidad del color mediante técnicas de corrección de pintura de nivel profesional.",
+      "fullDescription": "Servicio de pulido abrillantador a domicilio en Santiago y Región Metropolitana. Eliminamos micro-rayas y marcas de lavado, realzamos la profundidad del color y devolvemos el brillo espejo original de tu vehículo con técnicas de corrección de pintura de nivel profesional. Aplicamos sellado UV de larga duración para proteger la pintura contra rayos solares y contaminantes ambientales. Todo el proceso se realiza directamente en tu domicilio, sin necesidad de llevar el auto a un taller. El resultado es un acabado tipo showroom que protege tu inversión a largo plazo.",
       "features": [
         "Eliminación de micro-rayas",
         "Realce de profundidad de color",
@@ -102,7 +102,7 @@
     "pulido-focos": {
       "title": "Pulido de Focos",
       "shortDescription": "Recupera la transparencia y seguridad.",
-      "fullDescription": "Recupera la transparencia y seguridad de tus focos. Eliminamos lo amarillento y opaco con sellado UV que prolonga el resultado hasta 12 meses.",
+      "fullDescription": "Recuperá la transparencia y claridad de tus focos con nuestro servicio de pulido a domicilio en Santiago y Región Metropolitana. El proceso elimina el amarillamiento, opacidad y rayaduras superficiales para mejorar significativamente la visibilidad nocturna y la seguridad al volante. Aplicamos sellado UV que extiende el resultado hasta 12 meses. El servicio demora entre 45 y 60 minutos y se realiza directamente en tu domicilio u oficina, sin traslados ni esperas.",
       "features": [
         "Eliminación de amarillamiento",
         "Sellado UV de larga duración",
@@ -113,7 +113,7 @@
     "limpieza-motor": {
       "title": "Limpieza de Motor",
       "shortDescription": "Limpieza técnica en seco impecable.",
-      "fullDescription": "Limpieza técnica detallada que elimina grasa y suciedad acumulada, protegiendo mangueras y componentes plásticos sin usar agua. Mantén el corazón de tu auto en óptimas condiciones.",
+      "fullDescription": "Servicio de limpieza técnica de motor a domicilio en Santiago y Región Metropolitana. Aplicamos un proceso controlado en seco que elimina la grasa y suciedad acumulada en el compartimento del motor, protegiendo mangueras, cables y componentes plásticos sin usar agua. Finalizamos con dressing protector para prevenir la corrosión y mantener el aspecto en óptimas condiciones. Un motor limpio facilita la detección temprana de pérdidas y mejora la disipación de calor. Servicio disponible en toda la RM, en aproximadamente 60 a 90 minutos.",
       "features": [
         "Limpieza en seco sin daños",
         "Tratamiento anti-corrosión",
@@ -124,7 +124,7 @@
     "lavado-tapiz": {
       "title": "Lavado de Tapiz",
       "shortDescription": "Restauración profunda del interior y asientos.",
-      "fullDescription": "Limpieza profunda de tapizado, asientos y alfombras con equipamiento especializado. Eliminamos manchas, olores y suciedad incrustada devolviendo el interior a su estado original.",
+      "fullDescription": "Servicio de lavado de tapiz e interior a domicilio en Santiago y Región Metropolitana. Trabajamos asientos, tapizado, alfombras y pisos con equipamiento de extracción especializado para eliminar manchas, olores y suciedad incrustada. Para asientos de cuero aplicamos acondicionador premium que restaura y protege el material. Ideal para renovar el interior de vehículos con uso intenso, familias con niños o mascotas. Realizamos el servicio directamente en tu domicilio con una duración estimada de 60 a 90 minutos.",
       "features": [
         "Extracción de manchas profundas",
         "Eliminación de olores",
@@ -341,5 +341,11 @@
     "ctaContact": "Ver todos los servicios",
     "seoTitle": "Atendemos en toda la Región Metropolitana",
     "seoText": "Detailing Marin brinda servicio de detailing automotriz a domicilio en las siguientes comunas de Santiago: {communes}. Nuestro equipo se desplaza hasta tu domicilio sin costo adicional de traslado."
+  },
+  "coverageTeaser": {
+    "label": "Cobertura",
+    "title": "Atendemos 33 comunas de Santiago",
+    "description": "Maipú, Las Condes, Providencia, La Florida, Ñuñoa, Vitacura y 27 comunas más. Sin costo de desplazamiento.",
+    "cta": "Ver mapa de cobertura →"
   }
 }
