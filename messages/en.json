@@ -10,7 +10,8 @@
     "lightMode": "Switch to light mode",
     "darkMode": "Switch to dark mode",
     "logoAria": "Detailing Marin — Go to home",
-    "selectLanguage": "Select language"
+    "selectLanguage": "Select language",
+    "coverage": "Coverage"
   },
   "hero": {
     "badge1Stat": "90%",
@@ -19,7 +20,7 @@
     "badge2Label": "Biodegradable",
     "headline1": "Your vehicle,",
     "headline2": "like the first day.",
-    "description": "Professional detailing and polishing for your car, right at your doorstep. We care for your vehicle and the environment using hydrophobic technology and biodegradable products.",
+    "description": "Mobile car wash and detailing service in Santiago and the Metropolitan Region. Premium care with hydrophobic technology and biodegradable products — right at your door.",
     "cta1": "Book Service",
     "cta1Aria": "Book service via WhatsApp",
     "cta2": "See all services →",
@@ -303,10 +304,42 @@
     "terms": {
       "title": "Terms and Conditions",
       "description": "Detailing Marin's terms and conditions. Learn the conditions under which we provide our services."
+    },
+    "coverage": {
+      "title": "Coverage — 33 communes in Santiago",
+      "description": "Mobile automotive detailing in 33 communes across Santiago: Maipú, Las Condes, Providencia, La Florida, Ñuñoa, Quilicura, Vitacura and more. No travel surcharge.",
+      "ogTitle": "Detailing Marin Coverage — 33 communes in Santiago",
+      "ogDescription": "We bring premium detailing to your door across the Metropolitan Region. 33 communes covered, no travel fee."
     }
   },
   "shared": {
     "whatsappMessage": "Hi! I'm writing from detailingmarin.cl. I'd like more information about your detailing services and schedule an appointment.",
     "contactViaWhatsApp": "Contact via WhatsApp"
+  },
+  "cobertura": {
+    "badge": "Coverage Zone",
+    "heading": "We reach your door in 33 communes of Santiago",
+    "subheading": "Mobile automotive detailing across the Metropolitan Region of Santiago. No travel surcharge — we bring all equipment directly to you.",
+    "stat1Value": "33",
+    "stat1Label": "Communes served",
+    "stat2Value": "500+",
+    "stat2Label": "km² coverage area",
+    "stat3Value": "$0",
+    "stat3Label": "Travel cost",
+    "zonesTitle": "Find your zone",
+    "zonesDesc": "Select your zone to book directly.",
+    "zone_poniente": "Western Zone",
+    "zone_centro": "Central Zone",
+    "zone_norte": "Northern Zone",
+    "zone_oriente": "Eastern Zone",
+    "zone_sur": "Southern Zone",
+    "communesCount": "{count} communes",
+    "bookZone": "Book in this zone",
+    "ctaBannerTitle": "Your commune not listed?",
+    "ctaBannerDesc": "Reach out anyway — we evaluate coverage case by case at no obligation.",
+    "ctaWhatsApp": "Ask via WhatsApp",
+    "ctaContact": "View all services",
+    "seoTitle": "We serve the entire Metropolitan Region",
+    "seoText": "Detailing Marin provides mobile automotive detailing in the following communes of Santiago: {communes}. Our team travels to your location at no extra travel charge."
   }
 }

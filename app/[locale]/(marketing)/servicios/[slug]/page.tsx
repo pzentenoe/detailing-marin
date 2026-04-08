@@ -47,7 +47,7 @@ export async function generateMetadata({
   const shortDescription = `${localeLead} — ${serviceDescription}`.slice(0, 158)
 
   return {
-    title: locale === 'en' ? `${serviceTitle} | Mobile service` : `${serviceTitle} | Servicio a domicilio`,
+    title: locale === 'en' ? `${serviceTitle} in Santiago | Mobile car detailing` : `${serviceTitle} a domicilio en Santiago | Detailing Marin`,
     description: shortDescription,
     alternates: buildAlternates(locale, pagePath),
     openGraph: {
@@ -176,7 +176,7 @@ export default async function ServiceDetailPage({
           <div className="relative rounded-(--radius-xl) overflow-hidden min-h-[380px] bg-surface-container-low">
             <Image
               src={serviceImage}
-              alt={`${title} — ${SITE_NAME}`}
+              alt={locale === 'en' ? `${title} mobile service in Santiago — ${SITE_NAME}` : `${title} a domicilio en Santiago — ${SITE_NAME}`}
               fill
               priority
               className="object-cover"

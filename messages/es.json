@@ -10,7 +10,8 @@
     "lightMode": "Cambiar a modo claro",
     "darkMode": "Cambiar a modo oscuro",
     "logoAria": "Detailing Marin — Ir al inicio",
-    "selectLanguage": "Seleccionar idioma"
+    "selectLanguage": "Seleccionar idioma",
+    "coverage": "Cobertura"
   },
   "hero": {
     "badge1Stat": "90%",
@@ -19,7 +20,7 @@
     "badge2Label": "Biodegradable",
     "headline1": "Tu vehículo,",
     "headline2": "como el primer día.",
-    "description": "El mejor lavado detallado y pulido para tu auto, sin moverte de tu casa. Cuidamos tu vehículo y el medio ambiente con tecnología hidrofóbica y productos biodegradables.",
+    "description": "Lavado de autos a domicilio en Santiago y Región Metropolitana. Detailing premium con tecnología hidrofóbica y productos biodegradables — sin moverte de tu casa.",
     "cta1": "Agendar Servicio",
     "cta1Aria": "Agendar servicio por WhatsApp",
     "cta2": "Ver todos los servicios →",
@@ -303,10 +304,42 @@
     "terms": {
       "title": "Términos y Condiciones",
       "description": "Términos y condiciones del servicio de Detailing Marin. Conocé las condiciones bajo las que prestamos nuestros servicios."
+    },
+    "coverage": {
+      "title": "Cobertura — 33 comunas de Santiago",
+      "description": "Detailing automotriz a domicilio en 33 comunas de Santiago: Maipú, Las Condes, Providencia, La Florida, Ñuñoa, Quilicura, Vitacura y más. Sin costo de desplazamiento.",
+      "ogTitle": "Cobertura Detailing Marin — 33 comunas de Santiago",
+      "ogDescription": "Llevamos el detailing a tu puerta en toda la Región Metropolitana. 33 comunas cubiertas, sin costo de traslado."
     }
   },
   "shared": {
     "whatsappMessage": "Hola! Te escribo desde la web detailingmarin.cl. Quisiera mas informacion sobre sus servicios y agendar un servicio",
     "contactViaWhatsApp": "Contactar por WhatsApp"
+  },
+  "cobertura": {
+    "badge": "Zona de Cobertura",
+    "heading": "Llegamos a tu puerta en 33 comunas de Santiago",
+    "subheading": "Servicio de detailing automotriz a domicilio en toda la Región Metropolitana. Sin costo de desplazamiento, llevamos el equipamiento completo hasta vos.",
+    "stat1Value": "33",
+    "stat1Label": "Comunas atendidas",
+    "stat2Value": "500+",
+    "stat2Label": "km² de cobertura",
+    "stat3Value": "$0",
+    "stat3Label": "Costo de traslado",
+    "zonesTitle": "Buscá tu zona",
+    "zonesDesc": "Seleccioná tu zona para agendar directamente.",
+    "zone_poniente": "Zona Poniente",
+    "zone_centro": "Zona Centro",
+    "zone_norte": "Zona Norte",
+    "zone_oriente": "Zona Oriente",
+    "zone_sur": "Zona Sur",
+    "communesCount": "{count} comunas",
+    "bookZone": "Agendar en esta zona",
+    "ctaBannerTitle": "¿Tu comuna no aparece?",
+    "ctaBannerDesc": "Consultanos igual — evaluamos la cobertura caso a caso sin compromiso.",
+    "ctaWhatsApp": "Consultar por WhatsApp",
+    "ctaContact": "Ver todos los servicios",
+    "seoTitle": "Atendemos en toda la Región Metropolitana",
+    "seoText": "Detailing Marin brinda servicio de detailing automotriz a domicilio en las siguientes comunas de Santiago: {communes}. Nuestro equipo se desplaza hasta tu domicilio sin costo adicional de traslado."
   }
 }

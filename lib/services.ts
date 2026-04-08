@@ -23,8 +23,9 @@ export const featuresConfig = [
 
 // Nav hrefs — labels come from i18n messages
 export const navHrefs = [
-  { href: '/', labelKey: 'home'     as const },
+  { href: '/',          labelKey: 'home'     as const },
   { href: '/servicios', labelKey: 'services' as const },
+  { href: '/cobertura', labelKey: 'coverage' as const },
   { href: '/contacto',  labelKey: 'contact'  as const },
 ] as const
 

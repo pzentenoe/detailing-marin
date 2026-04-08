@@ -89,7 +89,7 @@ export function buildLocalBusinessJsonLd() {
           '@type': 'Service',
           name: service.title,
           description: service.fullDescription,
-          areaServed: contactInfo.zone,
+          areaServed: SERVED_COMMUNES,
           provider: {
             '@type': 'AutomotiveBusiness',
             name: SITE_NAME,
@@ -129,6 +129,10 @@ export function buildFaqJsonLd(locale: LocaleCode = 'es') {
         name: '¿En qué comunas realizan el servicio?',
         text: 'Atendemos toda la Región Metropolitana de Santiago, incluyendo Maipú, Las Condes, Providencia, La Florida, Ñuñoa, Pudahuel, Quilicura, San Miguel, Vitacura, Peñalolén, La Cisterna, El Bosque y muchas más. Consultanos por tu ubicación específica.',
       },
+      {
+        name: '¿Qué métodos de pago aceptan?',
+        text: 'Aceptamos pago en efectivo y transferencia bancaria al finalizar el servicio.',
+      },
     ],
     en: [
       {
@@ -150,6 +154,10 @@ export function buildFaqJsonLd(locale: LocaleCode = 'es') {
       {
         name: 'What areas do you serve?',
         text: 'We serve the entire Santiago Metropolitan Region, including Maipú, Las Condes, Providencia, La Florida, Ñuñoa, Pudahuel, Quilicura, San Miguel, Vitacura, Peñalolén, La Cisterna, El Bosque, and many more. Contact us to confirm your address.',
+      },
+      {
+        name: 'What payment methods do you accept?',
+        text: 'We accept cash and bank transfer upon completion of the service.',
       },
     ],
   }
