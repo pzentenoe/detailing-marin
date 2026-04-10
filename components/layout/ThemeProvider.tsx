@@ -25,14 +25,14 @@ export function useTheme() {
 }
 
 export function ThemeProvider({ children }: { children: React.ReactNode }) {
-  const [theme, setTheme] = useState<Theme>('light')
+  const [theme, setTheme] = useState<Theme>('dark')
   const [mounted, setMounted] = useState(false)
 
   // Inicializar desde localStorage o prefers-color-scheme
   useEffect(() => {
     const stored = localStorage.getItem('dm-theme') as Theme | null
     const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches
-    const initial: Theme = stored ?? (prefersDark ? 'dark' : 'light')
+    const initial: Theme = stored ?? 'dark'
 
     setTheme(initial)
     applyTheme(initial)

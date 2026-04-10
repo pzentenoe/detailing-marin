@@ -43,6 +43,8 @@ export function ContactForm() {
     tf('service2'),
     tf('service3'),
     tf('service4'),
+    tf('service5'),
+    tf('service6'),
   ]
 
   const comoFunciona = [
