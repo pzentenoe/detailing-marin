@@ -20,7 +20,8 @@ export async function ServicesPreview() {
     image: ('image' in s ? s.image : undefined) as string | undefined,
   }))
 
-  const [featured, ...rest] = services
+  const [featured, ...allRest] = services
+  const rest = allRest.slice(0, 4) // Mostrar max 4 en preview — ver todos en /servicios
 
   return (
     <SectionWrapper surface="base" id="servicios-preview">

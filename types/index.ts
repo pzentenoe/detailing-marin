@@ -3,6 +3,11 @@
 // Single source of truth para entidades del dominio
 // ============================================================
 
+export interface PricingRow {
+  label: string
+  price: string
+}
+
 export interface Service {
   id: string
   slug: string
@@ -16,6 +21,7 @@ export interface Service {
   highlight?: boolean
   image?: string
   imageBefore?: string
+  pricingTable?: PricingRow[]
 }
 
 export interface NavLink {

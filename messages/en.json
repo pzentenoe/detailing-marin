@@ -74,57 +74,70 @@
     "viewCoverage": "View Coverage",
     "featuresAria": "Features of {name}",
     "imageBeforeAlt": "{name} — before Detailing Marin service",
-    "imageAfterAlt": "{name} — Detailing Marin result"
+    "imageAfterAlt": "{name} — Detailing Marin result",
+    "pricingTableLabel": "Price by vehicle type",
+    "priceLabel": "Price"
   },
   "services": {
-    "lavado-ecologico": {
-      "title": "Eco Wash",
-      "shortDescription": "Full wash with interior vacuuming and minimal water waste.",
-      "fullDescription": "Mobile eco wash service in Santiago and the Metropolitan Region. Includes full interior vacuuming, exterior and interior cleaning with 100% biodegradable products and hydrophobic low-water technology. Save up to 90% water compared to a traditional car wash without compromising results. We bring all equipment to your home or office — no need to move your car or find parking. Perfect for daily-use vehicles that need regular maintenance with minimal environmental impact.",
+    "pack-eco-diamond": {
+      "title": "Eco Diamond Pack",
+      "shortDescription": "Full polish + Carnauba wax + showroom-level clean.",
+      "fullDescription": "Our most complete service. Professional machine polish on all body panels, Carnauba wax sealing to protect and enhance shine, deep vacuuming, interior dashboard and plastic cleaning and conditioning, full dry wash, door jambs, interior and exterior glass, wheels, tyres, and rubber restorer. Showroom result guaranteed, at your door in Santiago and the Metropolitan Region.",
       "features": [
-        "Interior vacuuming included",
-        "100% biodegradable products",
-        "Up to 90% water savings",
-        "Paint protection included"
+        "Professional machine polish",
+        "Carnauba wax sealing",
+        "Deep vacuum + full interior clean",
+        "Glass, wheels, and rubber included"
+      ]
+    },
+    "pack-eco-platinum": {
+      "title": "Eco Platinum Pack",
+      "shortDescription": "Carnauba dry wash + premium interior detailing.",
+      "fullDescription": "Premium full-service detailing at your door in Santiago and the Metropolitan Region. Deep vacuuming, dashboard and interior plastic cleaning and conditioning, full Carnauba dry wash on bodywork, door jambs, interior and exterior glass, wheels, tyres, exterior plastic restorer, tyre restorer, and interior rubber restorer. All equipment brought to your home or office at no travel cost.",
+      "features": [
+        "Carnauba dry wash",
+        "Deep vacuum + conditioned dashboards",
+        "Glass, wheels, and tyres included",
+        "Exterior and interior plastic restorer"
+      ]
+    },
+    "pack-eco-silver": {
+      "title": "Eco Silver Pack",
+      "shortDescription": "Essential dry wash + vacuuming + exterior glass.",
+      "fullDescription": "The essential service for regular vehicle maintenance, at your door in Santiago and the Metropolitan Region. Includes full interior vacuuming, light dashboard cleaning, complete dry wash on bodywork, tyre cleaning, and exterior glass cleaning. Perfect for keeping your car spotless week after week at the most accessible price.",
+      "features": [
+        "Full interior vacuuming",
+        "Dry wash on bodywork",
+        "Tyre and exterior glass cleaning",
+        "Ideal for regular maintenance"
       ]
     },
     "pulido-abrillantador": {
       "title": "Paint Polish & Shine",
-      "shortDescription": "Original mirror shine restoration.",
-      "fullDescription": "Mobile paint polish and shine service in Santiago and the Metropolitan Region. We eliminate micro-scratches and wash marks, enhance color depth, and restore your vehicle's original mirror finish using professional-grade paint correction techniques. UV sealing is applied to protect the paint against sun damage and environmental contaminants. The entire process is performed at your location — no need to visit a shop. The result is a showroom-quality finish that protects your investment long-term.",
+      "shortDescription": "Professional paint correction to eliminate micro-scratches.",
+      "fullDescription": "Professional mobile paint polish service in Santiago and the Metropolitan Region. We eliminate micro-scratches, wash marks, and surface oxidation to restore your vehicle's original mirror-like shine. Color depth is enhanced using professional-grade paint correction techniques. Available as a standalone service or included in the Eco Diamond Pack.",
       "features": [
-        "Micro-scratch removal",
-        "Color depth enhancement",
-        "UV paint sealing",
-        "Showroom finish"
+        "Micro-scratch and surface oxidation removal",
+        "Color depth and shine enhancement",
+        "Professional polishing machine",
+        "Also included in the Diamond Pack"
       ]
     },
     "pulido-focos": {
       "title": "Headlight Restoration",
-      "shortDescription": "Restore clarity and driving safety.",
-      "fullDescription": "Restore the clarity and transparency of your headlights with our mobile restoration service in Santiago and the Metropolitan Region. The process removes yellowing, haze, and surface scratches to significantly improve night visibility and driving safety. UV sealing extends the result for up to 12 months. The service takes 45 to 60 minutes and is performed directly at your home or office — no travel or waiting required.",
+      "shortDescription": "Restore transparency and clarity to your headlights.",
+      "fullDescription": "We restore the transparency and clarity of your headlights by eliminating accumulated yellowing and haze. The process significantly improves night visibility and driving safety. Includes a protective sealant to extend the result. Service priced per pair of headlights, performed at your door in Santiago and the Metropolitan Region.",
       "features": [
-        "Yellowing removal",
-        "Long-lasting UV seal",
+        "Yellowing and haze removal",
         "Improved night visibility",
-        "12-month guarantee"
+        "Protective sealant included",
+        "Service priced per pair"
       ]
     },
-    "limpieza-motor": {
-      "title": "Engine Clean",
-      "shortDescription": "Spotless dry technical cleaning.",
-      "fullDescription": "Mobile engine cleaning service in Santiago and the Metropolitan Region. We use a controlled waterless process to remove accumulated grease and grime from the engine bay, protecting hoses, cables, and plastic components. A protective dressing is applied to prevent corrosion and maintain optimal condition. A clean engine makes it easier to spot early leaks and improves heat dissipation. Service available across the entire Metro Region in approximately 60 to 90 minutes.",
-      "features": [
-        "Waterless dry cleaning",
-        "Anti-corrosion treatment",
-        "Hose and plastic protection",
-        "Protective dressing applied"
-      ]
-    },
-    "lavado-tapiz": {
-      "title": "Upholstery Cleaning",
-      "shortDescription": "Deep restoration of interior and seats.",
-      "fullDescription": "Mobile upholstery and interior cleaning service in Santiago and the Metropolitan Region. We work on seats, upholstery, carpets, and floor mats with specialized extraction equipment to remove stains, odors, and embedded grime. Leather seats receive premium conditioner to restore and protect the material. Perfect for heavily used vehicles, families with children, or pet owners. The service is performed at your door in an estimated 60 to 90 minutes.",
+    "limpieza-tapiz": {
+      "title": "Upholstery & Interior Clean",
+      "shortDescription": "Deep cleaning of seats, upholstery, and carpets.",
+      "fullDescription": "Deep cleaning of seats, upholstery, carpets, and floor mats at your door in Santiago and the Metropolitan Region. We use specialized extraction equipment to remove stains, odors, and embedded grime. Leather seats receive premium conditioner to restore and protect the material. Price based on vehicle type and size. Ideal for families with children or pets.",
       "features": [
         "Deep stain extraction",
         "Odor elimination",
