@@ -3,6 +3,7 @@ import { getTranslations } from 'next-intl/server'
 import { ServicesGrid } from '@/components/sections/ServicesGrid'
 import { CTASection } from '@/components/sections/CTASection'
 import { absoluteUrl, buildAlternates, buildBreadcrumbJsonLd, buildFaqJsonLd, buildServicesJsonLd, DEFAULT_OG_IMAGE, ogLocale } from '@/lib/seo'
+import { JsonLd } from '@/components/ui/JsonLd'
 import { servicesConfig } from '@/lib/services'
 
 export async function generateMetadata({
@@ -56,18 +57,9 @@ export default async function ServiciosPage({
 
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(servicesJsonLd) }}
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
-      />
+      <JsonLd data={servicesJsonLd} />
+      <JsonLd data={faqJsonLd} />
+      <JsonLd data={breadcrumbJsonLd} />
       <div className="pt-20">
         <ServicesGrid />
       </div>

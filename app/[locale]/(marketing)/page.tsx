@@ -7,6 +7,7 @@ import { ServicesPreview } from '@/components/sections/ServicesPreview'
 import { ResultsSection } from '@/components/sections/ResultsSection'
 import { CTASection } from '@/components/sections/CTASection'
 import { buildAlternates, buildFaqJsonLd, DEFAULT_OG_IMAGE, ogLocale } from '@/lib/seo'
+import { JsonLd } from '@/components/ui/JsonLd'
 
 export async function generateMetadata({
   params,
@@ -42,10 +43,7 @@ export default async function HomePage({
 
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
-      />
+      <JsonLd data={faqJsonLd} />
       <HeroSection />
       <FeaturesSection />
       <ServicesPreview />

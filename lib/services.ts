@@ -28,6 +28,7 @@ export const servicesConfig = [
     icon: 'award' as const,
     duration: '90–120 min',
     price: 'Desde $28.990',
+    image: '/images/hero-detailing.webp',
     pricingTable: [
       { label: 'Citycar', price: '$28.990' },
       { label: 'Sedán / Hatchback', price: '$31.990' },

@@ -4,6 +4,7 @@ import Image from 'next/image'
 import { SectionWrapper } from '@/components/ui/SectionWrapper'
 import { ContactForm } from '@/components/sections/ContactForm'
 import { absoluteUrl, buildAlternates, buildBreadcrumbJsonLd, buildContactPageJsonLd, DEFAULT_OG_IMAGE, ogLocale } from '@/lib/seo'
+import { JsonLd } from '@/components/ui/JsonLd'
 
 export async function generateMetadata({
   params,
@@ -48,14 +49,8 @@ export default async function ContactoPage({
 
   return (
     <div className="pt-20">
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(contactPageJsonLd) }}
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
-      />
+      <JsonLd data={contactPageJsonLd} />
+      <JsonLd data={breadcrumbJsonLd} />
       <SectionWrapper surface="base">
         <ContactForm />
       </SectionWrapper>
@@ -70,7 +65,8 @@ export default async function ContactoPage({
             sizes="(max-width: 768px) 100vw, 90vw"
           />
           <div
-            className="absolute inset-0 bg-gradient-to-r from-primary/80 to-transparent"
+            className="absolute inset-0"
+            style={{ background: 'linear-gradient(to right, rgba(0,0,0,0.80) 0%, rgba(0,0,0,0.55) 40%, rgba(0,0,0,0.10) 65%, transparent 100%)' }}
             aria-hidden="true"
           />
           <div className="relative z-10 max-w-lg flex flex-col gap-4">

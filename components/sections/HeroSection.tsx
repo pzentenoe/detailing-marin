@@ -10,12 +10,12 @@ import { useTranslations } from 'next-intl'
 import { Link } from '@/i18n/navigation'
 import { Button } from '@/components/ui/Button'
 import { EcoChip } from '@/components/ui/EcoChip'
-const WA_NUMBER = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER ?? '56954451422'
+import { buildWhatsAppUrl } from '@/lib/whatsapp'
 
 export function HeroSection() {
   const t = useTranslations('hero')
   const tShared = useTranslations('shared')
-  const WA_URL = `https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(tShared('whatsappMessage'))}`
+  const WA_URL = buildWhatsAppUrl(tShared('whatsappMessage'))
 
   return (
     <section

@@ -4,6 +4,7 @@ import { Link } from '@/i18n/navigation'
 import { CoberturaSection } from '@/components/sections/CoberturaSection'
 import { SectionWrapper } from '@/components/ui/SectionWrapper'
 import { buildAlternates, buildLocalBusinessJsonLd, SITE_NAME, SITE_URL, SERVED_COMMUNES } from '@/lib/seo'
+import { JsonLd } from '@/components/ui/JsonLd'
 import { PRIORITY_COMMUNES } from '@/lib/comunas'
 
 export async function generateMetadata({
@@ -64,14 +65,8 @@ export default async function CoberturaPage({
 
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessJsonLd) }}
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
-      />
+      <JsonLd data={localBusinessJsonLd} />
+      <JsonLd data={breadcrumbJsonLd} />
       <div className="pt-20">
         <CoberturaSection />
 

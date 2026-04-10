@@ -8,6 +8,7 @@ import { BeforeAfterCard } from '@/components/ui/BeforeAfterCard'
 import { Icon } from '@/components/ui/Icon'
 import { Link } from '@/i18n/navigation'
 import { absoluteUrl, buildAlternates, buildBreadcrumbJsonLd, buildServiceFaqJsonLd, DEFAULT_OG_IMAGE, getServiceFaqEntries, ogLocale, SERVED_COMMUNES, SITE_NAME, SITE_URL } from '@/lib/seo'
+import { JsonLd } from '@/components/ui/JsonLd'
 import { servicesConfig } from '@/lib/services'
 
 type PageParams = Promise<{ locale: string; slug: string }>
@@ -123,20 +124,9 @@ export default async function ServiceDetailPage({
 
   return (
     <div className="pt-20">
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceJsonLd) }}
-      />
-      {serviceFaqEntries.length > 0 && (
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceFaqJsonLd) }}
-        />
-      )}
+      <JsonLd data={breadcrumbJsonLd} />
+      <JsonLd data={serviceJsonLd} />
+      {serviceFaqEntries.length > 0 && <JsonLd data={serviceFaqJsonLd} />}
 
       <SectionWrapper surface="base" innerClassName="pt-10">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-start">

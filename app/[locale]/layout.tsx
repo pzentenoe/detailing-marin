@@ -6,6 +6,7 @@ import { notFound } from 'next/navigation'
 import { ThemeProvider } from '@/components/layout/ThemeProvider'
 import { QueryProvider } from '@/components/layout/QueryProvider'
 import { buildLocalBusinessJsonLd, DEFAULT_OG_IMAGE, SITE_NAME, SITE_URL } from '@/lib/seo'
+import { JsonLd } from '@/components/ui/JsonLd'
 import { routing } from '@/i18n/routing'
 import '../globals.css'
 
@@ -92,10 +93,7 @@ export default async function LocaleLayout({
   return (
     <html lang={locale} className={`${manrope.variable} ${inter.variable}`} data-scroll-behavior="smooth">
       <body className="font-body antialiased">
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessJsonLd) }}
-        />
+        <JsonLd data={localBusinessJsonLd} />
         <NextIntlClientProvider messages={messages}>
           <QueryProvider>
             <ThemeProvider>{children}</ThemeProvider>

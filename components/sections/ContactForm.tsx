@@ -8,10 +8,13 @@
 import { useState } from 'react'
 import { useMutation } from '@tanstack/react-query'
 import { useTranslations } from 'next-intl'
+import { Loader2 } from 'lucide-react'
 import { Button } from '@/components/ui/Button'
 import { Icon } from '@/components/ui/Icon'
 import { DatePicker } from '@/components/ui/DatePicker'
 import { contactInfo } from '@/lib/services'
+import { contactFormSchema } from '@/lib/validation'
+import { buildWhatsAppUrl } from '@/lib/whatsapp'
 
 interface FormState {
   nombre: string
@@ -31,12 +34,15 @@ const initialState: FormState = {
   serviciosSeleccionados: [],
 }
 
+type FormErrors = Partial<Record<keyof FormState, string>>
+
 export function ContactForm() {
   const t = useTranslations('contact')
   const tf = useTranslations('contact.form')
   const tShared = useTranslations('shared')
 
   const [form, setForm] = useState<FormState>(initialState)
+  const [errors, setErrors] = useState<FormErrors>({})
 
   const serviciosOpciones = [
     tf('service1'),
@@ -65,11 +71,19 @@ export function ContactForm() {
         throw new Error(data.error ?? tf('genericError'))
       }
     },
-    onSuccess: () => setForm(initialState),
+    onSuccess: () => {
+      setForm(initialState)
+      setErrors({})
+    },
   })
 
   const handleTextChange = (e: { target: { name: string; value: string } }) => {
-    setForm((prev) => ({ ...prev, [e.target.name]: e.target.value }))
+    const { name, value } = e.target
+    setForm((prev) => ({ ...prev, [name]: value }))
+    // Clear field error as soon as user corrects it
+    if (errors[name as keyof FormState]) {
+      setErrors((prev) => ({ ...prev, [name]: undefined }))
+    }
   }
 
   const handleCheckbox = (servicio: string) => {
@@ -83,15 +97,21 @@ export function ContactForm() {
 
   const handleSubmit = (e: { preventDefault(): void }) => {
     e.preventDefault()
+    const result = contactFormSchema.safeParse(form)
+    if (!result.success) {
+      const fieldErrors: FormErrors = {}
+      for (const issue of result.error.issues) {
+        const field = issue.path[0] as keyof FormState
+        if (!fieldErrors[field]) fieldErrors[field] = issue.message
+      }
+      setErrors(fieldErrors)
+      return
+    }
+    setErrors({})
     mutate(form)
   }
 
-  const isFormValid =
-    form.nombre.trim() !== '' &&
-    form.telefono.trim() !== '' &&
-    form.direccion.trim() !== '' &&
-    form.tipoVehiculo !== '' &&
-    form.fechaPreferida !== ''
+  const isFormValid = contactFormSchema.safeParse(form).success
 
   const inputClass = [
     'w-full h-14 px-4 rounded-(--radius-lg)',
@@ -151,7 +171,7 @@ export function ContactForm() {
 
         <div className="flex flex-col gap-3">
           <a
-            href={`https://wa.me/${contactInfo.whatsapp}?text=${encodeURIComponent(tShared('whatsappMessage'))}`}
+            href={buildWhatsAppUrl(tShared('whatsappMessage'))}
             target="_blank"
             rel="noopener noreferrer"
             className={[
@@ -209,8 +229,10 @@ export function ContactForm() {
                     id="cf-nombre" name="nombre" type="text"
                     value={form.nombre} onChange={handleTextChange}
                     placeholder={tf('fullNamePlaceholder')} required
-                    className={inputClass} aria-required="true"
+                    className={[inputClass, errors.nombre ? 'ring-2 ring-error/40' : ''].join(' ')}
+                    aria-required="true" aria-describedby={errors.nombre ? 'err-nombre' : undefined}
                   />
+                  {errors.nombre && <p id="err-nombre" className="text-xs text-error pl-1">{errors.nombre}</p>}
                 </div>
                 <div className="flex flex-col gap-2">
                   <label htmlFor="cf-telefono" className={labelClass}>{tf('phone')}</label>
@@ -218,8 +240,10 @@ export function ContactForm() {
                     id="cf-telefono" name="telefono" type="tel"
                     value={form.telefono} onChange={handleTextChange}
                     placeholder={tf('phonePlaceholder')} required
-                    className={inputClass} aria-required="true"
+                    className={[inputClass, errors.telefono ? 'ring-2 ring-error/40' : ''].join(' ')}
+                    aria-required="true" aria-describedby={errors.telefono ? 'err-telefono' : undefined}
                   />
+                  {errors.telefono && <p id="err-telefono" className="text-xs text-error pl-1">{errors.telefono}</p>}
                 </div>
               </div>
 
@@ -233,9 +257,11 @@ export function ContactForm() {
                     id="cf-direccion" name="direccion" type="text"
                     value={form.direccion} onChange={handleTextChange}
                     placeholder={tf('addressPlaceholder')} required
-                    className={inputClass.replace('px-4', 'pl-12 pr-4')} aria-required="true"
+                    className={[inputClass.replace('px-4', 'pl-12 pr-4'), errors.direccion ? 'ring-2 ring-error/40' : ''].join(' ')}
+                    aria-required="true" aria-describedby={errors.direccion ? 'err-direccion' : undefined}
                   />
                 </div>
+                {errors.direccion && <p id="err-direccion" className="text-xs text-error pl-1">{errors.direccion}</p>}
               </div>
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -244,7 +270,9 @@ export function ContactForm() {
                   <select
                     id="cf-vehiculo" name="tipoVehiculo"
                     value={form.tipoVehiculo} onChange={handleTextChange}
-                    required className={[inputClass, 'appearance-none cursor-pointer'].join(' ')} aria-required="true"
+                    required
+                    className={[inputClass, 'appearance-none cursor-pointer', errors.tipoVehiculo ? 'ring-2 ring-error/40' : ''].join(' ')}
+                    aria-required="true" aria-describedby={errors.tipoVehiculo ? 'err-vehiculo' : undefined}
                   >
                     <option value="" disabled>{tf('vehiclePlaceholder')}</option>
                     <option>{tf('vehicleCompact')}</option>
@@ -252,16 +280,22 @@ export function ContactForm() {
                     <option>{tf('vehicle4x4')}</option>
                     <option>{tf('vehicleMoto')}</option>
                   </select>
+                  {errors.tipoVehiculo && <p id="err-vehiculo" className="text-xs text-error pl-1">{errors.tipoVehiculo}</p>}
                 </div>
                 <div className="flex flex-col gap-2">
                   <label htmlFor="cf-fecha" className={labelClass}>{tf('preferredDate')}</label>
                   <DatePicker
                     id="cf-fecha"
                     value={form.fechaPreferida}
-                    onChange={(val) => setForm((prev) => ({ ...prev, fechaPreferida: val }))}
+                    onChange={(val) => {
+                      setForm((prev) => ({ ...prev, fechaPreferida: val }))
+                      if (errors.fechaPreferida) setErrors((prev) => ({ ...prev, fechaPreferida: undefined }))
+                    }}
                     required
-                    className={[inputClass, 'text-on-surface-variant pr-12'].join(' ')}
+                    className={[inputClass, 'text-on-surface-variant pr-12', errors.fechaPreferida ? 'ring-2 ring-error/40' : ''].join(' ')}
+                    aria-describedby={errors.fechaPreferida ? 'err-fecha' : undefined}
                   />
+                  {errors.fechaPreferida && <p id="err-fecha" className="text-xs text-error pl-1">{errors.fechaPreferida}</p>}
                 </div>
               </div>
 
@@ -312,9 +346,16 @@ export function ContactForm() {
                   'disabled:opacity-60 disabled:cursor-not-allowed disabled:scale-100',
                 ].join(' ')}
               >
-                {isPending ? tf('submitting') : tf('submit')}
-                {!isPending && (
-                  <Icon name="calendar" size={20} className="transition-transform group-hover/btn:translate-x-1" />
+                {isPending ? (
+                  <>
+                    <Loader2 size={20} className="animate-spin" aria-hidden="true" />
+                    {tf('submitting')}
+                  </>
+                ) : (
+                  <>
+                    {tf('submit')}
+                    <Icon name="calendar" size={20} className="transition-transform group-hover/btn:translate-x-1" />
+                  </>
                 )}
               </button>
 

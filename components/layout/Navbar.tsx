@@ -14,8 +14,7 @@ import { navHrefs } from '@/lib/services'
 import { Button } from '@/components/ui/Button'
 import { useTheme } from '@/components/layout/ThemeProvider'
 import { LanguageSelector } from '@/components/layout/LanguageSelector'
-
-const WA_NUMBER = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER ?? '56954451422'
+import { buildWhatsAppUrl } from '@/lib/whatsapp'
 
 export function Navbar() {
   const [isOpen, setIsOpen] = useState(false)
@@ -24,7 +23,7 @@ export function Navbar() {
   const { theme, toggle } = useTheme()
   const t = useTranslations('nav')
   const tShared = useTranslations('shared')
-  const WA_URL = `https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(tShared('whatsappMessage'))}`
+  const WA_URL = buildWhatsAppUrl(tShared('whatsappMessage'))
 
   useEffect(() => {
     const handleScroll = () => setIsScrolled(window.scrollY > 20)
@@ -191,7 +190,7 @@ export function Navbar() {
             variant="primary"
             size="md"
             fullWidth
-            onClick={() => window.open(WA_URL, '_blank')}
+            onClick={() => { setIsOpen(false); window.open(WA_URL, '_blank') }}
             aria-label={t('ctaAria')}
           >
             {t('cta')}

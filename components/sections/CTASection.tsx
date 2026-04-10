@@ -8,9 +8,7 @@
 import { useTranslations } from 'next-intl'
 import { EcoChip } from '@/components/ui/EcoChip'
 import { contactInfo } from '@/lib/services'
-
-const WHATSAPP_NUMBER =
-  process.env.NEXT_PUBLIC_WHATSAPP_NUMBER ?? contactInfo.whatsapp.replace(/\D/g, '')
+import { buildWhatsAppUrl } from '@/lib/whatsapp'
 
 function WhatsAppIcon() {
   return (
@@ -39,7 +37,7 @@ export function CTASection() {
 
           <div className="flex flex-wrap gap-4 justify-center">
             <a
-              href={`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(tShared('whatsappMessage'))}`}
+              href={buildWhatsAppUrl(tShared('whatsappMessage'))}
               target="_blank"
               rel="noopener noreferrer"
               className={[

@@ -11,6 +11,7 @@ import {
   SITE_NAME,
   SITE_URL,
 } from '@/lib/seo'
+import { JsonLd } from '@/components/ui/JsonLd'
 import { servicesConfig, services } from '@/lib/services'
 import { getCommuneBySlug, PRIORITY_COMMUNES } from '@/lib/comunas'
 
@@ -104,18 +105,9 @@ export default async function ComunaPage({ params }: { params: PageParams }) {
 
   return (
     <div className="pt-20">
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessJsonLd) }}
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
-      />
+      <JsonLd data={breadcrumbJsonLd} />
+      <JsonLd data={localBusinessJsonLd} />
+      <JsonLd data={faqJsonLd} />
 
       {/* Hero de la comuna */}
       <SectionWrapper surface="base" innerClassName="pt-10">

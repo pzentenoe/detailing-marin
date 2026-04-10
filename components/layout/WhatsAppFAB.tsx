@@ -7,13 +7,11 @@
 // ============================================================
 
 import { useTranslations } from 'next-intl'
-
-const WHATSAPP_NUMBER =
-  process.env.NEXT_PUBLIC_WHATSAPP_NUMBER ?? '56954451422'
+import { buildWhatsAppUrl } from '@/lib/whatsapp'
 
 export function WhatsAppFAB() {
   const t = useTranslations('shared')
-  const url = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(t('whatsappMessage'))}`
+  const url = buildWhatsAppUrl(t('whatsappMessage'))
 
   return (
     <a
