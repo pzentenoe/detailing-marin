@@ -113,12 +113,12 @@ export async function Footer() {
           </div>
         </div>
 
-        <div className="mt-12 pt-6 border-t border-outline-variant/20 grid grid-cols-3 items-center">
-          <div />
-          <p className="text-on-surface-variant text-xs text-center">
+        <div className="mt-12 pt-6 border-t border-outline-variant/20 flex flex-col items-center gap-3 sm:grid sm:grid-cols-3 sm:items-center">
+          <div className="hidden sm:block" />
+          <p className="text-on-surface-variant text-xs text-center order-last sm:order-none">
             {t('copyright', { year })}
           </p>
-          <nav aria-label={t('legalNavAria')} className="flex justify-end">
+          <nav aria-label={t('legalNavAria')} className="flex justify-center sm:justify-end">
             <ul className="flex items-center gap-4">
               {legalLinks.map((link) => (
                 <li key={link.key}>
