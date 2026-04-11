@@ -16,7 +16,7 @@ export async function generateMetadata({
     title: t('title'),
     description: t('description'),
     alternates: buildAlternates(locale, '/privacidad'),
-    robots: { index: false, follow: false },
+    robots: { index: true, follow: true },
   }
 }
 
