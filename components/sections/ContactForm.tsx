@@ -319,7 +319,6 @@ export function ContactForm() {
                           type="checkbox" checked={checked}
                           onChange={() => handleCheckbox(servicio)}
                           className="w-5 h-5 rounded accent-primary cursor-pointer"
-                          aria-label={servicio}
                         />
                         <span className="text-sm font-medium text-(--color-on-surface)">{servicio}</span>
                       </label>

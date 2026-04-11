@@ -24,12 +24,14 @@ export function HeroSection() {
     >
       {/* Imagen de fondo a baja opacidad */}
       <div className="absolute inset-0 z-0" aria-hidden="true">
-        <Image
-          src="/images/lavado_ecologico/lavado_ecologico.webp"
-          alt=""
-          fill
-          className="object-cover opacity-[0.12]"
-          sizes="100vw"
+        <div
+          className="absolute inset-0"
+          style={{
+            backgroundImage: 'url(/images/lavado_ecologico/lavado_ecologico.webp)',
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+            opacity: 0.12,
+          }}
         />
         <div className="absolute inset-0 bg-gradient-to-tr from-(--color-surface) via-(--color-surface)/60 to-transparent" />
       </div>
