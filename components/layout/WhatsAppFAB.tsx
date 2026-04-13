@@ -8,6 +8,7 @@
 
 import { useTranslations } from 'next-intl'
 import { buildWhatsAppUrl } from '@/lib/whatsapp'
+import { analytics } from '@/lib/analytics'
 
 export function WhatsAppFAB() {
   const t = useTranslations('shared')
@@ -18,6 +19,7 @@ export function WhatsAppFAB() {
       href={url}
       target="_blank"
       rel="noopener noreferrer"
+      onClick={() => analytics.whatsappClick({ source: 'fab' })}
       className={[
         'fixed bottom-6 left-6 z-40',
         'w-14 h-14 rounded-full',

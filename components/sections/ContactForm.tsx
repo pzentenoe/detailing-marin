@@ -15,6 +15,7 @@ import { DatePicker } from '@/components/ui/DatePicker'
 import { contactInfo } from '@/lib/services'
 import { contactFormSchema } from '@/lib/validation'
 import { buildWhatsAppUrl } from '@/lib/whatsapp'
+import { analytics } from '@/lib/analytics'
 
 interface FormState {
   nombre: string
@@ -71,9 +72,17 @@ export function ContactForm() {
         throw new Error(data.error ?? tf('genericError'))
       }
     },
-    onSuccess: () => {
+    onSuccess: (_data, variables) => {
+      analytics.formSubmit({
+        vehicle_type: variables.tipoVehiculo,
+        services: variables.serviciosSeleccionados,
+        services_count: variables.serviciosSeleccionados.length,
+      })
       setForm(initialState)
       setErrors({})
+    },
+    onError: () => {
+      analytics.formError({ error_type: 'api' })
     },
   })
 
@@ -105,6 +114,7 @@ export function ContactForm() {
         if (!fieldErrors[field]) fieldErrors[field] = issue.message
       }
       setErrors(fieldErrors)
+      analytics.formError({ error_type: 'validation' })
       return
     }
     setErrors({})
@@ -174,6 +184,7 @@ export function ContactForm() {
             href={buildWhatsAppUrl(tShared('whatsappMessage'))}
             target="_blank"
             rel="noopener noreferrer"
+            onClick={() => analytics.whatsappClick({ source: 'contact_page' })}
             className={[
               'flex items-center gap-4 p-4 rounded-(--radius-lg)',
               'bg-surface-container-low border border-outline-variant/10',

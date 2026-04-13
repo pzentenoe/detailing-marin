@@ -14,6 +14,7 @@ import {
 import { JsonLd } from '@/components/ui/JsonLd'
 import { servicesConfig, services } from '@/lib/services'
 import { getCommuneBySlug, PRIORITY_COMMUNES } from '@/lib/comunas'
+import { TrackEvent } from '@/components/ui/TrackEvent'
 
 type PageParams = Promise<{ locale: string; slug: string }>
 
@@ -105,6 +106,7 @@ export default async function ComunaPage({ params }: { params: PageParams }) {
 
   return (
     <div className="pt-20">
+      <TrackEvent name="commune_view" params={{ commune_slug: commune.slug }} />
       <JsonLd data={breadcrumbJsonLd} />
       <JsonLd data={localBusinessJsonLd} />
       <JsonLd data={faqJsonLd} />

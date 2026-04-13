@@ -3,7 +3,7 @@ import { getTranslations } from 'next-intl/server'
 import { Link } from '@/i18n/navigation'
 import { CoberturaSection } from '@/components/sections/CoberturaSection'
 import { SectionWrapper } from '@/components/ui/SectionWrapper'
-import { buildAlternates, buildLocalBusinessJsonLd, SITE_NAME, SITE_URL, SERVED_COMMUNES } from '@/lib/seo'
+import { buildAlternates, buildCoverageFaqJsonLd, buildLocalBusinessJsonLd, DEFAULT_OG_IMAGE, SITE_NAME, SITE_URL, SERVED_COMMUNES } from '@/lib/seo'
 import { JsonLd } from '@/components/ui/JsonLd'
 import { PRIORITY_COMMUNES } from '@/lib/comunas'
 
@@ -22,10 +22,10 @@ export async function generateMetadata({
     openGraph: {
       title: t('ogTitle'),
       description: t('ogDescription'),
-      url: locale === 'en'
-        ? `${SITE_URL}/en/cobertura`
-        : `${SITE_URL}/cobertura`,
+      url: locale === 'en' ? `${SITE_URL}/en/cobertura` : `${SITE_URL}/cobertura`,
+      images: [{ url: DEFAULT_OG_IMAGE, width: 1200, height: 630 }],
     },
+    twitter: { card: 'summary_large_image', images: [DEFAULT_OG_IMAGE] },
   }
 }
 
@@ -63,10 +63,13 @@ export default async function CoberturaPage({
     ],
   }
 
+  const coverageFaqJsonLd = buildCoverageFaqJsonLd(locale === 'en' ? 'en' : 'es')
+
   return (
     <>
       <JsonLd data={localBusinessJsonLd} />
       <JsonLd data={breadcrumbJsonLd} />
+      <JsonLd data={coverageFaqJsonLd} />
       <div className="pt-20">
         <CoberturaSection />
 

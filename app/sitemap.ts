@@ -3,7 +3,7 @@ import { absoluteUrl } from '@/lib/seo'
 import { servicesConfig } from '@/lib/services'
 import { PRIORITY_COMMUNES } from '@/lib/comunas'
 
-const lastModified = new Date()
+const lastModified = new Date('2026-04-12')
 
 const routes = [
   { path: '/',           enPath: '/en',              changeFrequency: 'weekly'  as const, priority: 1,    images: true  },

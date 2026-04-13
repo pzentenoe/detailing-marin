@@ -9,6 +9,7 @@ import { useTranslations } from 'next-intl'
 import { EcoChip } from '@/components/ui/EcoChip'
 import { contactInfo } from '@/lib/services'
 import { buildWhatsAppUrl } from '@/lib/whatsapp'
+import { analytics } from '@/lib/analytics'
 
 function WhatsAppIcon() {
   return (
@@ -40,6 +41,7 @@ export function CTASection() {
               href={buildWhatsAppUrl(tShared('whatsappMessage'))}
               target="_blank"
               rel="noopener noreferrer"
+              onClick={() => analytics.whatsappClick({ source: 'cta' })}
               className={[
                 'inline-flex items-center justify-center gap-2',
                 'px-8 py-4 rounded-full',

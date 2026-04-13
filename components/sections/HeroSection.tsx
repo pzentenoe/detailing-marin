@@ -11,6 +11,7 @@ import { Link } from '@/i18n/navigation'
 import { Button } from '@/components/ui/Button'
 import { EcoChip } from '@/components/ui/EcoChip'
 import { buildWhatsAppUrl } from '@/lib/whatsapp'
+import { analytics } from '@/lib/analytics'
 
 export function HeroSection() {
   const t = useTranslations('hero')
@@ -70,12 +71,15 @@ export function HeroSection() {
               <Button
                 variant="primary"
                 size="lg"
-                onClick={() => window.open(WA_URL, '_blank')}
+                onClick={() => {
+                  analytics.whatsappClick({ source: 'hero' })
+                  window.open(WA_URL, '_blank')
+                }}
                 aria-label={t('cta1Aria')}
               >
                 🗓️ {t('cta1')}
               </Button>
-              <Link href="/servicios" passHref>
+              <Link href="/servicios" passHref onClick={() => analytics.ctaClick({ cta_id: 'hero_services', page: 'home' })}>
                 <Button variant="secondary" size="lg">
                   {t('cta2')}
                 </Button>

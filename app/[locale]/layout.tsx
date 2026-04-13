@@ -7,6 +7,7 @@ import { ThemeProvider } from '@/components/layout/ThemeProvider'
 import { QueryProvider } from '@/components/layout/QueryProvider'
 import { buildLocalBusinessJsonLd, DEFAULT_OG_IMAGE, SITE_NAME, SITE_URL } from '@/lib/seo'
 import { JsonLd } from '@/components/ui/JsonLd'
+import { GoogleAnalytics } from '@/components/layout/GoogleAnalytics'
 import { routing } from '@/i18n/routing'
 import '../globals.css'
 
@@ -93,6 +94,7 @@ export default async function LocaleLayout({
   return (
     <html lang={locale} className={`${manrope.variable} ${inter.variable}`} data-scroll-behavior="smooth">
       <body className="font-body antialiased">
+        <GoogleAnalytics />
         <JsonLd data={localBusinessJsonLd} />
         <NextIntlClientProvider messages={messages}>
           <QueryProvider>

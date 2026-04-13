@@ -10,6 +10,7 @@ import { Link } from '@/i18n/navigation'
 import { absoluteUrl, buildAlternates, buildBreadcrumbJsonLd, buildServiceFaqJsonLd, DEFAULT_OG_IMAGE, getServiceFaqEntries, ogLocale, SERVED_COMMUNES, SITE_NAME, SITE_URL } from '@/lib/seo'
 import { JsonLd } from '@/components/ui/JsonLd'
 import { servicesConfig } from '@/lib/services'
+import { TrackEvent } from '@/components/ui/TrackEvent'
 
 type PageParams = Promise<{ locale: string; slug: string }>
 
@@ -124,6 +125,7 @@ export default async function ServiceDetailPage({
 
   return (
     <div className="pt-20">
+      <TrackEvent name="service_view" params={{ service_slug: service.slug, service_name: title }} />
       <JsonLd data={breadcrumbJsonLd} />
       <JsonLd data={serviceJsonLd} />
       {serviceFaqEntries.length > 0 && <JsonLd data={serviceFaqJsonLd} />}

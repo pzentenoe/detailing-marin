@@ -9,6 +9,7 @@ import { useState, useRef, useEffect } from 'react'
 import { useLocale, useTranslations } from 'next-intl'
 import { useRouter, usePathname } from '@/i18n/navigation'
 import { ChevronDown } from 'lucide-react'
+import { analytics } from '@/lib/analytics'
 
 const locales = [
   { code: 'es', label: 'Español', flag: '🇨🇱' },
@@ -39,6 +40,7 @@ export function LanguageSelector() {
   }, [open])
 
   const handleSelect = (code: LocaleCode) => {
+    analytics.languageSwitch({ from: locale, to: code })
     router.replace(pathname, { locale: code })
     setOpen(false)
   }

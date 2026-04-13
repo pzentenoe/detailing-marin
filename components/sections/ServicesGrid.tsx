@@ -353,7 +353,7 @@ export async function ServicesGrid() {
               {t('bookNow')}
             </Link>
             <Link
-              href="/contacto"
+              href="/cobertura"
               className="inline-flex items-center justify-center px-10 py-4 bg-white/10 text-white font-semibold rounded-(--radius-md) hover:bg-white/20 transition-colors border border-white/20"
             >
               {t('viewCoverage')}
