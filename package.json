@@ -11,7 +11,7 @@
     "icons:clean": "rm -rf public/icons/*.png && rm -f public/icons/manifest-icons.json",
     "icons:rebuild": "pnpm run icons:clean && pnpm run icons:generate",
     "favicon:generate": "node scripts/generate-favicon.js",
-    "prepare": "npx skilld prepare || true"
+    "skilld:prepare": "npx skilld prepare"
   },
   "dependencies": {
     "@tailwindcss/postcss": "^4.2.2",
