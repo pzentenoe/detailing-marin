@@ -105,3 +105,8 @@ Custom CSS utilities defined in globals.css (use these, don't recreate):
 ### SEO
 
 Every page exports a `generateMetadata()` using `lib/seo.ts` helpers. The root layout injects `AutomotiveBusiness` JSON-LD; `/servicios` injects `ItemList` JSON-LD via `buildServicesJsonLd()`.
+
+<!-- skilld -->
+Before modifying code, evaluate each installed skill against the current task.
+For each skill, determine YES/NO relevance and invoke all YES skills before proceeding.
+<!-- /skilld -->
