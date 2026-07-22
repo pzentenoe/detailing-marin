@@ -46,10 +46,10 @@ export async function generateMetadata({
     ? `${serviceTitle} in Santiago`
     : `${serviceTitle} en Santiago`
 
-  const shortDescription = `${localeLead} — ${serviceDescription}`.slice(0, 158)
+  const shortDescription = `${localeLead}. ${serviceDescription.split('. ')[0]}.`
 
   return {
-    title: locale === 'en' ? `${serviceTitle} in Santiago | Mobile car detailing` : `${serviceTitle} a domicilio en Santiago | Detailing Marin`,
+    title: locale === 'en' ? `${serviceTitle} in Santiago` : `${serviceTitle} a domicilio en Santiago`,
     description: shortDescription,
     alternates: buildAlternates(locale, pagePath),
     openGraph: {
@@ -159,7 +159,7 @@ export default async function ServiceDetailPage({
 
             <Link
               href={contactPath}
-              className="inline-flex w-fit items-center gap-2 px-6 py-3 rounded-(--radius-md) gradient-primary text-white font-semibold shadow-ambient hover:shadow-float transition-all"
+              className="inline-flex w-fit items-center gap-2 px-6 py-3 rounded-(--radius-md) gradient-primary text-white font-semibold shadow-ambient hover:shadow-float transition-shadow"
             >
               {locale === 'en' ? 'Request this service' : 'Solicitar este servicio'}
             </Link>

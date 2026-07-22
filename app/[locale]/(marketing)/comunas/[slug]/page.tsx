@@ -9,7 +9,6 @@ import {
   buildBreadcrumbJsonLd,
   DEFAULT_OG_IMAGE,
   SITE_NAME,
-  SITE_URL,
 } from '@/lib/seo'
 import { JsonLd } from '@/components/ui/JsonLd'
 import { servicesConfig, services } from '@/lib/services'
@@ -25,6 +24,8 @@ export function generateStaticParams() {
     slug: commune.slug,
   }))
 }
+
+export const dynamicParams = false
 
 export async function generateMetadata({ params }: { params: PageParams }): Promise<Metadata> {
   const { locale, slug } = await params
@@ -73,26 +74,6 @@ export default async function ComunaPage({ params }: { params: PageParams }) {
     { name: commune.name, url: absoluteUrl(path) },
   ])
 
-  const localBusinessJsonLd = {
-    '@context': 'https://schema.org',
-    '@type': 'AutomotiveBusiness',
-    '@id': absoluteUrl(`${path}#localbusiness`),
-    name: SITE_NAME,
-    url: SITE_URL,
-    description: `Servicio de detailing automotriz a domicilio en ${commune.name}, ${commune.zone}, Santiago.`,
-    areaServed: {
-      '@type': 'City',
-      name: commune.name,
-      containedInPlace: {
-        '@type': 'AdministrativeArea',
-        name: 'Región Metropolitana de Santiago',
-      },
-    },
-    telephone: '+56954451422',
-    openingHours: ['Mo-Sa 09:00-19:00'],
-    priceRange: '$$',
-  }
-
   const faqJsonLd = {
     '@context': 'https://schema.org',
     '@type': 'FAQPage',
@@ -108,7 +89,6 @@ export default async function ComunaPage({ params }: { params: PageParams }) {
     <div className="pt-20">
       <TrackEvent name="commune_view" params={{ commune_slug: commune.slug }} />
       <JsonLd data={breadcrumbJsonLd} />
-      <JsonLd data={localBusinessJsonLd} />
       <JsonLd data={faqJsonLd} />
 
       {/* Hero de la comuna */}
@@ -143,7 +123,7 @@ export default async function ComunaPage({ params }: { params: PageParams }) {
 
             <Link
               href={`/contacto?zona=${encodeURIComponent(commune.name)}`}
-              className="inline-flex w-fit items-center gap-2 px-6 py-3 rounded-(--radius-md) gradient-primary text-white font-semibold shadow-ambient hover:shadow-float transition-all"
+              className="inline-flex w-fit items-center gap-2 px-6 py-3 rounded-(--radius-md) gradient-primary text-white font-semibold shadow-ambient hover:shadow-float transition-shadow"
             >
               Agendar en {commune.name}
             </Link>
@@ -185,7 +165,7 @@ export default async function ComunaPage({ params }: { params: PageParams }) {
               <Link
                 key={service.slug}
                 href={`/servicios/${service.slug}`}
-                className="group rounded-(--radius-xl) bg-surface-container border border-outline-variant/20 p-5 flex flex-col gap-3 hover:border-primary/40 hover:shadow-ambient transition-all"
+                className="group rounded-(--radius-xl) bg-surface-container border border-outline-variant/20 p-5 flex flex-col gap-3 hover:border-primary/40 hover:shadow-ambient transition-[border-color,box-shadow]"
               >
                 <div className="flex items-center gap-3">
                   <span className="w-10 h-10 rounded-(--radius-md) bg-secondary-container flex items-center justify-center shrink-0">

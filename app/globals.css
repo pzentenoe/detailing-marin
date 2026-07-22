@@ -238,6 +238,22 @@ html {
   scroll-behavior: smooth;
 }
 
+main,
+[id] {
+  scroll-margin-top: 6rem;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
 /* Selección de texto con colores del design system */
 ::selection {
   background-color: var(--color-primary-fixed);

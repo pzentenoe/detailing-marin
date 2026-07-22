@@ -11,7 +11,9 @@
     "icons:clean": "rm -rf public/icons/*.png && rm -f public/icons/manifest-icons.json",
     "icons:rebuild": "pnpm run icons:clean && pnpm run icons:generate",
     "favicon:generate": "node scripts/generate-favicon.js",
-    "skilld:prepare": "npx skilld prepare"
+    "skilld:prepare": "npx skilld prepare",
+    "storybook": "storybook dev -p 6006",
+    "build-storybook": "storybook build"
   },
   "dependencies": {
     "@tailwindcss/postcss": "^4.2.2",
@@ -34,12 +36,14 @@
     "edge >= 93"
   ],
   "devDependencies": {
+    "@storybook/nextjs-vite": "^10.5.3",
     "@types/node": "^20",
     "@types/nodemailer": "^7.0.11",
     "@types/react": "^19",
     "@types/react-dom": "^19",
     "eslint": "^9",
     "eslint-config-next": "16.2.1",
+    "storybook": "^10.5.3",
     "typescript": "^5"
   }
 }

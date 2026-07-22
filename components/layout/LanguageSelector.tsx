@@ -27,6 +27,9 @@ export function LanguageSelector() {
   const containerRef = useRef<HTMLDivElement>(null)
 
   const current = locales.find((l) => l.code === locale) ?? locales[0]
+  const availableLocales = pathname.startsWith('/comunas/')
+    ? locales.filter((item) => item.code === 'es')
+    : locales
 
   // Close on outside click
   useEffect(() => {
@@ -77,7 +80,7 @@ export function LanguageSelector() {
             'shadow-float overflow-hidden',
           ].join(' ')}
         >
-          {locales.map((item) => {
+          {availableLocales.map((item) => {
             const isSelected = item.code === locale
             return (
               <li key={item.code} role="option" aria-selected={isSelected}>

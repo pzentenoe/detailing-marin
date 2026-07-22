@@ -53,6 +53,14 @@ export function ContactForm() {
     tf('service5'),
     tf('service6'),
   ]
+  const validationMessages: Record<keyof FormState, string> = {
+    nombre: tf('validation.name'),
+    telefono: tf('validation.phone'),
+    direccion: tf('validation.address'),
+    tipoVehiculo: tf('validation.vehicle'),
+    fechaPreferida: tf('validation.date'),
+    serviciosSeleccionados: tf('validation.services'),
+  }
 
   const comoFunciona = [
     { icon: 'calendar' as const, title: t('howItWorks.step1Title'), desc: t('howItWorks.step1Desc') },
@@ -111,17 +119,24 @@ export function ContactForm() {
       const fieldErrors: FormErrors = {}
       for (const issue of result.error.issues) {
         const field = issue.path[0] as keyof FormState
-        if (!fieldErrors[field]) fieldErrors[field] = issue.message
+        if (!fieldErrors[field]) fieldErrors[field] = validationMessages[field]
       }
       setErrors(fieldErrors)
+      const firstInvalidField = Object.keys(fieldErrors)[0] as keyof FormState | undefined
+      if (firstInvalidField) {
+        const fieldId = firstInvalidField === 'tipoVehiculo'
+          ? 'cf-vehiculo'
+          : firstInvalidField === 'fechaPreferida'
+            ? 'cf-fecha'
+            : `cf-${firstInvalidField}`
+        requestAnimationFrame(() => document.getElementById(fieldId)?.focus())
+      }
       analytics.formError({ error_type: 'validation' })
       return
     }
     setErrors({})
     mutate(form)
   }
-
-  const isFormValid = contactFormSchema.safeParse(form).success
 
   const inputClass = [
     'w-full h-14 px-4 rounded-(--radius-lg)',
@@ -130,7 +145,7 @@ export function ContactForm() {
     'placeholder:text-on-surface-variant/40',
     'focus:outline-none focus:ring-2 focus:ring-primary/20',
     'focus:bg-(--color-surface-container-lowest)',
-    'transition-all duration-200',
+    'transition-[background-color,box-shadow] duration-200',
   ].join(' ')
 
   const labelClass = 'text-xs font-bold text-primary tracking-widest uppercase pl-1'
@@ -188,7 +203,7 @@ export function ContactForm() {
             className={[
               'flex items-center gap-4 p-4 rounded-(--radius-lg)',
               'bg-surface-container-low border border-outline-variant/10',
-              'hover:bg-surface-container transition-all duration-200',
+              'hover:bg-surface-container transition-colors duration-200',
             ].join(' ')}
             aria-label={t('whatsappAria')}
           >
@@ -218,7 +233,7 @@ export function ContactForm() {
       {/* ── Columna derecha (7 cols): formulario glass ── */}
       <div className="lg:col-span-7">
         <div className="relative">
-          <div className="absolute -top-10 -right-10 w-64 h-64 bg-secondary-container/30 blur-[80px] rounded-full -z-10 pointer-events-none" aria-hidden="true" />
+          <div className="absolute -top-10 right-0 w-64 h-64 bg-secondary-container/30 blur-[80px] rounded-full -z-10 pointer-events-none" aria-hidden="true" />
 
           {isSuccess ? (
             <div className="glass rounded-(--radius-xl) p-10 text-center flex flex-col items-center gap-5 shadow-ambient">
@@ -232,7 +247,11 @@ export function ContactForm() {
               onSubmit={handleSubmit}
               className="glass border border-outline-variant/20 rounded-(--radius-xl) p-10 flex flex-col gap-7 shadow-ambient"
               aria-label={tf('ariaLabel')}
+              noValidate
             >
+              <p className="sr-only" aria-live="polite">
+                {Object.values(errors).filter(Boolean).join(' ')}
+              </p>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div className="flex flex-col gap-2">
                   <label htmlFor="cf-nombre" className={labelClass}>{tf('fullName')}</label>
@@ -241,9 +260,9 @@ export function ContactForm() {
                     value={form.nombre} onChange={handleTextChange}
                     placeholder={tf('fullNamePlaceholder')} required
                     className={[inputClass, errors.nombre ? 'ring-2 ring-error/40' : ''].join(' ')}
-                    aria-required="true" aria-describedby={errors.nombre ? 'err-nombre' : undefined}
+                    aria-required="true" aria-invalid={Boolean(errors.nombre)} aria-describedby={errors.nombre ? 'err-nombre' : undefined}
                   />
-                  {errors.nombre && <p id="err-nombre" className="text-xs text-error pl-1">{errors.nombre}</p>}
+                  {errors.nombre && <p id="err-nombre" className="text-xs text-error pl-1" aria-live="polite">{errors.nombre}</p>}
                 </div>
                 <div className="flex flex-col gap-2">
                   <label htmlFor="cf-telefono" className={labelClass}>{tf('phone')}</label>
@@ -252,9 +271,9 @@ export function ContactForm() {
                     value={form.telefono} onChange={handleTextChange}
                     placeholder={tf('phonePlaceholder')} required
                     className={[inputClass, errors.telefono ? 'ring-2 ring-error/40' : ''].join(' ')}
-                    aria-required="true" aria-describedby={errors.telefono ? 'err-telefono' : undefined}
+                    aria-required="true" aria-invalid={Boolean(errors.telefono)} aria-describedby={errors.telefono ? 'err-telefono' : undefined}
                   />
-                  {errors.telefono && <p id="err-telefono" className="text-xs text-error pl-1">{errors.telefono}</p>}
+                  {errors.telefono && <p id="err-telefono" className="text-xs text-error pl-1" aria-live="polite">{errors.telefono}</p>}
                 </div>
               </div>
 
@@ -269,10 +288,10 @@ export function ContactForm() {
                     value={form.direccion} onChange={handleTextChange}
                     placeholder={tf('addressPlaceholder')} required
                     className={[inputClass.replace('px-4', 'pl-12 pr-4'), errors.direccion ? 'ring-2 ring-error/40' : ''].join(' ')}
-                    aria-required="true" aria-describedby={errors.direccion ? 'err-direccion' : undefined}
+                    aria-required="true" aria-invalid={Boolean(errors.direccion)} aria-describedby={errors.direccion ? 'err-direccion' : undefined}
                   />
                 </div>
-                {errors.direccion && <p id="err-direccion" className="text-xs text-error pl-1">{errors.direccion}</p>}
+                {errors.direccion && <p id="err-direccion" className="text-xs text-error pl-1" aria-live="polite">{errors.direccion}</p>}
               </div>
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -283,7 +302,7 @@ export function ContactForm() {
                     value={form.tipoVehiculo} onChange={handleTextChange}
                     required
                     className={[inputClass, 'appearance-none cursor-pointer', errors.tipoVehiculo ? 'ring-2 ring-error/40' : ''].join(' ')}
-                    aria-required="true" aria-describedby={errors.tipoVehiculo ? 'err-vehiculo' : undefined}
+                    aria-required="true" aria-invalid={Boolean(errors.tipoVehiculo)} aria-describedby={errors.tipoVehiculo ? 'err-vehiculo' : undefined}
                   >
                     <option value="" disabled>{tf('vehiclePlaceholder')}</option>
                     <option>{tf('vehicleCompact')}</option>
@@ -291,7 +310,7 @@ export function ContactForm() {
                     <option>{tf('vehicle4x4')}</option>
                     <option>{tf('vehicleMoto')}</option>
                   </select>
-                  {errors.tipoVehiculo && <p id="err-vehiculo" className="text-xs text-error pl-1">{errors.tipoVehiculo}</p>}
+                  {errors.tipoVehiculo && <p id="err-vehiculo" className="text-xs text-error pl-1" aria-live="polite">{errors.tipoVehiculo}</p>}
                 </div>
                 <div className="flex flex-col gap-2">
                   <label htmlFor="cf-fecha" className={labelClass}>{tf('preferredDate')}</label>
@@ -304,9 +323,10 @@ export function ContactForm() {
                     }}
                     required
                     className={[inputClass, 'text-on-surface-variant pr-12', errors.fechaPreferida ? 'ring-2 ring-error/40' : ''].join(' ')}
-                    aria-describedby={errors.fechaPreferida ? 'err-fecha' : undefined}
+                    ariaDescribedBy={errors.fechaPreferida ? 'err-fecha' : undefined}
+                    ariaInvalid={Boolean(errors.fechaPreferida)}
                   />
-                  {errors.fechaPreferida && <p id="err-fecha" className="text-xs text-error pl-1">{errors.fechaPreferida}</p>}
+                  {errors.fechaPreferida && <p id="err-fecha" className="text-xs text-error pl-1" aria-live="polite">{errors.fechaPreferida}</p>}
                 </div>
               </div>
 
@@ -320,7 +340,7 @@ export function ContactForm() {
                         key={servicio}
                         className={[
                           'flex items-center gap-3 p-4 rounded-(--radius-lg) cursor-pointer',
-                          'border transition-all duration-200',
+                          'border transition-[background-color,border-color] duration-200',
                           checked
                             ? 'bg-secondary-container border-primary/20'
                             : 'bg-surface-container-low border-transparent hover:bg-secondary-container/30',
@@ -339,19 +359,19 @@ export function ContactForm() {
               </fieldset>
 
               {isError && (
-                <p className="text-center text-sm text-error bg-error-container rounded-(--radius-md) px-4 py-3">
+                <p className="text-center text-sm text-error bg-error-container rounded-(--radius-md) px-4 py-3" role="alert">
                   {error instanceof Error ? error.message : tf('genericError')}
                 </p>
               )}
 
               <button
                 type="submit"
-                disabled={!isFormValid || isPending}
+                disabled={isPending}
                 className={[
                   'w-full py-5 rounded-(--radius-xl)',
                   'gradient-primary text-white font-bold text-lg',
                   'shadow-float hover:scale-[1.02] active:scale-[0.98]',
-                  'transition-all duration-200',
+                  'transition-transform duration-200',
                   'flex items-center justify-center gap-3 group/btn',
                   'disabled:opacity-60 disabled:cursor-not-allowed disabled:scale-100',
                 ].join(' ')}

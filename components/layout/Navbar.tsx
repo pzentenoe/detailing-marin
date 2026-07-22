@@ -5,7 +5,7 @@
 // Sticky con efecto al scroll, mobile hamburger menu
 // ============================================================
 
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import Image from 'next/image'
 import { Menu, Moon, Sun, X } from 'lucide-react'
 import { useTranslations } from 'next-intl'
@@ -19,6 +19,7 @@ import { buildWhatsAppUrl } from '@/lib/whatsapp'
 export function Navbar() {
   const [isOpen, setIsOpen] = useState(false)
   const [isScrolled, setIsScrolled] = useState(false)
+  const menuButtonRef = useRef<HTMLButtonElement>(null)
   const pathname = usePathname()
   const { theme, toggle } = useTheme()
   const t = useTranslations('nav')
@@ -31,7 +32,19 @@ export function Navbar() {
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
-  // Close menu on navigation — handled via Link onClick instead of effect
+  useEffect(() => {
+    if (!isOpen) return
+
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') {
+        setIsOpen(false)
+        menuButtonRef.current?.focus()
+      }
+    }
+
+    document.addEventListener('keydown', handleKeyDown)
+    return () => document.removeEventListener('keydown', handleKeyDown)
+  }, [isOpen])
 
   return (
     <header
@@ -60,7 +73,7 @@ export function Navbar() {
               src="/icon/logo-removebg.png"
               alt="Nadia Marin Detailing"
               width={72}
-              height={72}
+              height={52}
               sizes="72px"
               style={{ height: 'auto' }}
               className="object-contain drop-shadow-md group-hover:scale-105 transition-transform duration-200"
@@ -105,7 +118,7 @@ export function Navbar() {
             {/* Dark mode toggle */}
             <button
               onClick={toggle}
-              className="p-2 rounded-md text-(--color-on-surface) hover:bg-surface-container transition-all duration-200 hover:scale-110 active:scale-95"
+              className="p-2 rounded-md text-(--color-on-surface) hover:bg-surface-container transition-[background-color,transform] duration-200 hover:scale-110 active:scale-95"
               aria-label={theme === 'dark' ? t('lightMode') : t('darkMode')}
               title={theme === 'dark' ? t('lightMode') : t('darkMode')}
             >
@@ -129,7 +142,7 @@ export function Navbar() {
             <LanguageSelector />
             <button
               onClick={toggle}
-              className="p-2 rounded-md text-(--color-on-surface) hover:bg-surface-container transition-all duration-200 hover:scale-110 active:scale-95"
+              className="p-2 rounded-md text-(--color-on-surface) hover:bg-surface-container transition-[background-color,transform] duration-200 hover:scale-110 active:scale-95"
               aria-label={theme === 'dark' ? t('lightMode') : t('darkMode')}
             >
               {theme === 'dark'
@@ -137,6 +150,7 @@ export function Navbar() {
                 : <Moon size={20} aria-hidden="true" />}
             </button>
             <button
+              ref={menuButtonRef}
               className="p-2 rounded-md text-(--color-on-surface) hover:bg-surface-container-high transition-colors"
               onClick={() => setIsOpen(!isOpen)}
               aria-expanded={isOpen}
@@ -150,53 +164,42 @@ export function Navbar() {
       </div>
 
       {/* Mobile Menu */}
-      <div
-        id="mobile-menu"
-        className={[
-          'md:hidden glass border-t border-outline-variant/20',
-          'transition-all duration-300 ease-out overflow-hidden',
-          isOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0',
-        ]
-          .filter(Boolean)
-          .join(' ')}
-        aria-hidden={!isOpen}
-      >
-        <nav
-          className="px-4 py-4 flex flex-col gap-4"
-          aria-label="Navegación móvil"
-        >
-          {navHrefs.map((link) => {
-            const isActive = pathname === link.href
-            return (
-              <Link
-                key={link.href}
-                href={link.href}
-                onClick={() => setIsOpen(false)}
-                className={[
-                  'text-base font-medium py-2 transition-colors',
-                  isActive
-                    ? 'text-primary'
-                    : 'text-on-surface-variant hover:text-primary',
-                ]
-                  .filter(Boolean)
-                  .join(' ')}
-                aria-current={isActive ? 'page' : undefined}
-              >
-                {t(link.labelKey)}
-              </Link>
-            )
-          })}
-          <Button
-            variant="primary"
-            size="md"
-            fullWidth
-            onClick={() => { setIsOpen(false); window.open(WA_URL, '_blank') }}
-            aria-label={t('ctaAria')}
-          >
-            {t('cta')}
-          </Button>
-        </nav>
-      </div>
+      {isOpen && (
+        <div id="mobile-menu" className="md:hidden glass border-t border-outline-variant/20">
+          <nav className="px-4 py-4 flex flex-col gap-4" aria-label="Navegación móvil">
+            {navHrefs.map((link) => {
+              const isActive = pathname === link.href
+              return (
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  onClick={() => setIsOpen(false)}
+                  className={[
+                    'text-base font-medium py-2 transition-colors',
+                    isActive
+                      ? 'text-primary'
+                      : 'text-on-surface-variant hover:text-primary',
+                  ]
+                    .filter(Boolean)
+                    .join(' ')}
+                  aria-current={isActive ? 'page' : undefined}
+                >
+                  {t(link.labelKey)}
+                </Link>
+              )
+            })}
+            <Button
+              variant="primary"
+              size="md"
+              fullWidth
+              onClick={() => { setIsOpen(false); window.open(WA_URL, '_blank') }}
+              aria-label={t('ctaAria')}
+            >
+              {t('cta')}
+            </Button>
+          </nav>
+        </div>
+      )}
     </header>
   )
 }

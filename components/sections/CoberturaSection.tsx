@@ -221,7 +221,7 @@ export async function CoberturaSection() {
                           className={[
                             'inline-flex items-center px-3 py-1.5',
                             'rounded-full border text-sm font-medium',
-                            'transition-all duration-200 cursor-default',
+                            'transition-colors duration-200 cursor-default',
                             zone.chipClass,
                           ].join(' ')}
                         >
@@ -235,7 +235,7 @@ export async function CoberturaSection() {
                       href="/contacto"
                       className={[
                         'inline-flex items-center gap-2 px-5 py-2.5 rounded-(--radius-md)',
-                        'text-sm font-semibold transition-all duration-200',
+                        'text-sm font-semibold transition-[background-color,transform] duration-200',
                         'hover:scale-[1.02] active:scale-[0.98]',
                         zone.btnClass,
                       ].join(' ')}

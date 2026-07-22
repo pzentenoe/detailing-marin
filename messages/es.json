@@ -11,7 +11,8 @@
     "darkMode": "Cambiar a modo oscuro",
     "logoAria": "Detailing Marin — Ir al inicio",
     "selectLanguage": "Seleccionar idioma",
-    "coverage": "Cobertura"
+    "coverage": "Cobertura",
+    "skipToContent": "Saltar al contenido principal"
   },
   "hero": {
     "badge1Stat": "90%",
@@ -198,7 +199,15 @@
       "submit": "Confirmar Reserva",
       "submitting": "Enviando...",
       "confirmNote": "Te enviaremos la confirmación por correo electrónico.",
-      "genericError": "Hubo un error al enviar. Intentá de nuevo."
+      "genericError": "Hubo un error al enviar. Intentá de nuevo.",
+      "validation": {
+        "name": "Ingresá tu nombre completo.",
+        "phone": "Ingresá un teléfono válido.",
+        "address": "Ingresá una dirección de servicio válida.",
+        "vehicle": "Seleccioná un tipo de vehículo.",
+        "date": "Seleccioná una fecha desde hoy.",
+        "services": "Seleccioná al menos un servicio."
+      }
     },
     "success": {
       "title": "¡Reserva enviada!",

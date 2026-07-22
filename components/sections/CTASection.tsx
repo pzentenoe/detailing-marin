@@ -47,7 +47,7 @@ export function CTASection() {
                 'px-8 py-4 rounded-full',
                 'text-white font-semibold text-lg',
                 'border-2 border-white/30 hover:border-white/60 hover:bg-white/10',
-                'transition-all duration-200',
+                'transition-[background-color,border-color] duration-200',
               ].join(' ')}
               aria-label={t('whatsappAria')}
             >
@@ -61,7 +61,7 @@ export function CTASection() {
                 'inline-flex items-center justify-center gap-2',
                 'px-8 py-4 rounded-full',
                 'bg-white text-[#154212] font-semibold text-lg',
-                'hover:bg-white/90 transition-all duration-200 shadow-float',
+                'hover:bg-white/90 transition-colors duration-200 shadow-float',
               ].join(' ')}
               aria-label={t('emailAria')}
             >

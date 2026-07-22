@@ -40,7 +40,7 @@ export function Button({
     <button
       className={[
         'inline-flex items-center justify-center gap-2',
-        'transition-all duration-200 ease-out',
+        'transition-[color,filter,opacity,box-shadow,transform] duration-200 ease-out',
         'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-fixed focus-visible:ring-offset-2',
         'disabled:opacity-50 disabled:cursor-not-allowed',
         'cursor-pointer select-none',

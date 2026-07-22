@@ -11,7 +11,8 @@
     "darkMode": "Switch to dark mode",
     "logoAria": "Detailing Marin — Go to home",
     "selectLanguage": "Select language",
-    "coverage": "Coverage"
+    "coverage": "Coverage",
+    "skipToContent": "Skip to main content"
   },
   "hero": {
     "badge1Stat": "90%",
@@ -198,7 +199,15 @@
       "submit": "Confirm Booking",
       "submitting": "Sending...",
       "confirmNote": "We will send you a confirmation email.",
-      "genericError": "There was an error sending. Please try again."
+      "genericError": "There was an error sending. Please try again.",
+      "validation": {
+        "name": "Enter your full name.",
+        "phone": "Enter a valid phone number.",
+        "address": "Enter a valid service address.",
+        "vehicle": "Select a vehicle type.",
+        "date": "Select today or a future date.",
+        "services": "Select at least one service."
+      }
     },
     "success": {
       "title": "Booking sent!",
