@@ -25,6 +25,8 @@ pnpm favicon:generate # regenerates favicon
 
 **Library**: `next-intl` 4.9.0 — `localePrefix: 'as-needed'` (Spanish at `/`, English at `/en/...`).
 
+All public Spanish strings (UI, validation, accessibility/ARIA, metadata, and messages) use neutral Spanish, never voseo or regionalisms: use "Elige"/"Selecciona", not "Elegí"/"Seleccioná".
+
 Key files:
 - `i18n/routing.ts` — `defineRouting({ locales: ['es','en'], defaultLocale: 'es' })`
 - `i18n/request.ts` — `getRequestConfig` loading `messages/{locale}.json`
