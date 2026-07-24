@@ -50,6 +50,14 @@ make dev
 | `pnpm icons:rebuild` | `make icons-rebuild` | Limpia y regenera todos los iconos PWA |
 | — | `make assets` | Genera favicon + todos los iconos PWA en un solo paso |
 
+## Visor del grafo de código
+
+Inicia el visor local y abre `http://localhost:9749`. Mantén el servidor en ejecución mientras lo utilizas.
+
+```bash
+codebase-memory-mcp --ui=true --port=9749
+```
+
 ## Storybook
 
 Las historias viven junto a sus secciones en `components/sections/**/*.stories.ts` y `components/sections/**/*.stories.tsx`.

@@ -14,3 +14,11 @@ This version has breaking changes — APIs, conventions, and file structure may 
 - Use `next/image` for images. Preserve the configured remote-image allowlist in `next.config.ts`.
 - Extend Tailwind 4 theme tokens and shared CSS utilities in `app/globals.css`; do not introduce a separate Tailwind config without a concrete need.
 - Keep email/SMTP code server-only in route handlers. Never expose non-`NEXT_PUBLIC_` environment variables to client components.
+
+## Code exploration rules (token efficiency)
+
+1. Before using physical file reads, text search, or file-tree search, consult `codebase-memory-mcp`.
+2. Use graph tools to understand structure, call relationships, API routes, and types.
+3. Read physical files only when editing a specific line or inspecting detailed internal logic.
+4. Do not reload context by reading entire dependencies or modules when the graph already provides the signature and flow.
+5. After code changes, update the `codebase-memory-mcp` index so the graph remains current.
