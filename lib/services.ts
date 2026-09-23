@@ -251,7 +251,7 @@ export const navLinks: NavLink[] = [
 export const contactInfo: ContactInfo = {
   phone: '+56 9 5445 1422',
   whatsapp: '+56954451422',
-  email: 'marin.mac.len@gmail.com',
+  email: 'marin.mac.lean@gmail.com',
   zone: 'Santiago y Región Metropolitana',
 }
 

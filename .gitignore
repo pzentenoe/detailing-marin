@@ -48,3 +48,4 @@ next-env.d.ts
 lighthouse-local
 .idea
 .codebase-memory
+.serena
