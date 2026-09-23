@@ -9,13 +9,14 @@ import { Icon } from '@/components/ui/Icon'
 import { Link } from '@/i18n/navigation'
 import { absoluteUrl, buildAlternates, buildBreadcrumbJsonLd, buildServiceFaqJsonLd, DEFAULT_OG_IMAGE, getServiceFaqEntries, ogLocale, SERVED_COMMUNES, SITE_NAME, SITE_URL } from '@/lib/seo'
 import { JsonLd } from '@/components/ui/JsonLd'
-import { servicesConfig } from '@/lib/services'
+import { getServices } from '@/lib/service-catalog'
 import { TrackEvent } from '@/components/ui/TrackEvent'
 
 type PageParams = Promise<{ locale: string; slug: string }>
 
-export function generateStaticParams() {
-  return servicesConfig.flatMap((service) => [
+export async function generateStaticParams() {
+  const services = await getServices('es')
+  return services.flatMap((service) => [
     { locale: 'es', slug: service.slug },
     { locale: 'en', slug: service.slug },
   ])
@@ -27,7 +28,8 @@ export async function generateMetadata({
   params: PageParams
 }): Promise<Metadata> {
   const { locale, slug } = await params
-  const service = servicesConfig.find((item) => item.slug === slug)
+  const services = await getServices(locale === 'en' ? 'en' : 'es')
+  const service = services.find((item) => item.slug === slug)
 
   if (!service) {
     return {
@@ -36,11 +38,10 @@ export async function generateMetadata({
     }
   }
 
-  const ts = await getTranslations({ locale, namespace: 'services' })
-  const serviceTitle = ts(`${service.slug}.title`)
-  const serviceDescription = ts(`${service.slug}.fullDescription`)
+  const serviceTitle = service.title
+  const serviceDescription = service.fullDescription
   const pagePath = `/servicios/${service.slug}`
-  const ogImage = 'image' in service ? service.image : DEFAULT_OG_IMAGE
+  const ogImage = service.image ?? DEFAULT_OG_IMAGE
 
   const localeLead = locale === 'en'
     ? `${serviceTitle} in Santiago`
@@ -72,22 +73,22 @@ export default async function ServiceDetailPage({
   params: PageParams
 }) {
   const { locale, slug } = await params
-  const service = servicesConfig.find((item) => item.slug === slug)
+  const services = await getServices(locale === 'en' ? 'en' : 'es')
+  const service = services.find((item) => item.slug === slug)
 
   if (!service) {
     notFound()
   }
 
-  const ts = await getTranslations({ locale, namespace: 'services' })
   const tr = await getTranslations({ locale, namespace: 'results' })
   const tNav = await getTranslations({ locale, namespace: 'nav' })
 
-  const title = ts(`${service.slug}.title`)
-  const shortDescription = ts(`${service.slug}.shortDescription`)
-  const fullDescription = ts(`${service.slug}.fullDescription`)
-  const features = ts.raw(`${service.slug}.features`) as string[]
-  const serviceImage = ('image' in service ? service.image : undefined) ?? DEFAULT_OG_IMAGE
-  const serviceImageBefore = 'imageBefore' in service ? service.imageBefore : undefined
+  const title = service.title
+  const shortDescription = service.shortDescription
+  const fullDescription = service.fullDescription
+  const features = service.features
+  const serviceImage = service.image ?? DEFAULT_OG_IMAGE
+  const serviceImageBefore = service.imageBefore
 
   const localePrefix = locale === 'en' ? '/en' : ''
   const localeCode = locale === 'en' ? 'en' : 'es'

@@ -4,12 +4,12 @@
 // ============================================================
 
 import Image from 'next/image'
-import { getTranslations } from 'next-intl/server'
+import { getLocale, getTranslations } from 'next-intl/server'
 import { Link } from '@/i18n/navigation'
 import { SectionWrapper } from '@/components/ui/SectionWrapper'
 import { Icon } from '@/components/ui/Icon'
 import { BeforeAfterCard } from '@/components/ui/BeforeAfterCard'
-import { servicesConfig } from '@/lib/services'
+import { getServices } from '@/lib/service-catalog'
 
 const cardLayouts = [
   {
@@ -162,21 +162,9 @@ function PricePill({ price, label }: { price: string; label: string }) {
 
 export async function ServicesGrid() {
   const t = await getTranslations('servicesGrid')
-  const ts = await getTranslations('services')
   const tr = await getTranslations('results')
-
-  const services = servicesConfig.map((s) => ({
-    ...s,
-    title: ts(`${s.slug}.title`),
-    shortDescription: ts(`${s.slug}.shortDescription`),
-    fullDescription: ts(`${s.slug}.fullDescription`),
-    features: ts.raw(`${s.slug}.features`) as string[],
-    image: ('image' in s ? s.image : undefined) as string | undefined,
-    imageBefore: ('imageBefore' in s ? s.imageBefore : undefined) as string | undefined,
-    pricingTable: ('pricingTable' in s ? s.pricingTable : undefined) as
-      | readonly { readonly label: string; readonly price: string }[]
-      | undefined,
-  }))
+  const locale = await getLocale()
+  const services = await getServices(locale === 'en' ? 'en' : 'es')
 
   return (
     <SectionWrapper surface="base" id="todos-los-servicios">
@@ -190,8 +178,7 @@ export async function ServicesGrid() {
 
       <div className="grid grid-cols-1 md:grid-cols-12 gap-6">
         {services.map((service, idx) => {
-          const layout = cardLayouts[idx]
-          if (!layout) return null
+          const layout = cardLayouts[idx % cardLayouts.length]
 
           const btnLabel = layout.isHorizontal ? t('requestServiceBtn') : t('requestBtn')
 
@@ -288,7 +275,7 @@ export async function ServicesGrid() {
                 </div>
 
                 {/* Imagen horizontal — before/after */}
-                {layout.isHorizontal && service.imageBefore && (
+                {layout.isHorizontal && service.imageBefore && service.image && (
                   <div className="flex-1 w-full shrink-0">
                     <BeforeAfterCard
                       label=""
@@ -307,7 +294,7 @@ export async function ServicesGrid() {
                 )}
 
                 {/* Imagen horizontal — foto sola */}
-                {layout.isHorizontal && !service.imageBefore && service.image && (
+                {layout.isHorizontal && (!service.imageBefore || !service.image) && service.image && (
                   <div className="flex-1 w-full h-48 md:h-56 overflow-hidden rounded-(--radius-lg) shadow-float shrink-0">
                     <Image
                       src={service.image}

@@ -1,6 +1,6 @@
 import type { MetadataRoute } from 'next'
 import { absoluteUrl } from '@/lib/seo'
-import { servicesConfig } from '@/lib/services'
+import { getServices } from '@/lib/service-catalog'
 import { PRIORITY_COMMUNES } from '@/lib/comunas'
 
 const lastModified = new Date('2026-04-12')
@@ -14,7 +14,7 @@ const routes = [
 
 const heroImage = absoluteUrl('/images/hero-detailing.webp')
 
-export default function sitemap(): MetadataRoute.Sitemap {
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const coreRoutes = routes.flatMap(({ path, enPath, changeFrequency, priority, images }) => {
     const languages = { es: absoluteUrl(path), en: absoluteUrl(enPath) }
     const shared = { lastModified, changeFrequency, priority, alternates: { languages } }
@@ -26,10 +26,11 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ]
   })
 
-  const serviceRoutes = servicesConfig.flatMap((service) => {
+  const services = await getServices('es')
+  const serviceRoutes = services.flatMap((service) => {
     const path = `/servicios/${service.slug}`
     const enPath = `/en/servicios/${service.slug}`
-    const serviceImage = 'image' in service ? service.image : undefined
+    const serviceImage = service.image
     const imageEntry = serviceImage ? { images: [absoluteUrl(serviceImage)] } : { images: [heroImage] }
 
     return [

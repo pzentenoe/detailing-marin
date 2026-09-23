@@ -4,24 +4,18 @@
 // ============================================================
 
 import Image from 'next/image'
-import { getTranslations } from 'next-intl/server'
+import { getLocale, getTranslations } from 'next-intl/server'
 import { Link } from '@/i18n/navigation'
 import { SectionWrapper } from '@/components/ui/SectionWrapper'
-import { servicesConfig } from '@/lib/services'
+import { getServices } from '@/lib/service-catalog'
 
 export async function ServicesPreview() {
   const t = await getTranslations('servicesPreview')
-  const ts = await getTranslations('services')
-
-  const services = servicesConfig.map((s) => ({
-    ...s,
-    title: ts(`${s.slug}.title`),
-    shortDescription: ts(`${s.slug}.shortDescription`),
-    image: ('image' in s ? s.image : undefined) as string | undefined,
-  }))
-
-  const [featured, ...allRest] = services
-  const rest = allRest.slice(0, 4) // Mostrar max 4 en preview — ver todos en /servicios
+  const locale = await getLocale()
+  const services = await getServices(locale === 'en' ? 'en' : 'es')
+  const featured = services.find((service) => service.highlight) ?? services[0]
+  if (!featured) return null
+  const rest = services.filter((service) => service.id !== featured.id).slice(0, 4)
 
   return (
     <SectionWrapper surface="base" id="servicios-preview">
@@ -50,14 +44,14 @@ export async function ServicesPreview() {
           aria-label={`Ver servicio: ${featured.title}`}
         >
           <div className="relative w-full h-full min-h-[480px]">
-            <Image
-              src={featured.image!}
+            {featured.image ? <Image
+              src={featured.image}
               alt={`${featured.title} — resultado Detailing Marin`}
               fill
               className="object-cover brightness-95 dark:brightness-75 group-hover:scale-105 group-hover:brightness-100 dark:group-hover:brightness-90 transition-all duration-700"
               sizes="(max-width: 1024px) 100vw, 50vw"
               priority
-            />
+            /> : <div className="absolute inset-0 gradient-primary" aria-hidden="true" />}
 
             {/* Badge glassmorphic — esquina superior */}
             <div className="absolute top-5 left-5 z-10">

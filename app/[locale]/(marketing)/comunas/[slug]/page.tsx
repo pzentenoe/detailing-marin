@@ -11,7 +11,7 @@ import {
   SITE_NAME,
 } from '@/lib/seo'
 import { JsonLd } from '@/components/ui/JsonLd'
-import { servicesConfig, services } from '@/lib/services'
+import { getServices } from '@/lib/service-catalog'
 import { getCommuneBySlug, PRIORITY_COMMUNES } from '@/lib/comunas'
 import { TrackEvent } from '@/components/ui/TrackEvent'
 
@@ -67,6 +67,7 @@ export default async function ComunaPage({ params }: { params: PageParams }) {
   if (!commune) notFound()
 
   const path = `/comunas/${commune.slug}`
+  const services = await getServices('es')
 
   const breadcrumbJsonLd = buildBreadcrumbJsonLd([
     { name: SITE_NAME, url: absoluteUrl('/') },
@@ -159,8 +160,7 @@ export default async function ComunaPage({ params }: { params: PageParams }) {
         </p>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-          {servicesConfig.map((service) => {
-            const fullService = services.find((s) => s.slug === service.slug)
+          {services.map((service) => {
             return (
               <Link
                 key={service.slug}
@@ -174,10 +174,10 @@ export default async function ComunaPage({ params }: { params: PageParams }) {
                   <p className="text-label-md text-primary font-semibold">{service.price}</p>
                 </div>
                 <h3 className="font-semibold text-(--color-on-surface) group-hover:text-primary transition-colors">
-                  {fullService?.title ?? service.slug}
+                  {service.title}
                 </h3>
                 <p className="text-sm text-on-surface-variant line-clamp-2">
-                  {fullService?.shortDescription}
+                  {service.shortDescription}
                 </p>
                 <p className="text-xs text-on-surface-variant mt-auto">
                   {service.duration} · Ver detalle →

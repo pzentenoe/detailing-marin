@@ -4,7 +4,7 @@ import { ServicesGrid } from '@/components/sections/ServicesGrid'
 import { CTASection } from '@/components/sections/CTASection'
 import { absoluteUrl, buildAlternates, buildBreadcrumbJsonLd, buildFaqJsonLd, buildServicesJsonLd, DEFAULT_OG_IMAGE, ogLocale } from '@/lib/seo'
 import { JsonLd } from '@/components/ui/JsonLd'
-import { servicesConfig } from '@/lib/services'
+import { getServices } from '@/lib/service-catalog'
 
 export async function generateMetadata({
   params,
@@ -37,13 +37,7 @@ export default async function ServiciosPage({
   const { locale } = await params
   const localeCode = locale === 'en' ? 'en' : 'es'
   const tNav = await getTranslations({ locale, namespace: 'nav' })
-  const tServices = await getTranslations({ locale, namespace: 'services' })
-
-  const localizedServices = servicesConfig.map((service) => ({
-    title: tServices(`${service.slug}.title`),
-    fullDescription: tServices(`${service.slug}.fullDescription`),
-    price: service.price,
-  }))
+  const localizedServices = await getServices(localeCode)
 
   const servicesJsonLd = buildServicesJsonLd({ locale: localeCode, localizedServices })
   const faqJsonLd = buildFaqJsonLd(localeCode)
