@@ -5,7 +5,7 @@ export default createMiddleware(routing)
 
 export const config = {
   matcher: [
-    // Skip API routes, Next.js internals, and static files
-    '/((?!api|_next|_vercel|.*\\..*).*)',
+    // Keep the standalone admin route outside locale negotiation.
+    '/((?!admin(?:/|$)|api|_next|_vercel|.*\\..*).*)',
   ],
 }

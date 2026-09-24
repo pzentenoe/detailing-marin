@@ -4,6 +4,9 @@ import type { NextConfig } from 'next'
 const withNextIntl = createNextIntlPlugin('./i18n/request.ts')
 
 const nextConfig: NextConfig = {
+  outputFileTracingIncludes: {
+    '/admin': ['./certs/supabase-root-ca.crt'],
+  },
   images: {
     formats: ['image/avif', 'image/webp'],
     minimumCacheTTL: 60 * 60 * 24 * 365,
