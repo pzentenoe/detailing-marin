@@ -14,6 +14,8 @@ import { ADMIN_ICON_NAMES, ADMIN_SERVICE_STATUS, type AdminServicePriceInput } f
 
 export interface ServiceFormState {
   error?: string
+  success?: boolean
+  serviceId?: number
 }
 
 const UUID = /^[0-9a-f]{8}-[0-9a-f]{4}-[1-8][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i
@@ -197,7 +199,7 @@ export async function saveAdminService(_state: ServiceFormState, formData: FormD
   }
 
   updateTag('directus-services')
-  redirect(`/admin/servicios/${savedId}`)
+  return { success: true, serviceId: savedId }
 }
 
 export async function deleteAdminService(formData: FormData) {
@@ -220,5 +222,5 @@ export async function deleteAdminService(formData: FormData) {
   if (!response.ok) throw new Error(`Directus service delete failed (${response.status})`)
 
   updateTag('directus-services')
-  redirect('/admin/servicios')
+  redirect(`/admin/servicios?deleted=${id}`)
 }
