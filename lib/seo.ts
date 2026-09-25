@@ -127,7 +127,7 @@ export function buildFaqJsonLd(locale: LocaleCode = 'es') {
       },
       {
         name: '¿En qué comunas realizan el servicio?',
-        text: 'Atendemos toda la Región Metropolitana de Santiago, incluyendo Maipú, Las Condes, Providencia, La Florida, Ñuñoa, Pudahuel, Quilicura, San Miguel, Vitacura, Peñalolén, La Cisterna, El Bosque y muchas más. Consultanos por tu ubicación específica.',
+        text: 'Atendemos toda la Región Metropolitana de Santiago, incluyendo Maipú, Las Condes, Providencia, La Florida, Ñuñoa, Pudahuel, Quilicura, San Miguel, Vitacura, Peñalolén, La Cisterna, El Bosque y muchas más. Contáctanos para confirmar tu ubicación.',
       },
       {
         name: '¿Qué métodos de pago aceptan?',
@@ -302,7 +302,7 @@ export function buildCoverageFaqJsonLd(locale: LocaleCode = 'es') {
       },
       {
         name: '¿Atienden en comunas periféricas de Santiago?',
-        text: 'Sí. Cubrimos comunas periféricas como Maipú, Pudahuel, Quilicura, La Pintana, El Bosque, San Bernardo, Padre Hurtado, Lo Barnechea y Huechuraba, entre otras. Si tenés dudas sobre tu zona, consúltanos por WhatsApp.',
+        text: 'Sí. Cubrimos comunas periféricas como Maipú, Pudahuel, Quilicura, La Pintana, El Bosque, San Bernardo, Padre Hurtado, Lo Barnechea y Huechuraba, entre otras. Si tienes dudas sobre tu zona, consúltanos por WhatsApp.',
       },
       {
         name: '¿En qué horarios atienden a domicilio?',
@@ -310,7 +310,7 @@ export function buildCoverageFaqJsonLd(locale: LocaleCode = 'es') {
       },
       {
         name: '¿Cuántas comunas cubre Detailing Marin?',
-        text: 'Cubrimos más de 30 comunas de la Región Metropolitana de Santiago. Contamos con páginas específicas para las comunas con mayor demanda donde podés ver toda la información del servicio en tu zona.',
+        text: 'Cubrimos más de 30 comunas de la Región Metropolitana de Santiago. Contamos con páginas específicas para las comunas con mayor demanda donde puedes ver toda la información del servicio en tu zona.',
       },
     ],
     en: [

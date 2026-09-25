@@ -130,7 +130,7 @@ export async function POST(request: NextRequest) {
 
   if (!checkRateLimit(ip)) {
     return NextResponse.json(
-      { error: 'Demasiadas solicitudes. Intentá más tarde.' },
+      { error: 'Demasiadas solicitudes. Inténtalo más tarde.' },
       { status: 429 },
     )
   }

@@ -13,7 +13,7 @@ export default function NotFound() {
           <p className="text-xs font-bold tracking-widest uppercase text-primary">Error 404</p>
           <h1 className="text-display-md text-(--color-on-surface)">Página no encontrada</h1>
           <p className="text-body-lg text-on-surface-variant">
-            La página que buscás no existe o fue movida. Podés volver al inicio o contactarnos por WhatsApp.
+            La página que buscas no existe o fue movida. Puedes volver al inicio o contactarnos por WhatsApp.
           </p>
         </div>
 

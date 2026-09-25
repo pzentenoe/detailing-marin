@@ -38,14 +38,16 @@ export interface AdminServiceRecord {
 
 export interface AdminServicePriceRecord {
   id: number
-  vehicle_type: string
+  vehicle_type_es: string
+  vehicle_type_en: string
   price: string
   sort: number | null
 }
 
 export interface AdminServicePriceInput {
   id?: number
-  vehicle_type: string
+  vehicle_type_es: string
+  vehicle_type_en: string
   price: string
   sort?: number | null
 }

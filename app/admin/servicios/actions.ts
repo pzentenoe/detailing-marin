@@ -38,13 +38,15 @@ const serviceSchema = z.object({
   is_featured: z.boolean(),
   prices: z.array(z.object({
     id: z.number().int().positive().optional(),
-    vehicle_type: z.string().trim().min(1).max(80),
+    vehicle_type_es: z.string().trim().min(1).max(80),
+    vehicle_type_en: z.string().trim().min(1).max(80),
     price: z.string().trim().min(1).max(40),
   })).max(50),
 }).superRefine((value, context) => {
-  const types = value.prices.map((price) => price.vehicle_type.toLocaleLowerCase())
-  if (new Set(types).size !== types.length) {
-    context.addIssue({ code: 'custom', path: ['prices'], message: 'Cada tipo de vehículo debe ser único.' })
+  const esTypes = value.prices.map((price) => price.vehicle_type_es.toLocaleLowerCase())
+  const enTypes = value.prices.map((price) => price.vehicle_type_en.toLocaleLowerCase())
+  if (new Set(esTypes).size !== esTypes.length || new Set(enTypes).size !== enTypes.length) {
+    context.addIssue({ code: 'custom', path: ['prices'], message: 'Cada tipo de vehículo debe ser único en ambos idiomas.' })
   }
 })
 
@@ -101,7 +103,9 @@ async function syncPrices(serviceId: number, prices: AdminServicePriceInput[]) {
   const retained = new Set<number>()
   for (const [index, price] of prices.entries()) {
     const data = {
-      vehicle_type: price.vehicle_type,
+      vehicle_type: price.vehicle_type_es,
+      vehicle_type_es: price.vehicle_type_es,
+      vehicle_type_en: price.vehicle_type_en,
       price: price.price,
       sort: index + 1,
     }

@@ -166,7 +166,7 @@ export const PRIORITY_COMMUNES: CommuneConfig[] = [
     faq: [
       {
         q: '¿Atienden camionetas y vehículos de trabajo en Pudahuel?',
-        a: 'Sí. Trabajamos con vehículos de cualquier tamaño: autos compactos, SUV, camionetas doble cabina y furgonetas. Para vehículos extra grandes o muy sucios, el precio puede variar — consultanos antes de agendar.',
+        a: 'Sí. Trabajamos con vehículos de cualquier tamaño: autos compactos, SUV, camionetas doble cabina y furgonetas. Para vehículos extra grandes o muy sucios, el precio puede variar; consúltanos antes de agendar.',
       },
       {
         q: '¿Pueden ir a El Noviciado o sectores alejados de Pudahuel?',

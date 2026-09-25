@@ -109,7 +109,7 @@ export function AdminServiceForm({ initialValues }: AdminServiceFormProps) {
     setDraft((current) => ({ ...current, [field]: value }))
   }
 
-  const updatePrice = (index: number, field: 'vehicle_type' | 'price', value: string) => {
+  const updatePrice = (index: number, field: 'vehicle_type_es' | 'vehicle_type_en' | 'price', value: string) => {
     setDraft((current) => ({
       ...current,
       prices: current.prices.map((price, priceIndex) => priceIndex === index ? { ...price, [field]: value } : price),
@@ -254,7 +254,7 @@ export function AdminServiceForm({ initialValues }: AdminServiceFormProps) {
                 <h2 className="font-display text-lg font-semibold">Precios por vehículo</h2>
                 <p className="mt-1 text-xs text-on-surface-variant">Agrega, cambia o quita filas de precio.</p>
               </div>
-              <button className="inline-flex items-center gap-2 rounded-lg border border-outline-variant/60 px-3 py-2 text-sm font-medium hover:bg-surface-container-low" onClick={() => setDraft((current) => ({ ...current, prices: [...current.prices, { vehicle_type: '', price: '' }] }))} type="button">
+              <button className="inline-flex items-center gap-2 rounded-lg border border-outline-variant/60 px-3 py-2 text-sm font-medium hover:bg-surface-container-low" onClick={() => setDraft((current) => ({ ...current, prices: [...current.prices, { vehicle_type_es: '', vehicle_type_en: '', price: '' }] }))} type="button">
                 <Plus aria-hidden="true" size={16} />
                 Agregar fila
               </button>
@@ -262,8 +262,9 @@ export function AdminServiceForm({ initialValues }: AdminServiceFormProps) {
             <div className="mt-5 space-y-3">
               {draft.prices.length === 0 && <p className="rounded-xl bg-surface-container-low px-4 py-3 text-sm text-on-surface-variant">Sin precios por vehículo.</p>}
               {draft.prices.map((price, index) => (
-                <div className="grid gap-3 rounded-xl bg-surface-container-low p-3 sm:grid-cols-[1fr_1fr_auto]" key={price.id ?? `new-${index}`}>
-                  <input aria-label={`Tipo de vehículo ${index + 1}`} className="min-w-0 rounded-lg border border-outline-variant/70 bg-surface-container-lowest px-3 py-2.5 text-sm focus-visible:outline-2 focus-visible:outline-primary" onChange={(event) => updatePrice(index, 'vehicle_type', event.target.value)} placeholder="Tipo de vehículo" value={price.vehicle_type} />
+                <div className="grid gap-3 rounded-xl bg-surface-container-low p-3 sm:grid-cols-[1fr_1fr_0.7fr_auto]" key={price.id ?? `new-${index}`}>
+                  <input aria-label={`Tipo de vehículo en español ${index + 1}`} className="min-w-0 rounded-lg border border-outline-variant/70 bg-surface-container-lowest px-3 py-2.5 text-sm focus-visible:outline-2 focus-visible:outline-primary" onChange={(event) => updatePrice(index, 'vehicle_type_es', event.target.value)} placeholder="Automóvil urbano" value={price.vehicle_type_es} />
+                  <input aria-label={`Vehicle type in English ${index + 1}`} className="min-w-0 rounded-lg border border-outline-variant/70 bg-surface-container-lowest px-3 py-2.5 text-sm focus-visible:outline-2 focus-visible:outline-primary" onChange={(event) => updatePrice(index, 'vehicle_type_en', event.target.value)} placeholder="City car" value={price.vehicle_type_en} />
                   <input aria-label={`Precio ${index + 1}`} className="min-w-0 rounded-lg border border-outline-variant/70 bg-surface-container-lowest px-3 py-2.5 text-sm focus-visible:outline-2 focus-visible:outline-primary" onChange={(event) => updatePrice(index, 'price', event.target.value)} placeholder="$89.990" value={price.price} />
                   <button aria-label={`Quitar precio ${index + 1}`} className="inline-flex size-10 items-center justify-center rounded-lg text-error hover:bg-error-container" onClick={() => setDraft((current) => ({ ...current, prices: current.prices.filter((_, priceIndex) => priceIndex !== index) }))} type="button">
                     <Trash2 aria-hidden="true" size={17} />
@@ -321,6 +322,19 @@ export function AdminServiceForm({ initialValues }: AdminServiceFormProps) {
               <span>{draft.duration || 'Duración'}</span>
               <span className="font-semibold text-primary">{previewLocale === 'es' ? draft.price_label_es : draft.price_label_en}</span>
             </div>
+            {draft.prices.length > 0 && (
+              <div className="space-y-2 border-t border-outline-variant/25 pt-4">
+                <p className="text-xs font-semibold uppercase tracking-wide text-on-surface-variant">
+                  {previewLocale === 'es' ? 'Precios por vehículo' : 'Vehicle pricing'}
+                </p>
+                {draft.prices.map((price, index) => (
+                  <div className="flex justify-between gap-4 text-sm" key={price.id ?? `preview-${index}`}>
+                    <span>{previewLocale === 'es' ? price.vehicle_type_es : price.vehicle_type_en}</span>
+                    <span className="font-semibold">{price.price}</span>
+                  </div>
+                ))}
+              </div>
+            )}
             {preview.image_before && (
               <div className="overflow-hidden rounded-xl border border-outline-variant/25">
                 <p className="px-3 py-2 text-xs font-semibold uppercase tracking-wide text-on-surface-variant">Antes</p>

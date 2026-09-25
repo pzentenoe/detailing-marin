@@ -167,7 +167,7 @@
       "step1Title": "1. Elige tu fecha",
       "step1Desc": "Selecciona el día y la hora que mejor te convenga para el servicio.",
       "step2Title": "2. Confirmamos el vehículo",
-      "step2Desc": "Indícanos el tipo de coche y los servicios específicos que necesitas.",
+      "step2Desc": "Indícanos el tipo de vehículo y los servicios específicos que necesitas.",
       "step3Title": "3. Lavado Eco-Luxe",
       "step3Desc": "Llegamos a tu ubicación y realizamos el tratamiento completo."
     },
@@ -184,9 +184,9 @@
       "addressPlaceholder": "Calle, número, ciudad",
       "vehicleType": "Tipo de Vehículo",
       "vehiclePlaceholder": "Seleccionar...",
-      "vehicleCompact": "Turismo / Compacto",
-      "vehicleSuv": "SUV / Berlina",
-      "vehicle4x4": "4x4 / Furgoneta",
+        "vehicleCompact": "Automóvil compacto",
+        "vehicleSuv": "Sedán / SUV",
+        "vehicle4x4": "Camioneta / 4x4",
       "vehicleMoto": "Motocicleta",
        "preferredDate": "Fecha Preferida",
        "datePicker": {
@@ -208,17 +208,17 @@
       "service4": "Pulido Abrillantador",
       "service5": "Pulido de Focos",
       "service6": "Limpieza de Tapiz e Interiores",
-      "submit": "Confirmar Reserva",
-      "submitting": "Enviando...",
-      "confirmNote": "Te enviaremos la confirmación por correo electrónico.",
-      "genericError": "Hubo un error al enviar. Intentá de nuevo.",
-      "validation": {
-        "name": "Ingresá tu nombre completo.",
-        "phone": "Ingresá un teléfono válido.",
-        "address": "Ingresá una dirección de servicio válida.",
-        "vehicle": "Seleccioná un tipo de vehículo.",
-        "date": "Seleccioná una fecha desde hoy.",
-        "services": "Seleccioná al menos un servicio."
+       "submit": "Confirmar reserva",
+       "submitting": "Enviando...",
+       "confirmNote": "Te enviaremos la confirmación por correo electrónico.",
+       "genericError": "No fue posible enviar el formulario. Inténtalo nuevamente.",
+       "validation": {
+         "name": "Ingresa tu nombre completo.",
+         "phone": "Ingresa un teléfono válido.",
+         "address": "Ingresa una dirección de servicio válida.",
+         "vehicle": "Selecciona un tipo de vehículo.",
+         "date": "Selecciona una fecha desde hoy.",
+         "services": "Selecciona al menos un servicio."
       }
     },
     "success": {
@@ -252,7 +252,7 @@
     "heading": "Política de Privacidad",
     "lastUpdated": "Última actualización: abril 2026",
     "s1Title": "1. Información que recopilamos",
-    "s1Body": "Cuando completás el formulario de contacto o reserva en nuestro sitio, recopilamos la siguiente información: nombre completo, número de teléfono, dirección de servicio, tipo de vehículo, fecha preferida y servicios seleccionados. Esta información es proporcionada de forma voluntaria por el usuario.",
+     "s1Body": "Cuando completas el formulario de contacto o reserva en nuestro sitio, recopilamos la siguiente información: nombre completo, número de teléfono, dirección de servicio, tipo de vehículo, fecha preferida y servicios seleccionados. Esta información es proporcionada de forma voluntaria por el usuario.",
     "s2Title": "2. Uso de la información",
     "s2Intro": "La información recopilada se utiliza exclusivamente para:",
     "s2Li1": "Coordinar y confirmar el servicio solicitado.",
@@ -265,7 +265,7 @@
     "s4Body": "Nuestro sitio incluye un enlace directo a WhatsApp. Al hacer clic en él, serás redirigido a la aplicación de WhatsApp, cuyo uso está sujeto a la Política de Privacidad de WhatsApp.",
     "s4LinkText": "Política de Privacidad de WhatsApp",
     "s5Title": "5. Tus derechos",
-    "s5Body": "Tenés derecho a solicitar el acceso, rectificación o eliminación de tus datos personales en cualquier momento. Para hacerlo, contactanos directamente a",
+     "s5Body": "Tienes derecho a solicitar el acceso, rectificación o eliminación de tus datos personales en cualquier momento. Para hacerlo, contáctanos directamente a",
     "s6Title": "6. Cambios en esta política",
     "s6Body": "Nos reservamos el derecho de actualizar esta política de privacidad en cualquier momento. Los cambios entrarán en vigor inmediatamente después de su publicación en esta página."
   },
@@ -274,13 +274,13 @@
     "heading": "Términos y Condiciones",
     "lastUpdated": "Última actualización: abril 2026",
     "s1Title": "1. Aceptación de los términos",
-    "s1Body": "Al utilizar el sitio web de Detailing Marin y solicitar cualquiera de nuestros servicios, aceptás los presentes términos y condiciones en su totalidad. Si no estás de acuerdo con alguna parte, te pedimos que no utilices nuestros servicios.",
+     "s1Body": "Al utilizar el sitio web de Detailing Marin y solicitar cualquiera de nuestros servicios, aceptas los presentes términos y condiciones en su totalidad. Si no estás de acuerdo con alguna parte, te pedimos que no utilices nuestros servicios.",
     "s2Title": "2. Descripción del servicio",
     "s2Body": "Detailing Marin ofrece servicios de detallado y limpieza automotriz a domicilio en Santiago y Región Metropolitana. Los servicios incluyen lavado ecológico con aspirado, pulido, tratamiento de focos y limpieza de motor, entre otros descritos en nuestro sitio.",
     "s3Title": "3. Reservas y confirmaciones",
     "s3Body": "Las reservas realizadas a través del formulario web o WhatsApp son solicitudes de servicio sujetas a disponibilidad. Una reserva se considera confirmada únicamente cuando un representante de Detailing Marin la valida de forma expresa por escrito (WhatsApp o correo electrónico).",
     "s4Title": "4. Cancelaciones y cambios",
-    "s4Body": "Si necesitás cancelar o reprogramar un servicio, te pedimos notificarnos con al menos 24 horas de anticipación. Las cancelaciones tardías pueden estar sujetas a un cargo del 20% del valor del servicio para cubrir los costos de desplazamiento.",
+     "s4Body": "Si necesitas cancelar o reprogramar un servicio, te pedimos que nos avises con al menos 24 horas de anticipación. Las cancelaciones tardías pueden estar sujetas a un cargo del 20% del valor del servicio para cubrir los costos de desplazamiento.",
     "s5Title": "5. Responsabilidades del cliente",
     "s5Intro": "El cliente es responsable de:",
     "s5Li1": "Proporcionar acceso al vehículo en la fecha y lugar acordados.",
@@ -293,7 +293,7 @@
     "s8Title": "8. Modificaciones",
     "s8Body": "Detailing Marin se reserva el derecho de modificar estos términos en cualquier momento. Las modificaciones serán publicadas en esta página y entrarán en vigor de forma inmediata.",
     "s9Title": "9. Contacto",
-    "s9Prefix": "Para consultas sobre estos términos, podés contactarnos en",
+     "s9Prefix": "Para consultas sobre estos términos, puedes contactarnos en",
     "s9Mid": "o por WhatsApp al",
     "s9Phone": "+56 9 5445 1422"
   },
@@ -329,9 +329,9 @@
     },
     "contact": {
       "title": "Agenda lavado de autos a domicilio en Santiago",
-      "description": "Cotizá y agenda tu servicio de lavado ecológico, aspirado o detailing automotriz a domicilio en Santiago y comunas cercanas. Respuesta rápida por WhatsApp o email.",
+       "description": "Solicita una cotización y agenda tu servicio de lavado ecológico, aspirado o detailing automotriz a domicilio en Santiago y comunas cercanas. Respuesta rápida por WhatsApp o correo electrónico.",
       "ogTitle": "Agenda lavado de autos a domicilio en Santiago",
-      "ogDescription": "Cotizá y agenda lavado ecológico, aspirado o pulido automotriz a domicilio con Detailing Marin en Santiago."
+       "ogDescription": "Solicita una cotización y agenda lavado ecológico, aspirado o pulido automotriz a domicilio con Detailing Marin en Santiago."
     },
     "privacy": {
       "title": "Política de Privacidad",
@@ -339,7 +339,7 @@
     },
     "terms": {
       "title": "Términos y Condiciones",
-      "description": "Términos y condiciones del servicio de Detailing Marin. Conocé las condiciones bajo las que prestamos nuestros servicios."
+       "description": "Términos y condiciones del servicio de Detailing Marin. Consulta las condiciones en las que prestamos nuestros servicios."
     },
     "coverage": {
       "title": "Cobertura — 33 comunas de Santiago",
@@ -349,21 +349,21 @@
     }
   },
   "shared": {
-    "whatsappMessage": "Hola! Te escribo desde la web detailingmarin.cl. Quisiera mas informacion sobre sus servicios y agendar un servicio",
+     "whatsappMessage": "¡Hola! Te escribo desde la web detailingmarin.cl. Quisiera más información sobre sus servicios y agendar un servicio.",
     "contactViaWhatsApp": "Contactar por WhatsApp"
   },
   "cobertura": {
     "badge": "Zona de Cobertura",
     "heading": "Llegamos a tu puerta en 33 comunas de Santiago",
-    "subheading": "Servicio de detailing automotriz a domicilio en toda la Región Metropolitana. Sin costo de desplazamiento, llevamos el equipamiento completo hasta vos.",
+     "subheading": "Servicio de detailing automotriz a domicilio en toda la Región Metropolitana. Sin costo de desplazamiento, llevamos el equipamiento completo hasta tu domicilio.",
     "stat1Value": "33",
     "stat1Label": "Comunas atendidas",
     "stat2Value": "500+",
     "stat2Label": "km² de cobertura",
     "stat3Value": "$0",
     "stat3Label": "Costo de traslado",
-    "zonesTitle": "Buscá tu zona",
-    "zonesDesc": "Seleccioná tu zona para agendar directamente.",
+     "zonesTitle": "Busca tu zona",
+     "zonesDesc": "Selecciona tu zona para agendar directamente.",
     "zone_poniente": "Zona Poniente",
     "zone_centro": "Zona Centro",
     "zone_norte": "Zona Norte",
@@ -372,7 +372,7 @@
     "communesCount": "{count} comunas",
     "bookZone": "Agendar en esta zona",
     "ctaBannerTitle": "¿Tu comuna no aparece?",
-    "ctaBannerDesc": "Consultanos igual — evaluamos la cobertura caso a caso sin compromiso.",
+     "ctaBannerDesc": "Consúltanos de todas formas; evaluamos la cobertura caso a caso sin compromiso.",
     "ctaWhatsApp": "Consultar por WhatsApp",
     "ctaContact": "Ver todos los servicios",
     "seoTitle": "Atendemos en toda la Región Metropolitana",

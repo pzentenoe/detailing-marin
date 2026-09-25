@@ -3,6 +3,7 @@ import 'server-only'
 import { getTranslations } from 'next-intl/server'
 import type { Service } from '@/types'
 import { servicesConfig } from '@/lib/services'
+import { localizeVehicleType } from '@/lib/vehicle-types'
 
 const SERVICE_FIELDS = [
   'id', 'slug', 'title_es', 'title_en', 'short_description_es', 'short_description_en',
@@ -32,7 +33,9 @@ interface DirectusService {
 
 interface DirectusPrice {
   service: string | number | { id: string | number }
-  vehicle_type: string
+  vehicle_type: string | null
+  vehicle_type_es: string | null
+  vehicle_type_en: string | null
   price: string
 }
 
@@ -42,6 +45,11 @@ interface DirectusResponse<T> {
 
 function features(text: string | null): string[] {
   return text?.split(/\r?\n/).map((feature) => feature.trim()).filter(Boolean) ?? []
+}
+
+function localizePriceLabel(label: string | undefined, locale: 'es' | 'en') {
+  if (locale !== 'en' || !label?.startsWith('Desde ')) return label
+  return `From ${label.slice('Desde '.length).replace(/ el par$/, ' per pair')}`
 }
 
 function assetUrl(value: DirectusService['image']): string | undefined {
@@ -62,12 +70,12 @@ async function getLocalServices(locale: 'es' | 'en'): Promise<Service[]> {
     features: t.raw(`${service.slug}.features`) as string[],
     icon: service.icon,
     duration: service.duration,
-    price: service.price,
+    price: localizePriceLabel(service.price, locale),
     highlight: 'highlight' in service && service.highlight === true,
     image: 'image' in service ? service.image : undefined,
     imageBefore: 'imageBefore' in service ? service.imageBefore : undefined,
     pricingTable: 'pricingTable' in service
-      ? service.pricingTable?.map(({ label, price }) => ({ label, price }))
+      ? service.pricingTable?.map(({ label, price }) => ({ label: localizeVehicleType(label, locale), price }))
       : undefined,
   }))
 }
@@ -88,7 +96,7 @@ export async function getServices(locale: 'es' | 'en'): Promise<Service[]> {
     const pricesUrl = new URL('/items/detailing_service_prices', baseUrl)
     pricesUrl.search = new URLSearchParams({
       sort: 'sort',
-      fields: 'service,vehicle_type,price',
+      fields: 'service,vehicle_type,vehicle_type_es,vehicle_type_en,price',
     }).toString()
 
     const options = { headers, next: { revalidate: 60, tags: ['directus-services'] } }
@@ -127,7 +135,12 @@ export async function getServices(locale: 'es' | 'en'): Promise<Service[]> {
       highlight: service.is_featured,
       image: assetUrl(service.image),
       imageBefore: assetUrl(service.image_before),
-      pricingTable: priceRows.get(String(service.id))?.map((row) => ({ label: row.vehicle_type, price: row.price })),
+      pricingTable: priceRows.get(String(service.id))?.map((row) => ({
+        label: locale === 'en'
+          ? row.vehicle_type_en || localizeVehicleType(row.vehicle_type, 'en')
+          : row.vehicle_type_es || localizeVehicleType(row.vehicle_type, 'es'),
+        price: row.price,
+      })),
     }))
   } catch {
     return getLocalServices(locale)

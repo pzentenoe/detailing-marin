@@ -1,6 +1,7 @@
 import 'server-only'
 
 import type { AdminServicePriceRecord, AdminServiceRecord } from '@/types/admin'
+import { localizeVehicleType } from '@/lib/vehicle-types'
 
 interface DirectusData<T> {
   data: T
@@ -11,8 +12,10 @@ interface DirectusServiceRecord extends Omit<AdminServiceRecord, 'image' | 'imag
   image_before: string | { id: string } | null
 }
 
-interface DirectusPriceRecord extends AdminServicePriceRecord {
-  service: number | { id: number }
+interface DirectusPriceRecord extends Omit<AdminServicePriceRecord, 'vehicle_type_es' | 'vehicle_type_en'> {
+  vehicle_type: string | null
+  vehicle_type_es: string | null
+  vehicle_type_en: string | null
 }
 
 const SERVICE_FIELDS = [
@@ -97,12 +100,18 @@ export async function listAdminServicePrices(serviceId: number): Promise<AdminSe
   const url = new URL('/items/detailing_service_prices', baseUrl())
   url.search = new URLSearchParams({
     'filter[service][_eq]': String(serviceId),
-    fields: 'id,vehicle_type,price,sort',
+    fields: 'id,vehicle_type,vehicle_type_es,vehicle_type_en,price,sort',
     sort: 'sort,id',
     limit: '-1',
   }).toString()
   const payload = await readDirectus<DirectusData<DirectusPriceRecord[]>>(url.pathname + url.search)
-  return payload.data
+  return payload.data.map((price) => ({
+    id: price.id,
+    vehicle_type_es: price.vehicle_type_es || localizeVehicleType(price.vehicle_type, 'es'),
+    vehicle_type_en: price.vehicle_type_en || localizeVehicleType(price.vehicle_type, 'en'),
+    price: price.price,
+    sort: price.sort,
+  }))
 }
 
 export function adminAssetUrl(id: string | null) {

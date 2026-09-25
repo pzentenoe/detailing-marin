@@ -82,41 +82,41 @@
   "services": {
     "pack-eco-diamond": {
       "title": "Eco Diamond Pack",
-      "shortDescription": "Full polish + Carnauba wax + showroom-level clean.",
-      "fullDescription": "Our most complete service. Professional machine polish on all body panels, Carnauba wax sealing to protect and enhance shine, deep vacuuming, interior dashboard and plastic cleaning and conditioning, full dry wash, door jambs, interior and exterior glass, wheels, tyres, and rubber restorer. Showroom result guaranteed, at your door in Santiago and the Metropolitan Region.",
+      "shortDescription": "Full-body polish, Carnauba wax, and a showroom-quality clean.",
+      "fullDescription": "Our most complete package. We machine-polish the bodywork and apply Carnauba wax to protect the paint and enhance its shine. It also includes a deep vacuum, cleaning and conditioning of the dashboard and interior plastics, a full-body waterless wash, door-jamb cleaning, interior and exterior glass, wheels, tires, and rubber dressing. Showroom-quality results, delivered to your home in Santiago and the Metropolitan Region.",
       "features": [
         "Professional machine polish",
-        "Carnauba wax sealing",
-        "Deep vacuum + full interior clean",
-        "Glass, wheels, and rubber included"
+        "Carnauba wax sealant",
+        "Deep vacuum and complete interior cleaning",
+        "Glass, wheels, and rubber dressing included"
       ]
     },
     "pack-eco-platinum": {
       "title": "Eco Platinum Pack",
-      "shortDescription": "Carnauba dry wash + premium interior detailing.",
-      "fullDescription": "Premium full-service detailing at your door in Santiago and the Metropolitan Region. Deep vacuuming, dashboard and interior plastic cleaning and conditioning, full Carnauba dry wash on bodywork, door jambs, interior and exterior glass, wheels, tyres, exterior plastic restorer, tyre restorer, and interior rubber restorer. All equipment brought to your home or office at no travel cost.",
+      "shortDescription": "Waterless wash with Carnauba wax and premium interior detailing.",
+      "fullDescription": "Premium mobile detailing in Santiago and the Metropolitan Region. Includes a deep vacuum, cleaning and conditioning of the dashboard and interior plastics, a full-body waterless wash with Carnauba wax, door-jamb cleaning, interior and exterior glass, wheels and tires, exterior plastic restoration, and interior rubber care. We bring all equipment to your home or office at no extra travel charge.",
       "features": [
-        "Carnauba dry wash",
-        "Deep vacuum + conditioned dashboards",
-        "Glass, wheels, and tyres included",
-        "Exterior and interior plastic restorer"
+        "Waterless wash with Carnauba wax",
+        "Deep vacuum and conditioned dashboard",
+        "Glass, wheels, and tires included",
+        "Exterior and interior plastic care"
       ]
     },
     "pack-eco-silver": {
       "title": "Eco Silver Pack",
-      "shortDescription": "Essential dry wash + vacuuming + exterior glass.",
-      "fullDescription": "The essential service for regular vehicle maintenance, at your door in Santiago and the Metropolitan Region. Includes full interior vacuuming, light dashboard cleaning, complete dry wash on bodywork, tyre cleaning, and exterior glass cleaning. Perfect for keeping your car spotless week after week at the most accessible price.",
+      "shortDescription": "Essential waterless wash, interior vacuuming, and exterior glass cleaning.",
+      "fullDescription": "The essential service for regular vehicle maintenance in Santiago and the Metropolitan Region. Includes a full interior vacuum, light dashboard cleaning, a full-body waterless wash, and tire and exterior glass cleaning. A cost-effective way to keep your vehicle clean week after week.",
       "features": [
-        "Full interior vacuuming",
-        "Dry wash on bodywork",
-        "Tyre and exterior glass cleaning",
+        "Full interior vacuum",
+        "Waterless exterior wash",
+        "Tire and exterior glass cleaning",
         "Ideal for regular maintenance"
       ]
     },
     "pulido-abrillantador": {
       "title": "Paint Polish & Shine",
       "shortDescription": "Professional paint correction to eliminate micro-scratches.",
-      "fullDescription": "Professional mobile paint polish service in Santiago and the Metropolitan Region. We eliminate micro-scratches, wash marks, and surface oxidation to restore your vehicle's original mirror-like shine. Color depth is enhanced using professional-grade paint correction techniques. Available as a standalone service or included in the Eco Diamond Pack.",
+      "fullDescription": "Professional mobile paint polishing in Santiago and the Metropolitan Region. We remove micro-scratches, wash marks, and surface oxidation to restore your vehicle's original mirror-like finish. Professional paint-correction techniques enhance the depth and gloss of the paint. Available as a standalone service or included in the Eco Diamond Pack.",
       "features": [
         "Micro-scratch and surface oxidation removal",
         "Color depth and shine enhancement",
@@ -127,21 +127,21 @@
     "pulido-focos": {
       "title": "Headlight Restoration",
       "shortDescription": "Restore transparency and clarity to your headlights.",
-      "fullDescription": "We restore the transparency and clarity of your headlights by eliminating accumulated yellowing and haze. The process significantly improves night visibility and driving safety. Includes a protective sealant to extend the result. Service priced per pair of headlights, performed at your door in Santiago and the Metropolitan Region.",
+      "fullDescription": "We restore the clarity of your headlights by removing yellowing and haze. This improves nighttime visibility and driving safety. A protective sealant helps preserve the results. Priced per pair and available at your home in Santiago and the Metropolitan Region.",
       "features": [
         "Yellowing and haze removal",
-        "Improved night visibility",
+        "Improved nighttime visibility",
         "Protective sealant included",
-        "Service priced per pair"
+        "Priced per pair of headlights"
       ]
     },
     "limpieza-tapiz": {
-      "title": "Upholstery & Interior Clean",
+      "title": "Upholstery and Interior Cleaning",
       "shortDescription": "Deep cleaning of seats, upholstery, and carpets.",
-      "fullDescription": "Deep cleaning of seats, upholstery, carpets, and floor mats at your door in Santiago and the Metropolitan Region. We use specialized extraction equipment to remove stains, odors, and embedded grime. Leather seats receive premium conditioner to restore and protect the material. Price based on vehicle type and size. Ideal for families with children or pets.",
+      "fullDescription": "Deep cleaning for seats, upholstery, carpets, and floor mats in Santiago and the Metropolitan Region. We use professional extraction equipment to remove stains, odors, and embedded dirt. Leather seats receive a premium conditioner that restores and protects the material. The price depends on vehicle type and size. Ideal for vehicles used daily and for families with children or pets.",
       "features": [
-        "Deep stain extraction",
-        "Odor elimination",
+        "Deep stain removal",
+        "Odor removal",
         "Carpet and floor treatment",
         "Leather conditioner (if applicable)"
       ]

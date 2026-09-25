@@ -24,7 +24,7 @@ export default function Error({ error, reset }: ErrorProps) {
           <p className="text-xs font-bold tracking-widest uppercase text-error">Algo salió mal</p>
           <h2 className="text-headline-md text-(--color-on-surface)">Error inesperado</h2>
           <p className="text-body-lg text-on-surface-variant">
-            Ocurrió un problema al cargar esta página. Podés intentar de nuevo o contactarnos si el problema persiste.
+            Ocurrió un problema al cargar esta página. Puedes intentarlo nuevamente o contactarnos si el problema persiste.
           </p>
         </div>
 
