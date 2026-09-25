@@ -65,20 +65,10 @@ export function buildLocalBusinessJsonLd() {
     email: contactInfo.email,
     openingHours: ['Mo-Sa 09:00-19:00'],
     priceRange: '$$',
-    address: {
-      '@type': 'PostalAddress',
-      addressLocality: 'Maipú',
-      addressRegion: 'Región Metropolitana',
-      addressCountry: 'CL',
-    },
-    geo: {
-      '@type': 'GeoCoordinates',
-      latitude: -33.5167,
-      longitude: -70.7583,
-    },
     sameAs: [
       'https://www.instagram.com/detailing_marin',
       'https://www.facebook.com/profile.php?id=61586193856361',
+      'https://www.google.com/maps/place/Detailing+Mar%C3%ADn+servicio+a+Domicilio/@-33.6064831,-70.7425391,210356m/data=!3m2!1e3!4b1!4m6!3m5!1s0x9662c56ac516fe05:0xbf5c8d2c1ee1e9ff!8m2!3d-33.6064831!4d-70.7425392!16s%2Fg%2F11pzydhqbv',
     ],
     hasOfferCatalog: {
       '@type': 'OfferCatalog',
