@@ -65,17 +65,6 @@ export function buildLocalBusinessJsonLd() {
     email: contactInfo.email,
     openingHours: ['Mo-Sa 09:00-19:00'],
     priceRange: '$$',
-    address: {
-      '@type': 'PostalAddress',
-      addressLocality: 'Maipú',
-      addressRegion: 'Región Metropolitana',
-      addressCountry: 'CL',
-    },
-    geo: {
-      '@type': 'GeoCoordinates',
-      latitude: -33.6064831,
-      longitude: -70.7425392,
-    },
     sameAs: [
       'https://www.instagram.com/detailing_marin',
       'https://www.facebook.com/profile.php?id=61586193856361',
