@@ -71,9 +71,9 @@ The admin screen must show a setup error if the collection or initial item is mi
 
 - [ ] **Step 1: Read the installed Next.js guides before writing route/cache code.**
 
-  Read `node_modules/next/dist/docs/01-app/02-guides/server-actions.md`, `node_modules/next/dist/docs/01-app/03-api-reference/04-functions/cacheTag.md`, `node_modules/next/dist/docs/01-app/03-api-reference/04-functions/revalidateTag.md`, and `node_modules/next/dist/docs/01-app/01-getting-started/09-revalidating.md`. Follow the installed Next.js 16.3.6 semantics, not remembered older APIs.
+  Read `node_modules/next/dist/docs/01-app/02-guides/server-actions.md`, `node_modules/next/dist/docs/01-app/02-guides/caching-without-cache-components.md`, `node_modules/next/dist/docs/01-app/03-api-reference/04-functions/updateTag.md`, and `node_modules/next/dist/docs/01-app/03-api-reference/04-functions/fetch.md`. Follow the installed Next.js 16.3.6 semantics and existing fetch-tag pattern; this project does not enable Cache Components, so do not introduce `cacheTag`/`'use cache'` for this feature.
 
-- [ ] **Step 2: Add the public reader in `lib/footer-data.ts` using the existing public read token and dedicated `directus-footer` cache tag.**
+- [ ] **Step 2: Add the public reader in `lib/footer-data.ts` using the existing public read token and `fetch` options `next: { revalidate: 60, tags: ['directus-footer'] }`.**
 
   Normalize/validate API data at the boundary. Return the static fallback when Directus is unavailable or the response is invalid. Do not use the admin token for public reads.
 
