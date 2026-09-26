@@ -2,11 +2,14 @@ import type { Metadata } from 'next'
 import Image from 'next/image'
 import Link from 'next/link'
 import { ArrowRight, Plus } from 'lucide-react'
+import { AdminToast } from '@/components/admin/AdminToast'
 import { getAdminSession } from '@/lib/admin-auth'
 import { adminAssetUrl, listAdminServices } from '@/lib/directus-admin'
 import { redirect } from 'next/navigation'
 
 export const metadata: Metadata = { title: 'Servicios | Administración' }
+
+type PageProps = { searchParams: Promise<{ deleted?: string | string[] }> }
 
 const STATUS_LABELS: Record<string, string> = {
   published: 'Publicado',
@@ -14,9 +17,12 @@ const STATUS_LABELS: Record<string, string> = {
   archived: 'Archivado',
 }
 
-export default async function AdminServicesPage() {
+export default async function AdminServicesPage({ searchParams }: PageProps) {
   const session = await getAdminSession()
   if (!session) redirect('/admin')
+  const rawDeletedId = (await searchParams).deleted
+  const parsedDeletedId = typeof rawDeletedId === 'string' ? Number(rawDeletedId) : NaN
+  const deletedId = Number.isSafeInteger(parsedDeletedId) && parsedDeletedId > 0 ? String(parsedDeletedId) : null
 
   let services
   try {
@@ -37,6 +43,7 @@ export default async function AdminServicesPage() {
 
   return (
     <main className="mx-auto max-w-7xl px-5 py-10 sm:px-8 sm:py-14">
+      <AdminToast message="El servicio se eliminó correctamente." toastId={deletedId} />
       <div className="flex flex-col justify-between gap-6 sm:flex-row sm:items-end">
         <div>
           <p className="text-xs font-semibold uppercase tracking-[0.2em] text-primary">Contenido del sitio</p>

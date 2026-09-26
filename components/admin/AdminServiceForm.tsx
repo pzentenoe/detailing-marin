@@ -3,7 +3,8 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import { useActionState, useEffect, useRef, useState } from 'react'
-import { ArrowLeft, ImagePlus, Plus, Trash2 } from 'lucide-react'
+import { useFormStatus } from 'react-dom'
+import { AlertTriangle, ArrowLeft, CheckCircle, ImagePlus, Plus, Trash2 } from 'lucide-react'
 import { deleteAdminService, saveAdminService, type ServiceFormState } from '@/app/admin/servicios/actions'
 import { Icon } from '@/components/ui/Icon'
 import { ADMIN_ICON_NAMES, ADMIN_SERVICE_STATUS, type AdminServiceFormValues } from '@/types/admin'
@@ -18,6 +19,91 @@ interface ImagePreview {
 }
 
 const initialState: ServiceFormState = {}
+
+function DeleteServiceForm({ serviceId, serviceTitle }: { serviceId: number; serviceTitle: string }) {
+  return (
+    <form action={deleteAdminService}>
+      <input name="id" type="hidden" value={serviceId} />
+      <DeleteServiceDialog serviceId={serviceId} serviceTitle={serviceTitle} />
+    </form>
+  )
+}
+
+function DeleteServiceDialog({ serviceId, serviceTitle }: { serviceId: number; serviceTitle: string }) {
+  const { pending } = useFormStatus()
+  const dialogRef = useRef<HTMLDialogElement>(null)
+  const triggerRef = useRef<HTMLButtonElement>(null)
+  const [isOpen, setIsOpen] = useState(false)
+  const dialogId = `delete-service-dialog-${serviceId}`
+
+  const openDialog = () => {
+    const dialog = dialogRef.current
+    if (!dialog) return
+
+    dialog.showModal()
+    setIsOpen(true)
+  }
+
+  const closeDialog = () => dialogRef.current?.close()
+
+  return (
+    <>
+      <button
+        aria-controls={dialogId}
+        aria-expanded={isOpen}
+        aria-haspopup="dialog"
+        className="inline-flex shrink-0 items-center gap-2 rounded-xl border border-error/35 bg-error-container/35 px-4 py-3 text-sm font-semibold text-error transition-colors hover:bg-error-container focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-error"
+        disabled={pending}
+        onClick={openDialog}
+        ref={triggerRef}
+        type="button"
+      >
+        <Trash2 aria-hidden="true" size={17} />
+        Eliminar servicio
+      </button>
+      <dialog
+        aria-describedby={`${dialogId}-description`}
+        aria-labelledby={`${dialogId}-title`}
+        className="m-auto w-[calc(100%-2rem)] max-w-md overflow-hidden rounded-2xl border border-outline-variant/30 bg-surface-container-lowest p-0 text-on-surface shadow-ambient backdrop:bg-black/40 backdrop:backdrop-blur-sm"
+        id={dialogId}
+        onCancel={(event) => {
+          if (pending) event.preventDefault()
+        }}
+        onClick={(event) => {
+          if (!pending && event.target === event.currentTarget) closeDialog()
+        }}
+        onClose={() => {
+          setIsOpen(false)
+          requestAnimationFrame(() => triggerRef.current?.focus())
+        }}
+        ref={dialogRef}
+      >
+        <div className="p-5 sm:p-6">
+          <div className="flex items-start gap-4">
+            <span className="flex size-11 shrink-0 items-center justify-center rounded-xl bg-error-container text-error">
+              <AlertTriangle aria-hidden="true" size={22} />
+            </span>
+            <div>
+              <h2 className="font-display text-xl font-semibold" id={`${dialogId}-title`}>¿Eliminar este servicio?</h2>
+              <p className="mt-2 text-sm leading-6 text-on-surface-variant" id={`${dialogId}-description`}>
+                Se eliminarán «{serviceTitle}» y todos sus precios por tipo de vehículo. Esta acción no se puede deshacer.
+              </p>
+            </div>
+          </div>
+          <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:justify-end">
+            <button className="rounded-xl border border-outline-variant/60 px-4 py-2.5 text-sm font-semibold text-on-surface transition-colors hover:bg-surface-container-low focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary disabled:cursor-wait disabled:opacity-70" disabled={pending} onClick={closeDialog} type="button">
+              Cancelar
+            </button>
+            <button className="inline-flex items-center justify-center gap-2 rounded-xl bg-error px-4 py-2.5 text-sm font-semibold text-on-error shadow-float transition-colors hover:brightness-95 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-error disabled:cursor-wait disabled:opacity-70" disabled={pending} type="submit">
+              <Trash2 aria-hidden="true" size={16} />
+              {pending ? 'Eliminando…' : 'Eliminar servicio'}
+            </button>
+          </div>
+        </div>
+      </dialog>
+    </>
+  )
+}
 
 function TextField({
   id,
@@ -101,15 +187,33 @@ export function AdminServiceForm({ initialValues }: AdminServiceFormProps) {
   const [uploading, setUploading] = useState({ image: false, image_before: false })
   const [uploadError, setUploadError] = useState<string | null>(null)
   const [previewLocale, setPreviewLocale] = useState<'es' | 'en'>('es')
+  const [showSavedNotice, setShowSavedNotice] = useState(false)
   const previewUrls = useRef<string[]>([])
+  const draftRevision = useRef(0)
+  const submittedRevision = useRef<number | null>(null)
 
   useEffect(() => () => previewUrls.current.forEach((url) => URL.revokeObjectURL(url)), [])
 
+  useEffect(() => {
+    if (!state.success || !state.serviceId) return
+
+    if (submittedRevision.current === draftRevision.current) setShowSavedNotice(true)
+    setDraft((current) => current.id === state.serviceId ? current : { ...current, id: state.serviceId })
+    if (!initialValues.id) window.history.replaceState(null, '', `/admin/servicios/${state.serviceId}`)
+  }, [initialValues.id, state])
+
+  const markDraftChanged = () => {
+    draftRevision.current += 1
+    setShowSavedNotice(false)
+  }
+
   const updateField = (field: keyof AdminServiceFormValues, value: string | number | boolean) => {
+    markDraftChanged()
     setDraft((current) => ({ ...current, [field]: value }))
   }
 
   const updatePrice = (index: number, field: 'vehicle_type_es' | 'vehicle_type_en' | 'price', value: string) => {
+    markDraftChanged()
     setDraft((current) => ({
       ...current,
       prices: current.prices.map((price, priceIndex) => priceIndex === index ? { ...price, [field]: value } : price),
@@ -118,6 +222,7 @@ export function AdminServiceForm({ initialValues }: AdminServiceFormProps) {
 
   const uploadImage = async (field: 'image' | 'image_before', file: File | null) => {
     if (!file) return
+    markDraftChanged()
     setUploadError(null)
     setUploading((current) => ({ ...current, [field]: true }))
 
@@ -163,7 +268,14 @@ export function AdminServiceForm({ initialValues }: AdminServiceFormProps) {
           <p className="mt-2 text-sm text-on-surface-variant">Los cambios se reflejan en español e inglés en el sitio.</p>
         </div>
 
-        <form action={action} className="space-y-6">
+        <form
+          action={action}
+          className="space-y-6"
+          onSubmitCapture={() => {
+            submittedRevision.current = draftRevision.current
+            setShowSavedNotice(false)
+          }}
+        >
           {draft.id && <input name="id" type="hidden" value={draft.id} />}
           <input name="image" type="hidden" value={draft.image} />
           <input name="image_before" type="hidden" value={draft.image_before} />
@@ -184,9 +296,14 @@ export function AdminServiceForm({ initialValues }: AdminServiceFormProps) {
               <TextField id="service-sort" label="Orden" name="sort" onChange={(value) => updateField('sort', Number(value) || 0)} value={String(draft.sort)} />
               <div className="space-y-2">
                 <label className="block text-sm font-medium" htmlFor="service-icon">Icono</label>
-                <select className="w-full rounded-xl border border-outline-variant/70 bg-surface px-3.5 py-3 text-sm focus-visible:outline-2 focus-visible:outline-primary" id="service-icon" name="icon" onChange={(event) => updateField('icon', event.target.value)} value={draft.icon}>
-                  {ADMIN_ICON_NAMES.map((name) => <option key={name} value={name}>{name}</option>)}
-                </select>
+                <div className="flex items-center gap-3">
+                  <select className="min-w-0 flex-1 rounded-xl border border-outline-variant/70 bg-surface px-3.5 py-3 text-sm focus-visible:outline-2 focus-visible:outline-primary" id="service-icon" name="icon" onChange={(event) => updateField('icon', event.target.value)} value={draft.icon}>
+                    {ADMIN_ICON_NAMES.map((name) => <option key={name} value={name}>{name}</option>)}
+                  </select>
+                  <span aria-label={`Vista previa del icono ${draft.icon}`} className="flex size-12 shrink-0 items-center justify-center rounded-xl bg-primary-fixed text-primary" role="img">
+                    <Icon name={draft.icon} size={21} />
+                  </span>
+                </div>
               </div>
               <TextField id="service-duration" label="Duración" name="duration" onChange={(value) => updateField('duration', value)} required value={draft.duration} />
               <label className="flex min-h-12 items-center gap-3 rounded-xl bg-surface-container-low px-4 text-sm font-medium">
@@ -232,14 +349,14 @@ export function AdminServiceForm({ initialValues }: AdminServiceFormProps) {
             <div className="mt-5 grid gap-6 sm:grid-cols-2">
               <ImageUploadField
                 label="Imagen principal"
-                onRemove={() => { setDraft((current) => ({ ...current, image: '' })); setPreview((current) => ({ ...current, image: null })) }}
+                onRemove={() => { markDraftChanged(); setDraft((current) => ({ ...current, image: '' })); setPreview((current) => ({ ...current, image: null })) }}
                 onUpload={(file) => void uploadImage('image', file)}
                 preview={preview.image}
                 uploading={uploading.image}
               />
               <ImageUploadField
                 label="Imagen antes del servicio (opcional)"
-                onRemove={() => { setDraft((current) => ({ ...current, image_before: '' })); setPreview((current) => ({ ...current, image_before: null })) }}
+                onRemove={() => { markDraftChanged(); setDraft((current) => ({ ...current, image_before: '' })); setPreview((current) => ({ ...current, image_before: null })) }}
                 onUpload={(file) => void uploadImage('image_before', file)}
                 preview={preview.image_before}
                 uploading={uploading.image_before}
@@ -254,7 +371,7 @@ export function AdminServiceForm({ initialValues }: AdminServiceFormProps) {
                 <h2 className="font-display text-lg font-semibold">Precios por vehículo</h2>
                 <p className="mt-1 text-xs text-on-surface-variant">Agrega, cambia o quita filas de precio.</p>
               </div>
-              <button className="inline-flex items-center gap-2 rounded-lg border border-outline-variant/60 px-3 py-2 text-sm font-medium hover:bg-surface-container-low" onClick={() => setDraft((current) => ({ ...current, prices: [...current.prices, { vehicle_type_es: '', vehicle_type_en: '', price: '' }] }))} type="button">
+                <button className="inline-flex items-center gap-2 rounded-lg border border-outline-variant/60 px-3 py-2 text-sm font-medium hover:bg-surface-container-low" onClick={() => { markDraftChanged(); setDraft((current) => ({ ...current, prices: [...current.prices, { vehicle_type_es: '', vehicle_type_en: '', price: '' }] })) }} type="button">
                 <Plus aria-hidden="true" size={16} />
                 Agregar fila
               </button>
@@ -266,7 +383,7 @@ export function AdminServiceForm({ initialValues }: AdminServiceFormProps) {
                   <input aria-label={`Tipo de vehículo en español ${index + 1}`} className="min-w-0 rounded-lg border border-outline-variant/70 bg-surface-container-lowest px-3 py-2.5 text-sm focus-visible:outline-2 focus-visible:outline-primary" onChange={(event) => updatePrice(index, 'vehicle_type_es', event.target.value)} placeholder="Automóvil urbano" value={price.vehicle_type_es} />
                   <input aria-label={`Vehicle type in English ${index + 1}`} className="min-w-0 rounded-lg border border-outline-variant/70 bg-surface-container-lowest px-3 py-2.5 text-sm focus-visible:outline-2 focus-visible:outline-primary" onChange={(event) => updatePrice(index, 'vehicle_type_en', event.target.value)} placeholder="City car" value={price.vehicle_type_en} />
                   <input aria-label={`Precio ${index + 1}`} className="min-w-0 rounded-lg border border-outline-variant/70 bg-surface-container-lowest px-3 py-2.5 text-sm focus-visible:outline-2 focus-visible:outline-primary" onChange={(event) => updatePrice(index, 'price', event.target.value)} placeholder="$89.990" value={price.price} />
-                  <button aria-label={`Quitar precio ${index + 1}`} className="inline-flex size-10 items-center justify-center rounded-lg text-error hover:bg-error-container" onClick={() => setDraft((current) => ({ ...current, prices: current.prices.filter((_, priceIndex) => priceIndex !== index) }))} type="button">
+                  <button aria-label={`Quitar precio ${index + 1}`} className="inline-flex size-10 items-center justify-center rounded-lg text-error hover:bg-error-container" onClick={() => { markDraftChanged(); setDraft((current) => ({ ...current, prices: current.prices.filter((_, priceIndex) => priceIndex !== index) })) }} type="button">
                     <Trash2 aria-hidden="true" size={17} />
                   </button>
                 </div>
@@ -275,16 +392,25 @@ export function AdminServiceForm({ initialValues }: AdminServiceFormProps) {
           </section>
 
           {state.error && <p aria-live="polite" className="rounded-xl bg-error-container px-4 py-3 text-sm text-error" role="alert">{state.error}</p>}
+          {showSavedNotice && (
+            <p aria-live="polite" className="flex items-center gap-2 rounded-xl border border-primary/20 bg-primary/5 px-4 py-3 text-sm font-medium text-primary" role="status">
+              <CheckCircle aria-hidden="true" size={18} />
+              Cambios guardados correctamente.
+            </p>
+          )}
           <button className="w-full rounded-xl bg-primary px-5 py-3.5 text-sm font-semibold text-on-primary shadow-float transition-colors hover:bg-primary-container focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary disabled:cursor-wait disabled:opacity-70 sm:w-auto" disabled={pending || uploading.image || uploading.image_before} type="submit">
             {pending ? 'Guardando…' : draft.id ? 'Guardar cambios' : 'Crear servicio'}
           </button>
         </form>
 
         {draft.id && (
-          <form action={deleteAdminService} className="mt-8 border-t border-outline-variant/30 pt-6" onSubmit={(event) => { if (!window.confirm('¿Eliminar este servicio y sus precios? Esta acción no se puede deshacer.')) event.preventDefault() }}>
-            <input name="id" type="hidden" value={draft.id} />
-            <button className="rounded-lg px-3 py-2 text-sm font-medium text-error hover:bg-error-container" type="submit">Eliminar servicio</button>
-          </form>
+          <div className="mt-8 flex flex-wrap items-center justify-between gap-4 border-t border-outline-variant/30 pt-6">
+            <div>
+              <h2 className="text-sm font-semibold">Eliminar servicio</h2>
+              <p className="mt-1 text-xs text-on-surface-variant">Esta acción eliminará también los precios asociados.</p>
+            </div>
+            <DeleteServiceForm serviceId={draft.id} serviceTitle={draft.title_es || `Servicio ${draft.id}`} />
+          </div>
         )}
       </section>
 
