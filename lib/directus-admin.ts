@@ -2,6 +2,7 @@ import 'server-only'
 
 import type { AdminServicePriceRecord, AdminServiceRecord } from '@/types/admin'
 import { localizeVehicleType } from '@/lib/vehicle-types'
+import { footerContentSchema, type FooterContent } from '@/lib/footer-content'
 
 interface DirectusData<T> {
   data: T
@@ -59,6 +60,33 @@ export async function writeDirectus(path: string, init: RequestInit) {
     },
     cache: 'no-store',
     redirect: 'error',
+  })
+}
+
+export async function getAdminFooter(): Promise<{ id: string | number; content: FooterContent } | null> {
+  const fields = Object.keys(footerContentSchema.shape).join(',')
+  const url = new URL('/items/detailing_footer', baseUrl())
+  url.search = new URLSearchParams({ fields: `id,${fields}`, limit: '1' }).toString()
+  const response = await fetch(url, {
+    headers: { Authorization: `Bearer ${token('DIRECTUS_ADMIN_TOKEN')}` },
+    cache: 'no-store',
+    redirect: 'error',
+  })
+  if (response.status === 404) throw new Error('FOOTER_COLLECTION_MISSING')
+  if (!response.ok) throw new Error(`Directus footer read failed (${response.status})`)
+  const payload = await response.json() as DirectusData<Record<string, unknown>[]>
+  const item = payload.data[0]
+  if (!item) return null
+  const parsed = footerContentSchema.safeParse(item)
+  if (!parsed.success) throw new Error('FOOTER_ITEM_INVALID')
+  return { id: item.id as string | number, content: parsed.data }
+}
+
+export async function updateAdminFooter(id: string | number, content: FooterContent) {
+  return writeDirectus(`/items/detailing_footer/${encodeURIComponent(String(id))}`, {
+    method: 'PATCH',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(content),
   })
 }
 

@@ -51,3 +51,7 @@ lighthouse-local
 .idea
 .codebase-memory
 .serena
+
+# Local tooling settings and visual-check artifacts
+.pi/
+docs/diagrams/

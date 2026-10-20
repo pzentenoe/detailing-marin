@@ -12,7 +12,7 @@ Out of scope: changing footer layout or theme, editing legal-page content, and b
 
 ## Recommended Approach
 
-Use one ordinary Directus collection, `site_footer`, with one configuration item. Keep scalar content in explicit fields and navigation/social links in structured JSON fields. This matches the footer's fixed sections and avoids introducing multiple relational collections. The custom admin editor provides friendly repeatable controls for the structured lists; administrators do not edit raw JSON.
+Use one ordinary Directus collection, `detailing_footer`, with one configuration item, following the existing `detailing_` collection prefix. Keep scalar content in explicit fields and navigation/social links in structured JSON fields. This matches the footer's fixed sections and avoids introducing multiple relational collections. The custom admin editor provides friendly repeatable controls for the structured lists; administrators do not edit raw JSON.
 
 Alternatives considered:
 
@@ -21,13 +21,13 @@ Alternatives considered:
 
 ## Data Flow
 
-1. `/admin/footer` requires the existing admin session and loads the single `site_footer` item through the server-only Directus admin integration.
+1. `/admin/footer` requires the existing admin session and loads the single `detailing_footer` item through the server-only Directus admin integration.
 2. The editor shows grouped bilingual fields and editable navigation/social rows. A live preview renders the shared footer presentation from current form state, including unsaved changes.
 3. A validated Server Action writes the configuration item to Directus. On success it invalidates the `directus-footer` cache tag and returns clear save feedback; on failure it leaves the draft intact and shows an actionable error.
 4. The public footer fetches the item using the existing public Directus read configuration and selects Spanish or English content from the active locale. The shared presentation component renders both the public footer and admin preview.
 5. If public Directus data is unavailable or invalid, the site falls back to the existing footer content. The admin editor reports load/save failures rather than silently editing fallback data.
 
-Directus credentials remain server-only. The public read token must have read access to `site_footer`; the admin token must have access to read and update the configuration item.
+Directus credentials remain server-only. The public read token must have read access to `detailing_footer`; the admin token must have access to read and update the configuration item.
 
 ## Admin Experience
 

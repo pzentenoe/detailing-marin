@@ -4,7 +4,7 @@
 
 **Goal:** Let administrators edit the bilingual footer in Directus, preview unsaved changes with the public footer component, and publish changes to the site immediately after saving.
 
-**Architecture:** Add a validated footer content model and Directus read/write helpers around one `site_footer` configuration item. Keep public data loading in a server module and extract a reusable presentation component so the client editor can preview its current draft without duplicating the public markup. Protect the admin route with the existing session check and invalidate a dedicated Next.js cache tag after writes.
+**Architecture:** Add a validated footer content model and Directus read/write helpers around one `detailing_footer` configuration item. Keep public data loading in a server module and extract a reusable presentation component so the client editor can preview its current draft without duplicating the public markup. Protect the admin route with the existing session check and invalidate a dedicated Next.js cache tag after writes.
 
 **Tech Stack:** Next.js 16 App Router, React 19, TypeScript strict, Zod 4, next-intl, Directus REST API, Tailwind CSS 4, pnpm.
 
@@ -22,7 +22,7 @@
 
 ### Directus Item Contract
 
-Create an ordinary `site_footer` collection with one item. Use Directus `String` fields for scalar content and `JSON` fields for ordered navigation/social arrays. Directus uses its default item ID as the primary key. The admin screen exposes friendly controls; administrators do not edit raw JSON.
+Create an ordinary `detailing_footer` collection with one item, following the existing `detailing_` collection prefix. Use Directus `String` fields for scalar content and `JSON` fields for ordered navigation/social arrays. Directus uses its default item ID as the primary key. The admin screen exposes friendly controls; administrators do not edit raw JSON.
 
 Scalar content fields:
 
@@ -36,7 +36,7 @@ Scalar content fields:
 - `navigation_links` JSON rows: `{ target, label_es, label_en }`, where target is one of `home`, `services`, `coverage`, `contact`
 - `social_links` JSON rows: `{ platform, label_es, label_en, url }`, where platform is `instagram`, `facebook`, or `link`
 
-Access setup: grant the role used by `DIRECTUS_TOKEN` read-only access to the `site_footer` item and grant the role used by `DIRECTUS_ADMIN_TOKEN` read/update access to the same collection and fields. Do not grant public create/update/delete. Seed exactly one item from the existing footer defaults. The implementation must verify the collection, field contract, permissions, and item in the intended Directus environment before claiming end-to-end completion.
+Access setup: grant the role used by `DIRECTUS_TOKEN` read-only access to the `detailing_footer` item and grant the role used by `DIRECTUS_ADMIN_TOKEN` read/update access to the same collection and fields. Do not grant public create/update/delete. Seed exactly one item from the existing footer defaults. The implementation must verify the collection, field contract, permissions, and item in the intended Directus environment before claiming end-to-end completion.
 
 The admin screen must show a setup error if the collection or initial item is missing. Do not create records on page load. Never send either token to a Client Component.
 
@@ -44,7 +44,7 @@ The admin screen must show a setup error if the collection or initial item is mi
 
 **Files:** Create `lib/footer-content.ts`, `lib/footer-content.test.ts`; modify `package.json` only if a focused script is necessary.
 
-- [ ] **Step 1: Add contract checks for the fallback, localized copy, navigation targets, social URLs, and malformed payloads.**
+- [x] **Step 1: Add contract checks for the fallback, localized copy, navigation targets, social URLs, and malformed payloads.**
 
   Use `node:assert/strict` and `tsx`; avoid adding a test framework.
 
@@ -53,11 +53,11 @@ The admin screen must show a setup error if the collection or initial item is mi
   Run: `pnpm exec tsx --test lib/footer-content.test.ts`
   Expected: FAIL because the footer contract module does not yet exist.
 
-- [ ] **Step 3: Add the typed model, Zod schema, locale projection, and current-content fallback.**
+- [x] **Step 3: Add the typed model, Zod schema, locale projection, and current-content fallback.**
 
   Keep navigation targets constrained to the four existing routes from `navHrefs`; validate external social URLs as HTTP(S); validate phone/email before persistence. Preserve existing public strings and values as fallback data.
 
-- [ ] **Step 4: Run the focused checks and type check.**
+- [x] **Step 4: Run the focused checks and type check.**
 
   Run: `pnpm exec tsx --test lib/footer-content.test.ts`
   Expected: PASS.
@@ -69,15 +69,15 @@ The admin screen must show a setup error if the collection or initial item is mi
 
 **Files:** Create `lib/footer-data.ts`; modify `lib/directus-admin.ts`.
 
-- [ ] **Step 1: Read the installed Next.js guides before writing route/cache code.**
+- [x] **Step 1: Read the installed Next.js guides before writing route/cache code.**
 
   Read `node_modules/next/dist/docs/01-app/02-guides/server-actions.md`, `node_modules/next/dist/docs/01-app/02-guides/caching-without-cache-components.md`, `node_modules/next/dist/docs/01-app/03-api-reference/04-functions/updateTag.md`, and `node_modules/next/dist/docs/01-app/03-api-reference/04-functions/fetch.md`. Follow the installed Next.js 16.3.6 semantics and existing fetch-tag pattern; this project does not enable Cache Components, so do not introduce `cacheTag`/`'use cache'` for this feature.
 
-- [ ] **Step 2: Add the public reader in `lib/footer-data.ts` using the existing public read token and `fetch` options `next: { revalidate: 60, tags: ['directus-footer'] }`.**
+- [x] **Step 2: Add the public reader in `lib/footer-data.ts` using the existing public read token and `fetch` options `next: { revalidate: 60, tags: ['directus-footer'] }`.**
 
   Normalize/validate API data at the boundary. Return the static fallback when Directus is unavailable or the response is invalid. Do not use the admin token for public reads.
 
-- [ ] **Step 3: Add admin read and update helpers beside the existing helpers in `lib/directus-admin.ts`.**
+- [x] **Step 3: Add admin read and update helpers beside the existing helpers in `lib/directus-admin.ts`.**
 
   Require the existing configuration item; return a distinct missing-item result rather than silently inserting another record.
 
@@ -102,11 +102,11 @@ The admin screen must show a setup error if the collection or initial item is mi
 
 **Files:** Create `components/layout/FooterView.tsx`; modify `components/layout/Footer.tsx` and localized messages if required.
 
-- [ ] **Step 1: Extract the current footer markup into `FooterView` with serializable `content` and `locale` props.**
+- [x] **Step 1: Extract the current footer markup into `FooterView` with serializable `content` and `locale` props.**
 
   Preserve the existing responsive layout, logo, classes, accessible landmarks, internal localized links, social SVGs, and legal destinations. Resolve navigation route keys through the existing next-intl navigation component. Keep the presentation independent of Directus, `next/headers`, server actions, and server-only modules so it is safe to import from the Client Component editor.
 
-- [ ] **Step 2: Replace static reads in the public `Footer` server component with the public reader.**
+- [x] **Step 2: Replace static reads in the public `Footer` server component with the public reader.**
 
   Select the appropriate Spanish/English values and pass them into `FooterView`. Keep the current static content as a validated fallback when Directus is unavailable.
 
@@ -136,19 +136,19 @@ The admin screen must show a setup error if the collection or initial item is mi
 
 **Files:** Create `app/admin/footer/actions.ts`; modify `lib/directus-admin.ts`.
 
-- [ ] **Step 1: Add a Server Action that checks `getAdminSession()` before processing form data.**
+- [x] **Step 1: Add a Server Action that checks `getAdminSession()` before processing form data.**
 
   Parse all scalar and list fields with the shared Zod schema. Keep URL, email, and phone validation at this trust boundary. Return field/form errors without clearing the submitted draft.
 
-- [ ] **Step 2: Update the existing `site_footer` item with the admin token.**
+- [x] **Step 2: Update the existing `detailing_footer` item with the admin token.**
 
   Do not create a missing item implicitly. Convert Directus/API failure into a stable user-facing error.
 
-- [ ] **Step 3: Invalidate `directus-footer` only after a successful Directus update and return success feedback.**
+- [x] **Step 3: Invalidate `directus-footer` only after a successful Directus update and return success feedback.**
 
   Use the API supported by Next.js 16.3.6, as documented in Task 2; preserve the existing admin service feedback pattern.
 
-- [ ] **Step 4: Run focused checks.**
+- [x] **Step 4: Run focused checks.**
 
   Run: `pnpm exec eslint app/admin/footer/actions.ts lib/directus-admin.ts lib/footer-content.ts`
   Expected: PASS.
@@ -160,23 +160,23 @@ The admin screen must show a setup error if the collection or initial item is mi
 
 **Files:** Create `components/admin/AdminFooterEditor.tsx` and `app/admin/footer/page.tsx`.
 
-- [ ] **Step 1: Load the existing footer item on the server behind `getAdminSession()`.**
+- [x] **Step 1: Load the existing footer item on the server behind `getAdminSession()`.**
 
   Redirect unauthenticated users to `/admin`. Render an actionable setup message if the collection/item is missing; render a retryable error if Directus cannot be reached.
 
-- [ ] **Step 2: Build grouped bilingual inputs and repeatable navigation/social rows.**
+- [x] **Step 2: Build grouped bilingual inputs and repeatable navigation/social rows.**
 
   Include all editable visible content. Navigation targets use the existing route choices; social URLs support HTTP(S). Legal labels are editable but privacy/terms hrefs stay internal and fixed. Phone/email are shared across locales.
 
-- [ ] **Step 3: Render the shared `FooterView` from current form state.**
+- [x] **Step 3: Render the shared `FooterView` from current form state.**
 
   Preview every field and list edit before saving. Keep the preview below the form on narrow screens and adjacent on wide screens. Preserve draft state during pending writes and errors.
 
-- [ ] **Step 4: Connect the existing save-feedback pattern and prevent duplicate submits while pending.**
+- [x] **Step 4: Connect the existing save-feedback pattern and prevent duplicate submits while pending.**
 
   Display an inline success message only for the submitted draft revision; show validation or Directus errors without discarding inputs.
 
-- [ ] **Step 5: Verify form/preview interactions locally.**
+- [x] **Step 5: Verify form/preview interactions locally.**
 
   Verify changing localized copy, phone/email, navigation rows, and social rows updates the preview before submit; verify invalid external URLs prevent save; verify pending/error UI retains all draft values.
 
@@ -186,13 +186,13 @@ The admin screen must show a setup error if the collection or initial item is mi
 
 **Files:** Create `components/admin/AdminHeader.tsx`; modify `app/admin/servicios/layout.tsx`; create `app/admin/footer/layout.tsx`.
 
-- [ ] **Step 1: Extract the existing shared admin header/navigation/logout into `AdminHeader`.**
+- [x] **Step 1: Extract the existing shared admin header/navigation/logout into `AdminHeader`.**
 
   Keep the current services link and logout behavior; add a `Pie de página` link to `/admin/footer`.
 
-- [ ] **Step 2: Use `AdminHeader` in the service editor and new footer route without changing the login screen.**
+- [x] **Step 2: Use `AdminHeader` in the service editor and new footer route without changing the login screen.**
 
-- [ ] **Step 3: Verify navigation and authentication boundaries.**
+- [x] **Step 3: Verify navigation and authentication boundaries.**
 
   Verify both admin links are visible when authenticated, logout still works, `/admin/footer` redirects without a session, and the login route remains unchanged.
 
@@ -200,15 +200,17 @@ The admin screen must show a setup error if the collection or initial item is mi
 
 **Files:** No repository files; the exact collection field types and role permissions are specified in the Directus Item Contract above.
 
-- [ ] **Step 1: Confirm the `site_footer` collection fields and one configuration item exist in the intended Directus environment.**
+- [x] **Step 1: Create `detailing_footer`, its contracted fields and initial item; verify token policy permissions.**
 
   Grant read access to the public token and read/update access to the admin token. Never print token values. If schema setup is not available to the implementation environment, stop and provide the exact collection/field setup required before claiming the feature is fully live.
 
-- [ ] **Step 2: Verify the full bilingual public/admin path against a safe local or staging Directus instance.**
+- [x] **Step 2: Verify the full bilingual public/admin path against a safe local or staging Directus instance.**
 
   Save a harmless staging edit in Spanish and English; verify public pages reflect it immediately after tag invalidation; restore the original staging values after the check.
 
-- [ ] **Step 3: Run all final local checks.**
+  Verified against the configured Directus instance: a bilingual edit saved from `/admin/footer` was reflected immediately on `/` (Spanish copy) and `/en` (English copy) after the `directus-footer` tag invalidation, and the original values were restored afterwards. The admin preview renders the shared `FooterView` outside any `next-intl` client context, so it no longer throws "No intl context found".
+
+- [x] **Step 3: Run all final local checks.**
 
   Run: `pnpm exec tsx --test lib/footer-content.test.ts`
   Expected: PASS.
