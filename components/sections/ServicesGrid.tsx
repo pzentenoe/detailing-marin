@@ -16,7 +16,7 @@ const cardLayouts = [
     // Pack Eco Diamond — tarjeta editorial a ancho completo: el texto a la
     // izquierda y la fotografía real del servicio a la derecha, con proporción
     // fija (nunca estirada hasta quedar en un hilo vertical).
-    colSpan: 'md:col-span-12',
+    colSpan: 'lg:col-span-12',
     cardClass: 'bg-(--color-surface-container-lowest)',
     iconBg: 'bg-secondary-container',
     iconColor: 'var(--color-primary)',
@@ -31,7 +31,7 @@ const cardLayouts = [
   },
   {
     // Pack Eco Platinum — fondo oscuro fijo con imagen en banda
-    colSpan: 'md:col-span-5',
+    colSpan: 'lg:col-span-5',
     cardClass: 'bg-primary-container',
     iconBg: 'bg-white/20',
     iconColor: '#ffffff',
@@ -46,7 +46,7 @@ const cardLayouts = [
   },
   {
     // Pack Eco Silver — hydro tint
-    colSpan: 'md:col-span-5',
+    colSpan: 'lg:col-span-5',
     cardClass: 'hydro-card',
     iconBg: 'bg-primary/10',
     iconColor: 'var(--color-primary)',
@@ -61,7 +61,7 @@ const cardLayouts = [
   },
   {
     // Pulido Abrillantador — imagen en banda
-    colSpan: 'md:col-span-7',
+    colSpan: 'lg:col-span-7',
     cardClass: 'bg-surface-container-high',
     iconBg: 'bg-primary-container',
     iconColor: '#ffffff',
@@ -77,7 +77,7 @@ const cardLayouts = [
   {
     // Pulido de Focos — texto arriba y fotografía en banda ancha (la columna
     // angosta dejaba el texto en 220px y lo partía en líneas de 3 palabras)
-    colSpan: 'md:col-span-7',
+    colSpan: 'lg:col-span-7',
     cardClass: 'bg-(--color-surface-container-lowest)',
     iconBg: 'bg-secondary-container',
     iconColor: 'var(--color-primary)',
@@ -92,7 +92,7 @@ const cardLayouts = [
   },
   {
     // Limpieza de Tapiz — before/after a ancho completo
-    colSpan: 'md:col-span-12',
+    colSpan: 'lg:col-span-12',
     cardClass: 'bg-surface-container-high',
     iconBg: 'bg-primary-container',
     iconColor: '#ffffff',
@@ -202,7 +202,7 @@ export async function ServicesGrid() {
         <p className="text-body-lg text-on-surface-variant max-w-2xl mx-auto mt-4">{t('subheading')}</p>
       </header>
 
-      <div className="grid grid-cols-1 md:grid-cols-12 gap-6">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
         {services.map((service, idx) => {
           const layout = layoutBySlug[service.slug] ?? cardLayouts[idx % cardLayouts.length]
 
@@ -223,7 +223,7 @@ export async function ServicesGrid() {
                   'relative h-full rounded-[calc(var(--radius-xl)-1px)]',
                   layout.cardClass,
                   layout.isHorizontal
-                    ? 'p-8 md:p-12 flex flex-col md:flex-row gap-8 items-center'
+                      ? 'p-8 md:p-12 flex flex-col lg:flex-row gap-8 items-center'
                     : layout.splitImage
                       ? 'p-6 md:p-8 flex flex-col lg:flex-row gap-6 overflow-hidden'
                       : 'p-8 md:p-10 flex flex-col justify-between overflow-hidden',

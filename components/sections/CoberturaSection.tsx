@@ -30,7 +30,7 @@ const ZONES: Zone[] = [
     id: 'poniente',
     dir: 'O',
     communes: ['Maipú', 'Pudahuel', 'Cerrillos', 'Cerro Navia', 'Lo Prado', 'Quinta Normal', 'Estación Central', 'Padre Hurtado'],
-    colSpan: 'md:col-span-7',
+    colSpan: 'lg:col-span-7',
     cardClass: 'gradient-primary text-white',
     dirClass: 'text-white/10',
     labelClass: 'text-white/70',
@@ -43,7 +43,7 @@ const ZONES: Zone[] = [
     id: 'norte',
     dir: 'N',
     communes: ['Conchalí', 'Quilicura', 'Renca', 'Huechuraba', 'Lo Barnechea'],
-    colSpan: 'md:col-span-5',
+    colSpan: 'lg:col-span-5',
     cardClass: 'bg-(--color-surface-container-lowest)',
     dirClass: 'text-primary/8',
     labelClass: 'text-on-surface-variant',
@@ -56,7 +56,7 @@ const ZONES: Zone[] = [
     id: 'centro',
     dir: 'C',
     communes: ['Santiago', 'Independencia', 'Recoleta', 'San Joaquín', 'Pedro Aguirre Cerda', 'Lo Espejo'],
-    colSpan: 'md:col-span-5',
+    colSpan: 'lg:col-span-5',
     cardClass: 'hydro-card',
     dirClass: 'text-primary/8',
     labelClass: 'text-on-surface-variant',
@@ -69,7 +69,7 @@ const ZONES: Zone[] = [
     id: 'oriente',
     dir: 'E',
     communes: ['Las Condes', 'Vitacura', 'Providencia', 'Ñuñoa', 'Macul', 'Peñalolén'],
-    colSpan: 'md:col-span-7',
+    colSpan: 'lg:col-span-7',
     cardClass: 'bg-primary-container',
     dirClass: 'text-white/10',
     labelClass: 'text-white/70',
@@ -82,7 +82,7 @@ const ZONES: Zone[] = [
     id: 'sur',
     dir: 'S',
     communes: ['La Florida', 'La Granja', 'La Pintana', 'San Ramón', 'La Cisterna', 'El Bosque', 'San Miguel', 'San Bernardo'],
-    colSpan: 'md:col-span-12',
+    colSpan: 'lg:col-span-12',
     cardClass: 'bg-(--color-surface-container-lowest)',
     dirClass: 'text-primary/8',
     labelClass: 'text-on-surface-variant',
@@ -163,7 +163,7 @@ export async function CoberturaSection() {
           {t('zonesDesc')}
         </p>
 
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-5">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-5">
           {ZONES.map((zone) => {
             const zoneName = zoneNameMap[zone.id]
             const count = zone.communes.length
@@ -190,7 +190,7 @@ export async function CoberturaSection() {
                   <span
                     className={[
                       'absolute right-4 bottom-4 font-display font-black select-none pointer-events-none',
-                      'text-[8rem] leading-none transition-transform duration-500',
+                       'text-[clamp(4rem,8vw,6rem)] leading-none transition-transform duration-500',
                       'group-hover:scale-110 group-hover:-rotate-3',
                       zone.dirClass,
                     ].join(' ')}

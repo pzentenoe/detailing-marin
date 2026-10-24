@@ -51,7 +51,7 @@ export function BeforeAfterCard({
             alt={before.alt}
             fill
             className="object-cover object-center grayscale-[30%] transition-all duration-500 group-hover/photo:grayscale-0"
-            sizes="(max-width: 768px) 50vw, 25vw"
+            sizes="(max-width: 1023px) 50vw, 25vw"
           />
           <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-black/10" aria-hidden="true" />
           <span className="pointer-events-none absolute bottom-3 left-3 rounded-md bg-black/70 px-3 py-1 text-xs font-bold uppercase tracking-widest text-white backdrop-blur-sm">
@@ -80,7 +80,7 @@ export function BeforeAfterCard({
             alt={after.alt}
             fill
             className="object-cover object-center transition-transform duration-500 group-hover/photo:scale-[1.025]"
-            sizes="(max-width: 768px) 50vw, 25vw"
+            sizes="(max-width: 1023px) 50vw, 25vw"
           />
           <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent" aria-hidden="true" />
           <span className="pointer-events-none absolute bottom-3 right-3 rounded-md bg-primary/85 px-3 py-1 text-xs font-bold uppercase tracking-widest text-white backdrop-blur-sm">

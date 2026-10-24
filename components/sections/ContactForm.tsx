@@ -248,7 +248,7 @@ export function ContactForm() {
           ) : (
             <form
               onSubmit={handleSubmit}
-              className="glass border border-outline-variant/20 rounded-(--radius-xl) p-10 flex flex-col gap-7 shadow-ambient"
+              className="glass border border-outline-variant/20 rounded-(--radius-xl) p-5 sm:p-8 lg:p-10 flex flex-col gap-7 shadow-ambient"
               aria-label={tf('ariaLabel')}
               noValidate
             >

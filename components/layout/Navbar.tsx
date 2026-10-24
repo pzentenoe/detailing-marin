@@ -79,13 +79,13 @@ export function Navbar() {
               className="w-14 min-[400px]:w-[72px] object-contain drop-shadow-md group-hover:scale-105 transition-transform duration-200 motion-reduce:transition-none motion-reduce:group-hover:scale-100"
               priority
             />
-            <span className="hidden min-[360px]:inline md:hidden lg:inline font-display font-bold text-base lg:text-xl whitespace-nowrap text-(--color-on-surface) tracking-tight group-hover:text-primary transition-colors">
+            <span className="hidden min-[360px]:inline font-display font-bold text-base lg:text-xl whitespace-nowrap text-(--color-on-surface) tracking-tight group-hover:text-primary transition-colors">
               Detailing Marin
             </span>
           </Link>
 
           {/* Nav Desktop */}
-          <nav className="hidden md:flex items-center gap-6 lg:gap-8" aria-label="Navegación principal">
+          <nav className="hidden lg:flex items-center gap-6 lg:gap-8" aria-label="Navegación principal">
             {navHrefs.map((link) => {
               const isActive = pathname === link.href
               return (
@@ -93,7 +93,7 @@ export function Navbar() {
                   key={link.href}
                   href={link.href}
                   className={[
-                    'text-sm font-medium transition-colors duration-200 py-2',
+                    'text-sm font-medium transition-colors duration-200 py-3',
                     'hover:text-primary',
                     'relative after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-full after:rounded-full after:transition-opacity after:duration-200',
                     'focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary rounded-sm',
@@ -112,7 +112,7 @@ export function Navbar() {
           </nav>
 
           {/* CTA Desktop */}
-          <div className="hidden md:flex items-center gap-2">
+          <div className="hidden lg:flex items-center gap-2">
             {/* Language selector */}
             <LanguageSelector />
 
@@ -139,7 +139,7 @@ export function Navbar() {
           </div>
 
           {/* Mobile: language + dark mode + hamburger */}
-          <div className="md:hidden flex items-center gap-1">
+          <div className="lg:hidden flex items-center gap-1">
             <LanguageSelector />
             <button
               onClick={toggle}
@@ -166,7 +166,7 @@ export function Navbar() {
 
       {/* Mobile Menu */}
       {isOpen && (
-        <div id="mobile-menu" className="md:hidden bg-surface/95 backdrop-blur-xl border-t border-outline-variant/20">
+        <div id="mobile-menu" className="lg:hidden max-h-[calc(100dvh-4.5rem)] overflow-y-auto overscroll-contain bg-surface/95 backdrop-blur-xl border-t border-outline-variant/20">
           <nav className="px-4 py-4 flex flex-col gap-4" aria-label="Navegación móvil">
             {navHrefs.map((link) => {
               const isActive = pathname === link.href

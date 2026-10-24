@@ -21,10 +21,10 @@ export function WhatsAppFAB() {
       rel="noopener noreferrer"
       onClick={() => analytics.whatsappClick({ source: 'fab' })}
       className={[
-        'fixed bottom-6 left-6 z-40',
+        'fixed bottom-6 left-6 z-40 hidden lg:flex',
         'w-14 h-14 rounded-full',
         'bg-brand-whatsapp hover:bg-brand-whatsapp-deep',
-        'flex items-center justify-center',
+        'items-center justify-center',
         'shadow-float hover:shadow-ambient',
         'transition-[transform,box-shadow,background-color] duration-200',
         'hover:scale-110 active:scale-95 motion-reduce:transition-none motion-reduce:transform-none',

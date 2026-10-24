@@ -47,8 +47,8 @@ export function FooterView({ content, locale }: { content: FooterViewContent; lo
   return (
     <footer className="border-t border-outline-variant/20 bg-surface-container-low" role="contentinfo" aria-label={locale === 'es' ? 'Pie de página' : 'Footer'}>
       <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8 lg:py-16">
-        <div className="grid grid-cols-1 gap-10 md:grid-cols-4">
-          <div className="flex flex-col gap-5 md:col-span-1">
+        <div className="grid grid-cols-1 gap-10 sm:grid-cols-2 lg:grid-cols-4">
+          <div className="flex flex-col gap-5 lg:col-span-1">
             <NextLink href={localizedHref('/', locale)} className="flex min-h-11 w-fit items-center gap-3 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary" aria-label={content.brandName}>
               <Image src="/icon/logo-removebg.png" alt={content.brandName} width={56} height={40} className="object-contain drop-shadow-md" />
               <span className="font-display text-lg font-bold tracking-tight text-(--color-on-surface)">{content.brandName}</span>
