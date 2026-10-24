@@ -1,10 +1,6 @@
 -- CreateSchema
 CREATE SCHEMA IF NOT EXISTS "admin";
 
-REVOKE ALL ON SCHEMA "admin" FROM PUBLIC, anon, authenticated;
-ALTER DEFAULT PRIVILEGES FOR ROLE postgres IN SCHEMA "admin"
-  REVOKE ALL ON TABLES FROM PUBLIC, anon, authenticated;
-
 -- CreateTable
 CREATE TABLE "admin"."admin_user" (
     "id" UUID NOT NULL,
@@ -43,4 +39,3 @@ ALTER TABLE "admin"."admin_session"
 
 ALTER TABLE "admin"."admin_user" ENABLE ROW LEVEL SECURITY;
 ALTER TABLE "admin"."admin_session" ENABLE ROW LEVEL SECURITY;
-REVOKE ALL ON ALL TABLES IN SCHEMA "admin" FROM PUBLIC, anon, authenticated;

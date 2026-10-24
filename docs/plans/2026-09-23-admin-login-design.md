@@ -6,11 +6,11 @@ Provide a private `/admin` login for exactly two administrators as the secure fo
 
 ## Approved Approach
 
-- Use Prisma with the existing Supabase PostgreSQL database.
-- Use Supabase's transaction pooler for `DATABASE_URL` at serverless runtime and the direct PostgreSQL endpoint for `DIRECT_URL` migrations/seeding.
+- Use Prisma with a standard PostgreSQL database and one `DATABASE_URL` for runtime, migrations, and seeding. A distinct direct URL is only needed if the runtime URL uses a pooler that is unsuitable for migrations.
+- The role in that URL must own or have the required privileges on the `admin` schema and tables. With one role, RLS does not protect these tables from that role; using a separate, restricted runtime role requires separate connection credentials.
 - Pin pnpm to stable `12.6.0` and upgrade dependencies to stable releases within their current compatible major versions; keep Prisma on stable `7.10.0` rather than the available Prisma 8 RC.
-- Keep administrator tables in a dedicated, non-Data-API `admin` schema and enable row-level security as defense in depth.
-- Verify PostgreSQL TLS with Supabase's `Supabase Root 2021 CA`; the checked-in root certificate fingerprint was matched against the live database certificate chain. Keep it in the Next.js `/admin` deployment trace.
+- Keep administrator tables in a dedicated `admin` schema and enable row-level security as defense in depth.
+- Require PostgreSQL TLS verification against the self-signed server certificate in `certs/postgres-server.crt`, installed only after its SHA-256 fingerprint is confirmed through an authenticated channel. The current fingerprint is `77:69:A6:34:01:12:B5:27:74:4C:59:47:5E:2F:8F:20:E5:22:84:05:13:C1:10:73:A6:6F:57:C5:FC:FF:57:8F` (expires 2027-09-02). Reconfirm and replace it when the server certificate rotates; never disable hostname or certificate verification.
 - Store password hashes generated with Argon2id, never plaintext passwords.
 - Store server-side sessions in PostgreSQL. Send only a random opaque token in an `HttpOnly`, `SameSite=Lax` cookie scoped to `/admin`; store its SHA-256 digest in the database.
 - Provision the two allowlisted email accounts with an idempotent Prisma seed. The seed reads the shared initial password from `ADMIN_SEED_PASSWORD`, hashes it, updates both users when rerun, and invalidates their existing sessions. The secret remains in `.env.local`/deployment secrets and is not committed.
@@ -40,7 +40,7 @@ Provide a private `/admin` login for exactly two administrators as the secure fo
 
 ## Verification
 
-- Prisma schema validates and migration applies to Supabase.
+- Prisma schema validates and the migration applies to the configured PostgreSQL server.
 - Seed creates/updates exactly two users with Argon2id hashes and invalidates prior sessions.
 - Valid credentials grant `/admin`; invalid credentials do not; logout revokes access; anonymous requests see the login page.
 - `pnpm lint` and `pnpm build` pass; verify the browser path is exactly `/admin` and its HTML is noindex.

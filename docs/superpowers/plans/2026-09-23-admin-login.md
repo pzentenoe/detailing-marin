@@ -1,6 +1,12 @@
 # Private Admin Login Implementation Plan
 
-> **For agentic workers:** Use the plan as a checklist while implementing the approved design in this repository.
+> **Historical plan — superseded; do not execute this checklist.** Its original
+> Supabase pooler, `DIRECT_URL`, and Supabase CA steps were superseded by the
+> single-`DATABASE_URL` PostgreSQL setup documented in
+> `docs/plans/2026-09-23-admin-login-design.md`. The unchecked tasks below are
+> retained only as a record of the original implementation plan.
+
+> **For agentic workers:** Do not use this superseded plan as an implementation checklist.
 
 **Goal:** Add a private `/admin` login backed by two seeded administrator accounts and database sessions.
 
