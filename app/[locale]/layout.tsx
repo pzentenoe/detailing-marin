@@ -77,6 +77,12 @@ export function generateStaticParams() {
 
 export const dynamicParams = false
 
+/**
+ * Resuelve el tema antes del primer paint para evitar el flash de tema claro.
+ * Prioridad: elección guardada → preferencia del sistema.
+ */
+const THEME_INIT_SCRIPT = `(function(){try{var s=localStorage.getItem('dm-theme');var d=s?s==='dark':window.matchMedia('(prefers-color-scheme: dark)').matches;var r=document.documentElement;r.classList.toggle('dark',d);r.style.colorScheme=d?'dark':'light';}catch(e){}})();`
+
 export default async function LocaleLayout({
   children,
   params,
@@ -95,8 +101,14 @@ export default async function LocaleLayout({
   const localBusinessJsonLd = buildLocalBusinessJsonLd()
 
   return (
-    <html lang={locale} className={`${manrope.variable} ${inter.variable}`} data-scroll-behavior="smooth">
+    <html
+      lang={locale}
+      className={`${manrope.variable} ${inter.variable}`}
+      data-scroll-behavior="smooth"
+      suppressHydrationWarning
+    >
       <body className="font-body antialiased">
+        <script dangerouslySetInnerHTML={{ __html: THEME_INIT_SCRIPT }} />
         <GoogleAnalytics />
         <JsonLd data={localBusinessJsonLd} />
         <NextIntlClientProvider messages={messages}>

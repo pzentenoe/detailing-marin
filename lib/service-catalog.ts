@@ -122,26 +122,34 @@ export async function getServices(locale: 'es' | 'en'): Promise<Service[]> {
       priceRows.set(serviceId, [...(priceRows.get(serviceId) ?? []), price])
     }
 
-    return servicePayload.data.map((service) => ({
-      id: String(service.id),
-      slug: service.slug,
-      title: locale === 'en' ? service.title_en : service.title_es,
-      shortDescription: locale === 'en' ? service.short_description_en : service.short_description_es,
-      fullDescription: locale === 'en' ? service.full_description_en : service.full_description_es,
-      features: features(locale === 'en' ? service.features_en : service.features_es),
-      icon: service.icon,
-      duration: service.duration,
-      price: locale === 'en' ? service.price_label_en ?? undefined : service.price_label_es ?? undefined,
-      highlight: service.is_featured,
-      image: assetUrl(service.image),
-      imageBefore: assetUrl(service.image_before),
-      pricingTable: priceRows.get(String(service.id))?.map((row) => ({
-        label: locale === 'en'
-          ? row.vehicle_type_en || localizeVehicleType(row.vehicle_type, 'en')
-          : row.vehicle_type_es || localizeVehicleType(row.vehicle_type, 'es'),
-        price: row.price,
-      })),
-    }))
+    return servicePayload.data.map((service) => {
+      // Keep curated public-facing service photos aligned with their copy even
+      // when Directus has an obsolete or mismatched image assigned.
+      const localMedia = servicesConfig.find((item) => item.slug === service.slug)
+      const localImageBefore = localMedia && 'imageBefore' in localMedia
+        ? localMedia.imageBefore
+        : undefined
+      return {
+        id: String(service.id),
+        slug: service.slug,
+        title: locale === 'en' ? service.title_en : service.title_es,
+        shortDescription: locale === 'en' ? service.short_description_en : service.short_description_es,
+        fullDescription: locale === 'en' ? service.full_description_en : service.full_description_es,
+        features: features(locale === 'en' ? service.features_en : service.features_es),
+        icon: service.icon,
+        duration: service.duration,
+        price: locale === 'en' ? service.price_label_en ?? undefined : service.price_label_es ?? undefined,
+        highlight: service.is_featured,
+        image: localMedia?.image ?? assetUrl(service.image),
+        imageBefore: localImageBefore ?? assetUrl(service.image_before),
+        pricingTable: priceRows.get(String(service.id))?.map((row) => ({
+          label: locale === 'en'
+            ? row.vehicle_type_en || localizeVehicleType(row.vehicle_type, 'en')
+            : row.vehicle_type_es || localizeVehicleType(row.vehicle_type, 'es'),
+          price: row.price,
+        })),
+      }
+    })
   } catch {
     return getLocalServices(locale)
   }

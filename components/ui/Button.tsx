@@ -43,6 +43,7 @@ export function Button({
         'transition-[color,filter,opacity,box-shadow,transform] duration-200 ease-out',
         'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-fixed focus-visible:ring-offset-2',
         'disabled:opacity-50 disabled:cursor-not-allowed',
+        'motion-reduce:transition-none motion-reduce:transform-none',
         'cursor-pointer select-none',
         variantStyles[variant],
         sizeStyles[size],

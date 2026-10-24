@@ -6,6 +6,7 @@
 import { getTranslations } from 'next-intl/server'
 import { Link } from '@/i18n/navigation'
 import { SectionWrapper } from '@/components/ui/SectionWrapper'
+import { Icon } from '@/components/ui/Icon'
 import { SERVED_COMMUNES } from '@/lib/seo'
 
 // ── Datos de zonas ────────────────────────────────────────────
@@ -110,13 +111,13 @@ export async function CoberturaSection() {
     <SectionWrapper surface="base" id="comunas-cobertura">
 
       {/* ── Hero ─────────────────────────────────────────────── */}
-      <header className="text-center mb-16 relative">
-        {/* Decorative radial blur */}
+      <header className="text-center mb-16 relative overflow-hidden">
+        {/* Decorative radial blur — recortado para no desbordar en móvil */}
         <div
-          className="absolute inset-0 -z-10 pointer-events-none"
+          className="absolute inset-0 -z-10 pointer-events-none overflow-hidden"
           aria-hidden="true"
         >
-          <div className="absolute left-1/2 top-0 -translate-x-1/2 w-[600px] h-[300px] rounded-full bg-primary opacity-5 blur-[80px]" />
+          <div className="absolute left-1/2 top-0 -translate-x-1/2 w-[min(600px,100vw)] h-[300px] rounded-full bg-primary opacity-5 blur-[80px]" />
         </div>
 
         <span className="inline-block px-4 py-1.5 rounded-full bg-secondary-container text-on-secondary-container text-xs font-bold tracking-widest uppercase mb-6">
@@ -158,7 +159,7 @@ export async function CoberturaSection() {
         <h2 className="text-headline-md text-(--color-on-surface) mb-2">
           {t('zonesTitle')}
         </h2>
-        <p className="text-on-surface-variant text-sm mb-8">
+        <p className="max-w-[70ch] text-on-surface-variant text-sm mb-8">
           {t('zonesDesc')}
         </p>
 
@@ -234,9 +235,10 @@ export async function CoberturaSection() {
                     <Link
                       href="/contacto"
                       className={[
-                        'inline-flex items-center gap-2 px-5 py-2.5 rounded-(--radius-md)',
+                        'inline-flex min-h-11 items-center gap-2 px-5 py-2.5 rounded-(--radius-md)',
                         'text-sm font-semibold transition-[background-color,transform] duration-200',
-                        'hover:scale-[1.02] active:scale-[0.98]',
+                        'hover:scale-[1.02] active:scale-[0.98] motion-reduce:transition-none motion-reduce:transform-none',
+                        'focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary',
                         zone.btnClass,
                       ].join(' ')}
                     >
@@ -269,7 +271,7 @@ export async function CoberturaSection() {
         <h2 className="text-headline-md text-(--color-on-surface) mb-3">
           {t('seoTitle')}
         </h2>
-        <p className="text-on-surface-variant text-sm leading-relaxed">
+        <p className="max-w-[70ch] text-on-surface-variant text-sm leading-relaxed">
           {t('seoText', { communes: SERVED_COMMUNES.join(', ') })}
         </p>
       </section>
@@ -282,7 +284,9 @@ export async function CoberturaSection() {
           aria-hidden="true"
         />
         <div className="relative z-10">
-          <span className="text-4xl mb-5 block" aria-hidden="true">📍</span>
+          <span className="mb-5 inline-flex size-14 items-center justify-center rounded-full bg-white/15 text-white" aria-hidden="true">
+            <Icon name="map-pin" size={26} />
+          </span>
           <h2 className="text-headline-md text-white mb-3 max-w-2xl mx-auto">
             {t('ctaBannerTitle')}
           </h2>
@@ -292,7 +296,7 @@ export async function CoberturaSection() {
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
               href="/contacto"
-              className="inline-flex items-center justify-center px-8 py-3.5 bg-secondary-container text-on-secondary-container font-bold rounded-(--radius-md) hover:scale-105 transition-transform active:scale-95 shadow-float"
+              className="inline-flex items-center justify-center px-8 py-3.5 bg-secondary-container text-on-secondary-container font-bold rounded-(--radius-md) hover:scale-105 transition-transform active:scale-95 motion-reduce:transition-none motion-reduce:transform-none shadow-float"
             >
               {t('ctaWhatsApp')}
             </Link>

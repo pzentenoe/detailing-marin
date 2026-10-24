@@ -2,11 +2,12 @@
 
 // ============================================================
 // ThemeProvider — gestiona dark/light mode global
-// Persiste en localStorage + respeta prefers-color-scheme
-// Aplica clase .dark al <html> para que funcionen los tokens
+// La clase `.dark` se aplica en <html> por un script inline del
+// layout (antes del primer paint) para evitar el flash de tema.
+// React sólo refleja el estado real del DOM, sin efectos con setState.
 // ============================================================
 
-import { createContext, useContext, useEffect, useState } from 'react'
+import { createContext, useCallback, useContext, useMemo, useSyncExternalStore } from 'react'
 
 type Theme = 'light' | 'dark'
 
@@ -16,7 +17,7 @@ interface ThemeContextValue {
 }
 
 const ThemeContext = createContext<ThemeContextValue>({
-  theme: 'light',
+  theme: 'dark',
   toggle: () => {},
 })
 
@@ -24,44 +25,44 @@ export function useTheme() {
   return useContext(ThemeContext)
 }
 
+const STORAGE_KEY = 'dm-theme'
+const listeners = new Set<() => void>()
+
+function subscribe(onStoreChange: () => void) {
+  listeners.add(onStoreChange)
+  return () => {
+    listeners.delete(onStoreChange)
+  }
+}
+
+function getClientSnapshot(): Theme {
+  return document.documentElement.classList.contains('dark') ? 'dark' : 'light'
+}
+
+function getServerSnapshot(): Theme {
+  return 'dark'
+}
+
+function applyTheme(theme: Theme) {
+  const root = document.documentElement
+  root.classList.toggle('dark', theme === 'dark')
+  root.style.colorScheme = theme === 'dark' ? 'dark' : 'light'
+}
+
 export function ThemeProvider({ children }: { children: React.ReactNode }) {
-  const [theme, setTheme] = useState<Theme>('dark')
-  const [mounted, setMounted] = useState(false)
+  const theme = useSyncExternalStore(subscribe, getClientSnapshot, getServerSnapshot)
 
-  // Inicializar desde localStorage o prefers-color-scheme
-  useEffect(() => {
-    const stored = localStorage.getItem('dm-theme') as Theme | null
-    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches
-    const initial: Theme = stored ?? 'dark'
-
-    setTheme(initial)
-    applyTheme(initial)
-    setMounted(true)
+  const toggle = useCallback(() => {
+    const next = getClientSnapshot() === 'light' ? 'dark' : 'light'
+    localStorage.setItem(STORAGE_KEY, next)
+    applyTheme(next)
+    listeners.forEach((listener) => listener())
   }, [])
 
-  function applyTheme(t: Theme) {
-    const root = document.documentElement
-    if (t === 'dark') {
-      root.classList.add('dark')
-    } else {
-      root.classList.remove('dark')
-    }
-  }
-
-  function toggle() {
-    setTheme((prev) => {
-      const next: Theme = prev === 'light' ? 'dark' : 'light'
-      localStorage.setItem('dm-theme', next)
-      applyTheme(next)
-      return next
-    })
-  }
-
-  // Evitar hydration mismatch: renderizamos null hasta montar
-  if (!mounted) return <>{children}</>
+  const value = useMemo(() => ({ theme, toggle }), [theme, toggle])
 
   return (
-    <ThemeContext.Provider value={{ theme, toggle }}>
+    <ThemeContext.Provider value={value}>
       {children}
     </ThemeContext.Provider>
   )

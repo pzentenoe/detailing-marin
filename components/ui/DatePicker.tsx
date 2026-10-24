@@ -98,6 +98,7 @@ export function DatePicker({
         type="button"
         onClick={handleOpen}
         className={[className, 'relative flex items-center text-left', value ? 'text-on-surface' : ''].filter(Boolean).join(' ')}
+        role="combobox"
         aria-haspopup="dialog"
         aria-expanded={isOpen}
         aria-controls={`${id}-dialog`}

@@ -25,16 +25,16 @@ export function CTASection() {
 
   return (
     <section className="w-full relative overflow-hidden" aria-label={t('sectionAria')}>
-      <div className="gradient-primary py-20 lg:py-28 px-4 sm:px-6 lg:px-8">
-        <div className="absolute top-0 right-0 w-80 h-80 rounded-full bg-white opacity-5 translate-x-1/3 -translate-y-1/3 pointer-events-none" aria-hidden="true" />
-        <div className="absolute bottom-0 left-0 w-60 h-60 rounded-full bg-white opacity-5 -translate-x-1/4 translate-y-1/4 pointer-events-none" aria-hidden="true" />
+      <div className="relative gradient-primary py-20 lg:py-28 px-4 sm:px-6 lg:px-8">
+        <div className="absolute top-0 right-0 w-80 h-80 rounded-full bg-white opacity-[0.06] translate-x-1/3 -translate-y-1/3 pointer-events-none" aria-hidden="true" />
+        <div className="absolute bottom-0 left-0 w-60 h-60 rounded-full bg-white opacity-[0.06] -translate-x-1/4 translate-y-1/4 pointer-events-none" aria-hidden="true" />
 
         <div className="relative mx-auto max-w-4xl text-center flex flex-col items-center gap-8">
-          <EcoChip stat={t('badgeStat')} label={t('badgeLabel')} icon="🚗" />
+          <EcoChip stat={t('badgeStat')} label={t('badgeLabel')} icon="car" />
 
           <h2 className="text-display-md text-white leading-tight">{t('heading')}</h2>
 
-          <p className="text-lg text-white/80 max-w-xl leading-relaxed">{t('description')}</p>
+          <p className="text-lg text-white/85 max-w-xl leading-relaxed">{t('description')}</p>
 
           <div className="flex flex-wrap gap-4 justify-center">
             <a
@@ -48,6 +48,7 @@ export function CTASection() {
                 'text-white font-semibold text-lg',
                 'border-2 border-white/30 hover:border-white/60 hover:bg-white/10',
                 'transition-[background-color,border-color] duration-200',
+                'focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white',
               ].join(' ')}
               aria-label={t('whatsappAria')}
             >
@@ -60,8 +61,9 @@ export function CTASection() {
               className={[
                 'inline-flex items-center justify-center gap-2',
                 'px-8 py-4 rounded-full',
-                'bg-white text-[#154212] font-semibold text-lg',
+                'bg-white text-on-inverse font-semibold text-lg',
                 'hover:bg-white/90 transition-colors duration-200 shadow-float',
+                'focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white',
               ].join(' ')}
               aria-label={t('emailAria')}
             >

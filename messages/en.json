@@ -2,6 +2,7 @@
   "nav": {
     "home": "Home",
     "services": "Services",
+    "gallery": "Gallery",
     "contact": "Contact",
     "cta": "Book Service",
     "ctaAria": "Book service via WhatsApp",
@@ -24,7 +25,7 @@
     "description": "Mobile car wash and detailing service in Santiago and the Metropolitan Region. Premium care with hydrophobic technology and biodegradable products — right at your door.",
     "cta1": "Book Service",
     "cta1Aria": "Book service via WhatsApp",
-    "cta2": "See all services →",
+    "cta2": "See all services",
     "stat1Value": "+500",
     "stat1Label": "Cars served",
     "stat2Value": "5⭐",
@@ -34,7 +35,7 @@
     "overlayTitle": "Showroom result",
     "overlaySubtitle": "Long-lasting protection",
     "sectionAria": "Hero section",
-    "imageAlt": "Hydrophobic water beading on freshly detailed paint — Detailing Marin result"
+    "imageAlt": "Grey BMW X3 in profile with polished, protected paint — a Detailing Marin result"
   },
   "features": {
     "label": "Why choose us",
@@ -43,15 +44,18 @@
     "items": {
       "eco": {
         "title": "100% Eco-Friendly",
-        "description": "We use premium biodegradable products that protect both the environment and your vehicle's paint."
+        "description": "We use premium biodegradable products that protect both the environment and your vehicle's paint.",
+        "imageAlt": "Biodegradable product bottle resting on a car's paintwork"
       },
       "domicilio": {
         "title": "Mobile Service",
-        "description": "We bring all the equipment right to your home or office door for your complete convenience."
+        "description": "We bring all the equipment right to your home or office door for your complete convenience.",
+        "imageAlt": "Red pickup truck with a clean front end, parked at the customer's home"
       },
       "premium": {
         "title": "Premium Quality",
-        "description": "Meticulous attention to detail and showroom results that protect your investment long-term."
+        "description": "Meticulous attention to detail and showroom results that protect your investment long-term.",
+        "imageAlt": "White Porsche Boxster with a freshly polished and sealed rear end"
       }
     }
   },
@@ -59,8 +63,10 @@
     "label": "What we do",
     "heading": "Specialized Services",
     "description": "Advanced techniques and impeccable results, with the lowest possible environmental impact.",
-    "viewAll": "See all services →",
+    "viewAll": "See all services",
     "viewAllAria": "See all Detailing Marin services",
+    "viewServiceAria": "View service: {title}",
+    "serviceImageAlt": "{title} — Detailing Marin result",
     "featuredBadge": "Featured service"
   },
   "servicesGrid": {
@@ -229,7 +235,7 @@
     "banner": {
       "title": "We care for the details others ignore.",
       "description": "Our rinseless wash technique saves up to 200 litres of water per vehicle.",
-      "imageAlt": "Hydrophobic paint detail with water beads — Detailing Marin"
+      "imageAlt": "Black Mercedes GLC with mirror-like reflections on the rear after detailing"
     }
   },
   "footer": {
@@ -311,8 +317,99 @@
     "asientosBeforeAlt": "Car seats with accumulated dust and grime before the service",
     "asientosAfterAlt": "Restored clean seats after Detailing Marin interior cleaning service",
     "focosAfterAlt": "Polished and restored car headlight — transparency recovered by Detailing Marin",
+    "focosBeforeAlt": "Yellowed and cloudy car headlight before Detailing Marin restoration",
     "focosLabel": "Headlight restoration",
+    "exteriorLabel": "Exterior cleaning",
+    "exteriorBeforeAlt": "Porsche Boxster rear end with dirt before washing",
+    "exteriorAfterAlt": "The same Porsche Boxster rear end, clean after washing",
     "focosCaption": "100% transparency recovered"
+  },
+  "industrial": {
+    "label": "Business and machinery",
+    "heading": "We also look after company vehicles and industrial machinery",
+    "description": "We apply our detailing standard to working vehicles and industrial equipment. Engine, cabin and bodywork cleaning is carried out where the equipment is located.",
+    "bullets": [
+      "Technical engine and equipment cleaning on site",
+      "Cleaning for fleets and company vehicles",
+      "On-site service to avoid moving machinery"
+    ],
+    "cta": "Request a business quote",
+    "ctaAria": "Request a business detailing quote via WhatsApp",
+    "galleryCta": "See machinery work",
+    "imageAlt": "Operator cleaning a Caterpillar generator engine on site",
+    "imageAltBefore": "Caterpillar industrial engine with accumulated grease and dust before cleaning"
+  },
+  "gallery": {
+    "label": "Real work",
+    "heading": "See the difference. Real work, real results.",
+    "description": "From engines and interiors to paint and headlights: visible results for every kind of care.",
+    "sectionAria": "Work gallery",
+    "viewAll": "See the full gallery",
+    "viewAllAria": "See all Detailing Marin work in the gallery",
+    "filtersAria": "Filter work by type",
+    "filterAll": "All",
+    "categories": {
+      "exterior": "Exteriors",
+      "interiores": "Interiors",
+      "focos": "Headlights",
+      "maquinaria": "Machinery"
+    },
+    "photoCount": "{count} photos",
+    "openPhoto": "Enlarge photo: {caption}",
+    "close": "Close",
+    "previous": "Previous photo",
+    "next": "Next photo",
+    "counter": "Photo {current} of {total}",
+    "dialogAria": "Enlarged gallery photo",
+    "comparisons": {
+      "heading": "Before and after, side by side",
+      "description": "Compare the results of four real jobs. Each pair shows the same vehicle and service.",
+      "before": "Before",
+      "after": "After",
+      "motor": "Engine cleaning",
+      "motorBeforeAlt": "Engine with accumulated dirt before cleaning",
+      "motorAfterAlt": "The same engine after cleaning, with its components clean",
+      "interior": "Seat cleaning",
+      "interiorBeforeAlt": "Seat with dust and dirt before cleaning",
+      "interiorAfterAlt": "The same seat after cleaning",
+      "headlights": "Headlight polishing",
+      "headlightsBeforeAlt": "Cloudy headlight before polishing",
+      "headlightsAfterAlt": "The same headlight with clarity restored after polishing",
+      "exterior": "Exterior cleaning",
+      "exteriorBeforeAlt": "Porsche Boxster rear end with dirt before washing",
+      "exteriorAfterAlt": "The same Porsche Boxster rear end, clean after washing"
+    },
+    "photos": {
+      "bmw-x3-perfil-lateral-despues": "Grey BMW X3 in profile with polished, protected paint",
+      "bmw-x3-trasera-foco-encendido-despues": "BMW X3 rear end with the lights on after detailing",
+      "bmw-x3-trasera-xdrive30i-despues": "Detail of the finished BMW X3 xDrive30i rear end",
+      "bmw-x3-puerta-con-polvo-antes": "BMW X3 door with accumulated dust before the service",
+      "bmw-x3-llanta-delantera-despues": "Clean BMW X3 front wheel with renewed shine",
+      "porsche-boxster-trasera-limpia-despues": "White Porsche Boxster with a clean, sealed rear end",
+      "porsche-boxster-aleta-con-sarro-antes": "Porsche Boxster fender with bonded grime and contamination",
+      "porsche-boxster-trasera-sucia-antes": "Porsche Boxster rear end with dirt before washing",
+      "porsche-boxster-perfil-lateral-despues": "White Porsche Boxster in profile after polishing",
+      "mercedes-glc-trasera-reflejos-despues": "Black Mercedes GLC with mirror-like reflections on the rear",
+      "mercedes-glc-parrilla-frontal-despues": "Mercedes GLC front grille with a glossy finish",
+      "peugeot-landtrek-frontal-despues": "Red Peugeot Landtrek with a clean front end",
+      "peugeot-landtrek-trasera-despues": "Peugeot Landtrek rear end after the waterless wash",
+      "peugeot-landtrek-frontal-con-polvo-antes": "Red Peugeot Landtrek front end with dust before the service",
+      "peugeot-landtrek-puerta-con-polvo-antes": "Peugeot Landtrek door with dust and marks before the service",
+      "peugeot-landtrek-bandeja-despues": "Vacuumed and clean Peugeot Landtrek cargo bed",
+      "renault-koleos-perfil-lateral-antes": "Burgundy Renault Koleos in profile with accumulated dirt before the service",
+      "bmw-x3-consola-central-despues": "Clean, conditioned BMW X3 centre console",
+      "mercedes-glc-volante-despues": "Clean Mercedes GLC steering wheel with no greasy sheen",
+      "tapiz-beige-asiento-trasero-con-manchas": "Beige rear seat with water stains before cleaning",
+      "tapiz-beige-respaldo-limpio": "Clean beige seat back after extraction",
+      "tapiz-gris-asiento-trasero-con-manchas": "Grey rear seat with stains before cleaning",
+      "tapiz-gris-respaldo-trasero-limpio": "Clean, dry grey rear seat back",
+      "foco-delantero-amarillento-antes": "Cloudy, yellowed headlight before polishing",
+      "foco-delantero-restaurado-despues": "The same headlight after polishing, with clarity restored",
+      "motor-industrial-cat-con-grasa": "Caterpillar industrial engine with accumulated grease and dust",
+      "motor-industrial-cat-en-limpieza": "Operator cleaning the industrial engine on site",
+      "motor-industrial-cat-bloque-limpio": "Finished industrial engine block with no residue",
+      "motor-industrial-cat-detalle": "Detail of the hoses and fittings on the clean industrial engine"
+    }
   },
   "metadata": {
     "home": {
@@ -340,6 +437,12 @@
     "terms": {
       "title": "Terms and Conditions",
       "description": "Detailing Marin's terms and conditions. Learn the conditions under which we provide our services."
+    },
+    "gallery": {
+      "title": "Work gallery — Mobile detailing in Santiago",
+      "description": "Real photos of Detailing Marin work: exteriors, interiors, headlight polishing and industrial machinery cleaning across Santiago and the Metropolitan Region.",
+      "ogTitle": "Work gallery — Detailing Marin",
+      "ogDescription": "Exteriors, interiors, headlights and machinery. Real results from Detailing Marin's mobile detailing service."
     },
     "coverage": {
       "title": "Coverage — 33 communes in Santiago",
@@ -382,6 +485,6 @@
     "label": "Coverage",
     "title": "We serve 33 communes in Santiago",
     "description": "Maipú, Las Condes, Providencia, La Florida, Ñuñoa, Vitacura and 27 more. No travel fee.",
-    "cta": "View coverage map →"
+    "cta": "View coverage map"
   }
 }

@@ -2,6 +2,7 @@
   "nav": {
     "home": "Inicio",
     "services": "Servicios",
+    "gallery": "Galería",
     "contact": "Contacto",
     "cta": "Agendar Servicio",
     "ctaAria": "Agendar servicio por WhatsApp",
@@ -24,7 +25,7 @@
     "description": "Lavado de autos a domicilio en Santiago y Región Metropolitana. Detailing premium con tecnología hidrofóbica y productos biodegradables — sin moverte de tu casa.",
     "cta1": "Agendar Servicio",
     "cta1Aria": "Agendar servicio por WhatsApp",
-    "cta2": "Ver todos los servicios →",
+    "cta2": "Ver todos los servicios",
     "stat1Value": "+500",
     "stat1Label": "Autos atendidos",
     "stat2Value": "5⭐",
@@ -34,7 +35,7 @@
     "overlayTitle": "Resultado showroom",
     "overlaySubtitle": "Protección de larga duración",
     "sectionAria": "Sección principal",
-    "imageAlt": "Agua hidrofóbica sobre pintura recién detallada — resultado Detailing Marin"
+    "imageAlt": "BMW X3 gris de perfil con la pintura pulida y protegida — resultado de Detailing Marin"
   },
   "features": {
     "label": "Por qué elegirnos",
@@ -43,15 +44,18 @@
     "items": {
       "eco": {
         "title": "100% Ecológico",
-        "description": "Utilizamos productos premium biodegradables que no dañan el medio ambiente ni la pintura de tu vehículo."
+        "description": "Utilizamos productos premium biodegradables que no dañan el medio ambiente ni la pintura de tu vehículo.",
+        "imageAlt": "Botella de producto biodegradable sobre la pintura de un auto"
       },
       "domicilio": {
         "title": "A Domicilio",
-        "description": "Llevamos todo el equipamiento necesario hasta la puerta de tu casa u oficina para tu total comodidad."
+        "description": "Llevamos todo el equipamiento necesario hasta la puerta de tu casa u oficina para tu total comodidad.",
+        "imageAlt": "Camioneta roja con el frontal limpio, estacionada en el domicilio del cliente"
       },
       "premium": {
         "title": "Calidad Premium",
-        "description": "Atención al detalle minuciosa y resultados de showroom que protegen tu inversión a largo plazo."
+        "description": "Atención al detalle minuciosa y resultados de showroom que protegen tu inversión a largo plazo.",
+        "imageAlt": "Porsche Boxster blanco con la trasera recién pulida y sellada"
       }
     }
   },
@@ -59,8 +63,10 @@
     "label": "Lo que hacemos",
     "heading": "Servicios Especializados",
     "description": "Técnicas avanzadas y resultados impecables, con el menor impacto posible en el medio ambiente.",
-    "viewAll": "Ver todos los servicios →",
+    "viewAll": "Ver todos los servicios",
     "viewAllAria": "Ver todos los servicios de Detailing Marin",
+    "viewServiceAria": "Ver servicio: {title}",
+    "serviceImageAlt": "{title} — resultado Detailing Marin",
     "featuredBadge": "Servicio destacado"
   },
   "servicesGrid": {
@@ -229,7 +235,7 @@
     "banner": {
       "title": "Cuidamos los detalles que otros ignoran.",
       "description": "Nuestra técnica de lavado sin aclarado excesivo ahorra hasta 200 litros de agua por vehículo.",
-      "imageAlt": "Detalle de pintura hidrofóbica con gotas de agua — Detailing Marin"
+      "imageAlt": "Mercedes GLC negro con reflejos espejo en la trasera después del detailing"
     }
   },
   "footer": {
@@ -311,8 +317,99 @@
     "asientosBeforeAlt": "Asientos del auto con polvo y suciedad acumulada antes del servicio",
     "asientosAfterAlt": "Asientos restaurados y limpios después del servicio de limpieza interior Detailing Marin",
     "focosAfterAlt": "Foco de auto pulido y restaurado — transparencia recuperada por Detailing Marin",
+    "focosBeforeAlt": "Foco de auto amarillento y opaco antes del pulido de Detailing Marin",
     "focosLabel": "Pulido de focos",
+    "exteriorLabel": "Limpieza exterior",
+    "exteriorBeforeAlt": "Trasera del Porsche Boxster con suciedad antes del lavado",
+    "exteriorAfterAlt": "Trasera del mismo Porsche Boxster limpia después del lavado",
     "focosCaption": "Transparencia recuperada al 100%"
+  },
+  "industrial": {
+    "label": "Empresas y maquinaria",
+    "heading": "También cuidamos vehículos de empresa y maquinaria industrial",
+    "description": "Aplicamos nuestro estándar de detailing a vehículos de trabajo y equipos industriales. Coordinamos la limpieza de motores, cabinas y carrocerías en el lugar donde se encuentran.",
+    "bullets": [
+      "Limpieza técnica de motores y equipos en faena",
+      "Limpieza de flotas y vehículos de empresa",
+      "Atención en terreno para evitar el traslado de maquinaria"
+    ],
+    "cta": "Cotizar servicio para empresas",
+    "ctaAria": "Cotizar servicio de detailing para empresas por WhatsApp",
+    "galleryCta": "Ver trabajos en maquinaria",
+    "imageAlt": "Operador limpiando el motor de un generador Caterpillar en faena",
+    "imageAltBefore": "Motor industrial Caterpillar con grasa y polvo acumulados antes de la limpieza"
+  },
+  "gallery": {
+    "label": "Trabajos reales",
+    "heading": "Mira el cambio. El trabajo es real.",
+    "description": "Del motor al interior, de la pintura a los focos: resultados concretos para cada tipo de cuidado.",
+    "sectionAria": "Galería de trabajos",
+    "viewAll": "Ver la galería completa",
+    "viewAllAria": "Ver todos los trabajos de Detailing Marin en la galería",
+    "filtersAria": "Filtrar trabajos por tipo",
+    "filterAll": "Todos",
+    "categories": {
+      "exterior": "Exteriores",
+      "interiores": "Interiores",
+      "focos": "Focos",
+      "maquinaria": "Maquinaria"
+    },
+    "photoCount": "{count} fotos",
+    "openPhoto": "Ampliar foto: {caption}",
+    "close": "Cerrar",
+    "previous": "Foto anterior",
+    "next": "Foto siguiente",
+    "counter": "Foto {current} de {total}",
+    "dialogAria": "Foto ampliada de la galería",
+    "comparisons": {
+      "heading": "El antes y el después, lado a lado",
+      "description": "Compara los resultados de cuatro trabajos reales. Cada par corresponde al mismo vehículo y servicio.",
+      "before": "Antes",
+      "after": "Después",
+      "motor": "Limpieza de motor",
+      "motorBeforeAlt": "Motor con acumulación de suciedad antes de la limpieza",
+      "motorAfterAlt": "El mismo motor después de la limpieza, con componentes limpios",
+      "interior": "Limpieza de asientos",
+      "interiorBeforeAlt": "Asiento con polvo y suciedad antes de la limpieza",
+      "interiorAfterAlt": "El mismo asiento después de la limpieza",
+      "headlights": "Pulido de focos",
+      "headlightsBeforeAlt": "Foco delantero opaco antes del pulido",
+      "headlightsAfterAlt": "El mismo foco con transparencia recuperada después del pulido",
+      "exterior": "Limpieza exterior",
+      "exteriorBeforeAlt": "Trasera del Porsche Boxster con suciedad antes del lavado",
+      "exteriorAfterAlt": "Trasera del mismo Porsche Boxster limpia después del lavado"
+    },
+    "photos": {
+      "bmw-x3-perfil-lateral-despues": "BMW X3 gris de perfil, con la pintura pulida y protegida",
+      "bmw-x3-trasera-foco-encendido-despues": "Trasera del BMW X3 con los focos encendidos tras el detailing",
+      "bmw-x3-trasera-xdrive30i-despues": "Detalle de la trasera del BMW X3 xDrive30i terminado",
+      "bmw-x3-puerta-con-polvo-antes": "Puerta del BMW X3 con polvo acumulado antes del servicio",
+      "bmw-x3-llanta-delantera-despues": "Llanta delantera del BMW X3 limpia y con brillo renovado",
+      "porsche-boxster-trasera-limpia-despues": "Porsche Boxster blanco con la trasera limpia y sellada",
+      "porsche-boxster-aleta-con-sarro-antes": "Aleta del Porsche Boxster con sarro y contaminación adherida",
+      "porsche-boxster-trasera-sucia-antes": "Trasera del Porsche Boxster con suciedad antes del lavado",
+      "porsche-boxster-perfil-lateral-despues": "Porsche Boxster blanco de perfil después del pulido",
+      "mercedes-glc-trasera-reflejos-despues": "Mercedes GLC negro con reflejos espejo en la trasera",
+      "mercedes-glc-parrilla-frontal-despues": "Parrilla frontal del Mercedes GLC con acabado brillante",
+      "peugeot-landtrek-frontal-despues": "Peugeot Landtrek roja con el frontal limpio",
+      "peugeot-landtrek-trasera-despues": "Trasera de la Peugeot Landtrek después del lavado en seco",
+      "peugeot-landtrek-frontal-con-polvo-antes": "Frontal de la Peugeot Landtrek roja con polvo antes del servicio",
+      "peugeot-landtrek-puerta-con-polvo-antes": "Puerta de la Peugeot Landtrek con polvo y marcas antes del servicio",
+      "peugeot-landtrek-bandeja-despues": "Bandeja de la Peugeot Landtrek aspirada y limpia",
+      "renault-koleos-perfil-lateral-antes": "Renault Koleos burdeo de perfil con suciedad acumulada antes del servicio",
+      "bmw-x3-consola-central-despues": "Consola central del BMW X3 limpia e hidratada",
+      "mercedes-glc-volante-despues": "Volante del Mercedes GLC limpio y sin brillo graso",
+      "tapiz-beige-asiento-trasero-con-manchas": "Asiento trasero beige con manchas de agua antes de la limpieza",
+      "tapiz-beige-respaldo-limpio": "Respaldo beige limpio después de la extracción",
+      "tapiz-gris-asiento-trasero-con-manchas": "Asiento trasero gris con manchas antes de la limpieza",
+      "tapiz-gris-respaldo-trasero-limpio": "Respaldo trasero gris limpio y seco",
+      "foco-delantero-amarillento-antes": "Foco delantero opaco y amarillento antes del pulido",
+      "foco-delantero-restaurado-despues": "El mismo foco después del pulido, con la transparencia recuperada",
+      "motor-industrial-cat-con-grasa": "Motor industrial Caterpillar con grasa y polvo acumulados",
+      "motor-industrial-cat-en-limpieza": "Operador limpiando el motor industrial en faena",
+      "motor-industrial-cat-bloque-limpio": "Bloque del motor industrial terminado y sin residuos",
+      "motor-industrial-cat-detalle": "Detalle de mangueras y conexiones del motor industrial limpio"
+    }
   },
   "metadata": {
     "home": {
@@ -340,6 +437,12 @@
     "terms": {
       "title": "Términos y Condiciones",
        "description": "Términos y condiciones del servicio de Detailing Marin. Consulta las condiciones en las que prestamos nuestros servicios."
+    },
+    "gallery": {
+      "title": "Galería de trabajos — Detailing a domicilio en Santiago",
+      "description": "Fotos reales de trabajos de Detailing Marin: exteriores, interiores, pulido de focos y limpieza de maquinaria industrial en Santiago y Región Metropolitana.",
+      "ogTitle": "Galería de trabajos — Detailing Marin",
+      "ogDescription": "Exteriores, interiores, focos y maquinaria. Resultados reales del detailing a domicilio de Detailing Marin."
     },
     "coverage": {
       "title": "Cobertura — 33 comunas de Santiago",
@@ -382,6 +485,6 @@
     "label": "Cobertura",
     "title": "Atendemos 33 comunas de Santiago",
     "description": "Maipú, Las Condes, Providencia, La Florida, Ñuñoa, Vitacura y 27 comunas más. Sin costo de desplazamiento.",
-    "cta": "Ver mapa de cobertura →"
+    "cta": "Ver mapa de cobertura"
   }
 }

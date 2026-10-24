@@ -23,11 +23,12 @@ export function WhatsAppFAB() {
       className={[
         'fixed bottom-6 left-6 z-40',
         'w-14 h-14 rounded-full',
-        'bg-[#25D366] hover:bg-[#20BD5C] active:bg-[#1DA851]',
+        'bg-brand-whatsapp hover:bg-brand-whatsapp-deep',
         'flex items-center justify-center',
         'shadow-float hover:shadow-ambient',
-        'transition-[transform,box-shadow] duration-200',
-        'hover:scale-110 active:scale-95',
+        'transition-[transform,box-shadow,background-color] duration-200',
+        'hover:scale-110 active:scale-95 motion-reduce:transition-none motion-reduce:transform-none',
+        'focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary',
       ].join(' ')}
       aria-label={t('contactViaWhatsApp')}
     >

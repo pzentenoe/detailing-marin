@@ -8,11 +8,12 @@ const lastModified = new Date('2026-09-25T00:00:00.000Z')
 const routes = [
   { path: '/',           enPath: '/en',              changeFrequency: 'weekly'  as const, priority: 1,    images: true  },
   { path: '/servicios',  enPath: '/en/servicios',   changeFrequency: 'weekly'  as const, priority: 0.9,  images: true  },
+  { path: '/galeria',    enPath: '/en/galeria',     changeFrequency: 'weekly'  as const, priority: 0.8,  images: true  },
   { path: '/cobertura',  enPath: '/en/cobertura',   changeFrequency: 'monthly' as const, priority: 0.85, images: false },
   { path: '/contacto',   enPath: '/en/contacto',    changeFrequency: 'monthly' as const, priority: 0.8,  images: false },
 ]
 
-const heroImage = absoluteUrl('/images/hero-detailing.webp')
+const heroImage = absoluteUrl('/images/trabajos/exterior/bmw-x3-perfil-lateral-despues.webp')
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const coreRoutes = routes.flatMap(({ path, enPath, changeFrequency, priority, images }) => {

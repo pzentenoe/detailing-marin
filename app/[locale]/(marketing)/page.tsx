@@ -6,6 +6,9 @@ import { FeaturesSection } from '@/components/sections/FeaturesSection'
 import { ServicesPreview } from '@/components/sections/ServicesPreview'
 import { ResultsSection } from '@/components/sections/ResultsSection'
 import { CTASection } from '@/components/sections/CTASection'
+import { GallerySection } from '@/components/sections/GallerySection'
+import { IndustrialSection } from '@/components/sections/IndustrialSection'
+import { Icon } from '@/components/ui/Icon'
 import { buildAlternates, buildFaqJsonLd, DEFAULT_OG_IMAGE, ogLocale } from '@/lib/seo'
 import { JsonLd } from '@/components/ui/JsonLd'
 
@@ -47,20 +50,28 @@ export default async function HomePage({
       <HeroSection />
       <FeaturesSection />
       <ServicesPreview />
+      <GallerySection preview />
+      <IndustrialSection />
 
       {/* Coverage teaser — internal link to /cobertura */}
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-8">
-        <div className="rounded-2xl bg-surface-container-low border border-outline-variant/20 px-8 py-7 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-5">
+        <div className="rounded-(--radius-xl) bg-surface-container-low border border-outline-variant/20 px-6 py-7 sm:px-8 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-5">
           <div>
-            <p className="text-xs font-bold tracking-widest uppercase text-primary mb-1">{t('label')}</p>
+            <p className="text-label-md text-primary mb-2">{t('label')}</p>
             <h2 className="text-headline-md text-(--color-on-surface)">{t('title')}</h2>
-            <p className="text-on-surface-variant text-sm mt-1">{t('description')}</p>
+            <p className="text-on-surface-variant text-sm mt-2 max-w-xl leading-relaxed">{t('description')}</p>
           </div>
           <Link
             href="/cobertura"
-            className="shrink-0 inline-flex items-center gap-2 px-6 py-3 rounded-xl gradient-primary text-white font-semibold text-sm shadow-ambient hover:shadow-float transition-all hover:scale-[1.02] active:scale-[0.98]"
+            className="group shrink-0 inline-flex items-center gap-2 px-6 py-3 rounded-full gradient-primary text-white font-semibold text-sm shadow-ambient transition-all hover:shadow-float active:scale-[0.98] motion-reduce:transition-none motion-reduce:transform-none focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
           >
+            <Icon name="map-pin" size={16} />
             {t('cta')}
+            <Icon
+              name="arrow-right"
+              size={16}
+              className="transition-transform duration-200 group-hover:translate-x-0.5 motion-reduce:transition-none motion-reduce:group-hover:translate-x-0"
+            />
           </Link>
         </div>
       </div>

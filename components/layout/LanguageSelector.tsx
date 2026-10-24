@@ -56,9 +56,10 @@ export function LanguageSelector() {
         aria-expanded={open}
         aria-haspopup="listbox"
         className={[
-          'flex items-center gap-1.5 px-2.5 py-1.5 rounded-md text-sm font-medium',
+          'flex min-h-11 items-center gap-1.5 rounded-(--radius-md) px-3 text-sm font-medium',
           'text-(--color-on-surface) hover:bg-surface-container',
           'transition-colors duration-200',
+          'focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary',
         ].join(' ')}
       >
         <span aria-hidden="true" className="text-base leading-none">{current.flag}</span>
@@ -87,8 +88,9 @@ export function LanguageSelector() {
                 <button
                   onClick={() => handleSelect(item.code)}
                   className={[
-                    'w-full flex items-center gap-2.5 px-3 py-2.5 text-sm text-left',
+                    'w-full flex min-h-11 items-center gap-2.5 px-3 py-2.5 text-sm text-left',
                     'transition-colors duration-150',
+                    'focus-visible:outline-2 focus-visible:-outline-offset-2 focus-visible:outline-primary',
                     isSelected
                       ? 'bg-surface-container text-primary font-semibold'
                       : 'text-(--color-on-surface) hover:bg-surface-container-high',

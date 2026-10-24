@@ -3,6 +3,7 @@ import { getTranslations } from 'next-intl/server'
 import { Link } from '@/i18n/navigation'
 import { CoberturaSection } from '@/components/sections/CoberturaSection'
 import { SectionWrapper } from '@/components/ui/SectionWrapper'
+import { Icon } from '@/components/ui/Icon'
 import { buildAlternates, buildCoverageFaqJsonLd, buildLocalBusinessJsonLd, DEFAULT_OG_IMAGE, SITE_NAME, SITE_URL, SERVED_COMMUNES } from '@/lib/seo'
 import { JsonLd } from '@/components/ui/JsonLd'
 import { PRIORITY_COMMUNES } from '@/lib/comunas'
@@ -78,7 +79,7 @@ export default async function CoberturaPage({
             <h2 className="text-headline-md text-(--color-on-surface) mb-2">
               Zonas con mayor demanda
             </h2>
-            <p className="text-on-surface-variant mb-8">
+            <p className="max-w-[70ch] text-on-surface-variant mb-8">
               Estas comunas tienen página propia con información detallada del servicio en tu zona.
             </p>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
@@ -94,8 +95,9 @@ export default async function CoberturaPage({
                   <h3 className="font-semibold text-(--color-on-surface) group-hover:text-primary transition-colors">
                     {commune.name}
                   </h3>
-                  <p className="text-xs text-on-surface-variant mt-auto">
-                    Lavado a domicilio en {commune.name} →
+                  <p className="inline-flex items-center gap-1.5 text-xs text-on-surface-variant mt-auto">
+                    Lavado a domicilio en {commune.name}
+                    <Icon name="arrow-right" size={12} />
                   </p>
                 </Link>
               ))}

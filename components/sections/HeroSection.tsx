@@ -10,6 +10,7 @@ import { useTranslations } from 'next-intl'
 import { Link } from '@/i18n/navigation'
 import { Button } from '@/components/ui/Button'
 import { EcoChip } from '@/components/ui/EcoChip'
+import { Icon } from '@/components/ui/Icon'
 import { buildWhatsAppUrl } from '@/lib/whatsapp'
 import { analytics } from '@/lib/analytics'
 
@@ -23,20 +24,6 @@ export function HeroSection() {
       className="relative w-full overflow-hidden bg-(--color-surface) pt-20"
       aria-label={t('sectionAria')}
     >
-      {/* Imagen de fondo a baja opacidad */}
-      <div className="absolute inset-0 z-0" aria-hidden="true">
-        <div
-          className="absolute inset-0"
-          style={{
-            backgroundImage: 'url(/images/lavado_ecologico/lavado_ecologico.webp)',
-            backgroundSize: 'cover',
-            backgroundPosition: 'center',
-            opacity: 0.12,
-          }}
-        />
-        <div className="absolute inset-0 bg-gradient-to-tr from-(--color-surface) via-(--color-surface)/60 to-transparent" />
-      </div>
-
       {/* Destellos decorativos */}
       <div className="absolute inset-0 z-[1] pointer-events-none" aria-hidden="true">
         <div className="absolute top-0 right-0 w-[600px] h-[600px] rounded-full bg-primary-fixed opacity-15 blur-[100px] translate-x-1/3 -translate-y-1/3" />
@@ -44,23 +31,19 @@ export function HeroSection() {
       </div>
 
       <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="min-h-[90vh] flex flex-col lg:flex-row items-center gap-12 lg:gap-16 py-16 lg:py-24">
+        <div className="min-h-[80vh] lg:min-h-[88vh] flex flex-col lg:flex-row items-center gap-12 lg:gap-16 py-14 lg:py-20">
 
           {/* Columna izquierda: Copy */}
           <div className="flex-1 flex flex-col gap-6 lg:gap-8 z-10">
             <div className="flex flex-wrap items-center gap-3">
-              <EcoChip stat={t('badge1Stat')} label={t('badge1Label')} />
-              <EcoChip stat={t('badge2Stat')} label={t('badge2Label')} icon="♻️" />
+              <EcoChip stat={t('badge1Stat')} label={t('badge1Label')} icon="droplets" />
+              <EcoChip stat={t('badge2Stat')} label={t('badge2Label')} icon="leaf" />
             </div>
 
-            <h1 className="text-display-lg text-(--color-on-surface)">
+            {/* El énfasis viene del color y el peso, no de un degradado sobre texto */}
+            <h1 className="text-display-lg text-(--color-on-surface) max-w-[18ch]">
               {t('headline1')}{' '}
-              <span
-                className="text-transparent bg-clip-text"
-                style={{ backgroundImage: 'var(--gradient-primary)' }}
-              >
-                {t('headline2')}
-              </span>
+              <span className="text-primary">{t('headline2')}</span>
             </h1>
 
             <p className="text-body-lg text-on-surface-variant max-w-lg text-lg leading-relaxed">
@@ -77,12 +60,22 @@ export function HeroSection() {
                 }}
                 aria-label={t('cta1Aria')}
               >
-                🗓️ {t('cta1')}
+                <Icon name="calendar" size={18} />
+                {t('cta1')}
               </Button>
-              <Link href="/servicios" passHref onClick={() => analytics.ctaClick({ cta_id: 'hero_services', page: 'home' })}>
-                <Button variant="secondary" size="lg">
-                  {t('cta2')}
-                </Button>
+              <Link
+                href="/servicios"
+                onClick={() => analytics.ctaClick({ cta_id: 'hero_services', page: 'home' })}
+                className={[
+                  'inline-flex items-center justify-center gap-2 rounded-full',
+                  'bg-secondary-container text-on-secondary-container font-semibold text-lg',
+                  'px-8 py-4 transition-[filter,transform] duration-200 ease-out',
+                  'hover:brightness-95 active:scale-[0.98] motion-reduce:transition-none',
+                  'focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary',
+                ].join(' ')}
+              >
+                {t('cta2')}
+                <Icon name="arrow-right" size={18} />
               </Link>
             </div>
 
@@ -105,22 +98,25 @@ export function HeroSection() {
             </div>
           </div>
 
-          {/* Columna derecha: Imagen editorial */}
+          {/* Columna derecha: imagen editorial — el resultado real abre la
+              página, no una foto de producto */}
           <div className="flex-1 relative z-10 w-full max-w-xl lg:max-w-none">
-            <div
-              className="relative rounded-(--radius-xl) overflow-hidden shadow-float"
-              style={{ aspectRatio: '4/5' }}
-            >
+            <div className="relative aspect-[16/11] rounded-(--radius-xl) overflow-hidden shadow-float">
               <Image
-                src="/images/lavado_ecologico/lavado_ecologico.webp"
+                src="/images/trabajos/exterior/bmw-x3-perfil-lateral-despues.webp"
                 alt={t('imageAlt')}
                 fill
                 className="object-cover"
                 priority
                 sizes="(max-width: 768px) 100vw, (max-width: 1280px) 50vw, 45vw"
               />
-              <div className="absolute bottom-4 left-4 right-4 glass border border-outline-variant/20 rounded-md p-4 flex items-center gap-3">
-                <span className="text-2xl" aria-hidden="true">✨</span>
+              <div className="absolute bottom-4 left-4 right-4 glass border border-outline-variant/20 rounded-(--radius-md) p-4 flex items-center gap-3">
+                <span
+                  className="grid size-9 shrink-0 place-items-center rounded-full bg-primary text-on-primary"
+                  aria-hidden="true"
+                >
+                  <Icon name="sparkles" size={18} />
+                </span>
                 <div>
                   <p className="font-display font-semibold text-sm text-(--color-on-surface)">
                     {t('overlayTitle')}

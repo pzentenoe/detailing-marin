@@ -58,15 +58,14 @@ export default async function ContactoPage({
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pb-16">
         <div className="relative rounded-(--radius-xl) overflow-hidden aspect-[21/9] flex items-center px-8 md:px-12">
           <Image
-            src="/images/hero-detailing.webp"
+            src="/images/trabajos/exterior/mercedes-glc-trasera-reflejos-despues.webp"
             alt={t('banner.imageAlt')}
             fill
             className="object-cover"
             sizes="(max-width: 768px) 100vw, 90vw"
           />
           <div
-            className="absolute inset-0"
-            style={{ background: 'linear-gradient(to right, rgba(0,0,0,0.80) 0%, rgba(0,0,0,0.55) 40%, rgba(0,0,0,0.10) 65%, transparent 100%)' }}
+            className="absolute inset-0 scrim-side"
             aria-hidden="true"
           />
           <div className="relative z-10 max-w-lg flex flex-col gap-4">

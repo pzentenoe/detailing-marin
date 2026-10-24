@@ -134,8 +134,16 @@ export default async function ServiceDetailPage({
       <SectionWrapper surface="base" innerClassName="pt-10">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-start">
           <article className="flex flex-col gap-6">
-            <Link href="/servicios" className="text-sm font-semibold text-primary hover:underline w-fit">
-              ← {tNav('services')}
+            <Link
+              href="/servicios"
+              className="group inline-flex min-h-11 w-fit items-center gap-1.5 text-sm font-semibold text-primary hover:underline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
+            >
+              <Icon
+                name="arrow-right"
+                size={16}
+                className="rotate-180 transition-transform duration-200 group-hover:-translate-x-0.5 motion-reduce:transition-none motion-reduce:group-hover:translate-x-0"
+              />
+              {tNav('services')}
             </Link>
 
             <div className="flex items-center gap-3">
@@ -147,7 +155,7 @@ export default async function ServiceDetailPage({
 
             <h1 className="text-display-md text-(--color-on-surface)">{title}</h1>
             <p className="text-body-lg text-on-surface-variant">{shortDescription}</p>
-            <p className="text-on-surface-variant leading-relaxed">{fullDescription}</p>
+            <p className="max-w-[70ch] text-on-surface-variant leading-relaxed">{fullDescription}</p>
 
             <ul className="grid grid-cols-1 sm:grid-cols-2 gap-3" aria-label={locale === 'en' ? `${title} features` : `Características de ${title}`}>
               {features.map((feature) => (
@@ -199,7 +207,7 @@ export default async function ServiceDetailPage({
 
       {serviceFaqEntries.length > 0 && (
         <SectionWrapper surface="base" innerClassName="pt-0">
-          <section className="max-w-4xl">
+          <section className="max-w-[70ch]">
             <h2 className="text-headline-md text-(--color-on-surface) mb-6">
               {locale === 'en' ? `Frequently asked questions about ${title}` : `Preguntas frecuentes sobre ${title}`}
             </h2>
@@ -208,7 +216,7 @@ export default async function ServiceDetailPage({
               {serviceFaqEntries.map((faq) => (
                 <article key={faq.name} className="rounded-(--radius-lg) bg-surface-container-low px-5 py-4">
                   <h3 className="font-semibold text-(--color-on-surface) mb-2">{faq.name}</h3>
-                  <p className="text-sm text-on-surface-variant leading-relaxed">{faq.text}</p>
+                  <p className="max-w-[70ch] text-sm text-on-surface-variant leading-relaxed">{faq.text}</p>
                 </article>
               ))}
             </div>

@@ -14,7 +14,7 @@ export const servicesConfig = [
     duration: '3–4 hrs',
     price: 'Desde $89.990',
     highlight: true,
-    image: '/images/lavado_ecologico/lavado_ecologico.webp',
+    image: '/images/trabajos/exterior/porsche-boxster-trasera-limpia-despues.webp',
     pricingTable: [
       { label: 'Citycar', price: '$89.990' },
       { label: 'Sedán / Hatchback', price: '$99.990' },
@@ -28,7 +28,7 @@ export const servicesConfig = [
     icon: 'award' as const,
     duration: '90–120 min',
     price: 'Desde $28.990',
-    image: '/images/hero-detailing.webp',
+    image: '/images/trabajos/exterior/mercedes-glc-parrilla-frontal-despues.webp',
     pricingTable: [
       { label: 'Citycar', price: '$28.990' },
       { label: 'Sedán / Hatchback', price: '$31.990' },
@@ -42,6 +42,7 @@ export const servicesConfig = [
     icon: 'droplets' as const,
     duration: '60–90 min',
     price: 'Desde $19.990',
+    image: '/images/trabajos/exterior/peugeot-landtrek-trasera-despues.webp',
     pricingTable: [
       { label: 'Citycar', price: '$19.990' },
       { label: 'Sedán / Hatchback', price: '$23.990' },
@@ -55,6 +56,7 @@ export const servicesConfig = [
     icon: 'sparkles' as const,
     duration: '90–120 min',
     price: 'Desde $69.990',
+    image: '/images/trabajos/exterior/porsche-boxster-perfil-lateral-despues.webp',
     pricingTable: [
       { label: 'Citycar', price: '$69.990' },
       { label: 'Sedán / Hatchback', price: '$89.990' },
@@ -68,7 +70,8 @@ export const servicesConfig = [
     icon: 'zap' as const,
     duration: '45–60 min',
     price: 'Desde $55.000 el par',
-    image: '/images/focos/despues.webp',
+    image: '/images/trabajos/focos/foco-delantero-restaurado-despues.webp',
+    imageBefore: '/images/trabajos/focos/foco-delantero-amarillento-antes.webp',
   },
   {
     id: '6',
@@ -76,8 +79,8 @@ export const servicesConfig = [
     icon: 'armchair' as const,
     duration: '60–90 min',
     price: 'Desde $55.990',
-    image: '/images/asientos/despues.webp',
-    imageBefore: '/images/asientos/antes.webp',
+    image: '/images/trabajos/interiores/tapiz-beige-respaldo-limpio.webp',
+    imageBefore: '/images/trabajos/interiores/tapiz-beige-asiento-trasero-con-manchas.webp',
     pricingTable: [
       { label: 'Citycar', price: '$55.990' },
       { label: 'Sedán / Hatchback', price: '$65.990' },
@@ -98,6 +101,7 @@ export const featuresConfig = [
 export const navHrefs = [
   { href: '/',          labelKey: 'home'     as const },
   { href: '/servicios', labelKey: 'services' as const },
+  { href: '/galeria',   labelKey: 'gallery'  as const },
   { href: '/cobertura', labelKey: 'coverage' as const },
   { href: '/contacto',  labelKey: 'contact'  as const },
 ] as const
@@ -120,7 +124,7 @@ export const services: Service[] = [
     duration: '3–4 hrs',
     price: 'Desde $89.990',
     highlight: true,
-    image: '/images/lavado_ecologico/lavado_ecologico.webp',
+    image: '/images/trabajos/exterior/porsche-boxster-trasera-limpia-despues.webp',
     pricingTable: [
       { label: 'Citycar', price: '$89.990' },
       { label: 'Sedán / Hatchback', price: '$99.990' },
@@ -167,6 +171,7 @@ export const services: Service[] = [
     ],
     duration: '60–90 min',
     price: 'Desde $19.990',
+    image: '/images/trabajos/exterior/peugeot-landtrek-trasera-despues.webp',
     pricingTable: [
       { label: 'Citycar', price: '$19.990' },
       { label: 'Sedán / Hatchback', price: '$23.990' },
@@ -190,6 +195,7 @@ export const services: Service[] = [
     ],
     duration: '90–120 min',
     price: 'Desde $69.990',
+    image: '/images/trabajos/exterior/porsche-boxster-perfil-lateral-despues.webp',
     pricingTable: [
       { label: 'Citycar', price: '$69.990' },
       { label: 'Sedán / Hatchback', price: '$89.990' },
@@ -213,7 +219,8 @@ export const services: Service[] = [
     ],
     duration: '45–60 min',
     price: 'Desde $55.000 el par',
-    image: '/images/focos/despues.webp',
+    image: '/images/trabajos/focos/foco-delantero-restaurado-despues.webp',
+    imageBefore: '/images/trabajos/focos/foco-delantero-amarillento-antes.webp',
   },
   {
     id: '6',
@@ -231,8 +238,8 @@ export const services: Service[] = [
     ],
     duration: '60–90 min',
     price: 'Desde $55.990',
-    image: '/images/asientos/despues.webp',
-    imageBefore: '/images/asientos/antes.webp',
+    image: '/images/trabajos/interiores/tapiz-beige-respaldo-limpio.webp',
+    imageBefore: '/images/trabajos/interiores/tapiz-beige-asiento-trasero-con-manchas.webp',
     pricingTable: [
       { label: 'Citycar', price: '$55.990' },
       { label: 'Sedán / Hatchback', price: '$65.990' },

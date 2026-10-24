@@ -160,7 +160,7 @@ export function ContactForm() {
             {t('badge')}
           </span>
           <h1 className="text-display-md text-(--color-on-surface) leading-tight">{t('heading')}</h1>
-          <p className="text-body-lg text-on-surface-variant font-light">{t('description')}</p>
+          <p className="max-w-[70ch] text-body-lg text-on-surface-variant font-light">{t('description')}</p>
         </header>
 
         <section aria-labelledby="como-funciona-title">
@@ -222,7 +222,10 @@ export function ContactForm() {
             </div>
             <div>
               <p className="text-xs font-bold text-on-surface-variant uppercase tracking-wider">{t('emailLabel')}</p>
-              <a href={`mailto:${contactInfo.email}`} className="text-(--color-on-surface) font-medium hover:text-primary transition-colors">
+              <a
+                href={`mailto:${contactInfo.email}`}
+                className="inline-flex min-h-11 items-center text-(--color-on-surface) font-medium transition-colors hover:text-primary focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
+              >
                 {contactInfo.email}
               </a>
             </div>

@@ -1,0 +1,214 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-10-20T00:00:00.000Z",
+  "title": "Design System: Detailing Marin",
+  "extensions": {
+    "colorMeta": {
+      "verde-abeto": {
+        "role": "primary",
+        "displayName": "Verde Abeto",
+        "canonical": "#154212",
+        "tonalRamp": ["#0a1f09", "#123310", "#154212", "#2D5A27", "#3b6934", "#6f9a68", "#a1d494", "#bcf0ae"]
+      },
+      "verde-abeto-claro": {
+        "role": "primary",
+        "displayName": "Verde Abeto Claro",
+        "canonical": "#bcf0ae",
+        "tonalRamp": ["#0a1f09", "#123310", "#154212", "#2D5A27", "#3b6934", "#6f9a68", "#a1d494", "#bcf0ae"]
+      },
+      "verde-musgo": {
+        "role": "tertiary",
+        "displayName": "Verde Musgo",
+        "canonical": "#1e4029",
+        "tonalRamp": ["#0a1f09", "#123310", "#1e4029", "#2f5739", "#35573f", "#5b8265", "#a5cbad", "#c9e3ce"]
+      },
+      "verde-lino": {
+        "role": "secondary",
+        "displayName": "Verde Lino",
+        "canonical": "#c6e9e8",
+        "tonalRamp": ["#0d2d2c", "#103535", "#2d4c4c", "#4a6a6a", "#7ba3a3", "#a9cece", "#c6e9e8", "#e6f4f4"]
+      },
+      "lino": {
+        "role": "neutral",
+        "displayName": "Lino",
+        "canonical": "#f8fafb",
+        "tonalRamp": ["#191c1d", "#42493e", "#72796e", "#c2c9bb", "#d8dadb", "#eceeef", "#f2f4f5", "#f8fafb"]
+      },
+      "lino-hueso": {
+        "role": "neutral",
+        "displayName": "Lino Hueso",
+        "canonical": "#ffffff",
+        "tonalRamp": ["#191c1d", "#42493e", "#72796e", "#c2c9bb", "#d8dadb", "#eceeef", "#f8fafb", "#ffffff"]
+      },
+      "carbon": {
+        "role": "neutral",
+        "displayName": "Carbón",
+        "canonical": "#191c1d",
+        "tonalRamp": ["#191c1d", "#2a2e2f", "#42493e", "#5c6459", "#72796e", "#a4ab9f", "#c2c9bb", "#e1e3e4"]
+      },
+      "error": {
+        "role": "status",
+        "displayName": "Error",
+        "canonical": "#ba1a1a",
+        "tonalRamp": ["#410505", "#6d0f0f", "#ba1a1a", "#d4342c", "#e5605a", "#ef9490", "#ffdad6", "#ffe9e7"]
+      }
+    },
+    "typographyMeta": {
+      "display": {
+        "displayName": "Display",
+        "purpose": "Titular de portada. Uno por pantalla, siempre en sólido."
+      },
+      "headline": {
+        "displayName": "Headline",
+        "purpose": "Titulares de sección y de bloque."
+      },
+      "title": {
+        "displayName": "Title",
+        "purpose": "Nombres de servicio, de pilar y de tarjeta."
+      },
+      "body": {
+        "displayName": "Body",
+        "purpose": "Descripción y párrafos, con medida máxima de 65–75ch."
+      },
+      "label": {
+        "displayName": "Label",
+        "purpose": "Antetítulos de sección y encabezados de tabla, en mayúsculas con tracking 0.05em."
+      }
+    },
+    "shadows": [
+      {
+        "name": "ambient",
+        "value": "0 12px 28px -14px rgba(0, 32, 32, 0.24)",
+        "purpose": "Estado de reposo de una tarjeta que se despega del fondo. En dark: 0 12px 28px -12px rgba(0,0,0,0.55)."
+      },
+      {
+        "name": "float",
+        "value": "0 22px 42px -16px rgba(0, 32, 32, 0.32)",
+        "purpose": "Hover de botón, tarjeta elevada y botón flotante de WhatsApp. En dark: 0 24px 46px -14px rgba(0,0,0,0.65)."
+      }
+    ],
+    "motion": [
+      {
+        "name": "ease-standard",
+        "value": "cubic-bezier(0, 0, 0.2, 1)",
+        "purpose": "Transiciones de estado de 200ms en color, sombra y transform."
+      },
+      {
+        "name": "duration-slow",
+        "value": "700ms",
+        "purpose": "Zoom lento de fotografía en hover (1.04–1.05) con salida suave."
+      },
+      {
+        "name": "reduced-motion",
+        "value": "prefers-reduced-motion: reduce",
+        "purpose": "Las escalas de hover se anulan (transform: none) y las transiciones se resuelven al instante; los indicadores de carga conservan su animación porque comunican estado."
+      }
+    ],
+    "breakpoints": [
+      { "name": "sm", "value": "640px" },
+      { "name": "md", "value": "768px" },
+      { "name": "lg", "value": "1024px" },
+      { "name": "xl", "value": "1280px" }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "Acción principal: agendar, solicitar, ver el mapa. Verde Abeto sobre píldora.",
+      "html": "<button class=\"ds-btn-primary\">Agendar servicio</button>",
+      "css": ".ds-btn-primary { background: #154212; color: #ffffff; border: 0; border-radius: 9999px; padding: 1rem 2rem; font-family: Inter, sans-serif; font-size: 1rem; font-weight: 600; line-height: 1.5; cursor: pointer; transition: background-color 200ms cubic-bezier(0,0,0.2,1), box-shadow 200ms cubic-bezier(0,0,0.2,1), transform 200ms cubic-bezier(0,0,0.2,1); box-shadow: 0 22px 42px -16px rgba(0,32,32,0.32); } .ds-btn-primary:hover { background: #2D5A27; transform: translateY(-1px); } .ds-btn-primary:active { transform: scale(0.98); } .ds-btn-primary:focus-visible { outline: 2px solid #bcf0ae; outline-offset: 2px; }"
+    },
+    {
+      "name": "Secondary Button",
+      "kind": "button",
+      "refersTo": "button-secondary",
+      "description": "Acción secundaria: ver servicios, ver cobertura. Verde Lino con apoyo frío.",
+      "html": "<button class=\"ds-btn-secondary\">Ver todos los servicios</button>",
+      "css": ".ds-btn-secondary { background: #c6e9e8; color: #4a6a6a; border: 0; border-radius: 9999px; padding: 1rem 2rem; font-family: Inter, sans-serif; font-size: 1rem; font-weight: 600; line-height: 1.5; cursor: pointer; transition: filter 200ms cubic-bezier(0,0,0.2,1), transform 200ms cubic-bezier(0,0,0.2,1); } .ds-btn-secondary:hover { filter: brightness(0.95); } .ds-btn-secondary:active { transform: scale(0.98); } .ds-btn-secondary:focus-visible { outline: 2px solid #154212; outline-offset: 2px; }"
+    },
+    {
+      "name": "Inverse Button",
+      "kind": "button",
+      "refersTo": "button-inverse",
+      "description": "Botón sobre verde o fotografía: fondo Lino Hueso con texto Verde Abeto fijo.",
+      "html": "<button class=\"ds-btn-inverse\">Desde $89.990</button>",
+      "css": ".ds-btn-inverse { background: #ffffff; color: #154212; border: 0; border-radius: 9999px; padding: 1rem 2rem; font-family: Inter, sans-serif; font-size: 1rem; font-weight: 700; line-height: 1.5; cursor: pointer; transition: background-color 200ms cubic-bezier(0,0,0.2,1); } .ds-btn-inverse:hover { background: #154212; color: #ffffff; } .ds-btn-inverse:focus-visible { outline: 2px solid #bcf0ae; outline-offset: 2px; }"
+    },
+    {
+      "name": "Eco Chip",
+      "kind": "chip",
+      "refersTo": "chip-eco",
+      "description": "Cifra de impacto ecológico (90% ahorro de agua, 100% biodegradables).",
+      "html": "<span class=\"ds-chip-eco\"><svg class=\"ds-chip-eco__icon\" viewBox=\"0 0 24 24\" width=\"16\" height=\"16\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M12 2.7s5.5 4.4 5.5 9.3A5.5 5.5 0 0 1 12 17.5a5.5 5.5 0 0 1-5.5-5.5C6.5 7.1 12 2.7 12 2.7Z\"/></svg><strong>90%</strong> Ahorro de agua</span>",
+      "css": ".ds-chip-eco { display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.5rem 1rem; border-radius: 9999px; background: #35573f; color: #a5cbad; border: 1px solid rgba(165,203,173,0.15); font-family: Inter, sans-serif; font-size: 0.875rem; font-weight: 500; line-height: 1.4; } .ds-chip-eco strong { font-weight: 700; } .ds-chip-eco__icon { flex: none; }"
+    },
+    {
+      "name": "Service Card",
+      "kind": "card",
+      "refersTo": "card-surface",
+      "description": "Tarjeta de servicio con icono en bloque sólido, título, descripción y precio.",
+      "html": "<article class=\"ds-card\"><span class=\"ds-card__icon\"><svg viewBox=\"0 0 24 24\" width=\"24\" height=\"24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M5 17h14M6 17l-1.4-4.2A2 2 0 0 1 6.5 10h11a2 2 0 0 1 1.9 2.8L18 17M7 10l1.2-3.2A2 2 0 0 1 10.1 5h3.8a2 2 0 0 1 1.9 1.8L17 10\"/></svg></span><h3 class=\"ds-card__title\">Pack Eco Silver</h3><p class=\"ds-card__body\">Lavado en seco esencial + aspirado + vidrios.</p><span class=\"ds-card__price\">Desde $19.990</span></article>",
+      "css": ".ds-card { display: flex; flex-direction: column; gap: 1rem; padding: 2rem; border-radius: 1.5rem; background: #f2f4f5; color: #191c1d; border: 1px solid rgba(194,201,187,0.25); box-shadow: 0 12px 28px -14px rgba(0,32,32,0.24); transition: box-shadow 300ms cubic-bezier(0,0,0.2,1), transform 300ms cubic-bezier(0,0,0.2,1); font-family: Inter, sans-serif; } .ds-card:hover { box-shadow: 0 22px 42px -16px rgba(0,32,32,0.32); transform: translateY(-4px); } .ds-card__icon { display: grid; place-items: center; width: 3rem; height: 3rem; border-radius: 1rem; background: #154212; color: #ffffff; } .ds-card__title { margin: 0; font-family: Manrope, sans-serif; font-size: 1.375rem; font-weight: 600; line-height: 1.22; letter-spacing: -0.01em; } .ds-card__body { margin: 0; font-size: 0.9375rem; line-height: 1.6; color: #42493e; } .ds-card__price { font-size: 0.8125rem; font-weight: 500; color: #42493e; } .ds-card:focus-within { outline: 2px solid #154212; outline-offset: 2px; }"
+    },
+    {
+      "name": "Text Field",
+      "kind": "input",
+      "refersTo": "input-field",
+      "description": "Campo de formulario con superficie Lino y foco de marca.",
+      "html": "<label class=\"ds-field\"><span class=\"ds-field__label\">Correo</span><input class=\"ds-field__input\" type=\"email\" placeholder=\"tucorreo@ejemplo.cl\"></label>",
+      "css": ".ds-field { display: flex; flex-direction: column; gap: 0.5rem; font-family: Inter, sans-serif; } .ds-field__label { font-size: 0.75rem; font-weight: 500; letter-spacing: 0.05em; text-transform: uppercase; color: #42493e; } .ds-field__input { min-height: 3rem; padding: 0.75rem 1rem; border-radius: 0.75rem; border: 1px solid rgba(114,121,110,0.3); background: #f2f4f5; color: #191c1d; font-size: 1rem; transition: border-color 200ms cubic-bezier(0,0,0.2,1), box-shadow 200ms cubic-bezier(0,0,0.2,1); } .ds-field__input::placeholder { color: #72796e; } .ds-field__input:focus { outline: 2px solid #154212; outline-offset: 2px; border-color: #154212; }"
+    },
+    {
+      "name": "Navigation Bar",
+      "kind": "nav",
+      "description": "Barra fija translúcida; el enlace activo conserva el subrayado de marca.",
+      "html": "<nav class=\"ds-nav\"><a class=\"ds-nav__link\" href=\"#\">Inicio</a><a class=\"ds-nav__link ds-nav__link--active\" href=\"#\" aria-current=\"page\">Servicios</a><a class=\"ds-nav__link\" href=\"#\">Cobertura</a></nav>",
+      "css": ".ds-nav { display: flex; align-items: center; gap: 2rem; font-family: Inter, sans-serif; } .ds-nav__link { position: relative; padding: 0.5rem 0; font-size: 0.875rem; font-weight: 500; color: #42493e; text-decoration: none; transition: color 200ms cubic-bezier(0,0,0.2,1); } .ds-nav__link::after { content: ''; position: absolute; left: 0; bottom: 0; height: 2px; width: 100%; border-radius: 9999px; background: #154212; opacity: 0; transition: opacity 200ms cubic-bezier(0,0,0.2,1); } .ds-nav__link:hover { color: #154212; } .ds-nav__link:hover::after { opacity: 1; } .ds-nav__link--active { color: #154212; } .ds-nav__link--active::after { opacity: 1; } .ds-nav__link:focus-visible { outline: 2px solid #154212; outline-offset: 4px; border-radius: 2px; }"
+    },
+    {
+      "name": "Before / After Card",
+      "kind": "custom",
+      "description": "Comparativa antes/después con divisor central y etiquetas superpuestas.",
+      "html": "<figure class=\"ds-ba\"><figcaption class=\"ds-ba__label\">Limpieza de motor</figcaption><div class=\"ds-ba__frame\"><div class=\"ds-ba__side\"><span class=\"ds-ba__tag\">Antes</span></div><div class=\"ds-ba__divider\"></div><div class=\"ds-ba__side\"><span class=\"ds-ba__tag ds-ba__tag--after\">Después</span></div></div></figure>",
+      "css": ".ds-ba { margin: 0; display: flex; flex-direction: column; gap: 1rem; font-family: Inter, sans-serif; } .ds-ba__label { font-size: 0.75rem; font-weight: 600; letter-spacing: 0.05em; text-transform: uppercase; color: #154212; } .ds-ba__frame { position: relative; display: flex; height: 20rem; border-radius: 1.5rem; overflow: hidden; box-shadow: 0 12px 28px -14px rgba(0,32,32,0.24); } .ds-ba__side { position: relative; flex: 1; background: #d8dadb; } .ds-ba__divider { position: relative; z-index: 1; width: 1px; background: rgba(255,255,255,0.8); box-shadow: 0 0 8px rgba(255,255,255,0.6); } .ds-ba__tag { position: absolute; left: 0.75rem; bottom: 0.75rem; padding: 0.25rem 0.75rem; border-radius: 0.75rem; background: rgba(0,0,0,0.7); color: #ffffff; font-size: 0.75rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; } .ds-ba__tag--after { left: auto; right: 0.75rem; background: rgba(21,66,18,0.85); }"
+    }
+  ],
+  "narrative": {
+    "northStar": "El Verde que Viene a Casa",
+    "overview": "Detailing Marin no tiene un local al que ir. El servicio viaja completo hasta la casa u oficina del cliente, y ese hecho define el sistema: nada de este diseño puede parecer la señal de un lavadero esperando turno. El verde no decora ni disimula — es el método (productos 100% biodegradables, hasta 90% de ahorro de agua) y por lo tanto el color de marca, de la misma forma en que el azul de una clínica sería su método y no su gusto. La voz es de servicio a domicilio con oficio: cercana, tranquila y directa. Se explica el detalle del trabajo —micro-rayas, amarillamiento, agua que no se waste— porque el cliente que nos elige es el que desconfía del lavado común y quiere saber en qué manos deja el auto. No hay urgencia, no hay oferta, no hay emoji: hay método, precio claro y una cita. La densidad es editorial-media: bloques con aire, tipografía con contraste marcado entre el titular y el cuerpo, y fotografía real siempre que existe. Cuando la fotografía falta, el sistema tiene un marcador de posición diseñado (superficie tonal con marca de agua del icono del servicio) en lugar de un rectángulo vacío.",
+    "keyCharacteristics": [
+      "El verde es el método: verde Abeto como color de marca, usado con avaricia y siempre con significado de proceso, no de decoración.",
+      "Contraste de marcado: display de 64px a 800 contra cuerpo de 16px a 400; la jerarquía se gana con tamaño y peso, nunca con degradado sobre texto.",
+      "Fotografía como prueba: antes/después y fotos reales de trabajo; la foto no es ilustración, es evidencia.",
+      "Superficies en capas: Lino (hueso → capas) en lugar de tarjetas blancas sobre gris; la profundidad la dan las capas tonales más una sombra con dirección.",
+      "Todo lleva a una cita: cada superficie resuelve en un WhatsApp agendado, con respuesta en menos de 24 horas."
+    ],
+    "rules": [
+      { "name": "The One Green Rule", "body": "El Verde Abeto aparece en menos del 10% de cualquier pantalla, y siempre con significado: acción principal, emphasis tipográfico o señal de método. Su escasez es el punto.", "section": "colors" },
+      { "name": "The No Gradient on Words Rule", "body": "El énfasis tipográfico se gana con color sólido y peso. Ninguna palabra lleva degradado ni recorte de fondo.", "section": "colors" },
+      { "name": "The Lino Rule", "body": "Ninguna superficie del sitio es gris neutro puro: todo neutro viene de la familia Lino, incluidos sus capas y sus bordes.", "section": "colors" },
+      { "name": "The One Display Rule", "body": "Un solo display por pantalla, y siempre en sólido. Si algo más compite por el mismo peso visual, es un headline, no un display.", "section": "typography" },
+      { "name": "The Balanced Heading Rule", "body": "Todo titular o subtítulo usa text-wrap: balance y letter-spacing negativo entre -0.01em y -0.025em: el interlineado de un titular grande nunca es un múltiplo exacto del tamaño de fuente.", "section": "typography" },
+      { "name": "The Label Rule", "body": "El label en mayúsculas es siempre un antetítulo corto y de un solo color —verde Abeto—; no se usa como subtítulo ni dentro de párrafos.", "section": "typography" },
+      { "name": "The Directional Shadow Rule", "body": "Toda sombra lleva desplazamiento vertical visible y blur amplio. Un halo sin dirección (offset cero) no cuenta como profundidad.", "section": "elevation" },
+      { "name": "The Shadow Means Lift Rule", "body": "La sombra aparece cuando un elemento se despega (hover, elemento fijo, panel flotante). En reposo, la profundidad la dan las capas Lino, no una sombra tenue.", "section": "elevation" }
+    ],
+    "dos": [
+      "Do dar a cada servicio su propio tratamiento de tarjeta anclado a su slug, con el ancho y el fondo definidos para ese servicio.",
+      "Do usar fotos reales con object-cover en un panel con radio coherente, y alt que describa el resultado.",
+      "Do mantener el texto de precio sobre superficies blancas con un verde fijo oscuro (on-inverse), nunca con el verde de marca en dark.",
+      "Do limitar el Verde Abeto a la acción principal, al emphasis tipográfico y a las señales de método.",
+      "Do ofrecer el mismo contenido en español e inglés, con español neutro."
+    ],
+    "donts": [
+      "Don't poner texto blanco sobre una superficie clara, ni dejar imágenes de fondo al 5% de opacidad detrás del texto: la foto es contenido, no textura.",
+      "Don't usar degradado sobre texto, emoji ni flechas de texto como sistema de iconos.",
+      "Don't repetir el mismo patrón de tarjeta (icono + titular + texto) como estructura de página: se resuelve con bandas editoriales y separadores.",
+      "Don't inventar fotografía: sin foto en el CMS, placeholder diseñado; jamás un bloque de color plano.",
+      "Don't numerar secciones con 01 / 02 / 03 ni usar kickers decorativos salvo que la secuencia aporte información.",
+      "Don't dejar objetivos táctiles bajo 44×44px ni eliminar el indicador de foco visible."
+    ]
+  }
+}

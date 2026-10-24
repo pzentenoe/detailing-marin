@@ -6,7 +6,7 @@ type ServiceSlug = 'pack-eco-diamond' | 'pack-eco-platinum' | 'pack-eco-silver' 
 
 export const SITE_URL = 'https://www.detailingmarin.cl'
 export const SITE_NAME = 'Detailing Marin'
-export const DEFAULT_OG_IMAGE = '/images/hero-detailing.webp'
+export const DEFAULT_OG_IMAGE = '/images/og-detailing-marin.jpg'
 
 export const SERVED_COMMUNES = [
   'Maipú', 'Pudahuel', 'Cerrillos', 'Cerro Navia', 'Lo Prado',

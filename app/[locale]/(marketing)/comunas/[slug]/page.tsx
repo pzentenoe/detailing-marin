@@ -94,8 +94,16 @@ export default async function ComunaPage({ params }: { params: PageParams }) {
 
       {/* Hero de la comuna */}
       <SectionWrapper surface="base" innerClassName="pt-10">
-        <Link href="/cobertura" className="text-sm font-semibold text-primary hover:underline w-fit inline-block mb-6">
-          ← Ver todas las zonas
+        <Link
+          href="/cobertura"
+          className="group mb-6 inline-flex min-h-11 w-fit items-center gap-1.5 text-sm font-semibold text-primary hover:underline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
+        >
+          <Icon
+            name="arrow-right"
+            size={16}
+            className="rotate-180 transition-transform duration-200 group-hover:-translate-x-0.5 motion-reduce:transition-none motion-reduce:group-hover:translate-x-0"
+          />
+          Ver todas las zonas
         </Link>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-start">
@@ -106,7 +114,7 @@ export default async function ComunaPage({ params }: { params: PageParams }) {
               Lavado de autos a domicilio en {commune.name}
             </h1>
 
-            <p className="text-body-lg text-on-surface-variant leading-relaxed">
+            <p className="max-w-[70ch] text-body-lg text-on-surface-variant leading-relaxed">
               {commune.description}
             </p>
 
@@ -155,7 +163,7 @@ export default async function ComunaPage({ params }: { params: PageParams }) {
         <h2 className="text-headline-md text-(--color-on-surface) mb-2">
           Servicios disponibles en {commune.name}
         </h2>
-        <p className="text-on-surface-variant mb-8">
+        <p className="max-w-[70ch] text-on-surface-variant mb-8">
           Todos los servicios incluyen desplazamiento a tu domicilio en {commune.name} sin costo extra.
         </p>
 
@@ -179,8 +187,9 @@ export default async function ComunaPage({ params }: { params: PageParams }) {
                 <p className="text-sm text-on-surface-variant line-clamp-2">
                   {service.shortDescription}
                 </p>
-                <p className="text-xs text-on-surface-variant mt-auto">
-                  {service.duration} · Ver detalle →
+                <p className="inline-flex items-center gap-1.5 text-xs text-on-surface-variant mt-auto">
+                  {service.duration} · Ver detalle
+                  <Icon name="arrow-right" size={12} />
                 </p>
               </Link>
             )
@@ -190,7 +199,7 @@ export default async function ComunaPage({ params }: { params: PageParams }) {
 
       {/* FAQ específico de la comuna */}
       <SectionWrapper surface="base">
-        <section className="max-w-4xl">
+        <section className="max-w-[70ch]">
           <h2 className="text-headline-md text-(--color-on-surface) mb-6">
             Preguntas frecuentes — {commune.name}
           </h2>
@@ -201,7 +210,7 @@ export default async function ComunaPage({ params }: { params: PageParams }) {
                 className="rounded-(--radius-lg) bg-surface-container-low px-5 py-4"
               >
                 <h3 className="font-semibold text-(--color-on-surface) mb-2">{item.q}</h3>
-                <p className="text-sm text-on-surface-variant leading-relaxed">{item.a}</p>
+                <p className="max-w-[70ch] text-sm text-on-surface-variant leading-relaxed">{item.a}</p>
               </article>
             ))}
           </div>
@@ -218,7 +227,7 @@ export default async function ComunaPage({ params }: { params: PageParams }) {
             <Link
               key={c.slug}
               href={`/comunas/${c.slug}`}
-              className="px-4 py-2 rounded-full border border-outline-variant text-sm text-on-surface-variant hover:border-primary hover:text-primary transition-colors"
+              className="inline-flex min-h-11 items-center rounded-full border border-outline-variant px-4 py-2 text-sm text-on-surface-variant transition-colors hover:border-primary hover:text-primary focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
             >
               {c.name}
             </Link>

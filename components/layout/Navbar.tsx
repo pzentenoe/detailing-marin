@@ -53,8 +53,8 @@ export function Navbar() {
         'transition-[background-color,box-shadow,border-color] duration-300 ease-out',
         'border-b',
         isScrolled
-          ? 'glass shadow-ambient border-outline-variant/20'
-          : 'bg-surface/80 backdrop-blur-md border-outline-variant/10',
+          ? 'bg-surface/95 backdrop-blur-xl shadow-ambient border-outline-variant/20'
+          : 'bg-surface/90 backdrop-blur-md border-outline-variant/10',
       ]
         .filter(Boolean)
         .join(' ')}
@@ -66,7 +66,7 @@ export function Navbar() {
           {/* Logo */}
           <Link
             href="/"
-            className="flex items-center gap-3 group"
+            className="flex min-w-0 items-center gap-2 sm:gap-3 group focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary rounded-sm"
             aria-label={t('logoAria')}
           >
             <Image
@@ -76,16 +76,16 @@ export function Navbar() {
               height={52}
               sizes="72px"
               style={{ height: 'auto' }}
-              className="object-contain drop-shadow-md group-hover:scale-105 transition-transform duration-200"
+              className="w-14 min-[400px]:w-[72px] object-contain drop-shadow-md group-hover:scale-105 transition-transform duration-200 motion-reduce:transition-none motion-reduce:group-hover:scale-100"
               priority
             />
-            <span className="font-display font-bold text-xl text-(--color-on-surface) tracking-tight group-hover:text-primary transition-colors">
+            <span className="hidden min-[360px]:inline md:hidden lg:inline font-display font-bold text-base lg:text-xl whitespace-nowrap text-(--color-on-surface) tracking-tight group-hover:text-primary transition-colors">
               Detailing Marin
             </span>
           </Link>
 
           {/* Nav Desktop */}
-          <nav className="hidden md:flex items-center gap-8" aria-label="Navegación principal">
+          <nav className="hidden md:flex items-center gap-6 lg:gap-8" aria-label="Navegación principal">
             {navHrefs.map((link) => {
               const isActive = pathname === link.href
               return (
@@ -93,9 +93,10 @@ export function Navbar() {
                   key={link.href}
                   href={link.href}
                   className={[
-                    'text-sm font-medium transition-colors duration-200',
+                    'text-sm font-medium transition-colors duration-200 py-2',
                     'hover:text-primary',
-                    'relative after:absolute after:bottom-[-4px] after:left-0 after:h-[2px] after:w-full after:rounded-full after:transition-opacity after:duration-200',
+                    'relative after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-full after:rounded-full after:transition-opacity after:duration-200',
+                    'focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary rounded-sm',
                     isActive
                       ? 'text-primary after:bg-primary after:opacity-100'
                       : 'text-on-surface-variant after:bg-primary after:opacity-0 hover:after:opacity-100',
@@ -118,7 +119,7 @@ export function Navbar() {
             {/* Dark mode toggle */}
             <button
               onClick={toggle}
-              className="p-2 rounded-md text-(--color-on-surface) hover:bg-surface-container transition-[background-color,transform] duration-200 hover:scale-110 active:scale-95"
+              className="grid size-11 place-items-center rounded-(--radius-md) text-(--color-on-surface) hover:bg-surface-container transition-[background-color,transform] duration-200 active:scale-95 motion-reduce:transition-none motion-reduce:transform-none focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
               aria-label={theme === 'dark' ? t('lightMode') : t('darkMode')}
               title={theme === 'dark' ? t('lightMode') : t('darkMode')}
             >
@@ -142,7 +143,7 @@ export function Navbar() {
             <LanguageSelector />
             <button
               onClick={toggle}
-              className="p-2 rounded-md text-(--color-on-surface) hover:bg-surface-container transition-[background-color,transform] duration-200 hover:scale-110 active:scale-95"
+              className="grid size-11 place-items-center rounded-(--radius-md) text-(--color-on-surface) hover:bg-surface-container transition-[background-color,transform] duration-200 active:scale-95 motion-reduce:transition-none motion-reduce:transform-none focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
               aria-label={theme === 'dark' ? t('lightMode') : t('darkMode')}
             >
               {theme === 'dark'
@@ -151,7 +152,7 @@ export function Navbar() {
             </button>
             <button
               ref={menuButtonRef}
-              className="p-2 rounded-md text-(--color-on-surface) hover:bg-surface-container-high transition-colors"
+              className="grid size-11 place-items-center rounded-(--radius-md) text-(--color-on-surface) hover:bg-surface-container-high transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
               onClick={() => setIsOpen(!isOpen)}
               aria-expanded={isOpen}
               aria-label={isOpen ? t('closeMenu') : t('openMenu')}
@@ -165,7 +166,7 @@ export function Navbar() {
 
       {/* Mobile Menu */}
       {isOpen && (
-        <div id="mobile-menu" className="md:hidden glass border-t border-outline-variant/20">
+        <div id="mobile-menu" className="md:hidden bg-surface/95 backdrop-blur-xl border-t border-outline-variant/20">
           <nav className="px-4 py-4 flex flex-col gap-4" aria-label="Navegación móvil">
             {navHrefs.map((link) => {
               const isActive = pathname === link.href
@@ -175,7 +176,8 @@ export function Navbar() {
                   href={link.href}
                   onClick={() => setIsOpen(false)}
                   className={[
-                    'text-base font-medium py-2 transition-colors',
+                    'text-base font-medium py-3 transition-colors',
+                    'focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary rounded-sm',
                     isActive
                       ? 'text-primary'
                       : 'text-on-surface-variant hover:text-primary',

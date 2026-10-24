@@ -2,6 +2,7 @@ import Image from 'next/image'
 import NextLink from 'next/link'
 import { getPathname } from '@/i18n/navigation'
 import { EcoChip } from '@/components/ui/EcoChip'
+import { Icon } from '@/components/ui/Icon'
 import type { Locale } from '@/i18n/routing'
 import type { FooterViewContent } from '@/lib/footer-content'
 
@@ -48,7 +49,7 @@ export function FooterView({ content, locale }: { content: FooterViewContent; lo
       <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8 lg:py-16">
         <div className="grid grid-cols-1 gap-10 md:grid-cols-4">
           <div className="flex flex-col gap-5 md:col-span-1">
-            <NextLink href={localizedHref('/', locale)} className="flex w-fit items-center gap-3" aria-label={content.brandName}>
+            <NextLink href={localizedHref('/', locale)} className="flex min-h-11 w-fit items-center gap-3 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary" aria-label={content.brandName}>
               <Image src="/icon/logo-removebg.png" alt={content.brandName} width={56} height={40} className="object-contain drop-shadow-md" />
               <span className="font-display text-lg font-bold tracking-tight text-(--color-on-surface)">{content.brandName}</span>
             </NextLink>
@@ -59,9 +60,14 @@ export function FooterView({ content, locale }: { content: FooterViewContent; lo
           <div className="flex flex-col gap-4">
             <h2 className="text-label-md text-(--color-on-surface)">{content.navigationTitle}</h2>
               <nav aria-label={footerNavLabel}>
-              <ul className="flex flex-col gap-3">
+              <ul className="flex flex-col gap-1">
                 {content.navigationLinks.map((item, index) => <li key={`${item.target}-${index}`}>
-                  <NextLink href={localizedHref(NAVIGATION_HREFS[item.target], locale)} className="text-sm text-on-surface-variant transition-colors hover:text-primary">{item.label}</NextLink>
+                  <NextLink
+                    href={localizedHref(NAVIGATION_HREFS[item.target], locale)}
+                    className="inline-flex min-h-11 items-center text-sm text-on-surface-variant transition-colors hover:text-primary focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
+                  >
+                    {item.label}
+                  </NextLink>
                 </li>)}
               </ul>
             </nav>
@@ -69,19 +75,27 @@ export function FooterView({ content, locale }: { content: FooterViewContent; lo
 
           <div className="flex flex-col gap-4">
             <h2 className="text-label-md text-(--color-on-surface)">{content.contactTitle}</h2>
-            <address className="flex flex-col gap-3 not-italic">
-                <a href={`tel:${content.phoneHref.replace(/[\s().-]/g, '')}`} className="text-sm text-on-surface-variant transition-colors hover:text-primary">📞 {content.phoneDisplay}</a>
-              <a href={`mailto:${content.email}`} className="text-sm text-on-surface-variant transition-colors hover:text-primary">✉️ {content.email}</a>
-              <p className="text-sm text-on-surface-variant">📍 {content.zone}</p>
-              <p className="text-sm text-on-surface-variant">🕐 {content.hours}</p>
+            <address className="flex flex-col gap-1 not-italic">
+                <a href={`tel:${content.phoneHref.replace(/[\s().-]/g, '')}`} className="inline-flex min-h-11 items-center gap-2 text-sm text-on-surface-variant transition-colors hover:text-primary focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"><Icon name="phone" size={16} />{content.phoneDisplay}</a>
+              <a href={`mailto:${content.email}`} className="inline-flex min-h-11 items-center gap-2 text-sm text-on-surface-variant transition-colors hover:text-primary focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"><Icon name="mail" size={16} />{content.email}</a>
+              <p className="inline-flex min-h-11 items-center gap-2 text-sm text-on-surface-variant"><Icon name="map-pin" size={16} />{content.zone}</p>
+              <p className="inline-flex min-h-11 items-center gap-2 text-sm text-on-surface-variant"><Icon name="clock" size={16} />{content.hours}</p>
             </address>
           </div>
 
           <div className="flex flex-col gap-4">
             <h2 className="text-label-md text-(--color-on-surface)">{content.socialTitle}</h2>
-            <ul className="flex items-center gap-3">
+            <ul className="flex items-center gap-2">
               {content.socialLinks.map((social, index) => <li key={`${social.platform}-${index}`}>
-                <a href={social.url} target="_blank" rel="noopener noreferrer" aria-label={social.label} className="text-on-surface-variant transition-colors duration-200 hover:text-primary"><SocialIcon platform={social.platform} /></a>
+                <a
+                  href={social.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={social.label}
+                  className="grid size-11 place-items-center rounded-(--radius-md) text-on-surface-variant transition-colors duration-200 hover:bg-surface-container hover:text-primary focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
+                >
+                  <SocialIcon platform={social.platform} />
+                </a>
               </li>)}
             </ul>
           </div>
@@ -92,8 +106,8 @@ export function FooterView({ content, locale }: { content: FooterViewContent; lo
           <p className="order-last text-center text-xs text-on-surface-variant sm:order-none">© {new Date().getFullYear()} {content.copyright}</p>
           <nav aria-label={legalLabel} className="flex justify-center sm:justify-end">
             <ul className="flex items-center gap-4">
-              <li><NextLink href={localizedHref(LEGAL_HREFS.privacy, locale)} className="text-xs text-on-surface-variant transition-colors hover:text-primary">{content.privacyLabel}</NextLink></li>
-              <li><NextLink href={localizedHref(LEGAL_HREFS.terms, locale)} className="text-xs text-on-surface-variant transition-colors hover:text-primary">{content.termsLabel}</NextLink></li>
+              <li><NextLink href={localizedHref(LEGAL_HREFS.privacy, locale)} className="inline-flex min-h-11 items-center px-1 text-xs text-on-surface-variant transition-colors hover:text-primary focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary">{content.privacyLabel}</NextLink></li>
+              <li><NextLink href={localizedHref(LEGAL_HREFS.terms, locale)} className="inline-flex min-h-11 items-center px-1 text-xs text-on-surface-variant transition-colors hover:text-primary focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary">{content.termsLabel}</NextLink></li>
             </ul>
           </nav>
         </div>

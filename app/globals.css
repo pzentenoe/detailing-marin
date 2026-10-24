@@ -1,5 +1,10 @@
 @import "tailwindcss";
 
+/* El tema del proyecto se conmuta con la clase `.dark` en <html> (ThemeProvider),
+   no con la preferencia del sistema. Sin esta declaración, las utilidades `dark:`
+   de Tailwind responderían a `prefers-color-scheme` y nunca se activarían. */
+@custom-variant dark (&:where(.dark, .dark *));
+
 /* ============================================================
    DESIGN SYSTEM — "The Editorial Automotive Standard"
    Extraído del Stitch MCP Project: Home - Detailing Marin
@@ -51,6 +56,14 @@
   --color-error-container:    #ffdad6;
   --color-on-error:           #ffffff;
 
+  /* Texto sobre superficies inversas (blanco), legible en ambos temas */
+  --color-on-inverse:         #154212;
+  --color-on-inverse-muted:   #44605a;
+
+  /* Marca de canal (WhatsApp) — no es un color de superficie */
+  --color-brand-whatsapp:      #25d366;
+  --color-brand-whatsapp-deep: #1da851;
+
   /* --- Colores Dark Mode (referencia — los overrides reales están en .dark) --- */
   --color-dark-surface:           #111411;
   --color-dark-surface-container: #1d201d;
@@ -74,9 +87,9 @@
   --spacing-26: 6.5rem;
   --spacing-30: 7.5rem;
 
-  /* --- Shadows ambientales eco-themed --- */
-  --shadow-ambient: 0 20px 40px rgba(0, 32, 32, 0.06);
-  --shadow-float:   0 8px 24px rgba(0, 32, 32, 0.1);
+  /* --- Sombras estructurales con dirección (offset + blur, sin bordes duros) --- */
+  --shadow-ambient: 0 12px 28px -14px rgba(0, 32, 32, 0.24);
+  --shadow-float:   0 22px 42px -16px rgba(0, 32, 32, 0.32);
 }
 
 /* ============================================================
@@ -88,6 +101,14 @@
   --glass-bg: rgba(248, 250, 251, 0.8);
   --glass-blur: blur(16px);
   --glass-border: rgba(194, 201, 187, 0.15);
+
+  /* Scrims: velo degradado para texto sobre fotografía */
+  --scrim-strong: linear-gradient(to top, rgba(0, 0, 0, 0.88) 0%, rgba(0, 0, 0, 0.35) 38%, transparent 62%);
+  --scrim-soft: linear-gradient(to top, rgba(0, 0, 0, 0.72) 0%, rgba(0, 0, 0, 0.22) 55%, transparent 100%);
+  --scrim-side: linear-gradient(to right, rgba(0, 0, 0, 0.80) 0%, rgba(0, 0, 0, 0.55) 40%, rgba(0, 0, 0, 0.10) 65%, transparent 100%);
+
+  /* Anillo de foco por defecto (links y controles sin anillo propio) */
+  --focus-ring: var(--color-primary);
 }
 
 /* ============================================================
@@ -139,14 +160,39 @@
   --color-outline-variant: #42493e;
 
   /* Shadow */
-  --shadow-ambient: 0 20px 40px rgba(0, 0, 0, 0.3);
-  --shadow-float:   0 8px 24px rgba(0, 0, 0, 0.4);
+  --shadow-ambient: 0 12px 28px -12px rgba(0, 0, 0, 0.55);
+  --shadow-float:   0 24px 46px -14px rgba(0, 0, 0, 0.65);
 }
 
 /* Aplicar background y color al html/body en dark mode */
 html.dark {
   background-color: var(--color-surface);
   color: var(--color-on-surface);
+}
+
+/* Foco visible con la paleta del sistema. Va en `base` para que cualquier
+   componente con anillo propio (Button, DatePicker) lo sobrescriba desde
+   `utilities` sin tener que desactivar este outline a mano. */
+@layer base {
+  :where(a, button, input, select, textarea, summary, [tabindex]:not([tabindex='-1'])):focus-visible {
+    outline: 2px solid var(--focus-ring);
+    outline-offset: 2px;
+  }
+}
+
+/* Velo degradado para texto sobre fotografía */
+@layer utilities {
+  .scrim-strong {
+    background-image: var(--scrim-strong);
+  }
+
+  .scrim-soft {
+    background-image: var(--scrim-soft);
+  }
+
+  .scrim-side {
+    background-image: var(--scrim-side);
+  }
 }
 
 
@@ -180,26 +226,31 @@ html {
   background: var(--gradient-primary-soft);
 }
 
-/* Tipografía de display */
+/* Tipografía de display — escala fluida (clamp) para que el titular
+   nunca desborde ni pierda presencia entre 320px y 1440px */
 .text-display-lg {
   font-family: var(--font-display);
-  font-size: 3.5rem;
-  line-height: 1.1;
-  letter-spacing: -0.02em;
+  font-size: clamp(2.5rem, 1.55rem + 4vw, 4rem);
+  line-height: 1.08;
+  letter-spacing: -0.025em;
   font-weight: 800;
+  text-wrap: balance;
 }
 .text-display-md {
   font-family: var(--font-display);
-  font-size: 2.5rem;
-  line-height: 1.15;
+  font-size: clamp(1.9rem, 1.35rem + 2.4vw, 2.75rem);
+  line-height: 1.12;
   letter-spacing: -0.02em;
   font-weight: 700;
+  text-wrap: balance;
 }
 .text-headline-md {
   font-family: var(--font-display);
-  font-size: 1.75rem;
-  line-height: 1.25;
+  font-size: clamp(1.25rem, 1.12rem + 0.7vw, 1.6rem);
+  line-height: 1.22;
+  letter-spacing: -0.01em;
   font-weight: 600;
+  text-wrap: balance;
 }
 .text-label-md {
   font-family: var(--font-body);
@@ -243,13 +294,19 @@ main,
   scroll-margin-top: 6rem;
 }
 
+/* Movimiento reducido: se elimina el movimiento, no la información.
+   Las transiciones se resuelven al instante (el cambio de estado sigue
+   siendo visible) y los efectos de escala se anulan con `motion-reduce:*`.
+   Los indicadores de carga (spinners) conservan su animación porque
+   comunican un estado en curso, no un adorno. */
 @media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto !important;
+  }
+
   *,
   *::before,
   *::after {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    scroll-behavior: auto !important;
     transition-duration: 0.01ms !important;
   }
 }
