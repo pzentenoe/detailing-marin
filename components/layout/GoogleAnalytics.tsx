@@ -33,21 +33,15 @@ export function GoogleAnalytics() {
 
   return (
     <>
+      {/*
+        `gtag.js` pesa ~181 KB. Con `afterInteractive` competía por el
+        critical path (46 % sin usar, long task de 66 ms y forced reflow).
+        `lazyOnload` lo retrasa hasta después de `load`; el shim `dataLayer`
+        está en el root layout, así que no se pierde ningún evento.
+      */}
       <Script
-        strategy="afterInteractive"
+        strategy="lazyOnload"
         src={`https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`}
-      />
-      <Script
-        id="google-analytics"
-        strategy="afterInteractive"
-        dangerouslySetInnerHTML={{
-          __html: `
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-            gtag('config', '${GA_MEASUREMENT_ID}', { send_page_view: false });
-          `,
-        }}
       />
     </>
   )

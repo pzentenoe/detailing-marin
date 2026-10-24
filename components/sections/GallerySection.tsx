@@ -18,9 +18,13 @@ export async function GallerySection({ preview = false }: { preview?: boolean })
   return (
     <SectionWrapper surface={preview ? 'base' : 'low'} id={preview ? 'galeria' : 'trabajos-galeria'}>
       <header className="mb-10 max-w-3xl">
-          <h2 className="text-display-md text-(--color-on-surface)">
-            {t(preview ? 'previewHeading' : 'heading')}
-          </h2>
+          {/* En la página de galería este es el encabezado principal de la
+              página; en el home es una sección dentro del hero. */}
+          {preview ? (
+            <h2 className="text-display-md text-(--color-on-surface)">{t('previewHeading')}</h2>
+          ) : (
+            <h1 className="text-display-md text-(--color-on-surface)">{t('heading')}</h1>
+          )}
           <p className="mt-4 text-body-lg text-on-surface-variant">
             {t(preview ? 'previewDescription' : 'description')}
           </p>
@@ -28,7 +32,7 @@ export async function GallerySection({ preview = false }: { preview?: boolean })
       {!preview && (
         <div className="mb-14">
           <div className="mb-7 max-w-2xl">
-            <h3 className="text-headline-lg text-(--color-on-surface)">{t('comparisons.heading')}</h3>
+            <h2 className="text-headline-lg text-(--color-on-surface)">{t('comparisons.heading')}</h2>
             <p className="mt-2 text-body-lg text-on-surface-variant">{t('comparisons.description')}</p>
           </div>
           <div className="grid gap-10 lg:grid-cols-2">
@@ -75,7 +79,6 @@ export async function GallerySection({ preview = false }: { preview?: boolean })
           <Link
             href="/galeria"
             className="inline-flex items-center gap-2 rounded-full bg-primary px-6 py-3 font-semibold text-on-primary transition-[filter,transform] hover:brightness-95 active:scale-[0.98] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
-            aria-label={t('viewAllAria')}
           >
             {t('viewAll')}
             <Icon name="arrow-right" size={18} />

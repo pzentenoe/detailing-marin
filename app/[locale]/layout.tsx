@@ -13,6 +13,7 @@ import { routing } from '@/i18n/routing'
 import '../globals.css'
 
 const GOOGLE_SITE_VERIFICATION = process.env.GOOGLE_SITE_VERIFICATION
+const GOOGLE_ANALYTICS_ID = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID
 
 const manrope = Manrope({
   subsets: ['latin'],
@@ -48,7 +49,8 @@ export async function generateMetadata({
     publisher: 'Detailing Marin',
     openGraph: {
       type: 'website',
-      url: SITE_URL,
+      // `url` se omite a propósito: se hereda a las páginas hijas, y una URL
+      // de homepage heredada haría que `og:url` apuntara a otra página.
       siteName: SITE_NAME,
       images: [{ url: DEFAULT_OG_IMAGE, width: 1200, height: 630 }],
     },
@@ -115,6 +117,20 @@ export default async function LocaleLayout({
             dangerouslySetInnerHTML={{ __html: THEME_INIT_SCRIPT }}
           />
         <GoogleAnalytics />
+        {GOOGLE_ANALYTICS_ID && (
+          <Script
+            id="google-analytics-init"
+            strategy="beforeInteractive"
+            dangerouslySetInnerHTML={{
+              __html: `
+                window.dataLayer = window.dataLayer || [];
+                window.gtag = function(){window.dataLayer.push(arguments);};
+                window.gtag('js', new Date());
+                window.gtag('config', '${GOOGLE_ANALYTICS_ID}', { send_page_view: false });
+              `,
+            }}
+          />
+        )}
         <JsonLd data={localBusinessJsonLd} />
         <NextIntlClientProvider messages={messages}>
           <QueryProvider>

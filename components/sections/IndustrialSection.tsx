@@ -39,7 +39,6 @@ export async function IndustrialSection() {
             <Link
               href="/contacto"
               className="inline-flex items-center gap-2 rounded-full bg-primary px-6 py-3 font-semibold text-on-primary transition-[filter,transform] hover:brightness-95 active:scale-[0.98] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
-              aria-label={t('ctaAria')}
             >
               {t('cta')}
               <Icon name="arrow-right" size={18} />

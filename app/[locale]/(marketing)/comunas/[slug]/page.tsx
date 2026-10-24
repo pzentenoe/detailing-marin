@@ -7,6 +7,7 @@ import { Icon } from '@/components/ui/Icon'
 import {
   absoluteUrl,
   buildBreadcrumbJsonLd,
+  buildLanguageAlternates,
   DEFAULT_OG_IMAGE,
   SITE_NAME,
 } from '@/lib/seo'
@@ -35,8 +36,11 @@ export async function generateMetadata({ params }: { params: PageParams }): Prom
   const commune = getCommuneBySlug(slug)
   if (!commune) return { robots: { index: false, follow: false } }
 
-  const title = `Lavado de autos a domicilio en ${commune.name} — Detailing Marin`
-  const description = `Servicio de lavado ecológico, aspirado y detailing automotriz a domicilio en ${commune.name}, Santiago. Sin moverte de tu casa. Productos biodegradables y resultado premium.`
+  const title = `Lavado de autos a domicilio en ${commune.name}`
+  // El template raíz (`%s | Detailing Marin`) añade la marca al `<title>`,
+  // así que el título de la página no debe incluirla o aparecería duplicada.
+  const socialTitle = `${title} — Detailing Marin`
+  const description = `Lavado ecológico, aspirado y detailing a domicilio en ${commune.name}, Santiago. Sin moverte de tu casa, con productos biodegradables y resultado premium.`
   const path = `/comunas/${commune.slug}`
   const canonical = absoluteUrl(path)
 
@@ -45,16 +49,22 @@ export async function generateMetadata({ params }: { params: PageParams }): Prom
     description,
     alternates: {
       canonical,
-      languages: { es: canonical, 'x-default': canonical },
+      // Las landings por comuna solo se publican en español.
+      languages: buildLanguageAlternates(path, false),
     },
     openGraph: {
       url: canonical,
-      title,
+      title: socialTitle,
       description,
       locale: 'es_CL',
       images: [{ url: DEFAULT_OG_IMAGE, width: 1200, height: 630 }],
     },
-    twitter: { card: 'summary_large_image', images: [DEFAULT_OG_IMAGE] },
+    twitter: {
+      card: 'summary_large_image',
+      title: socialTitle,
+      description,
+      images: [DEFAULT_OG_IMAGE],
+    },
   }
 }
 

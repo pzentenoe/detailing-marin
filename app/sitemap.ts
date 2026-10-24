@@ -1,56 +1,69 @@
 import type { MetadataRoute } from 'next'
-import { absoluteUrl } from '@/lib/seo'
+import { absoluteUrl, buildLanguageAlternates, localizedPaths } from '@/lib/seo'
 import { getServices } from '@/lib/service-catalog'
+import { getGalleryContent } from '@/lib/gallery-content'
 import { PRIORITY_COMMUNES } from '@/lib/comunas'
 
-const lastModified = new Date('2026-09-25T00:00:00.000Z')
+/**
+ * Imágenes que aparecen realmente en la página a la que se asocian.
+ * Google exige que una imagen del image sitemap esté presente en la página.
+ */
+const HERO_IMAGE = '/images/trabajos/exterior/bmw-x3-perfil-lateral-despues.webp'
+const CONTACT_IMAGE = '/images/trabajos/exterior/mercedes-glc-trasera-reflejos-despues.webp'
 
-const routes = [
-  { path: '/',           enPath: '/en',              changeFrequency: 'weekly'  as const, priority: 1,    images: true  },
-  { path: '/servicios',  enPath: '/en/servicios',   changeFrequency: 'weekly'  as const, priority: 0.9,  images: true  },
-  { path: '/galeria',    enPath: '/en/galeria',     changeFrequency: 'weekly'  as const, priority: 0.8,  images: true  },
-  { path: '/cobertura',  enPath: '/en/cobertura',   changeFrequency: 'monthly' as const, priority: 0.85, images: false },
-  { path: '/contacto',   enPath: '/en/contacto',    changeFrequency: 'monthly' as const, priority: 0.8,  images: false },
+type RouteEntry = {
+  path: string
+  changeFrequency: NonNullable<MetadataRoute.Sitemap[number]['changeFrequency']>
+  priority: number
+}
+
+const routes: RouteEntry[] = [
+  { path: '/',          changeFrequency: 'weekly',  priority: 1 },
+  { path: '/servicios', changeFrequency: 'weekly',  priority: 0.9 },
+  { path: '/galeria',   changeFrequency: 'weekly',  priority: 0.8 },
+  { path: '/cobertura', changeFrequency: 'monthly', priority: 0.85 },
+  { path: '/contacto',  changeFrequency: 'monthly', priority: 0.8 },
 ]
 
-const heroImage = absoluteUrl('/images/trabajos/exterior/bmw-x3-perfil-lateral-despues.webp')
-
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const coreRoutes = routes.flatMap(({ path, enPath, changeFrequency, priority, images }) => {
-    const languages = { es: absoluteUrl(path), en: absoluteUrl(enPath) }
-    const shared = { lastModified, changeFrequency, priority, alternates: { languages } }
-    const imageEntry = images ? { images: [heroImage] } : {}
+  const [services, gallery] = await Promise.all([getServices('es'), getGalleryContent('es')])
+
+  const imagesByRoute: Record<string, string[]> = {
+    '/': [HERO_IMAGE],
+    '/servicios': services.map((service) => service.image).filter((image): image is string => Boolean(image)),
+    '/galeria': gallery.photos.map((photo) => photo.src).filter((src): src is string => Boolean(src)),
+    '/contacto': [CONTACT_IMAGE],
+  }
+
+  const coreRoutes = routes.flatMap(({ path, changeFrequency, priority }) => {
+    const { es, en } = localizedPaths(path)
+    const shared = {
+      changeFrequency,
+      priority,
+      alternates: { languages: buildLanguageAlternates(path) },
+    }
+    const images = imagesByRoute[path]
+    const imageEntry = images ? { images: images.map((image) => absoluteUrl(image)) } : {}
 
     return [
-      { url: absoluteUrl(path),   ...shared, ...imageEntry },
-      { url: absoluteUrl(enPath), ...shared, ...imageEntry },
+      { url: absoluteUrl(es), ...shared, ...imageEntry },
+      { url: absoluteUrl(en), ...shared, ...imageEntry },
     ]
   })
 
-  const services = await getServices('es')
   const serviceRoutes = services.flatMap((service) => {
     const path = `/servicios/${service.slug}`
-    const enPath = `/en/servicios/${service.slug}`
-    const serviceImage = service.image
-    const imageEntry = serviceImage ? { images: [absoluteUrl(serviceImage)] } : { images: [heroImage] }
+    const { es, en } = localizedPaths(path)
+    const shared = {
+      changeFrequency: 'weekly' as const,
+      priority: 0.85,
+      alternates: { languages: buildLanguageAlternates(path) },
+    }
+    const imageEntry = service.image ? { images: [absoluteUrl(service.image)] } : {}
 
     return [
-      {
-        url: absoluteUrl(path),
-        lastModified,
-        changeFrequency: 'weekly' as const,
-        priority: 0.85,
-        alternates: { languages: { es: absoluteUrl(path), en: absoluteUrl(enPath) } },
-        ...imageEntry,
-      },
-      {
-        url: absoluteUrl(enPath),
-        lastModified,
-        changeFrequency: 'weekly' as const,
-        priority: 0.85,
-        alternates: { languages: { es: absoluteUrl(path), en: absoluteUrl(enPath) } },
-        ...imageEntry,
-      },
+      { url: absoluteUrl(es), ...shared, ...imageEntry },
+      { url: absoluteUrl(en), ...shared, ...imageEntry },
     ]
   })
 
@@ -58,10 +71,10 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     const path = `/comunas/${commune.slug}`
     return {
       url: absoluteUrl(path),
-      lastModified,
       changeFrequency: 'monthly' as const,
       priority: 0.8,
-      alternates: { languages: { es: absoluteUrl(path), 'x-default': absoluteUrl(path) } },
+      // Las landings por comuna solo se publican en español.
+      alternates: { languages: buildLanguageAlternates(path, false) },
     }
   })
 

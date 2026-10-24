@@ -18,22 +18,76 @@ export const SERVED_COMMUNES = [
   'Las Condes', 'Vitacura', 'Lo Barnechea', 'Padre Hurtado', 'San Bernardo',
 ]
 
+/**
+ * Absolute URL for a public path.
+ *
+ * Next.js normalizes metadata URLs that point at the origin root to the bare
+ * origin, without a trailing slash (see `resolveAbsoluteUrlWithPathname` in
+ * `next/dist/esm/lib/metadata/resolvers/resolve-url.js`). Mirroring that here
+ * keeps the sitemap `<loc>` values byte-identical to the canonical URL that
+ * is rendered in the page head.
+ */
 export function absoluteUrl(path: string = '/') {
-  return new URL(path, SITE_URL).toString()
+  const url = new URL(path, SITE_URL)
+  if (url.pathname === '/' && !url.search && !url.hash) return url.origin
+  return url.toString()
+}
+
+/** Public path per locale: `es` is unprefixed, `en` is prefixed with `/en`. */
+export function localizedPaths(path: string) {
+  return { es: path, en: path === '/' ? '/en' : `/en${path}` }
+}
+
+/**
+ * Reciprocal hreflang set for a path.
+ *
+ * `x-default` always points at the default (es) version. Callers that only
+ * publish one locale pass `includeEnglish: false`, so the set never
+ * advertises a route that would 404.
+ *
+ * Page metadata and the sitemap both read from this helper, so the two can
+ * never drift apart.
+ */
+export function buildLanguageAlternates(path: string, includeEnglish = true) {
+  const { es, en } = localizedPaths(path)
+  return {
+    es: absoluteUrl(es),
+    ...(includeEnglish ? { en: absoluteUrl(en) } : {}),
+    'x-default': absoluteUrl(es),
+  }
 }
 
 /** Returns locale-aware alternates: canonical + hreflang + x-default */
 export function buildAlternates(locale: string, path: string): Metadata['alternates'] {
-  const enPath = `/en${path === '/' ? '' : path}`
-  const canonical = locale === 'es' ? absoluteUrl(path) : absoluteUrl(enPath)
+  const { es, en } = localizedPaths(path)
+  const canonical = locale === 'es' ? absoluteUrl(es) : absoluteUrl(en)
   return {
     canonical,
-    languages: {
-      es: absoluteUrl(path),
-      en: absoluteUrl(enPath),
-      'x-default': absoluteUrl(path),
-    },
+    languages: buildLanguageAlternates(path),
   }
+}
+
+/**
+ * Meta description for a service detail page.
+ *
+ * Composed from the service's own fields instead of truncating the long
+ * description at the first sentence, which produced 56–104 character
+ * snippets that Google then rewrote.
+ */
+export function buildServiceDescription(
+  service: { title: string; shortDescription: string; price?: string; duration?: string },
+  locale: LocaleCode = 'es'
+) {
+  const lead =
+    locale === 'en'
+      ? `${service.title} at your location in Santiago`
+      : `${service.title} a domicilio en Santiago`
+  const parts = [lead, service.shortDescription]
+  if (service.price) parts.push(service.price)
+  if (service.duration) {
+    parts.push(locale === 'en' ? `Duration: ${service.duration}.` : `Duración: ${service.duration}.`)
+  }
+  return parts.join(' ')
 }
 
 /** Maps locale code to Open Graph locale string */

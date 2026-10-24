@@ -50,7 +50,7 @@ export function FooterView({ content, locale }: { content: FooterViewContent; lo
         <div className="grid grid-cols-1 gap-10 sm:grid-cols-2 lg:grid-cols-4">
           <div className="flex flex-col gap-5 lg:col-span-1">
             <NextLink href={localizedHref('/', locale)} className="flex min-h-11 w-fit items-center gap-3 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary" aria-label={content.brandName}>
-              <Image src="/icon/logo-removebg.png" alt={content.brandName} width={56} height={40} className="object-contain drop-shadow-md" />
+              <Image src="/icon/logo-removebg.png" alt="" width={56} height={40} className="object-contain drop-shadow-md" />
               <span className="font-display text-lg font-bold tracking-tight text-(--color-on-surface)">{content.brandName}</span>
             </NextLink>
             <p className="text-body-lg max-w-xs text-sm text-on-surface-variant">{content.tagline}</p>

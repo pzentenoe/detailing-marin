@@ -48,7 +48,6 @@ export async function ServicesPreview() {
         <Link
           href={`/servicios/${featured.slug}`}
           className="group relative block h-full overflow-hidden rounded-(--radius-xl) bg-surface-container focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
-          aria-label={t('viewServiceAria', { title: featured.title })}
         >
           <div className="relative w-full h-full min-h-[480px]">
             {featured.image ? (
@@ -116,7 +115,6 @@ export async function ServicesPreview() {
               key={service.id}
               href={`/servicios/${service.slug}`}
               className="group block overflow-hidden rounded-(--radius-xl) bg-surface-container focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
-              aria-label={t('viewServiceAria', { title: service.title })}
             >
               <div className="relative w-full h-52">
                 {service.image ? (

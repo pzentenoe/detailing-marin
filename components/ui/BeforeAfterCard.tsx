@@ -44,7 +44,7 @@ export function BeforeAfterCard({
           type="button"
           className="group/photo relative flex-1 cursor-zoom-in overflow-hidden text-left focus-visible:z-20 focus-visible:outline-2 focus-visible:outline-inset focus-visible:outline-white"
           onClick={() => setActiveIndex(0)}
-          aria-label={t('openPhoto', { caption: before.alt })}
+          aria-label={t('openPhoto', { caption: `${beforeLabel}: ${before.alt}` })}
         >
           <Image
             src={before.src}
@@ -73,7 +73,7 @@ export function BeforeAfterCard({
           type="button"
           className="group/photo relative flex-1 cursor-zoom-in overflow-hidden text-left focus-visible:z-20 focus-visible:outline-2 focus-visible:outline-inset focus-visible:outline-white"
           onClick={() => setActiveIndex(1)}
-          aria-label={t('openPhoto', { caption: after.alt })}
+          aria-label={t('openPhoto', { caption: `${afterLabel}: ${after.alt}` })}
         >
           <Image
             src={after.src}

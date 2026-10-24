@@ -8,10 +8,14 @@ interface JsonLdProps {
 }
 
 export function JsonLd({ data }: JsonLdProps) {
+  // JSON is embedded in an HTML <script>; escape `<` so CMS content such as
+  // `</script>` cannot terminate the element early.
+  const serialized = JSON.stringify(data).replace(/</g, '\\u003c')
+
   return (
     <script
       type="application/ld+json"
-      dangerouslySetInnerHTML={{ __html: JSON.stringify(data) }}
+      dangerouslySetInnerHTML={{ __html: serialized }}
     />
   )
 }

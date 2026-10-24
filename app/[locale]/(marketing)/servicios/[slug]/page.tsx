@@ -7,7 +7,7 @@ import { SectionWrapper } from '@/components/ui/SectionWrapper'
 import { BeforeAfterCard } from '@/components/ui/BeforeAfterCard'
 import { Icon } from '@/components/ui/Icon'
 import { Link } from '@/i18n/navigation'
-import { absoluteUrl, buildAlternates, buildBreadcrumbJsonLd, buildServiceFaqJsonLd, DEFAULT_OG_IMAGE, getServiceFaqEntries, ogLocale, SERVED_COMMUNES, SITE_NAME, SITE_URL } from '@/lib/seo'
+import { absoluteUrl, buildAlternates, buildBreadcrumbJsonLd, buildServiceDescription, buildServiceFaqJsonLd, DEFAULT_OG_IMAGE, getServiceFaqEntries, ogLocale, SERVED_COMMUNES, SITE_NAME, SITE_URL } from '@/lib/seo'
 import { JsonLd } from '@/components/ui/JsonLd'
 import { getServices } from '@/lib/service-catalog'
 import { TrackEvent } from '@/components/ui/TrackEvent'
@@ -39,7 +39,6 @@ export async function generateMetadata({
   }
 
   const serviceTitle = service.title
-  const serviceDescription = service.fullDescription
   const pagePath = `/servicios/${service.slug}`
   const ogImage = service.image ?? DEFAULT_OG_IMAGE
 
@@ -47,21 +46,25 @@ export async function generateMetadata({
     ? `${serviceTitle} in Santiago`
     : `${serviceTitle} en Santiago`
 
-  const shortDescription = `${localeLead}. ${serviceDescription.split('. ')[0]}.`
+  // La descripción se compone con los datos reales del servicio; truncar el
+  // texto largo en la primera frase producía snippets de 56–104 caracteres.
+  const description = buildServiceDescription(service, locale === 'en' ? 'en' : 'es')
 
   return {
     title: locale === 'en' ? `${serviceTitle} in Santiago` : `${serviceTitle} a domicilio en Santiago`,
-    description: shortDescription,
+    description,
     alternates: buildAlternates(locale, pagePath),
     openGraph: {
       url: locale === 'en' ? `/en/servicios/${service.slug}` : pagePath,
       title: localeLead,
-      description: shortDescription,
+      description,
       locale: ogLocale(locale),
       images: [{ url: ogImage, width: 1200, height: 630 }],
     },
     twitter: {
       card: 'summary_large_image',
+      title: localeLead,
+      description,
       images: [ogImage],
     },
   }
