@@ -5,8 +5,8 @@ const withNextIntl = createNextIntlPlugin('./i18n/request.ts')
 
 const nextConfig: NextConfig = {
   outputFileTracingIncludes: {
-    '/admin': ['./certs/postgres-server.crt'],
-    '/admin/**': ['./certs/postgres-server.crt'],
+    '/admin': ['./certs/postgres-root-ca.crt'],
+    '/admin/**': ['./certs/postgres-root-ca.crt'],
   },
   images: {
     formats: ['image/avif', 'image/webp'],

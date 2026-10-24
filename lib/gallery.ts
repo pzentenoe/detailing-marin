@@ -8,12 +8,24 @@
 export type GalleryCategory = 'exterior' | 'interiores' | 'focos' | 'maquinaria'
 
 export interface GalleryPhoto {
-  /** También es la clave de i18n del epígrafe: `gallery.photos.<id>` */
-  id: string
-  src: string
-  width: number
-  height: number
-  category: GalleryCategory
+	/** También es la clave inicial para migrar el contenido existente a Directus. */
+	id: string
+	src: string
+	width: number
+	height: number
+	category: GalleryCategory
+}
+
+export interface GalleryDisplayPhoto extends Omit<GalleryPhoto, 'src'> {
+	src: string
+	caption: string
+	alt: string
+}
+
+export interface GalleryComparisonSource {
+	id: string
+	beforeSrc: string
+	afterSrc: string
 }
 
 export const galleryCategories: GalleryCategory[] = [
@@ -218,6 +230,29 @@ export const galleryPreviewIds = [
   'motor-industrial-cat-en-limpieza',
   'foco-delantero-restaurado-despues',
 ] as const
+
+export const galleryComparisons: GalleryComparisonSource[] = [
+	{
+		id: 'motor',
+		beforeSrc: '/images/lavado_motor/antes.webp',
+		afterSrc: '/images/lavado_motor/despues.webp',
+	},
+	{
+		id: 'interior',
+		beforeSrc: '/images/asientos/antes.webp',
+		afterSrc: '/images/asientos/despues.webp',
+	},
+	{
+		id: 'headlights',
+		beforeSrc: '/images/trabajos/focos/foco-delantero-amarillento-antes.webp',
+		afterSrc: '/images/trabajos/focos/foco-delantero-restaurado-despues.webp',
+	},
+	{
+		id: 'exterior',
+		beforeSrc: '/images/trabajos/exterior/porsche-boxster-trasera-sucia-antes.webp',
+		afterSrc: '/images/trabajos/exterior/porsche-boxster-trasera-limpia-despues.webp',
+	},
+]
 
 export function getGalleryPhoto(id: string): GalleryPhoto | undefined {
   return galleryPhotos.find((photo) => photo.id === id)

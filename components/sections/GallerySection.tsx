@@ -4,16 +4,20 @@ import { Icon } from '@/components/ui/Icon'
 import { SectionWrapper } from '@/components/ui/SectionWrapper'
 import { BeforeAfterCard } from '@/components/ui/BeforeAfterCard'
 import { GalleryGrid } from '@/components/sections/GalleryGrid'
-import { galleryPhotos, galleryPreviewIds } from '@/lib/gallery'
+import { galleryPreviewIds } from '@/lib/gallery'
+import { getGalleryContent } from '@/lib/gallery-content'
+import { getLocale } from 'next-intl/server'
 
 export async function GallerySection({ preview = false }: { preview?: boolean }) {
   const t = await getTranslations('gallery')
+  const locale = await getLocale() as 'es' | 'en'
+  const gallery = await getGalleryContent(locale)
   const photos = preview
     ? galleryPreviewIds.flatMap((id) => {
-        const photo = galleryPhotos.find((item) => item.id === id)
+        const photo = gallery.photos.find((item) => item.id === id)
         return photo ? [photo] : []
       })
-    : galleryPhotos
+    : gallery.photos
 
   return (
     <SectionWrapper surface={preview ? 'base' : 'low'} id={preview ? 'galeria' : 'trabajos-galeria'}>
@@ -35,42 +39,18 @@ export async function GallerySection({ preview = false }: { preview?: boolean })
             <h2 className="text-headline-lg text-(--color-on-surface)">{t('comparisons.heading')}</h2>
             <p className="mt-2 text-body-lg text-on-surface-variant">{t('comparisons.description')}</p>
           </div>
-          <div className="grid gap-10 lg:grid-cols-2">
-            <BeforeAfterCard
-              label={t('comparisons.motor')}
-              beforeLabel={t('comparisons.before')}
-              afterLabel={t('comparisons.after')}
-              before={{ src: '/images/lavado_motor/antes.webp', alt: t('comparisons.motorBeforeAlt') }}
-              after={{ src: '/images/lavado_motor/despues.webp', alt: t('comparisons.motorAfterAlt') }}
-            />
-            <BeforeAfterCard
-              label={t('comparisons.interior')}
-              beforeLabel={t('comparisons.before')}
-              afterLabel={t('comparisons.after')}
-              before={{ src: '/images/asientos/antes.webp', alt: t('comparisons.interiorBeforeAlt') }}
-              after={{ src: '/images/asientos/despues.webp', alt: t('comparisons.interiorAfterAlt') }}
-            />
-            <BeforeAfterCard
-              label={t('comparisons.headlights')}
-              beforeLabel={t('comparisons.before')}
-              afterLabel={t('comparisons.after')}
-              before={{ src: '/images/trabajos/focos/foco-delantero-amarillento-antes.webp', alt: t('comparisons.headlightsBeforeAlt') }}
-              after={{ src: '/images/trabajos/focos/foco-delantero-restaurado-despues.webp', alt: t('comparisons.headlightsAfterAlt') }}
-            />
-            <BeforeAfterCard
-              label={t('comparisons.exterior')}
-              beforeLabel={t('comparisons.before')}
-              afterLabel={t('comparisons.after')}
-              before={{
-                src: '/images/trabajos/exterior/porsche-boxster-trasera-sucia-antes.webp',
-                alt: t('comparisons.exteriorBeforeAlt'),
-              }}
-              after={{
-                src: '/images/trabajos/exterior/porsche-boxster-trasera-limpia-despues.webp',
-                alt: t('comparisons.exteriorAfterAlt'),
-              }}
-            />
-          </div>
+            <div className="grid gap-10 lg:grid-cols-2">
+              {gallery.comparisons.map((comparison) => (
+                <BeforeAfterCard
+                  key={comparison.id}
+                  label={comparison.title}
+                  beforeLabel={t('comparisons.before')}
+                  afterLabel={t('comparisons.after')}
+                  before={comparison.before}
+                  after={comparison.after}
+                />
+              ))}
+            </div>
         </div>
       )}
         <GalleryGrid photos={photos} preview={preview} />

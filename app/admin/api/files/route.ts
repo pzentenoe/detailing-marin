@@ -57,12 +57,16 @@ export async function POST(request: Request) {
       return NextResponse.json({ error: 'Directus no pudo guardar la imagen.' }, { status: 502 })
     }
 
-    const payload = await response.json() as { data?: { id?: string } }
-    if (!payload.data?.id) {
-      return NextResponse.json({ error: 'Directus devolvió una respuesta inválida.' }, { status: 502 })
-    }
+      const payload = await response.json() as { data?: { id?: string; width?: number | null; height?: number | null } }
+      if (!payload.data?.id) {
+        return NextResponse.json({ error: 'Directus devolvió una respuesta inválida.' }, { status: 502 })
+      }
 
-    return NextResponse.json({ id: payload.data.id })
+      return NextResponse.json({
+        id: payload.data.id,
+        width: payload.data.width,
+        height: payload.data.height,
+      })
   } catch {
     return NextResponse.json({ error: 'No fue posible subir la imagen.' }, { status: 502 })
   }

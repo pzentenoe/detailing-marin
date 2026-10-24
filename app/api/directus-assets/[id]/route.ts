@@ -1,5 +1,6 @@
 import { NextResponse } from 'next/server'
 import { getServices } from '@/lib/service-catalog'
+import { isGalleryAssetReferenced } from '@/lib/gallery-content'
 
 const UUID = /^[0-9a-f]{8}-[0-9a-f]{4}-[1-8][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i
 const IMAGE_TYPES = new Set(['image/avif', 'image/gif', 'image/jpeg', 'image/png', 'image/webp'])
@@ -14,8 +15,11 @@ export async function GET(_request: Request, { params }: { params: Promise<{ id:
 
   try {
     const assetPath = `/api/directus-assets/${id}`
-    const services = await getServices('es')
-    if (!services.some((service) => service.image === assetPath || service.imageBefore === assetPath)) {
+      const [services, isGalleryAsset] = await Promise.all([
+        getServices('es'),
+        isGalleryAssetReferenced(id),
+      ])
+      if (!services.some((service) => service.image === assetPath || service.imageBefore === assetPath) && !isGalleryAsset) {
       return NextResponse.json({ error: 'Asset not found' }, { status: 404 })
     }
 

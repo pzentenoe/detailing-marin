@@ -12,6 +12,7 @@
     "db:generate": "prisma generate",
     "db:migrate": "prisma migrate deploy",
     "db:seed": "prisma db seed",
+    "cms:gallery:migrate": "tsx scripts/migrate-gallery-to-directus.ts",
     "lint": "eslint",
     "icons:generate": "node scripts/generate-icons.js",
     "icons:clean": "rm -rf public/icons/*.png && rm -f public/icons/manifest-icons.json",

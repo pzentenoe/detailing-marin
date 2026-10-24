@@ -3,10 +3,10 @@
 import Image from 'next/image'
 import { useCallback, useState } from 'react'
 import { useTranslations } from 'next-intl'
-import { galleryCategories, type GalleryCategory, type GalleryPhoto } from '@/lib/gallery'
+import { galleryCategories, type GalleryCategory, type GalleryDisplayPhoto } from '@/lib/gallery'
 import { PhotoViewerDialog } from '@/components/ui/PhotoViewerDialog'
 
-export function GalleryGrid({ photos, preview = false }: { photos: GalleryPhoto[]; preview?: boolean }) {
+export function GalleryGrid({ photos, preview = false }: { photos: GalleryDisplayPhoto[]; preview?: boolean }) {
   const t = useTranslations('gallery')
   const [category, setCategory] = useState<GalleryCategory | 'all'>('all')
   const [activeIndex, setActiveIndex] = useState<number | null>(null)
@@ -47,11 +47,11 @@ export function GalleryGrid({ photos, preview = false }: { photos: GalleryPhoto[
               type="button"
               className="group relative block w-full cursor-zoom-in text-left focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
               onClick={() => setActiveIndex(index)}
-              aria-label={t('openPhoto', { caption: t(`photos.${photo.id}`) })}
+                aria-label={t('openPhoto', { caption: photo.alt })}
             >
               <Image
                 src={photo.src}
-                alt={t(`photos.${photo.id}`)}
+                  alt={photo.alt}
                 width={photo.width}
                 height={photo.height}
                 sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
@@ -59,7 +59,7 @@ export function GalleryGrid({ photos, preview = false }: { photos: GalleryPhoto[
               />
             </button>
             <figcaption className="px-4 py-3 text-sm leading-relaxed text-on-surface-variant">
-              {t(`photos.${photo.id}`)}
+                {photo.caption}
             </figcaption>
           </figure>
         ))}
@@ -68,7 +68,7 @@ export function GalleryGrid({ photos, preview = false }: { photos: GalleryPhoto[
       <PhotoViewerDialog
         photos={visiblePhotos.map((photo) => ({
           ...photo,
-          alt: t(`photos.${photo.id}`),
+            alt: photo.alt,
         }))}
         activeIndex={activeIndex}
         onChange={changePhoto}
