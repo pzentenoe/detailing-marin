@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import Script from 'next/script'
 import { Manrope, Inter } from 'next/font/google'
 import { NextIntlClientProvider } from 'next-intl'
 import { getMessages, getTranslations, setRequestLocale } from 'next-intl/server'
@@ -108,7 +109,11 @@ export default async function LocaleLayout({
       suppressHydrationWarning
     >
       <body className="font-body antialiased">
-        <script dangerouslySetInnerHTML={{ __html: THEME_INIT_SCRIPT }} />
+          <Script
+            id="theme-init"
+            strategy="beforeInteractive"
+            dangerouslySetInnerHTML={{ __html: THEME_INIT_SCRIPT }}
+          />
         <GoogleAnalytics />
         <JsonLd data={localBusinessJsonLd} />
         <NextIntlClientProvider messages={messages}>

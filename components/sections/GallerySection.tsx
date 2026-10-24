@@ -18,8 +18,12 @@ export async function GallerySection({ preview = false }: { preview?: boolean })
   return (
     <SectionWrapper surface={preview ? 'base' : 'low'} id={preview ? 'galeria' : 'trabajos-galeria'}>
       <header className="mb-10 max-w-3xl">
-        <h2 className="text-display-md text-(--color-on-surface)">{t('heading')}</h2>
-        <p className="mt-4 text-body-lg text-on-surface-variant">{t('description')}</p>
+          <h2 className="text-display-md text-(--color-on-surface)">
+            {t(preview ? 'previewHeading' : 'heading')}
+          </h2>
+          <p className="mt-4 text-body-lg text-on-surface-variant">
+            {t(preview ? 'previewDescription' : 'description')}
+          </p>
       </header>
       {!preview && (
         <div className="mb-14">
@@ -65,7 +69,7 @@ export async function GallerySection({ preview = false }: { preview?: boolean })
           </div>
         </div>
       )}
-      <GalleryGrid photos={photos} />
+        <GalleryGrid photos={photos} preview={preview} />
       {preview && (
         <div className="mt-8 flex justify-center">
           <Link

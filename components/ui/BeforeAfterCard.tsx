@@ -38,7 +38,7 @@ export function BeforeAfterCard({
         {label}
       </figcaption>
 
-      <div className="relative flex h-72 md:h-80 overflow-hidden rounded-(--radius-xl) shadow-ambient group">
+      <div className="relative flex aspect-[2/1] overflow-hidden rounded-(--radius-xl) shadow-ambient group sm:aspect-auto sm:h-72 md:h-80">
         {/* Antes */}
         <button
           type="button"
@@ -60,7 +60,7 @@ export function BeforeAfterCard({
         </button>
 
         {/* Divisor central */}
-        <div className="relative z-10 flex flex-col items-center justify-center shrink-0 w-px bg-white/80 shadow-[0_0_8px_rgba(255,255,255,0.6)]">
+        <div className="relative z-10 flex flex-col items-center justify-center shrink-0 w-px bg-white/80 shadow-[0_1px_8px_rgba(255,255,255,0.5)]">
           <div className="absolute w-7 h-7 rounded-full bg-white shadow-float flex items-center justify-center">
             <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
               <path d="M4 7H10M4 7L2 5M4 7L2 9M10 7L12 5M10 7L12 9" stroke="#1a1a1a" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>

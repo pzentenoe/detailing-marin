@@ -35,7 +35,7 @@ export function PhotoViewerDialog({
   onClose,
 }: PhotoViewerDialogProps) {
   const dialogRef = useRef<HTMLDialogElement>(null)
-  const photo = activeIndex === null ? null : photos[activeIndex]
+  const photo = activeIndex === null ? null : (photos[activeIndex] ?? null)
   const isOpen = photo !== null
 
   useEffect(() => {
@@ -75,7 +75,7 @@ export function PhotoViewerDialog({
     <dialog
       ref={dialogRef}
       className="hidden open:flex fixed inset-0 m-0 h-dvh max-h-none w-screen max-w-none items-center justify-center overflow-hidden border-0 bg-transparent p-4 text-white backdrop:bg-black/75 sm:p-8"
-      aria-label={labels.dialogLabel}
+        aria-label={photo ? `${labels.dialogLabel}: ${photo.alt}` : labels.dialogLabel}
       onCancel={onClose}
       onClose={onClose}
       onClick={(event) => { if (event.target === event.currentTarget) onClose() }}
@@ -116,15 +116,17 @@ export function PhotoViewerDialog({
             <div className="relative min-h-0 w-full flex-1">
               <Image
                 src={photo.src}
-                alt={photo.alt}
+                  alt=""
                 fill
                 sizes="(max-width: 640px) 92vw, (max-width: 1720px) 92vw, 1600px"
                 className="rounded-(--radius-md) object-contain shadow-float"
                 priority
               />
             </div>
-            <p className="max-w-[65ch] text-center text-sm leading-relaxed text-white">{photo.alt}</p>
-            {photos.length > 1 && <p className="text-xs text-white/75">{counter}</p>}
+              <div className="text-center" aria-live="polite" aria-atomic="true">
+                <p className="max-w-[65ch] text-sm leading-relaxed text-white">{photo.alt}</p>
+                {photos.length > 1 && <p className="mt-1 text-xs text-white/75">{counter}</p>}
+              </div>
           </div>
         </>
       )}

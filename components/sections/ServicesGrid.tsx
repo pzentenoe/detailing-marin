@@ -327,7 +327,7 @@ export async function ServicesGrid() {
                 {layout.isHorizontal && service.imageBefore && service.image && (
                   <div className="flex-1 w-full shrink-0">
                     <BeforeAfterCard
-                      label=""
+                        label={service.title}
                       beforeLabel={tr('before')}
                       afterLabel={tr('after')}
                       before={{

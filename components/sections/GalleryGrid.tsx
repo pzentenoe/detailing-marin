@@ -6,7 +6,7 @@ import { useTranslations } from 'next-intl'
 import { galleryCategories, type GalleryCategory, type GalleryPhoto } from '@/lib/gallery'
 import { PhotoViewerDialog } from '@/components/ui/PhotoViewerDialog'
 
-export function GalleryGrid({ photos }: { photos: GalleryPhoto[] }) {
+export function GalleryGrid({ photos, preview = false }: { photos: GalleryPhoto[]; preview?: boolean }) {
   const t = useTranslations('gallery')
   const [category, setCategory] = useState<GalleryCategory | 'all'>('all')
   const [activeIndex, setActiveIndex] = useState<number | null>(null)
@@ -15,7 +15,7 @@ export function GalleryGrid({ photos }: { photos: GalleryPhoto[] }) {
   const changePhoto = useCallback((index: number) => setActiveIndex(index), [])
   return (
     <>
-      <div className="mb-8 flex flex-wrap items-center gap-2" aria-label={t('filtersAria')}>
+        {!preview && <div className="mb-8 flex flex-wrap items-center gap-2" aria-label={t('filtersAria')}>
         <button
           type="button"
           onClick={() => { setCategory('all'); setActiveIndex(null) }}
@@ -38,7 +38,7 @@ export function GalleryGrid({ photos }: { photos: GalleryPhoto[] }) {
         <span className="ml-auto text-sm text-on-surface-variant" aria-live="polite">
           {t('photoCount', { count: visiblePhotos.length })}
         </span>
-      </div>
+        </div>}
 
       <div className="columns-1 gap-5 sm:columns-2 lg:columns-3">
         {visiblePhotos.map((photo, index) => (
