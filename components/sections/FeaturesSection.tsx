@@ -10,33 +10,32 @@ import { getTranslations } from 'next-intl/server'
 import { Icon } from '@/components/ui/Icon'
 import { SectionWrapper } from '@/components/ui/SectionWrapper'
 import { featuresConfig } from '@/lib/services'
+import { DEFAULT_HOMEPAGE_IMAGE_SOURCES } from '@/lib/homepage-media'
 
 // Cada pilar prueba una afirmación distinta: el producto, el trabajo en el
 // domicilio y el acabado. Los encuadres difieren a propósito.
 const featureMedia = {
   eco: {
-    src: '/images/lavado_ecologico/lavado_ecologico.webp',
     aspect: 'aspect-[4/5]',
     sizes: '(max-width: 640px) 100vw, 30vw',
   },
   domicilio: {
-    src: '/images/trabajos/exterior/peugeot-landtrek-frontal-despues.webp',
     aspect: 'aspect-[3/4]',
     sizes: '(max-width: 640px) 100vw, 30vw',
   },
   premium: {
-    src: '/images/trabajos/exterior/porsche-boxster-trasera-limpia-despues.webp',
     aspect: 'aspect-[16/11]',
     sizes: '(max-width: 640px) 100vw, 30vw',
   },
 } as const
 
-export async function FeaturesSection() {
+export async function FeaturesSection({ imageSources }: { imageSources?: (string | undefined)[] }) {
   const t = await getTranslations('features')
 
-  const items = featuresConfig.map((f) => ({
+  const items = featuresConfig.map((f, index) => ({
     ...f,
     ...featureMedia[f.id],
+    src: imageSources?.[index] ?? DEFAULT_HOMEPAGE_IMAGE_SOURCES.features[index],
     title: t(`items.${f.id}.title`),
     description: t(`items.${f.id}.description`),
     imageAlt: t(`items.${f.id}.imageAlt`),

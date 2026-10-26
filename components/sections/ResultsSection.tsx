@@ -6,8 +6,11 @@
 import { getTranslations } from 'next-intl/server'
 import { SectionWrapper } from '@/components/ui/SectionWrapper'
 import { BeforeAfterCard } from '@/components/ui/BeforeAfterCard'
+import { DEFAULT_HOMEPAGE_IMAGE_SOURCES } from '@/lib/homepage-media'
 
-export async function ResultsSection() {
+type ResultImageSources = Partial<Record<'motor' | 'tapiz' | 'focos' | 'exterior', { before?: string; after?: string }>>
+
+export async function ResultsSection({ images }: { images?: ResultImageSources }) {
   const t = await getTranslations('results')
 
   return (
@@ -27,26 +30,26 @@ export async function ResultsSection() {
           label={t('motorLabel')}
           beforeLabel={t('before')}
           afterLabel={t('after')}
-          before={{ src: '/images/lavado_motor/antes.webp', alt: t('motorBeforeAlt') }}
-          after={{ src: '/images/lavado_motor/despues.webp', alt: t('motorAfterAlt') }}
+          before={{ src: images?.motor?.before ?? DEFAULT_HOMEPAGE_IMAGE_SOURCES.results.motor.before, alt: t('motorBeforeAlt') }}
+          after={{ src: images?.motor?.after ?? DEFAULT_HOMEPAGE_IMAGE_SOURCES.results.motor.after, alt: t('motorAfterAlt') }}
         />
         <BeforeAfterCard
           label={t('tapizLabel')}
           beforeLabel={t('before')}
           afterLabel={t('after')}
-          before={{ src: '/images/asientos/antes.webp', alt: t('asientosBeforeAlt') }}
-          after={{ src: '/images/asientos/despues.webp', alt: t('asientosAfterAlt') }}
+          before={{ src: images?.tapiz?.before ?? DEFAULT_HOMEPAGE_IMAGE_SOURCES.results.tapiz.before, alt: t('asientosBeforeAlt') }}
+          after={{ src: images?.tapiz?.after ?? DEFAULT_HOMEPAGE_IMAGE_SOURCES.results.tapiz.after, alt: t('asientosAfterAlt') }}
         />
         <BeforeAfterCard
           label={t('focosLabel')}
           beforeLabel={t('before')}
           afterLabel={t('after')}
           before={{
-            src: '/images/trabajos/focos/foco-delantero-amarillento-antes.webp',
+            src: images?.focos?.before ?? DEFAULT_HOMEPAGE_IMAGE_SOURCES.results.focos.before,
             alt: t('focosBeforeAlt'),
           }}
           after={{
-            src: '/images/trabajos/focos/foco-delantero-restaurado-despues.webp',
+            src: images?.focos?.after ?? DEFAULT_HOMEPAGE_IMAGE_SOURCES.results.focos.after,
             alt: t('focosAfterAlt'),
           }}
         />
@@ -55,11 +58,11 @@ export async function ResultsSection() {
           beforeLabel={t('before')}
           afterLabel={t('after')}
           before={{
-            src: '/images/trabajos/exterior/porsche-boxster-trasera-sucia-antes.webp',
+            src: images?.exterior?.before ?? DEFAULT_HOMEPAGE_IMAGE_SOURCES.results.exterior.before,
             alt: t('exteriorBeforeAlt'),
           }}
           after={{
-            src: '/images/trabajos/exterior/porsche-boxster-trasera-limpia-despues.webp',
+            src: images?.exterior?.after ?? DEFAULT_HOMEPAGE_IMAGE_SOURCES.results.exterior.after,
             alt: t('exteriorAfterAlt'),
           }}
         />

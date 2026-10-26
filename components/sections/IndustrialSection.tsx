@@ -3,8 +3,9 @@ import { getTranslations } from 'next-intl/server'
 import { Link } from '@/i18n/navigation'
 import { Icon } from '@/components/ui/Icon'
 import { SectionWrapper } from '@/components/ui/SectionWrapper'
+import { DEFAULT_HOMEPAGE_IMAGE_SOURCES } from '@/lib/homepage-media'
 
-export async function IndustrialSection() {
+export async function IndustrialSection({ imageSrc }: { imageSrc?: string }) {
   const t = await getTranslations('industrial')
 
   return (
@@ -12,7 +13,7 @@ export async function IndustrialSection() {
       <div className="grid items-center gap-10 lg:grid-cols-[1.05fr_0.95fr] lg:gap-16">
         <div className="relative overflow-hidden rounded-(--radius-xl) shadow-float">
           <Image
-            src="/images/trabajos/maquinaria/motor-industrial-cat-en-limpieza.webp"
+            src={imageSrc ?? DEFAULT_HOMEPAGE_IMAGE_SOURCES.industrial}
             alt={t('imageAlt')}
             width={1280}
             height={576}

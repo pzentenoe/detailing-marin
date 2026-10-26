@@ -4,8 +4,15 @@ import { AdminHomepageEditor } from '@/components/admin/AdminHomepageEditor'
 import { getAdminSession } from '@/lib/admin-auth'
 import { getAdminHomepage } from '@/lib/directus-admin'
 import { getDefaultHomepageContent, isHomepageContent } from '@/lib/homepage-content'
+import { homepageMediaFromContent } from '@/lib/homepage-media'
 
 export const metadata: Metadata = { title: 'Inicio | Administración' }
+
+function localizedContent(value: Record<string, unknown> | null | undefined, locale: 'es' | 'en') {
+  if (!value) return getDefaultHomepageContent(locale)
+  const content = Object.fromEntries(Object.entries(value).filter(([key]) => key !== '_media'))
+  return isHomepageContent(content, locale) ? content : getDefaultHomepageContent(locale)
+}
 
 export default async function AdminHomepagePage() {
   if (!await getAdminSession()) redirect('/admin')
@@ -22,8 +29,8 @@ export default async function AdminHomepagePage() {
   }
 
   const initialContent = {
-    es: isHomepageContent(homepage?.content_es, 'es') ? homepage.content_es : getDefaultHomepageContent('es'),
-    en: isHomepageContent(homepage?.content_en, 'en') ? homepage.content_en : getDefaultHomepageContent('en'),
+    es: localizedContent(homepage?.content_es, 'es'),
+    en: localizedContent(homepage?.content_en, 'en'),
   }
-  return <AdminHomepageEditor initialContent={initialContent} />
+  return <AdminHomepageEditor initialContent={initialContent} initialMedia={homepageMediaFromContent(homepage?.content_es)} />
 }

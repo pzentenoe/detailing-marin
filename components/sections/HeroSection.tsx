@@ -13,8 +13,9 @@ import { EcoChip } from '@/components/ui/EcoChip'
 import { Icon } from '@/components/ui/Icon'
 import { buildWhatsAppUrl } from '@/lib/whatsapp'
 import { analytics } from '@/lib/analytics'
+import { DEFAULT_HOMEPAGE_IMAGE_SOURCES } from '@/lib/homepage-media'
 
-export function HeroSection() {
+export function HeroSection({ imageSrc }: { imageSrc?: string }) {
   const t = useTranslations('hero')
   const tShared = useTranslations('shared')
   const WA_URL = buildWhatsAppUrl(tShared('whatsappMessage'))
@@ -103,7 +104,7 @@ export function HeroSection() {
           <div className="flex-1 relative z-10 w-full max-w-xl lg:max-w-none">
             <div className="relative aspect-[16/11] rounded-(--radius-xl) overflow-hidden shadow-float">
               <Image
-                src="/images/trabajos/exterior/bmw-x3-perfil-lateral-despues.webp"
+                src={imageSrc ?? DEFAULT_HOMEPAGE_IMAGE_SOURCES.hero}
                 alt={t('imageAlt')}
                 fill
                 className="object-cover"

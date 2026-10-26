@@ -11,6 +11,7 @@ import { IndustrialSection } from '@/components/sections/IndustrialSection'
 import { Icon } from '@/components/ui/Icon'
 import { buildAlternates, buildFaqJsonLd, DEFAULT_OG_IMAGE, ogLocale } from '@/lib/seo'
 import { JsonLd } from '@/components/ui/JsonLd'
+import { getHomepageMedia } from '@/lib/homepage-content'
 
 export async function generateMetadata({
   params,
@@ -42,16 +43,20 @@ export default async function HomePage({
 }) {
   const { locale } = await params
   const faqJsonLd = buildFaqJsonLd(locale === 'en' ? 'en' : 'es')
-  const t = await getTranslations({ locale, namespace: 'coverageTeaser' })
+  const [t, homepageMedia] = await Promise.all([
+    getTranslations({ locale, namespace: 'coverageTeaser' }),
+    getHomepageMedia(),
+  ])
+  const asset = (id: string | null) => id ? `/api/directus-assets/${id}` : undefined
 
   return (
     <>
       <JsonLd data={faqJsonLd} />
-      <HeroSection />
-      <FeaturesSection />
+      <HeroSection imageSrc={asset(homepageMedia.hero)} />
+      <FeaturesSection imageSources={homepageMedia.features.map(asset)} />
       <ServicesPreview />
       <GallerySection preview />
-      <IndustrialSection />
+      <IndustrialSection imageSrc={asset(homepageMedia.industrial)} />
 
       {/* Coverage teaser — internal link to /cobertura */}
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-8">
@@ -76,7 +81,12 @@ export default async function HomePage({
         </div>
       </div>
 
-      <ResultsSection />
+      <ResultsSection images={{
+        motor: { before: asset(homepageMedia.results.motor.before), after: asset(homepageMedia.results.motor.after) },
+        tapiz: { before: asset(homepageMedia.results.tapiz.before), after: asset(homepageMedia.results.tapiz.after) },
+        focos: { before: asset(homepageMedia.results.focos.before), after: asset(homepageMedia.results.focos.after) },
+        exterior: { before: asset(homepageMedia.results.exterior.before), after: asset(homepageMedia.results.exterior.after) },
+      }} />
       <CTASection />
     </>
   )

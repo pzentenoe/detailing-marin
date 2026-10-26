@@ -2,6 +2,7 @@ import 'server-only'
 
 import es from '@/messages/es.json'
 import en from '@/messages/en.json'
+import { homepageMediaFromContent, homepageMediaIds, type HomepageMedia } from '@/lib/homepage-media'
 
 const NAMESPACES = ['hero', 'features', 'servicesPreview', 'industrial', 'results', 'cta', 'coverageTeaser'] as const
 type Locale = 'es' | 'en'
@@ -53,6 +54,32 @@ export async function getHomepageContent(locale: Locale): Promise<HomeContent> {
   }
 }
 
+export async function getHomepageMedia(): Promise<HomepageMedia> {
+  const baseUrl = process.env.DIRECTUS_URL
+  const token = process.env.DIRECTUS_TOKEN
+  if (!baseUrl || !token) return homepageMediaFromContent(null)
+
+  try {
+    const url = new URL('/items/detailing_homepage', baseUrl)
+    url.search = new URLSearchParams({ fields: 'content_es', limit: '1' }).toString()
+    const response = await fetch(url, {
+      headers: { Authorization: `Bearer ${token}` },
+      next: { revalidate: 3600, tags: ['directus-homepage'] },
+      redirect: 'error',
+    })
+    if (!response.ok) return homepageMediaFromContent(null)
+    const payload = await response.json() as { data?: Array<{ content_es?: unknown }> }
+    return homepageMediaFromContent(payload.data?.[0]?.content_es)
+  } catch {
+    return homepageMediaFromContent(null)
+  }
+}
+
+export async function isHomepageAssetReferenced(id: string): Promise<boolean> {
+  const media = await getHomepageMedia()
+  return homepageMediaIds(media).includes(id)
+}
+
 export function getDefaultHomepageContent(locale: Locale): HomeContent {
   return defaults(locale)
 }
@@ -60,7 +87,8 @@ export function getDefaultHomepageContent(locale: Locale): HomeContent {
 export function isHomepageContent(value: unknown, locale: Locale): value is HomeContent {
   if (!value || typeof value !== 'object' || Array.isArray(value)) return false
   const expected = defaults(locale)
-  return matchesShape(expected, value)
+  const content = Object.fromEntries(Object.entries(value).filter(([key]) => key !== '_media'))
+  return matchesShape(expected, content)
 }
 
 function matchesShape(expected: unknown, candidate: unknown): boolean {
