@@ -5,7 +5,7 @@ import { redirect } from 'next/navigation'
 
 export default async function AdminPage() {
   const session = await getAdminSession()
-  if (session) redirect('/admin/servicios')
+  if (session) redirect('/admin/inicio')
 
   return (
     <main className="relative flex min-h-screen items-center justify-center overflow-hidden px-5 py-12">

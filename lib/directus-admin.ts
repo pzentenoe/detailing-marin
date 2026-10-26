@@ -90,6 +90,40 @@ export async function updateAdminFooter(id: string | number, content: FooterCont
   })
 }
 
+export async function getAdminHomepage() {
+  const response = await writeDirectus('/items/detailing_homepage?fields=id,content_es,content_en&limit=1&sort=id', { method: 'GET' })
+  if (response.status === 404) throw new Error('HOMEPAGE_COLLECTION_MISSING')
+  if (!response.ok) throw new Error(`Directus homepage read failed (${response.status})`)
+  const payload = await response.json() as DirectusData<Array<{
+    id: string | number
+    content_es: Record<string, unknown> | null
+    content_en: Record<string, unknown> | null
+  }>>
+  return payload.data[0] ?? null
+}
+
+export async function updateAdminHomepage(id: string | number, content: {
+  content_es: Record<string, unknown>
+  content_en: Record<string, unknown>
+}) {
+  return writeDirectus(`/items/detailing_homepage/${encodeURIComponent(String(id))}`, {
+    method: 'PATCH',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(content),
+  })
+}
+
+export async function createAdminHomepage(content: {
+  content_es: Record<string, unknown>
+  content_en: Record<string, unknown>
+}) {
+  return writeDirectus('/items/detailing_homepage', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(content),
+  })
+}
+
 export async function listAdminServices(): Promise<AdminServiceRecord[]> {
   const url = new URL('/items/detailing_services', baseUrl())
   url.search = new URLSearchParams({ fields: SERVICE_FIELDS, sort: 'sort,id', limit: '-1' }).toString()
